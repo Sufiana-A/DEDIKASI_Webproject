@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->integer('nim');
-            $table->string('program_studi');
+            $table->string('jurusan');
             $table->integer('angkatan');
             $table->string('no_hp');
             $table->string('email');
