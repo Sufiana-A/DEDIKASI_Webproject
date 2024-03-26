@@ -17,7 +17,10 @@ use function file_get_contents;
 use function file_put_contents;
 use function is_array;
 use function is_dir;
+<<<<<<< HEAD
 use function is_file;
+=======
+>>>>>>> e82954125c040bfe1f0d15a216fdf811eb50c9e0
 use function json_decode;
 use function json_encode;
 use PHPUnit\Framework\TestStatus\TestStatus;
@@ -86,11 +89,15 @@ final class DefaultResultCache implements ResultCache
 
     public function load(): void
     {
+<<<<<<< HEAD
         if (!is_file($this->cacheFilename)) {
             return;
         }
 
         $contents = file_get_contents($this->cacheFilename);
+=======
+        $contents = @file_get_contents($this->cacheFilename);
+>>>>>>> e82954125c040bfe1f0d15a216fdf811eb50c9e0
 
         if ($contents === false) {
             return;

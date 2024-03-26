@@ -1,9 +1,15 @@
 <?php return array(
     'root' => array(
         'name' => 'laravel/laravel',
+<<<<<<< HEAD
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
         'reference' => '5fa6d15a5d52c18f174d4a1df2bf7c8e10929ea2',
+=======
+        'pretty_version' => 'v11.0.3',
+        'version' => '11.0.3.0',
+        'reference' => NULL,
+>>>>>>> e82954125c040bfe1f0d15a216fdf811eb50c9e0
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -380,9 +386,15 @@
             'dev_requirement' => false,
         ),
         'laravel/laravel' => array(
+<<<<<<< HEAD
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
             'reference' => '5fa6d15a5d52c18f174d4a1df2bf7c8e10929ea2',
+=======
+            'pretty_version' => 'v11.0.3',
+            'version' => '11.0.3.0',
+            'reference' => NULL,
+>>>>>>> e82954125c040bfe1f0d15a216fdf811eb50c9e0
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -638,9 +650,15 @@
             'dev_requirement' => true,
         ),
         'phpunit/phpunit' => array(
+<<<<<<< HEAD
             'pretty_version' => '10.5.15',
             'version' => '10.5.15.0',
             'reference' => '86376e05e8745ed81d88232ff92fee868247b07b',
+=======
+            'pretty_version' => '10.5.14',
+            'version' => '10.5.14.0',
+            'reference' => '4cf8824bab39c2dd57b57b9f6332f7135e2a3a49',
+>>>>>>> e82954125c040bfe1f0d15a216fdf811eb50c9e0
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpunit/phpunit',
             'aliases' => array(),

@@ -14,7 +14,10 @@ use function array_keys;
 use function array_merge;
 use function assert;
 use function escapeshellarg;
+<<<<<<< HEAD
 use function file_exists;
+=======
+>>>>>>> e82954125c040bfe1f0d15a216fdf811eb50c9e0
 use function file_get_contents;
 use function ini_get_all;
 use function restore_error_handler;
@@ -139,12 +142,22 @@ abstract class AbstractPhpProcess
     {
         $_result = $this->runJob($job);
 
+<<<<<<< HEAD
         $processResult = '';
 
         if (file_exists($processResultFile)) {
             $processResult = file_get_contents($processResultFile);
 
             @unlink($processResultFile);
+=======
+        $processResult = @file_get_contents($processResultFile);
+
+        if ($processResult !== false) {
+
+            @unlink($processResultFile);
+        } else {
+            $processResult = '';
+>>>>>>> e82954125c040bfe1f0d15a216fdf811eb50c9e0
         }
 
         $this->processChildResult(
