@@ -1,4 +1,14 @@
+@extends('layout.app')
+@section('content')
 
+
+<div class="login-right">
+    <div class="login-right-wrap">
+        <h1>Welcome to Dashbord</h1>
+        <p class="account-subtitle">Need an account? <a href=#>Sign Up</a></p>
+        <h2>Sign in</h2>
+        <form  method="POST">
+        
 <!-- {{-- message --}}
 {!! Toastr::message() !!} -->
 <div class="login-right">
@@ -43,3 +53,4 @@
         </div>
     </div>
 </div>
+@endsection
