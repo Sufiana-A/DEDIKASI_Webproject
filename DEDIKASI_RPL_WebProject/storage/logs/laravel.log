@@ -217,3 +217,86 @@
 #20 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(16): require_once('C:\\\\Users\\\\dpmar\\\\...')
 #21 {main}
 "} 
+[2024-03-27 07:13:53] local.ERROR: Command "make:ProfileMentorController" is not defined.
+
+Did you mean one of these?
+    make:cache-table
+    make:cast
+    make:channel
+    make:class
+    make:command
+    make:component
+    make:controller
+    make:enum
+    make:event
+    make:exception
+    make:factory
+    make:interface
+    make:job
+    make:listener
+    make:mail
+    make:middleware
+    make:migration
+    make:model
+    make:notification
+    make:notifications-table
+    make:observer
+    make:policy
+    make:provider
+    make:queue-batches-table
+    make:queue-failed-table
+    make:queue-table
+    make:request
+    make:resource
+    make:rule
+    make:scope
+    make:seeder
+    make:session-table
+    make:test
+    make:trait
+    make:view {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"make:ProfileMentorController\" is not defined.
+
+Did you mean one of these?
+    make:cache-table
+    make:cast
+    make:channel
+    make:class
+    make:command
+    make:component
+    make:controller
+    make:enum
+    make:event
+    make:exception
+    make:factory
+    make:interface
+    make:job
+    make:listener
+    make:mail
+    make:middleware
+    make:migration
+    make:model
+    make:notification
+    make:notifications-table
+    make:observer
+    make:policy
+    make:provider
+    make:queue-batches-table
+    make:queue-failed-table
+    make:queue-table
+    make:request
+    make:resource
+    make:rule
+    make:scope
+    make:seeder
+    make:session-table
+    make:test
+    make:trait
+    make:view at C:\\Users\\ASUS\\OneDrive\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\symfony\\console\\Application.php:704)
+[stacktrace]
+#0 C:\\Users\\ASUS\\OneDrive\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\symfony\\console\\Application.php(260): Symfony\\Component\\Console\\Application->find('make:ProfileMen...')
+#1 C:\\Users\\ASUS\\OneDrive\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\symfony\\console\\Application.php(169): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#2 C:\\Users\\ASUS\\OneDrive\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(196): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 C:\\Users\\ASUS\\OneDrive\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1183): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 C:\\Users\\ASUS\\OneDrive\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\artisan(13): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#5 {main}
+"} 
