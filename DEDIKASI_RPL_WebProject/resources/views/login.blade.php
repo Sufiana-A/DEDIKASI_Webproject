@@ -1,6 +1,5 @@
-
-<!-- {{-- message --}}
-{!! Toastr::message() !!} -->
+@extends('layout.app');
+@extends('layout.master');
 <div class="login-right">
     <div class="login-right-wrap">
         <h1>Welcome to Dashbord</h1>

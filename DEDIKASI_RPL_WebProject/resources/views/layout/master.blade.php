@@ -26,10 +26,10 @@
     <div class="main-wrapper">
         <div class="header">
             <div class="header-left">
-                <a href="{{ route('home') }}" class="logo">
+                <a href=# class="logo">
                     <img src="{{ URL::to('assets/img/logo.png') }}" alt="Logo">
                 </a>
-                <a href="{{ route('home') }}" class="logo logo-small">
+                <a href=# class="logo logo-small">
                     <img src="{{ URL::to('assets/img/logo-small.png') }}" alt="Logo" width="30" height="30">
                 </a>
             </div>
@@ -169,9 +169,9 @@
                                 <p class="text-muted mb-0">{{ Session::get('role_name') }}</p>
                             </div>
                         </div>
-                        <a class="dropdown-item" href="{{ route('user/profile/page') }}">My Profile</a>
-                        <a class="dropdown-item" href="inbox.html">Inbox</a>
-                        <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
+                        <a class="dropdown-item" href=#>My Profile</a>
+                        <a class="dropdown-item" href=#>Inbox</a>
+                        <a class="dropdown-item" href=#>Logout</a>
                     </div>
                 </li>
             </ul>
