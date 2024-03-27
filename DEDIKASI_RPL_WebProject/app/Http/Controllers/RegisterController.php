@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\peserta;
+use App\Models\Peserta;
 use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
@@ -25,7 +25,7 @@ class RegisterController extends Controller
         ]);
 
         // Buat entri baru dalam tabel Peserta
-        peserta::create([
+        Peserta::create([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'tanggal_lahir' => $request->tanggal_lahir,

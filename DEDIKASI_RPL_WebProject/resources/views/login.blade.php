@@ -9,8 +9,6 @@
         <h2>Sign in</h2>
         <form  method="POST">
         
-<!-- {{-- message --}}
-{!! Toastr::message() !!} -->
 <div class="login-right">
     <div class="login-right-wrap">
         <h1>Welcome to Dashbord</h1>
