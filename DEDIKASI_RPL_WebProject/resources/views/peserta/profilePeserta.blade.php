@@ -32,7 +32,7 @@
                                     <div class="card-body">
                                         <h5 class="card-title d-flex justify-content-between">
                                             <span style="color:#3d5ee1;">Detail Profil Saya</span>
-                                            <a class="edit-link" href="{{ route('profile_edit_peserta') }}"><i
+                                            <a class="edit-link" href=#><i
                                                     class="far fa-edit me-1"></i>Edit</a>
                                         </h5>
                                         <div class="row">
