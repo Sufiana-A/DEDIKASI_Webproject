@@ -11,7 +11,5 @@ Route::get('/', function () {
 //Route::get('/register', [RegisterController::class, 'register']);
 Route::post('/register', [RegisterController::class, 'register'])->name('register');
 
-
-
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 
