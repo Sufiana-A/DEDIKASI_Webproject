@@ -80,19 +80,4 @@
         </div>
     </div>
 </div>
-<script>
-    toastr.options = {
-        "positionClass": "toast-top-right"
-    };
-
-   @if($errors->any())
-        @foreach($errors->all() as $error)
-            toastr.error("{{ $error }}");
-        @endforeach
-    @endif
-
-    @if(Session::has('success'))
-        toastr.success("{{ Session::get('success') }}");
-    @endif
-</script>
 @endsection

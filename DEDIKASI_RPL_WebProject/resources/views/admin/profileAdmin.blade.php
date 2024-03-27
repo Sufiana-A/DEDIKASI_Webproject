@@ -44,7 +44,7 @@
                                             <p class="col-sm-9"></p>
                                         </div>
                                         <div class="row">
-                                            <p class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3">Tanggal Lahir</p>
+                                            <p class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3">Date of Birth</p>
                                             <p class="col-sm-9">24 Jul 1983</p>
                                         </div>
                                         <div class="row">
@@ -72,19 +72,4 @@
         </div>
     </div>
 </div>
-<script>
-    toastr.options = {
-        "positionClass": "toast-top-right"
-    };
-
-   @if($errors->any())
-        @foreach($errors->all() as $error)
-            toastr.error("{{ $error }}");
-        @endforeach
-    @endif
-
-    @if(Session::has('success'))
-        toastr.success("{{ Session::get('success') }}");
-    @endif
-</script>
 @endsection
