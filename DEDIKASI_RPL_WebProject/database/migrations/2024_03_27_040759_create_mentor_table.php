@@ -11,20 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('peserta', function (Blueprint $table) {
+        Schema::create('mentor', function (Blueprint $table) {
             $table->id();
             $table->string('first_name');
             $table->string('last_name');
             $table->string('tanggal_lahir');
-            $table->string('nim');
-            $table->string('jurusan');
-            $table->string('angkatan');
+            $table->string('nip');
+            $table->string('kelompok keahlian');
             $table->string('no_hp');
             $table->string('email');
             $table->string('password');
-            $table->string('foto_peserta');
+            $table->string('foto_mentor');
             $table->timestamps();
-
         });
     }
 
@@ -33,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('peserta');
+        Schema::dropIfExists('mentor');
     }
 };

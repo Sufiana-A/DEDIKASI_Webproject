@@ -23,20 +23,20 @@ class PelatihanController extends Controller
         return view('pelatihan.create_pelatihan');
     }
 
-    /** save Pelatihan */
-    public function savePelatihan(Request $request)
+    /** save record */
+    public function saveRecord(Request $request)
     {
         $request->validate([
             'nama_pelatihan' => 'required|string',
-            'kategori_pelatihan'    => 'required|string',
+            'kategori'        => 'required|string',
         ]);
         
         DB::beginTransaction();
         try {
-                $savePelatihan = new Pelatihan;
-                $savePelatihan->nama_pelatihan  = $request->nama_pelatihan;
-                $savePelatihan->kategori_pelatihan  = $request->kategori_pelatihan;
-                $savePelatihan->save();
+                $saveRecord = new Pelatihan;
+                $saveRecord->nama_pelatihan   = $request->nama_pelatihan;
+                $saveRecord->kategori          = $request->kategori;
+                $saveRecord->save();
 
                 Toastr::success('Pelatihan Berhasil Ditambahkan','Sukses');
                 DB::commit();
@@ -57,18 +57,18 @@ class PelatihanController extends Controller
         return view('pelatihan.update_pelatihan',compact('pelatihanEdit'));
     }
 
-    /** update Pelatihan */
-    public function updatePelatihan(Request $request)
+    /** update record */
+    public function updateRecord(Request $request)
     {
         DB::beginTransaction();
         try {
             
-            $updatePelatihan = [
-                'nama_pelatihan'    => $request->nama_pelatihan,
-                'kategori_pelatihan'    => $request->kategori_pelatihan,
+            $updateRecord = [
+                'nama_pelatihan' => $request->nama_pelatihan,
+                'kategori'        => $request->kategori,
             ];
 
-            Pelatihan::where('id_pelatihan',$request->id_pelatihan)->update($updatePelatihan);
+            Pelatihan::where('id_pelatihan',$request->id_pelatihan)->update($updateRecord);
             Toastr::success('Pelatihan Berhasil Diubah','Sukses');
             DB::commit();
             return redirect()->back();
@@ -81,11 +81,12 @@ class PelatihanController extends Controller
         }
     }
 
-    /** delete Pelatihan */
-    public function deletePelatihan(Request $request)
+    /** delete record */
+    public function deleteRecord(Request $request)
     {
         DB::beginTransaction();
         try {
+
             Pelatihan::where('id_pelatihan',$request->id_pelatihan)->delete();
             DB::commit();
             Toastr::success('Pelatihan Berhasil Dihapus','Sukses');

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\peserta;
+use App\Models\Peserta;
 use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
@@ -12,34 +12,36 @@ class RegisterController extends Controller
     {
         // Validasi data yang diterima dari form pendaftaran
         $request->validate([
-            'first_name'    => 'required|string|max:255',
-            'last_name'     => 'required|string|max:255',
-            'tanggal_lahir' => 'required|string|max:255',
-            'nim'           => 'required|string|max:255',
-            'jurusan'       => 'required|string|max:255',
-            'angkatan'      => 'required|string|size:4',
-            'no_hp'         => 'required|string|numeric', 
-            'email'         => 'required|email|unique:users',
+            'first_name'    => 'required|string',
+            'last_name'     => 'required|string',
+            'tanggal_lahir' => 'required|string',
+            'nim'           => 'required|string',
+            'jurusan'       => 'required|string',
+            'angkatan'      => 'required|string',
+            'no_hp'         => 'required|string', 
+            'email'         => 'required|email|unique:peserta',
             'password'      => 'required|string|min:8|confirmed',
             'password_confirmation' => 'required',
         ]);
 
-        // Buat entri baru dalam tabel Peserta
-        peserta::create([
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'tanggal_lahir' => $request->tanggal_lahir,
-            'nim' => $request->nim,
-            'jurusan' => $request->jurusan,
-            'angkatan' => $request->angkatan,
-            'no_hp' => $request->no_hp,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+        $peserta = new Peserta();
 
-        
+        $peserta->first_name = $request->first_name;
+        $peserta->last_name = $request->last_name;
+        $peserta->tanggal_lahir = $request->tanggal_lahir;
+        $peserta->nim = $request->nim;
+        $peserta->jurusan = $request->jurusan;
+        $peserta->angkatan = $request->angkatan;
+        $peserta->no_hp = $request->no_hp;
+        $peserta->email = $request->email;
+        $peserta->password = Hash::make($request->password);
+        $peserta->foto_peserta = 'default_image.jpg';
+        $peserta->save();
 
+    
         // Redirect ke halaman login setelah pendaftaran berhasil
-        return redirect()->route('login')->with('success', 'Registrasi berhasil! Silakan login.');
+        return redirect()->route('login');
     }
 }
+
+

@@ -32,7 +32,7 @@
                                     <div class="card-body">
                                         <h5 class="card-title d-flex justify-content-between">
                                             <span style="color:#3d5ee1;">Detail Profil Saya</span>
-                                            <a class="edit-link" href="{{ route('profile_edit_peserta') }}"><i
+                                            <a class="edit-link" href=#><i
                                                     class="far fa-edit me-1"></i>Edit</a>
                                         </h5>
                                         <div class="row">
@@ -80,19 +80,4 @@
         </div>
     </div>
 </div>
-<script>
-    toastr.options = {
-        "positionClass": "toast-top-right"
-    };
-
-   @if($errors->any())
-        @foreach($errors->all() as $error)
-            toastr.error("{{ $error }}");
-        @endforeach
-    @endif
-
-    @if(Session::has('success'))
-        toastr.success("{{ Session::get('success') }}");
-    @endif
-</script>
 @endsection

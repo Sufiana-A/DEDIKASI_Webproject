@@ -3522,6 +3522,7 @@
         },
         {
             "name": "phpunit/phpunit",
+<<<<<<< HEAD
             "version": "10.5.15",
             "version_normalized": "10.5.15.0",
             "source": {
@@ -3533,6 +3534,19 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/86376e05e8745ed81d88232ff92fee868247b07b",
                 "reference": "86376e05e8745ed81d88232ff92fee868247b07b",
+=======
+            "version": "10.5.14",
+            "version_normalized": "10.5.14.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebastianbergmann/phpunit.git",
+                "reference": "4cf8824bab39c2dd57b57b9f6332f7135e2a3a49"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/4cf8824bab39c2dd57b57b9f6332f7135e2a3a49",
+                "reference": "4cf8824bab39c2dd57b57b9f6332f7135e2a3a49",
+>>>>>>> e82954125c040bfe1f0d15a216fdf811eb50c9e0
                 "shasum": ""
             },
             "require": {
@@ -3566,7 +3580,11 @@
             "suggest": {
                 "ext-soap": "To be able to generate mocks based on WSDL files"
             },
+<<<<<<< HEAD
             "time": "2024-03-22T04:17:47+00:00",
+=======
+            "time": "2024-03-21T07:31:09+00:00",
+>>>>>>> e82954125c040bfe1f0d15a216fdf811eb50c9e0
             "bin": [
                 "phpunit"
             ],
@@ -3606,7 +3624,11 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
+<<<<<<< HEAD
                 "source": "https://github.com/sebastianbergmann/phpunit/tree/10.5.15"
+=======
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.5.14"
+>>>>>>> e82954125c040bfe1f0d15a216fdf811eb50c9e0
             },
             "funding": [
                 {

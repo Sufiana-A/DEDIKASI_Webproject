@@ -5,8 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-    <title>Login</title>
-    <link rel="shortcut icon" href="{{ URL::to('assets/img/favicon.png') }}">
+    <title>Authenticate</title>
+    <link rel="shortcut icon" href="{{ URL::to('assets/img/Dedikasi D.png') }}">
     <link rel="stylesheet" href="{{ URL::to('assets/plugins/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ URL::to('assets/plugins/feather/feather.css') }}">
     <link rel="stylesheet" href="{{ URL::to('assets/plugins/icons/flags/flags.css') }}">
@@ -31,7 +31,7 @@
             <div class="container">
                 <div class="loginbox">
                     <div class="login-left">
-                        <img src="{{ URL::to('assets/img/login.png') }}" alt="Logo">
+                        <img class="mx-auto d-block img-fluid" src="{{ URL::to('assets/img/Dedikasi (white).png') }}" alt="Logo" style="width: 400px;margin-top: 100px;margin-bottom: 350px;">
                     </div>
                     @yield('content')
                 </div>
