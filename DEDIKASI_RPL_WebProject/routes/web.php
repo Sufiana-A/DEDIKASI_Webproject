@@ -6,7 +6,7 @@ use App\Http\Controllers\LoginController;
 
 Route::get('/', function () {
     return view('register');
-});
+})->name('viewRegister');
 
 //Route::get('/register', [RegisterController::class, 'register']);
 Route::post('/register', [RegisterController::class, 'register'])->name('register');

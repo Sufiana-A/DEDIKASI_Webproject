@@ -31,7 +31,7 @@
             <div class="container">
                 <div class="loginbox">
                     <div class="login-left">
-                        <img src="{{ URL::to('assets/img/login.png') }}" alt="Logo">
+                        <img class="mx-auto d-block img-fluid" src="{{ URL::to('assets/img/Dedikasi (white).png') }}" alt="Logo" style="width: 400px;margin-top: 100px;margin-bottom: 350px;">
                     </div>
                     @yield('content')
                 </div>

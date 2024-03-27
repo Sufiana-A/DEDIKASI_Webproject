@@ -35,6 +35,7 @@ class RegisterController extends Controller
         $peserta->no_hp = $request->no_hp;
         $peserta->email = $request->email;
         $peserta->password = Hash::make($request->password);
+        $peserta->foto_peserta = 'default_image.jpg';
         $peserta->save();
 
     
