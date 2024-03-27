@@ -9,7 +9,7 @@
         <h1>Welcome to Dashboard</h1>
         <p class="account-subtitle">Need an account? <a href="{{ route('viewRegister') }}">Register</a></p>
         <h2>Log in</h2>
-        <form action="{{ route('login') }}" method="POST">
+        <form action="{{ route('loginsubmit') }}" method="POST">
             @csrf
             <div class="form-group">
                 <label>Email<span class="login-danger">*</span></label>
