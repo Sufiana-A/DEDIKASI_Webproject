@@ -9,7 +9,7 @@
                     <div class="col">
                         <h3 class="page-title">Ubah Pelatihan</h3>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="subjects.html">Pelatihan</a></li>
+                            <li class="breadcrumb-item"><a href="#">Pelatihan</a></li>
                             <li class="breadcrumb-item active">Ubah Pelatihan</li>
                         </ul>
                     </div>

@@ -11,7 +11,7 @@
                     <div class="col">
                         <h3 class="page-title">Pelatihan</h3>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
                             <li class="breadcrumb-item active">Pelatihan</li>
                         </ul>
                     </div>
@@ -53,9 +53,6 @@
                                         <h3 class="page-title">Pelatihan</h3>
                                     </div>
                                     <div class="col-auto text-end float-end ms-auto download-grp">
-                                        <a href="#" class="btn btn-outline-primary me-2">
-                                            <i class="fas fa-download"></i> Unduhan
-                                        </a>
                                         <a href="{{ route('subject/add/page') }}" class="btn btn-primary">
                                             <i class="fas fa-plus"></i>
                                         </a>
