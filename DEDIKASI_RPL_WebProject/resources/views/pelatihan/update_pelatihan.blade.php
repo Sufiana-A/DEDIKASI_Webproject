@@ -20,7 +20,7 @@
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-body">
-                            <form action="{{ route('subject/update') }}" method="POST">
+                            <form action="{{ route('pelatihan/update') }}" method="POST">
                                 @csrf
                                 <div class="row">
                                     <div class="col-12">
@@ -45,7 +45,7 @@
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <div class="student-submit">
+                                        <div class="peserta-submit">
                                             <button type="submit" class="btn btn-primary">Ubah</button>
                                         </div>
                                     </div>

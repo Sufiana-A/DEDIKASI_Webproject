@@ -10,21 +10,22 @@ use Brian2694\Toastr\Facades\Toastr;
 
 class PelatihanController extends Controller
 {
-    /** index page */
     public function pelatihanList()
     {
         $pelatihanList = Pelatihan::all();
-        return view('pelatihan.list_pelatihan',compact('pelatihanList'));
+        return view('pelatihans.list_pelatihan',compact('pelatihanList'));
     }
 
-    /** Pelatihan add */
     public function pelatihanAdd()
     {
-        return view('pelatihan.create_pelatihan');
+        return view('pelatihans.create_pelatihan');
     }
 
+    public function savePelatihan(Request $request)
+=======
     /** save record */
     public function saveRecord(Request $request)
+
     {
         $request->validate([
             'nama_pelatihan' => 'required|string',
@@ -50,15 +51,18 @@ class PelatihanController extends Controller
         }
     }
 
-    /** Pelatihan edit view */
     public function pelatihanEdit($id_pelatihan)
     {
         $pelatihanEdit = Pelatihan::where('id_pelatihan',$id_pelatihan)->first();
-        return view('pelatihan.update_pelatihan',compact('pelatihanEdit'));
+        return view('pelatihans.update_pelatihan',compact('pelatihanEdit'));
     }
 
+
+    public function updatePelatihan(Request $request)
+=======
     /** update record */
     public function updateRecord(Request $request)
+      
     {
         DB::beginTransaction();
         try {
@@ -81,8 +85,11 @@ class PelatihanController extends Controller
         }
     }
 
+    public function deletePelatihan(Request $request)
+=======
     /** delete record */
     public function deleteRecord(Request $request)
+
     {
         DB::beginTransaction();
         try {
