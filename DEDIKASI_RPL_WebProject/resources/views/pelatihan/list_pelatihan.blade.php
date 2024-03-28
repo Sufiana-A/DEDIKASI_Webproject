@@ -1,4 +1,3 @@
-
 @extends('layouts.master')
 @section('content')
     {{-- message --}}
@@ -18,7 +17,7 @@
                 </div>
             </div>
 
-            <div class="student-group-form">
+            <div class="peserta-group-form">
                 <div class="row">
                     <div class="col-lg-3 col-md-6">
                         <div class="form-group">
@@ -36,7 +35,7 @@
                         </div>
                     </div>
                     <div class="col-lg-2">
-                        <div class="search-student-btn">
+                        <div class="search-peserta-btn">
                             <button type="btn" class="btn btn-primary">Pencarian</button>
                         </div>
                     </div>
@@ -53,7 +52,7 @@
                                         <h3 class="page-title">Pelatihan</h3>
                                     </div>
                                     <div class="col-auto text-end float-end ms-auto download-grp">
-                                        <a href="{{ route('subject/add/page') }}" class="btn btn-primary">
+                                        <a href="{{ route('pelatihan/add/page') }}" class="btn btn-primary">
                                             <i class="fas fa-plus"></i>
                                         </a>
                                     </div>
@@ -61,8 +60,8 @@
                             </div>
                             <div class="table-responsive">
                                 <table
-                                    class="table border-0 star-student table-hover table-center mb-0 datatable table-striped">
-                                    <thead class="student-thread">
+                                    class="table border-0 star-peserta table-hover table-center mb-0 datatable table-striped">
+                                    <thead class="peserta-thread">
                                         <tr>
                                             <th>
                                                 <div class="form-check check-tables">
@@ -93,7 +92,7 @@
                                             <td>{{ $value->kategori_pelatihan }}</td>
                                             <td class="text-end">
                                                 <div class="actions">
-                                                    <a href="{{ url('subject/edit/'.$value->id_pelatihan) }}" class="btn btn-sm bg-danger-light">
+                                                    <a href="{{ url('pelatihan/edit/'.$value->id_pelatihan) }}" class="btn btn-sm bg-danger-light">
                                                         <i class="far fa-edit me-2"></i>
                                                     </a>
                                                     <a class="btn btn-sm bg-danger-light delete" data-bs-toggle="modal" data-bs-target="#delete">
@@ -124,7 +123,7 @@
                     </div>
                     <div class="modal-btn delete-action">
                         <div class="row">
-                            <form action="{{ route('subject/delete') }}" method="POST">
+                            <form action="{{ route('pelatihan/delete') }}" method="POST">
                                 @csrf
                                 <input type="hidden" name="id_pelatihan" class="e_id_pelatihan" value="">
                                 <div class="row">

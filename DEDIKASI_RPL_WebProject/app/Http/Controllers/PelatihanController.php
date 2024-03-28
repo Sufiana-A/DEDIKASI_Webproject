@@ -10,20 +10,17 @@ use Brian2694\Toastr\Facades\Toastr;
 
 class PelatihanController extends Controller
 {
-    /** index page */
     public function pelatihanList()
     {
         $pelatihanList = Pelatihan::all();
-        return view('pelatihan.list_pelatihan',compact('pelatihanList'));
+        return view('pelatihans.list_pelatihan',compact('pelatihanList'));
     }
 
-    /** Pelatihan add */
     public function pelatihanAdd()
     {
-        return view('pelatihan.create_pelatihan');
+        return view('pelatihans.create_pelatihan');
     }
 
-    /** save Pelatihan */
     public function savePelatihan(Request $request)
     {
         $request->validate([
@@ -50,14 +47,12 @@ class PelatihanController extends Controller
         }
     }
 
-    /** Pelatihan edit view */
     public function pelatihanEdit($id_pelatihan)
     {
         $pelatihanEdit = Pelatihan::where('id_pelatihan',$id_pelatihan)->first();
-        return view('pelatihan.update_pelatihan',compact('pelatihanEdit'));
+        return view('pelatihans.update_pelatihan',compact('pelatihanEdit'));
     }
 
-    /** update Pelatihan */
     public function updatePelatihan(Request $request)
     {
         DB::beginTransaction();
@@ -81,7 +76,6 @@ class PelatihanController extends Controller
         }
     }
 
-    /** delete Pelatihan */
     public function deletePelatihan(Request $request)
     {
         DB::beginTransaction();

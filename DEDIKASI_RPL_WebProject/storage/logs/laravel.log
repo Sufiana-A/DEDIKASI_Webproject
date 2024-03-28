@@ -217,3 +217,176 @@
 #20 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(16): require_once('C:\\\\Users\\\\dpmar\\\\...')
 #21 {main}
 "} 
+[2024-03-28 04:09:00] local.ERROR: Command "make:" is ambiguous.
+Did you mean one of these?
+    make:cache-table         Create a migration for the cache database table
+    make:cast                Create a new custom Eloquent cast class
+    make:channel             Create a new channel class
+    make:class               Create a new class
+    make:component           Create a new view component class
+    make:command             Create a new Artisan command
+    make:controller          Create a new controller class
+    make:enum                Create a new enum
+    make:event               Create a new event class
+    make:exception           Create a new custom exception class
+    make:factory             Create a new model factory
+    make:interface           Create a new interface
+    make:job                 Create a new job class
+    make:listener            Create a new event listener class
+    make:mail                Create a new email class
+    make:middleware          Create a new middleware class
+    make:model               Create a new Eloquent model class
+    make:notification        Create a new notification class
+    make:notifications-table Create a migration for the notifications table
+    make:observer            Create a new observer class
+    make:policy              Create a new policy class
+    make:provider            Create a new service provider class
+    make:queue-failed-table  Create a migration for the failed queue jobs database table
+    make:queue-table         Create a migration for the queue jobs database table
+    make:queue-batches-table Create a migration for the batches database table
+    make:request             Create a new form request class
+    make:resource            Create a new resource
+    make:rule                Create a new validation rule
+    make:scope               Create a new scope class
+    make:seeder              Create a new seeder class
+    make:session-table       Create a migration for the session database table
+    make:test                Create a new test class
+    make:trait               Create a new trait
+    make:view                Create a new view
+    make:migration           Create a new migration file. {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"make:\" is ambiguous.
+Did you mean one of these?
+    make:cache-table         Create a migration for the cache database table
+    make:cast                Create a new custom Eloquent cast class
+    make:channel             Create a new channel class
+    make:class               Create a new class
+    make:component           Create a new view component class
+    make:command             Create a new Artisan command
+    make:controller          Create a new controller class
+    make:enum                Create a new enum
+    make:event               Create a new event class
+    make:exception           Create a new custom exception class
+    make:factory             Create a new model factory
+    make:interface           Create a new interface
+    make:job                 Create a new job class
+    make:listener            Create a new event listener class
+    make:mail                Create a new email class
+    make:middleware          Create a new middleware class
+    make:model               Create a new Eloquent model class
+    make:notification        Create a new notification class
+    make:notifications-table Create a migration for the notifications table
+    make:observer            Create a new observer class
+    make:policy              Create a new policy class
+    make:provider            Create a new service provider class
+    make:queue-failed-table  Create a migration for the failed queue jobs database table
+    make:queue-table         Create a migration for the queue jobs database table
+    make:queue-batches-table Create a migration for the batches database table
+    make:request             Create a new form request class
+    make:resource            Create a new resource
+    make:rule                Create a new validation rule
+    make:scope               Create a new scope class
+    make:seeder              Create a new seeder class
+    make:session-table       Create a migration for the session database table
+    make:test                Create a new test class
+    make:trait               Create a new trait
+    make:view                Create a new view
+    make:migration           Create a new migration file. at C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\symfony\\console\\Application.php:745)
+[stacktrace]
+#0 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\symfony\\console\\Application.php(260): Symfony\\Component\\Console\\Application->find('make:')
+#1 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\symfony\\console\\Application.php(169): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#2 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(196): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1183): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\artisan(13): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#5 {main}
+"} 
+[2024-03-28 04:16:01] local.ERROR: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it (Connection: mysql, SQL: select table_name as `name`, (data_length + index_length) as `size`, table_comment as `comment`, engine as `engine`, table_collation as `collation` from information_schema.tables where table_schema = 'dedikasi' and table_type in ('BASE TABLE', 'SYSTEM VERSIONED') order by table_name) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 2002): SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it (Connection: mysql, SQL: select table_name as `name`, (data_length + index_length) as `size`, table_comment as `comment`, engine as `engine`, table_collation as `collation` from information_schema.tables where table_schema = 'dedikasi' and table_type in ('BASE TABLE', 'SYSTEM VERSIONED') order by table_name) at C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php:813)
+[stacktrace]
+#0 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(967): Illuminate\\Database\\Connection->runQueryCallback('select table_na...', Array, Object(Closure))
+#1 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(946): Illuminate\\Database\\Connection->tryAgainIfCausedByLostConnection(Object(Illuminate\\Database\\QueryException), 'select table_na...', Array, Object(Closure))
+#2 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(769): Illuminate\\Database\\Connection->handleQueryException(Object(Illuminate\\Database\\QueryException), 'select table_na...', Array, Object(Closure))
+#3 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(398): Illuminate\\Database\\Connection->run('select table_na...', Array, Object(Closure))
+#4 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(385): Illuminate\\Database\\Connection->select('select table_na...', Array, false)
+#5 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\MySqlBuilder.php(41): Illuminate\\Database\\Connection->selectFromWriteConnection('select table_na...')
+#6 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\MySqlBuilder.php(119): Illuminate\\Database\\Schema\\MySqlBuilder->getTables()
+#7 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\WipeCommand.php(71): Illuminate\\Database\\Schema\\MySqlBuilder->dropAllTables()
+#8 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\WipeCommand.php(48): Illuminate\\Database\\Console\\WipeCommand->dropAllTables(NULL)
+#9 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Database\\Console\\WipeCommand->handle()
+#10 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#11 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#12 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#13 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(662): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#14 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(212): Illuminate\\Container\\Container->call(Array)
+#15 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\symfony\\console\\Command\\Command.php(279): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArrayInput), Object(Illuminate\\Console\\OutputStyle))
+#16 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(181): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArrayInput), Object(Illuminate\\Console\\OutputStyle))
+#17 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Concerns\\CallsCommands.php(67): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArrayInput), Object(Symfony\\Component\\Console\\Output\\NullOutput))
+#18 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Concerns\\CallsCommands.php(40): Illuminate\\Console\\Command->runCommand('db:wipe', Array, Object(Symfony\\Component\\Console\\Output\\NullOutput))
+#19 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\FreshCommand.php(46): Illuminate\\Console\\Command->callSilent('db:wipe', Array)
+#20 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\View\\Components\\Task.php(40): Illuminate\\Database\\Console\\Migrations\\FreshCommand->Illuminate\\Database\\Console\\Migrations\\{closure}()
+#21 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\View\\Components\\Factory.php(58): Illuminate\\Console\\View\\Components\\Task->render('Dropping all ta...', Object(Closure))
+#22 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\FreshCommand.php(46): Illuminate\\Console\\View\\Components\\Factory->__call('task', Array)
+#23 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Database\\Console\\Migrations\\FreshCommand->handle()
+#24 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#25 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#26 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#27 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(662): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#28 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(212): Illuminate\\Container\\Container->call(Array)
+#29 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\symfony\\console\\Command\\Command.php(279): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#30 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(181): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#31 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\symfony\\console\\Application.php(1049): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#32 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\symfony\\console\\Application.php(318): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Migrations\\FreshCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#33 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\symfony\\console\\Application.php(169): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#34 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(196): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#35 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1183): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#36 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\artisan(13): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#37 {main}
+
+[previous exception] [object] (PDOException(code: 2002): SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it at C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\Connector.php:65)
+[stacktrace]
+#0 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\Connector.php(65): PDO->__construct('mysql:host=127....', 'root', Object(SensitiveParameterValue), Array)
+#1 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\Connector.php(83): Illuminate\\Database\\Connectors\\Connector->createPdoConnection('mysql:host=127....', 'root', '', Array)
+#2 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\Connector.php(48): Illuminate\\Database\\Connectors\\Connector->tryAgainIfCausedByLostConnection(Object(PDOException), 'mysql:host=127....', 'root', '', Array)
+#3 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\MySqlConnector.php(24): Illuminate\\Database\\Connectors\\Connector->createConnection('mysql:host=127....', Array, Array)
+#4 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\ConnectionFactory.php(185): Illuminate\\Database\\Connectors\\MySqlConnector->connect(Array)
+#5 [internal function]: Illuminate\\Database\\Connectors\\ConnectionFactory->Illuminate\\Database\\Connectors\\{closure}()
+#6 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(1219): call_user_func(Object(Closure))
+#7 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(512): Illuminate\\Database\\Connection->getPdo()
+#8 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(407): Illuminate\\Database\\Connection->getPdoForSelect(false)
+#9 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(800): Illuminate\\Database\\Connection->Illuminate\\Database\\{closure}('select table_na...', Array)
+#10 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(967): Illuminate\\Database\\Connection->runQueryCallback('select table_na...', Array, Object(Closure))
+#11 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(946): Illuminate\\Database\\Connection->tryAgainIfCausedByLostConnection(Object(Illuminate\\Database\\QueryException), 'select table_na...', Array, Object(Closure))
+#12 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(769): Illuminate\\Database\\Connection->handleQueryException(Object(Illuminate\\Database\\QueryException), 'select table_na...', Array, Object(Closure))
+#13 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(398): Illuminate\\Database\\Connection->run('select table_na...', Array, Object(Closure))
+#14 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(385): Illuminate\\Database\\Connection->select('select table_na...', Array, false)
+#15 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\MySqlBuilder.php(41): Illuminate\\Database\\Connection->selectFromWriteConnection('select table_na...')
+#16 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\MySqlBuilder.php(119): Illuminate\\Database\\Schema\\MySqlBuilder->getTables()
+#17 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\WipeCommand.php(71): Illuminate\\Database\\Schema\\MySqlBuilder->dropAllTables()
+#18 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\WipeCommand.php(48): Illuminate\\Database\\Console\\WipeCommand->dropAllTables(NULL)
+#19 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Database\\Console\\WipeCommand->handle()
+#20 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#21 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#22 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#23 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(662): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#24 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(212): Illuminate\\Container\\Container->call(Array)
+#25 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\symfony\\console\\Command\\Command.php(279): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArrayInput), Object(Illuminate\\Console\\OutputStyle))
+#26 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(181): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArrayInput), Object(Illuminate\\Console\\OutputStyle))
+#27 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Concerns\\CallsCommands.php(67): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArrayInput), Object(Symfony\\Component\\Console\\Output\\NullOutput))
+#28 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Concerns\\CallsCommands.php(40): Illuminate\\Console\\Command->runCommand('db:wipe', Array, Object(Symfony\\Component\\Console\\Output\\NullOutput))
+#29 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\FreshCommand.php(46): Illuminate\\Console\\Command->callSilent('db:wipe', Array)
+#30 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\View\\Components\\Task.php(40): Illuminate\\Database\\Console\\Migrations\\FreshCommand->Illuminate\\Database\\Console\\Migrations\\{closure}()
+#31 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\View\\Components\\Factory.php(58): Illuminate\\Console\\View\\Components\\Task->render('Dropping all ta...', Object(Closure))
+#32 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\FreshCommand.php(46): Illuminate\\Console\\View\\Components\\Factory->__call('task', Array)
+#33 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Database\\Console\\Migrations\\FreshCommand->handle()
+#34 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#35 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#36 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#37 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(662): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#38 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(212): Illuminate\\Container\\Container->call(Array)
+#39 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\symfony\\console\\Command\\Command.php(279): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#40 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(181): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#41 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\symfony\\console\\Application.php(1049): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#42 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\symfony\\console\\Application.php(318): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Migrations\\FreshCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#43 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\symfony\\console\\Application.php(169): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#44 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(196): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#45 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1183): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#46 C:\\Users\\dpmar\\Documents\\DEDIKASI_Webproject\\DEDIKASI_RPL_WebProject\\artisan(13): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#47 {main}
+"} 

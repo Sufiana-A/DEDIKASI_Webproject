@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Subject extends Model
+class Pelatihan extends Model
 {
     use HasFactory;
     protected $fillable = [
@@ -14,7 +14,6 @@ class Subject extends Model
         'kategori_pelatihan',
     ];
 
-    /** auto genarate id */
     protected static function boot()
     {
         parent::boot();
