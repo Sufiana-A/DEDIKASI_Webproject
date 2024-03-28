@@ -7,7 +7,7 @@ use App\Http\Controllers\ProfilePesertaController;
 
 Route::get('/', function () {
 
-    return view('login');
+    return view('dashboard_peserta');
 });
 
 Route::controller(PelatihanController::class)->group(function () {
@@ -18,9 +18,9 @@ Route::controller(PelatihanController::class)->group(function () {
     Route::post('pelatihan/delete', 'deletePelatihan')->name('pelatihan/delete'); // pelatihan/delete
     Route::get('pelatihan/edit/{id_pelatihan}', 'pelatihanEdit'); // pelatihan/edit/page
 });
-=======
-    return view('register');
-})->name('viewRegister');
+
+    // return view('register');
+    // ->name('viewRegister');
 
 //Route::get('/register', [RegisterController::class, 'register']);
 Route::post('/register', [RegisterController::class, 'register'])->name('register');
