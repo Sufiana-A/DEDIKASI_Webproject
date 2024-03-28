@@ -36,9 +36,17 @@ return [
     */
 
     'guards' => [
-        'web' => [
+        'peserta' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'peserta',
+        ],
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admin',
+        ],
+        'mentor' => [
+            'driver' => 'session',
+            'provider' => 'mentor',
         ],
     ],
 
@@ -60,9 +68,17 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'peserta' => [
             'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', App\Models\User::class),
+            'model' => env('AUTH_MODEL', App\Models\peserta::class),
+        ],
+        'admin' => [
+            'driver' => 'eloquent',
+            'model' => env('AUTH_MODEL', App\Models\admin::class),
+        ],
+        'mentor' => [
+            'driver' => 'eloquent',
+            'model' => env('AUTH_MODEL', App\Models\mentor::class),
         ],
 
         // 'users' => [
@@ -91,8 +107,20 @@ return [
     */
 
     'passwords' => [
-        'users' => [
-            'provider' => 'users',
+        'peserta' => [
+            'provider' => 'peserta',
+            'table' => env('AUTH_PASSWORD_RESET_TOKEN_TABLE', 'password_reset_tokens'),
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'admin' => [
+            'provider' => 'admin',
+            'table' => env('AUTH_PASSWORD_RESET_TOKEN_TABLE', 'password_reset_tokens'),
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'mentor' => [
+            'provider' => 'mentor',
             'table' => env('AUTH_PASSWORD_RESET_TOKEN_TABLE', 'password_reset_tokens'),
             'expire' => 60,
             'throttle' => 60,
