@@ -21,8 +21,8 @@ class PelatihanController extends Controller
         return view('pelatihans.create_pelatihan');
     }
 
-    public function savePelatihan(Request $request)
-=======
+    public function savePelatihan(Request $request);
+    
     /** save record */
     public function saveRecord(Request $request)
 
