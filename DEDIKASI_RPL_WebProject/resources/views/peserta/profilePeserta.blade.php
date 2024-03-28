@@ -15,11 +15,11 @@
                     <div class="row align-items-center">
                         <div class="col-auto profile-image">
                             <a href="#">
-                                <img class="rounded-circle" alt="" src="{{ asset('assets/img/profiles/default.png') }}">
+                                <img class="rounded-circle" alt="" src="{{ asset('assets/img/profiles/'.Auth::guard('peserta')->user()->foto_peserta) }}">
                             </a>
                         </div>
                         <div class="col ms-md-n2 profile-user-info">
-                            <h4 class="user-name mb-0">Sufiana Arumdita</h4>
+                            <h4 class="user-name mb-0">Hi, {{ Auth::guard('peserta')->user()->first_name }} {{ Auth::guard('peserta')->user()->last_name }}</h4>
                         </div>
                     </div>
                 </div>
@@ -37,38 +37,36 @@
                                         </h5>
                                         <div class="row">
                                             <p class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3">Nama Depan</p>
-                                            <p class="col-sm-9"></p>
+                                            <p class="col-sm-9">{{ Auth::guard('peserta')->user()->first_name }}</p>
                                         </div>
                                         <div class="row">
                                             <p class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3">Nama Belakang</p>
-                                            <p class="col-sm-9"></p>
+                                            <p class="col-sm-9">{{ Auth::guard('peserta')->user()->last_name }}</p>
                                         </div>
                                         <div class="row">
                                             <p class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3">Tanggal Lahir</p>
-                                            <p class="col-sm-9"></p>
+                                            <p class="col-sm-9">{{ Auth::guard('peserta')->user()->tanggal_lahir }}</p>
                                         </div>
                                         <div class="row">
                                             <p class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3">Email</p>
-                                            <p class="col-sm-9"><a href="/cdn-cgi/l/email-protection"
-                                                    class="__cf_email__"
-                                                    data-cfemail="a1cbcec9cfc5cec4e1c4d9c0ccd1cdc48fc2cecc"></a>
+                                            <p class="col-sm-9"><a href="mailto:{{ Auth::guard('peserta')->user()->email }}">{{ Auth::guard('peserta')->user()->email }}</a>
                                             </p>
                                         </div>
                                         <div class="row">
                                             <p class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3">Nomor Telepon</p>
-                                            <p class="col-sm-9"></p>
+                                            <p class="col-sm-9">{{ phone(Auth::guard('peserta')->user()->no_hp, 'ID')}}</p>
                                         </div>
                                         <div class="row">
                                             <p class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3">NIM</p>
-                                            <p class="col-sm-9"></p>
+                                            <p class="col-sm-9">{{ Auth::guard('peserta')->user()->nim }}</p>
                                         </div>
                                         <div class="row">
                                             <p class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3">Angkatan (Tahun Masuk)</p>
-                                            <p class="col-sm-9"></p>
+                                            <p class="col-sm-9">{{ Auth::guard('peserta')->user()->angkatan }}</p>
                                         </div>
                                         <div class="row">
                                             <p class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3">Jurusan</p>
-                                            <p class="col-sm-9"></p>
+                                            <p class="col-sm-9">{{ Auth::guard('peserta')->user()->jurusan }}</p>
                                         </div>
                                     </div>
                                 </div>
