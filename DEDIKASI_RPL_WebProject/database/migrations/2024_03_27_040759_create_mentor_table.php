@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('last_name');
             $table->string('tanggal_lahir');
             $table->string('nip');
-            $table->string('kelompok keahlian');
+            $table->string('kelompok_keahlian');
             $table->string('no_hp');
             $table->string('email');
             $table->string('password');
