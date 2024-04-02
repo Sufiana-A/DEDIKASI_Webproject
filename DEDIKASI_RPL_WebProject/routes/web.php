@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProfileAdminController;
+use App\Http\Controllers\ProfileMentorController;
 use App\Http\Controllers\ProfilePesertaController;
 
 Route::get('/', function () {
@@ -27,9 +29,22 @@ Route::post('/register', [RegisterController::class, 'register'])->name('registe
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/loginsubmit', [LoginController::class, 'loginvalid'])->name('loginsubmit');
 
-Route::get('/profil-peserta', [ProfilePesertaController::class, 'show_profile'])->name('profil-peserta');
-
-
 
 Route::post('/login', [LoginController::class, 'index'])->name('login');
+
+//peserta
+Route::get('/profile-peserta', [ProfilePesertaController::class, 'show_profile'])->name('profile_peserta');
+Route::get('/profile-peserta-edit', [ProfilePesertaController::class, 'edit_profile'])->name('profile_edit_peserta');
+Route::post('/profile-peserta-submit', [ProfilePesertaController::class, 'submit_profile'])->name('profile_submit');
+Route::post('/profile-photo-peserta-submit', [ProfilePesertaController::class, 'submit_photo'])->name('profil_photo_submit');
+
+//mentor
+Route::get('/profile-mentor', [ProfileMentorController::class, 'show_profile'])->name('profile_mentor');
+Route::get('/profile-mentor-edit', [ProfileMentorController::class, 'edit_profile'])->name('profile_edit_mentor');
+
+
+//admin
+Route::get('/profile-admin', [ProfileAdminController::class, 'show_profile'])->name('profile_admin');
+Route::get('/profile-admin-edit', [ProfileAdminController::class, 'edit_profile'])->name('profile_edit_admin');
+
 
