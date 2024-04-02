@@ -6,7 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfilePesertaController;
 
 Route::get('/', function () {
-    return view('dashboard/student_dashboard');
+    return view('dashboard/dashboard_peserta');
 });
 
 Route::controller(PelatihanController::class)->group(function () {

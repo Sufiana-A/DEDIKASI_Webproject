@@ -15,6 +15,7 @@
                         <li><a href="('student/dashboard') }}" class="(['student/dashboard'])}}">Student Dashboard</a></li>
                     </ul>
                 </li>
+                
                 @if (Session::get('role_name') === 'Admin' || Session::get('role_name') === 'Super Admin')
                 <li class="submenu (['list/users'])}} (request()->is('view/user/edit/*')) ? 'active' : '' ">
                     <a href="#">
