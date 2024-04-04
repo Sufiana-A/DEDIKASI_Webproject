@@ -81,6 +81,9 @@
                 <li class="menu-title">
                     <span>Management</span>
                 </li>
+                <li>
+                    <a href="{{route('progress')}}"><i class="fas fa-clipboard-list"></i> <span>Progress Peserta</span></a>
+                </li>
 
                 <li>
                     <a href="exam.html"><i class="fas fa-clipboard-list"></i> <span>Exam list</span></a>

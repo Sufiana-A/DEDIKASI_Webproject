@@ -85,9 +85,7 @@
                 <li>
                     <a href="exam.html"><i class="fas fa-clipboard-list"></i> <span>Exam list</span></a>
                 </li>
-                 <li>
-                    <a href="{{route('course')}}"><i class="fas fa-clipboard-list"></i> <span>My Course</span></a>
-                </li>
+                 
                 <li>
                     <a href="event.html"><i class="fas fa-calendar-day"></i> <span>Events</span></a>
                 </li>

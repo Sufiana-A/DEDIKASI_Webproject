@@ -6,7 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfilePesertaController;
 
 Route::get('/', function () {
-    return view('dashboard/student_dashboard');
+    return view('register')->name('viewRegister');
 });
 
 Route::controller(PelatihanController::class)->group(function () {
@@ -18,8 +18,7 @@ Route::controller(PelatihanController::class)->group(function () {
     Route::get('pelatihan/edit/{id_pelatihan}', 'pelatihanEdit'); // pelatihan/edit/page
 });
 
-    // return view('register');
-    // ->name('viewRegister');
+    
 
 //Route::get('/register', [RegisterController::class, 'register']);
 Route::post('/register', [RegisterController::class, 'register'])->name('register');
@@ -33,3 +32,12 @@ Route::get('/profil-peserta', [ProfilePesertaController::class, 'show_profile'])
 
 Route::post('/login', [LoginController::class, 'index'])->name('login');
 
+Route::get("/Progress-Peserta" , function(){
+    return view("peserta/progress");})->name('progress');
+Route::get("/admin" , function(){
+    return view("dashboard/admin_dashboard");})->name('dash-admin');
+    Route::get("/admin/manage-course" , function(){
+        return view("admin/managePelatihan");})->name('manage-course');
+Route::get("/dashboard-peserta" , function(){
+            return view("dashboard/student_dashboard");})->name('');
+    
