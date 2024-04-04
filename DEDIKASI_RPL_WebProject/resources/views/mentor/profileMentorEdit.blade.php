@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layout.master')
 @section('content')
 <div class="page-wrapper">
     <div class="content container-fluid">
@@ -66,8 +66,8 @@
                                                         <span class="input-group-text">
                                                             <img src="{{ asset('assets/img/icons/flag-idn.png') }}" alt="flag idn" width="25">+62</span>
                                                     </div>
-                                                    <input type="text" class="form-control @error('no_telp') is-invalid @enderror" placeholder="8510023841" name="no_telp" value="8610092731">
-                                                    @error('no_telp')
+                                                    <input type="text" class="form-control @error('no_hp') is-invalid @enderror" placeholder="8510023841" name="no_hp" value="8610092731">
+                                                    @error('no_hp')
                                                     <div class="text text-danger">{{ $message }}</div>
                                                     @enderror
                                                 </div>
