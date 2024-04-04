@@ -8,7 +8,7 @@ use App\Http\Controllers\ProfileMentorController;
 use App\Http\Controllers\ProfilePesertaController;
 
 Route::get('/', function () {
-    return view('dashboard/dashboard_peserta');
+    return view('admin/managePelatihan');
 });
 
 Route::controller(PelatihanController::class)->group(function () {
