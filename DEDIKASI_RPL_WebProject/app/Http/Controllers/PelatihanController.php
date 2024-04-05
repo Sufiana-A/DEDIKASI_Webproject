@@ -21,10 +21,10 @@ class PelatihanController extends Controller
         return view('pelatihans.create_pelatihan');
     }
 
-    public function savePelatihan(Request $request);
+    public function savePelatihan(Request $request)
     
     /** save record */
-    public function saveRecord(Request $request)
+    // public function saveRecord(Request $request)
 
     {
         $request->validate([
@@ -59,9 +59,9 @@ class PelatihanController extends Controller
 
 
     public function updatePelatihan(Request $request)
-=======
+
     /** update record */
-    public function updateRecord(Request $request)
+    // public function updateRecord(Request $request)
       
     {
         DB::beginTransaction();
@@ -86,9 +86,9 @@ class PelatihanController extends Controller
     }
 
     public function deletePelatihan(Request $request)
-=======
+
     /** delete record */
-    public function deleteRecord(Request $request)
+    // public function deleteRecord(Request $request)
 
     {
         DB::beginTransaction();
