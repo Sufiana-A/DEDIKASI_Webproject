@@ -47,4 +47,5 @@ Route::get('/profile-mentor-edit', [ProfileMentorController::class, 'edit_profil
 Route::get('/profile-admin', [ProfileAdminController::class, 'show_profile'])->name('profile_admin');
 Route::get('/profile-admin-edit', [ProfileAdminController::class, 'edit_profile'])->name('profile_edit_admin');
 
-
+//peserta pelaihan
+Route::get('/peserta-pelatihan', [PesertaPelatihanController::class, 'index'])->name('list_peserta_pelatihan');
