@@ -6,9 +6,11 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileAdminController;
 use App\Http\Controllers\ProfileMentorController;
 use App\Http\Controllers\ProfilePesertaController;
+use App\Http\Controllers\AssignmentController;
 
 Route::get('/', function () {
     return view('dashboard.admin_dashboard');
+//     return view('assignment/assignmentPeserta');
 });
 
 Route::controller(PelatihanController::class)->group(function () {
@@ -30,7 +32,7 @@ Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/loginsubmit', [LoginController::class, 'loginvalid'])->name('loginsubmit');
 
 
-Route::post('/login', [LoginController::class, 'index'])->name('login');
+Route::get('assignment/assignment', [AssignmentController::class, 'index'])->name('assignment');
 
 //peserta
 Route::get('/profile-peserta', [ProfilePesertaController::class, 'show_profile'])->name('profile_peserta');
@@ -51,4 +53,5 @@ Route::get('/profile-admin-edit', [ProfileAdminController::class, 'edit_profile'
 Route::post('/profile-admin-submit', [ProfileAdminController::class, 'submit_profile'])->name('profile_submit_admin');
 Route::post('/profile-photo-admin-submit', [ProfileAdminController::class, 'submit_photo'])->name('profil_photo_submit_admin');
 
-
+//peserta pelaihan
+Route::get('/peserta-pelatihan', [PesertaPelatihanController::class, 'index'])->name('list_peserta_pelatihan');
