@@ -9,7 +9,8 @@ use App\Http\Controllers\ProfilePesertaController;
 use App\Http\Controllers\AssignmentController;
 
 Route::get('/', function () {
-    return view('assignment/assignmentPeserta');
+    return view('dashboard.admin_dashboard');
+//     return view('assignment/assignmentPeserta');
 });
 
 Route::controller(PelatihanController::class)->group(function () {
@@ -36,17 +37,21 @@ Route::get('assignment/assignment', [AssignmentController::class, 'index'])->nam
 //peserta
 Route::get('/profile-peserta', [ProfilePesertaController::class, 'show_profile'])->name('profile_peserta');
 Route::get('/profile-peserta-edit', [ProfilePesertaController::class, 'edit_profile'])->name('profile_edit_peserta');
-Route::post('/profile-peserta-submit', [ProfilePesertaController::class, 'submit_profile'])->name('profile_submit');
-Route::post('/profile-photo-peserta-submit', [ProfilePesertaController::class, 'submit_photo'])->name('profil_photo_submit');
+Route::post('/profile-peserta-submit', [ProfilePesertaController::class, 'submit_profile'])->name('profile_submit_peserta');
+Route::post('/profile-photo-peserta-submit', [ProfilePesertaController::class, 'submit_photo'])->name('profil_photo_submit_peserta');
 
 //mentor
 Route::get('/profile-mentor', [ProfileMentorController::class, 'show_profile'])->name('profile_mentor');
 Route::get('/profile-mentor-edit', [ProfileMentorController::class, 'edit_profile'])->name('profile_edit_mentor');
+Route::post('/profile-mentor-submit', [ProfileMentorController::class, 'submit_profile'])->name('profile_submit_mentor');
+Route::post('/profile-photo-mentor-submit', [ProfileMentorController::class, 'submit_photo'])->name('profil_photo_submit_mentor');
 
 
 //admin
 Route::get('/profile-admin', [ProfileAdminController::class, 'show_profile'])->name('profile_admin');
 Route::get('/profile-admin-edit', [ProfileAdminController::class, 'edit_profile'])->name('profile_edit_admin');
+Route::post('/profile-admin-submit', [ProfileAdminController::class, 'submit_profile'])->name('profile_submit_admin');
+Route::post('/profile-photo-admin-submit', [ProfileAdminController::class, 'submit_photo'])->name('profil_photo_submit_admin');
 
 //peserta pelaihan
 Route::get('/peserta-pelatihan', [PesertaPelatihanController::class, 'index'])->name('list_peserta_pelatihan');
