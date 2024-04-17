@@ -30,10 +30,10 @@ class ProfilePesertaController extends Controller
                 'photo' => 'image|mimes:jpg,png,jpeg',
             ]);
             $time = time();
-            unlink(public_path('profile/'.$data_profil_peserta->foto_peserta));
+            unlink(public_path('assets/img/profiles/'.$data_profil_peserta->foto_peserta));
             $ext = $request->file('photo')->extension();
             $photo_name = $data_profil_peserta->email.$time.$ext;
-            $request->file('photo')->move(public_path('profile/'), $photo_name);
+            $request->file('photo')->move(public_path('assets/img/profiles/'), $photo_name);
             $data_profil_peserta->foto_peserta = $photo_name;
 
         }  
