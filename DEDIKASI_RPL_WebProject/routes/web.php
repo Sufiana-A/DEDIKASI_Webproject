@@ -3,18 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\ProfileAdminController;
-use App\Http\Controllers\ProfileMentorController;
 use App\Http\Controllers\ProfilePesertaController;
-use App\Http\Controllers\AssignmentController;
 
 Route::get('/', function () {
-<<<<<<< HEAD
     return view('register')->name('viewRegister');
-=======
-    return view('dashboard.admin_dashboard');
-//     return view('assignment/assignmentPeserta');
->>>>>>> 0f9bf6b81477026d5883be29c59e6f51fca2c8c8
 });
 
 Route::controller(PelatihanController::class)->group(function () {
@@ -34,29 +26,10 @@ Route::post('/register', [RegisterController::class, 'register'])->name('registe
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/loginsubmit', [LoginController::class, 'loginvalid'])->name('loginsubmit');
 
-
-Route::get('assignment/assignment', [AssignmentController::class, 'index'])->name('assignment');
-
-//peserta
-Route::get('/profile-peserta', [ProfilePesertaController::class, 'show_profile'])->name('profile_peserta');
-Route::get('/profile-peserta-edit', [ProfilePesertaController::class, 'edit_profile'])->name('profile_edit_peserta');
-Route::post('/profile-peserta-submit', [ProfilePesertaController::class, 'submit_profile'])->name('profile_submit_peserta');
-Route::post('/profile-photo-peserta-submit', [ProfilePesertaController::class, 'submit_photo'])->name('profil_photo_submit_peserta');
-
-//mentor
-Route::get('/profile-mentor', [ProfileMentorController::class, 'show_profile'])->name('profile_mentor');
-Route::get('/profile-mentor-edit', [ProfileMentorController::class, 'edit_profile'])->name('profile_edit_mentor');
-Route::post('/profile-mentor-submit', [ProfileMentorController::class, 'submit_profile'])->name('profile_submit_mentor');
-Route::post('/profile-photo-mentor-submit', [ProfileMentorController::class, 'submit_photo'])->name('profil_photo_submit_mentor');
+Route::get('/profil-peserta', [ProfilePesertaController::class, 'show_profile'])->name('profil-peserta');
 
 
-//admin
-Route::get('/profile-admin', [ProfileAdminController::class, 'show_profile'])->name('profile_admin');
-Route::get('/profile-admin-edit', [ProfileAdminController::class, 'edit_profile'])->name('profile_edit_admin');
-Route::post('/profile-admin-submit', [ProfileAdminController::class, 'submit_profile'])->name('profile_submit_admin');
-Route::post('/profile-photo-admin-submit', [ProfileAdminController::class, 'submit_photo'])->name('profil_photo_submit_admin');
 
-<<<<<<< HEAD
 Route::post('/login', [LoginController::class, 'index'])->name('login');
 
 Route::get("/Progress-Peserta" , function(){
@@ -68,7 +41,3 @@ Route::get("/admin" , function(){
 Route::get("/dashboard-peserta" , function(){
             return view("dashboard/student_dashboard");})->name('');
     
-=======
-//peserta pelaihan
-Route::get('/peserta-pelatihan', [PesertaPelatihanController::class, 'index'])->name('list_peserta_pelatihan');
->>>>>>> 0f9bf6b81477026d5883be29c59e6f51fca2c8c8

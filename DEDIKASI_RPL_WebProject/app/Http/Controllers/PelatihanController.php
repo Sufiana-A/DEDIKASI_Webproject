@@ -22,13 +22,6 @@ class PelatihanController extends Controller
     }
 
     public function savePelatihan(Request $request)
-<<<<<<< HEAD
-=======
-    
-    /** save record */
-    // public function saveRecord(Request $request)
-
->>>>>>> 0f9bf6b81477026d5883be29c59e6f51fca2c8c8
     {
         $request->validate([
             'nama_pelatihan' => 'required|string',
@@ -62,13 +55,6 @@ class PelatihanController extends Controller
 
 
     public function updatePelatihan(Request $request)
-<<<<<<< HEAD
-=======
-
-    /** update record */
-    // public function updateRecord(Request $request)
-      
->>>>>>> 0f9bf6b81477026d5883be29c59e6f51fca2c8c8
     {
         DB::beginTransaction();
         try {
@@ -92,13 +78,6 @@ class PelatihanController extends Controller
     }
 
     public function deletePelatihan(Request $request)
-<<<<<<< HEAD
-=======
-
-    /** delete record */
-    // public function deleteRecord(Request $request)
-
->>>>>>> 0f9bf6b81477026d5883be29c59e6f51fca2c8c8
     {
         DB::beginTransaction();
         try {
