@@ -5,13 +5,9 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfilePesertaController;
 
-<<<<<<< HEAD
 Route::get('/', function () {
     return view('register')->name('viewRegister');
 });
-=======
-
->>>>>>> cb46e3b6faeea2a31ecd8a7454d4609e2ce49d0c
 
 Route::controller(PelatihanController::class)->group(function () {
     Route::get('pelatihan/list/page', 'pelatihanList')->middleware('auth')->name('pelatihan/list/page'); // pelatihan/list/page
