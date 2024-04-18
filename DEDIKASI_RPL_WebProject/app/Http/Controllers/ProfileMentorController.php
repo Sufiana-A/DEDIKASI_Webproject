@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Models\mentor;
 use Illuminate\Http\Request;
 
 class ProfileMentorController extends Controller
@@ -21,11 +22,11 @@ class ProfileMentorController extends Controller
 
     public function submit_profile(Request $request){
 
-        $data_profile_mentor = Mentor::where('nip', Auth::guard('mentor')->user()->nip)->first();
+        $data_profile_mentor = mentor::where('nip', Auth::guard('mentor')->user()->nip)->first();
 
         $request->validate([
-            'email' => 'required|email|max:255|unique:Mentor',
-            'no_telp' => 'required|numeric',
+            'email' => 'required|email|max:255|unique:mentor',
+            'no_hp' => 'required|numeric',
         ]);
 
         if ($request->password != '') {
@@ -40,7 +41,7 @@ class ProfileMentorController extends Controller
         }
 
         $data_profile_mentor->email = $request->email;
-        $data_profile_mentor->no_telp = $request->no_telp;
+        $data_profile_mentor->no_hp = $request->no_hp;
         $data_profile_mentor->update();
 
         return redirect()->route('profil_mentor')->with('success', 'Profil data has been updated successsfully !');
@@ -50,7 +51,7 @@ class ProfileMentorController extends Controller
 
     public function submit_photo(Request $request){
 
-        $data_profil_mentor = Mentor::where('nip', Auth::guard('mentor')->user()->nip)->first();
+        $data_profil_mentor = mentor::where('nip', Auth::guard('mentor')->user()->nip)->first();
 
         if ($request->hasFile('photo')) {
             
@@ -59,11 +60,11 @@ class ProfileMentorController extends Controller
             ]);
             
             $time = time();
-            unlink(public_path('profile/'.$data_profil_mentor->photo));
+            unlink(public_path('assets/img/profiles/'.$data_profil_mentor->foto_mentor));
             $ext = $request->file('photo')->extension();
             $photo_name = $data_profil_mentor->email.$time.$ext;
-            $request->file('photo')->move(public_path('profile/'), $photo_name);
-            $data_profil_mentor->photo = $photo_name;
+            $request->file('photo')->move(public_path('assets/img/profiles/'), $photo_name);
+            $data_profil_mentor->foto_mentor = $photo_name;
         }  
         
         $data_profil_mentor->update();
