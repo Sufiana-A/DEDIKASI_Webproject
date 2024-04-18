@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileAdminController;
 use App\Http\Controllers\ProfileMentorController;
 use App\Http\Controllers\ProfilePesertaController;
+use App\Http\Controllers\PelatihanController;
 
 Route::get('/', function () {
     return view('register')->name('viewRegister');
@@ -33,10 +34,10 @@ Route::get("/Progress-Peserta" , function(){
     return view("peserta/progress");})->name('progress');
 Route::get("/admin" , function(){
     return view("dashboard/admin_dashboard");})->name('dash-admin');
-    Route::get("/admin/manage-course" , function(){
-        return view("admin/managePelatihan");})->name('manage-course');
+Route::get("/admin/manage-course" , function(){
+    return view("admin/managePelatihan");})->name('manage-course');
 Route::get("/dashboard-peserta" , function(){
-            return view("dashboard/student_dashboard");})->name('');
+    return view("dashboard/student_dashboard");})->name('');
 
 //peserta
 Route::get('/profile-peserta', [ProfilePesertaController::class, 'show_profile'])->name('profile_peserta');
