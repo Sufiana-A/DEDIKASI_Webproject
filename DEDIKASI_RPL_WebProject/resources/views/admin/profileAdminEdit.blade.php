@@ -15,10 +15,10 @@
                     <div class="row align-items-center">
                         <div class="col-auto profile-image">
                             <a href="#">
-                                <img class="rounded-circle" alt="" src="{{ asset('assets/img/profiles/default.png') }}">
+                                <img class="rounded-circle" alt="" src="{{ asset('assets/img/profiles/'.Auth::guard('admin')->user()->foto_admin) }}">
                             </a>
                         </div>
-                        <form method="POST" action="" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('profil_photo_submit_admin') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="col ms-md-n2 profile-user-info">
                                 <h4 class="user-name mb-3">Change Photo</h4>
@@ -37,7 +37,7 @@
                                         <h5 class="card-title d-flex justify-content-between mb-3">
                                             <span style="color:#3d5ee1;">Edit Detail Profil</span>
                                         </h5>
-                                        <form method="POST" action="">
+                                        <form method="POST" action="{{ route('profile_submit_admin') }}">
                                             @csrf
                                             <div class="mb-4 form-group">
                                                 <label for="first_name" class="text-muted text-sm-end mb-3 mb-sm-3">First Name</label>
@@ -48,22 +48,8 @@
                                                 <input type="text" class="form-control col-sm-9" name="last_name" value="Arumdita" readonly>
                                             </div>
                                             <div class="mb-4 form-group">
-                                                <label for="nim" class="text-muted text-sm-end mb-3 mb-sm-3">NIM</label>
-                                                <input type="text" class="form-control col-sm-9" name="nim" value="1202210292" readonly>
-                                            </div>
-                                            <div class="mb-4 form-group">
-                                                <label for="angkatan" class="text-muted text-sm-end mb-3 mb-sm-3">Angkatan</label>
-                                                <input type="text" class="form-control col-sm-9 @error('angkatan') is-invalid @enderror" name="angkatan" placeholder="contoh: 2021" value="2021">
-                                                @error('angkatan')
-                                                <div class="text text-danger">{{ $message }}</div>
-                                                @enderror
-                                            </div>
-                                            <div class="mb-4 form-group">
-                                                <label for="jurusan" class="text-muted text-sm-end mb-3 mb-sm-3">Jurusan</label>
-                                                <input type="text" class="form-control col-sm-9 @error('jurusan') is-invalid @enderror" name="jurusan" placeholder="contoh: sistem informasi" value="sistem informasi">
-                                                @error('jurusan')
-                                                <div class="text text-danger">{{ $message }}</div>
-                                                @enderror
+                                                <label for="nim" class="text-muted text-sm-end mb-3 mb-sm-3">NIP</label>
+                                                <input type="text" class="form-control col-sm-9" name="nip" value="1202210292" readonly>
                                             </div>
                                             <div class="mb-4 form-group">
                                                 <label for="email" class="text-muted text-sm-end mb-3 mb-sm-3">Email</label>
@@ -79,8 +65,8 @@
                                                         <span class="input-group-text">
                                                             <img src="{{ asset('assets/img/icons/flag-idn.png') }}" alt="flag idn" width="25">+62</span>
                                                     </div>
-                                                    <input type="text" class="form-control @error('no_telp') is-invalid @enderror" placeholder="8510023841" name="no_telp" value="8610092731">
-                                                    @error('no_telp')
+                                                    <input type="text" class="form-control @error('no_hp') is-invalid @enderror" placeholder="8510023841" name="no_hp" value="8610092731">
+                                                    @error('no_hp')
                                                     <div class="text text-danger">{{ $message }}</div>
                                                     @enderror
                                                 </div>
