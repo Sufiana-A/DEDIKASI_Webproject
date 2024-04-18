@@ -8,10 +8,7 @@ use App\Http\Controllers\ProfileMentorController;
 use App\Http\Controllers\ProfilePesertaController;
 use App\Http\Controllers\AssignmentController;
 
-Route::get('/', function () {
-    return view('dashboard.admin_dashboard');
-//     return view('assignment/assignmentPeserta');
-});
+
 
 Route::controller(PelatihanController::class)->group(function () {
     Route::get('pelatihan/list/page', 'pelatihanList')->middleware('auth')->name('pelatihan/list/page'); // pelatihan/list/page

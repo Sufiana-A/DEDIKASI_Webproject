@@ -1,4 +1,4 @@
-@include('sidebar/sidebar')
+@extends('layout.master')
 
 <div class="page-wrapper">
         <div class="content container-fluid">
