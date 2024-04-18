@@ -19,7 +19,7 @@
                 </div>
                 <div class="form-group">
                     <label>Tanggal Lahir (dd/mm/yyyy) <span class="login-danger">*</span></label>
-                    <input type="date" class="form-control @error('tanggal_lahir') is-invalid @enderror" name="tanggal_lahir">
+                    <input type="text" class="form-control @error('tanggal_lahir') is-invalid @enderror" name="tanggal_lahir">
                     <span class="profile-views"></i></span>
                 </div>
                 <div class="form-group">

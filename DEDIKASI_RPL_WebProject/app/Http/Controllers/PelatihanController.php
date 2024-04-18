@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use DB;
+use Illuminate\Support\Facades\DB;
 use App\Models\Pelatihan;
 
 use Brian2694\Toastr\Facades\Toastr;
@@ -22,10 +22,6 @@ class PelatihanController extends Controller
     }
 
     public function savePelatihan(Request $request)
-    
-    /** save record */
-    // public function saveRecord(Request $request)
-
     {
         $request->validate([
             'nama_pelatihan' => 'required|string',
@@ -39,14 +35,14 @@ class PelatihanController extends Controller
                 $saveRecord->kategori          = $request->kategori;
                 $saveRecord->save();
 
-                Toastr::success('Pelatihan Berhasil Ditambahkan','Sukses');
+               
                 DB::commit();
             return redirect()->back();
            
         } catch(\Exception $e) {
-            \Log::info($e);
+            
             DB::rollback();
-            Toastr::error('Pelatihan Gagal Ditambahkan','Error');
+            
             return redirect()->back();
         }
     }
@@ -59,10 +55,6 @@ class PelatihanController extends Controller
 
 
     public function updatePelatihan(Request $request)
-
-    /** update record */
-    // public function updateRecord(Request $request)
-      
     {
         DB::beginTransaction();
         try {
@@ -73,34 +65,30 @@ class PelatihanController extends Controller
             ];
 
             Pelatihan::where('id_pelatihan',$request->id_pelatihan)->update($updateRecord);
-            Toastr::success('Pelatihan Berhasil Diubah','Sukses');
+            
             DB::commit();
             return redirect()->back();
            
         } catch(\Exception $e) {
-            \Log::info($e);
+            
             DB::rollback();
-            Toastr::error('Pelatihan Gagal Diubah','Error');
+            
             return redirect()->back();
         }
     }
 
     public function deletePelatihan(Request $request)
-
-    /** delete record */
-    // public function deleteRecord(Request $request)
-
     {
         DB::beginTransaction();
         try {
 
             Pelatihan::where('id_pelatihan',$request->id_pelatihan)->delete();
             DB::commit();
-            Toastr::success('Pelatihan Berhasil Dihapus','Sukses');
+      
             return redirect()->back();
         } catch(\Exception $e) {
             DB::rollback();
-            Toastr::error('Pelatihan Gagal Dihapus','Error');
+         
             return redirect()->back();
         }
     }
