@@ -15,7 +15,6 @@
                         <li><a href="('student/dashboard') }}" class="(['student/dashboard'])}}">Student Dashboard</a></li>
                     </ul>
                 </li>
-                
                 @if (Session::get('role_name') === 'Admin' || Session::get('role_name') === 'Super Admin')
                 <li class="submenu (['list/users'])}} (request()->is('view/user/edit/*')) ? 'active' : '' ">
                     <a href="#">
@@ -81,6 +80,9 @@
 
                 <li class="menu-title">
                     <span>Management</span>
+                </li>
+                <li>
+                    <a href="{{route('progress')}}"><i class="fas fa-clipboard-list"></i> <span>Progress Peserta</span></a>
                 </li>
 
                 <li>
