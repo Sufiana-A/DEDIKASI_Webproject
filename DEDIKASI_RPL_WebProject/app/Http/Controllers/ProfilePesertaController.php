@@ -53,6 +53,14 @@ class ProfilePesertaController extends Controller
             'email' => 'required|email|max:255|unique:Peserta',
             'no_hp' => 'required|numeric',
         ]);
+
+        $no_hp = $request->no_hp;
+
+        // Cek apakah nomor telepon sudah memiliki angka 0 di depannya
+        if (substr($no_hp, 0, 1) !== '0') {
+            // Jika tidak, tambahkan angka 0 di depannya
+            $no_hp = '0' . $no_hp;
+        }
             
         if ($request->password != '') {
         
@@ -67,7 +75,7 @@ class ProfilePesertaController extends Controller
         $data_profil_peserta->angkatan = $request->angkatan;
         $data_profil_peserta->jurusan = $request->jurusan;
         $data_profil_peserta->email = $request->email;
-        $data_profil_peserta->no_hp = $request->no_hp;
+        $data_profil_peserta->no_hp = $no_hp;
         $data_profil_peserta->update();
 
         return redirect()->route('profile_peserta')->with('success', 'Profil data has been updated successsfully !'); 

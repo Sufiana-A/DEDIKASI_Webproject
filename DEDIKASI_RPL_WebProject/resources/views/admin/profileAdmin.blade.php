@@ -54,7 +54,7 @@
                                         </div>
                                         <div class="row">
                                             <p class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3">Nomor Telepon</p>
-                                            <p class="col-sm-9">{{ phone(Auth::guard('admin')->user()->no_hp, 'ID') }}</p>
+                                            <p class="col-sm-9">{{ Auth::guard('admin')->user()->no_hp }}</p>
                                         </div>
                                         <div class="row">
                                             <p class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3">NIP</p>
