@@ -34,7 +34,7 @@
                                     <input type="file" class="custom-file-input" id="ktp" name="ktp" accept=".jpeg,.jpg,.png" required>
                                 </div>
                             </div>
-                            <small id="fileHelp" class="form-text text-muted">Hanya menerima file .jpg dan .png</small>
+                        <small id="fileHelp" class="form-text text-muted">Hanya menerima file .jpg dan .png</small>
                         </div>
                     </div>
                     

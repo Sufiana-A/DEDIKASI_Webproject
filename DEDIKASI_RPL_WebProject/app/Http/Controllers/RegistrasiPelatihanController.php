@@ -74,7 +74,6 @@ class RegistrasiPelatihanController extends Controller
         'enroll_at' => Date::today(), //kalo ini buat tanggalnya aja
         'status' => $request->status_enroll 
     ]);
-   
     }
 
 
