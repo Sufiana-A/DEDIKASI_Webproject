@@ -1,5 +1,4 @@
 @extends('layout.adminmaster')
 
     {{-- message --}}
-    
   

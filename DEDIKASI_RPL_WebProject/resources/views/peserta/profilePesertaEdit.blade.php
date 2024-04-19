@@ -41,33 +41,33 @@
                                             @csrf
                                             <div class="mb-4 form-group">
                                                 <label for="first_name" class="text-muted text-sm-end mb-3 mb-sm-3">First Name</label>
-                                                <input type="text" class="form-control col-sm-9" name="first_name" value="Sufiana" readonly>
+                                                <input type="text" class="form-control col-sm-9" name="first_name" value="{{ Auth::guard('peserta')->user()->first_name }}" readonly>
                                             </div>
                                             <div class="mb-4 form-group">
                                                 <label for="last_name" class="text-muted text-sm-end mb-3 mb-sm-3">Last Name</label>
-                                                <input type="text" class="form-control col-sm-9" name="last_name" value="Arumdita" readonly>
+                                                <input type="text" class="form-control col-sm-9" name="last_name" value="{{ Auth::guard('peserta')->user()->last_name }}" readonly>
                                             </div>
                                             <div class="mb-4 form-group">
                                                 <label for="nim" class="text-muted text-sm-end mb-3 mb-sm-3">NIM</label>
-                                                <input type="text" class="form-control col-sm-9" name="nim" value="1202210292" readonly>
+                                                <input type="text" class="form-control col-sm-9" name="nim" value="{{ Auth::guard('peserta')->user()->nim  }}" readonly>
                                             </div>
                                             <div class="mb-4 form-group">
                                                 <label for="angkatan" class="text-muted text-sm-end mb-3 mb-sm-3">Angkatan</label>
-                                                <input type="text" class="form-control col-sm-9 @error('angkatan') is-invalid @enderror" name="angkatan" placeholder="contoh: 2021" value="2021">
+                                                <input type="text" class="form-control col-sm-9 @error('angkatan') is-invalid @enderror" name="angkatan" placeholder="contoh: 2021" value="{{ Auth::guard('peserta')->user()->angkatan }}">
                                                 @error('angkatan')
                                                 <div class="text text-danger">{{ $message }}</div>
                                                 @enderror
                                             </div>
                                             <div class="mb-4 form-group">
                                                 <label for="jurusan" class="text-muted text-sm-end mb-3 mb-sm-3">Jurusan</label>
-                                                <input type="text" class="form-control col-sm-9 @error('jurusan') is-invalid @enderror" name="jurusan" placeholder="contoh: sistem informasi" value="sistem informasi">
+                                                <input type="text" class="form-control col-sm-9 @error('jurusan') is-invalid @enderror" name="jurusan" placeholder="contoh: sistem informasi" value="{{ Auth::guard('peserta')->user()->jurusan }}">
                                                 @error('jurusan')
                                                 <div class="text text-danger">{{ $message }}</div>
                                                 @enderror
                                             </div>
                                             <div class="mb-4 form-group">
                                                 <label for="email" class="text-muted text-sm-end mb-3 mb-sm-3">Email</label>
-                                                <input type="text" class="form-control col-sm-9 @error('email') is-invalid @enderror" placeholder="example@gmail.com" name="email" value="example@gmail.com">
+                                                <input type="text" class="form-control col-sm-9 @error('email') is-invalid @enderror" placeholder="example@gmail.com" name="email" value="{{ Auth::guard('peserta')->user()->email  }}">
                                                 @error('email')
                                                 <div class="text text-danger">{{ $message }}</div>
                                                 @enderror
@@ -79,7 +79,7 @@
                                                         <span class="input-group-text">
                                                             <img src="{{ asset('assets/img/icons/flag-idn.png') }}" alt="flag idn" width="25">+62</span>
                                                     </div>
-                                                    <input type="text" class="form-control @error('no_hp') is-invalid @enderror" placeholder="8510023841" name="no_hp" value="8610092731">
+                                                    <input type="text" class="form-control @error('no_hp') is-invalid @enderror" placeholder="8510023841" name="no_hp" value="{{ ltrim(Auth::guard('peserta')->user()->no_hp, '0') }}">
                                                     @error('no_hp')
                                                     <div class="text text-danger">{{ $message }}</div>
                                                     @enderror
