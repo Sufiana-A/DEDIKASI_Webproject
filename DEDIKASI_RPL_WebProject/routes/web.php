@@ -62,6 +62,9 @@ Route::controller(AdminCourseController::class)->name('admin.')->prefix('admin')
     Route::get('/manage-course', 'index')->name('manageCourse.index');
     Route::get('/manage-course/add', 'addCourse')->name('manageCourse.add');
     Route::post('/manage-course/store', 'store')->name('manageCourse.store');
+    Route::get('/manage-course/edit/{id}', 'editCourse')->name('manageCourse.edit');
+    Route::post('/manage-course/update', 'update')->name('manageCourse.update');
+   
 });
 Route::controller(StudentDashboardController::class)->name('student.')->group(function () {
     Route::get('/dashboard-peserta', 'index')->name('dashboard.index');

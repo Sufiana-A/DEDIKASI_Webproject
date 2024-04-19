@@ -37,7 +37,7 @@
                             <div class="db-widgets d-flex justify-content-between align-items-center">
                                 <div class="db-info">
                                     <h6>Total Pelatihan</h6>
-                                    <h3>25</h3>
+                                    <h3>{{ $courses->count() }}</h3>
                                 </div>
                                 <div class="db-icon">
                                     <img src="{{URL::to('assets/img/icons/teacher-icon-02.svg')}}" alt="Dashboard Icon">
@@ -61,3 +61,56 @@
             </div>
         </div>
     </div>
+    <div class="row ">
+        @foreach ($courses as $course)
+        <div class="col-12 col-md-4">
+            <div class="card flex-fill comman-shadow">
+                <div class="card-header">
+                    <div class="row align-items-center">
+                        <div class="col-6">
+                            <h5 class="card-title">{{ $course->title }}</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="col-lg-3 col-md-3">
+                                <div class="dash-details">
+                                    <div class="lesson-activity">
+                                        <div class="lesson-imgs">
+                                            <img src="{{ URL::to('assets/img/icons/lesson-icon-04.svg') }}"
+                                                alt="">
+                                        </div>
+                                        <div class="views-lesson">
+                                            <h5>QUIZ</h5>
+                                            <h4>10</h4>
+                                        </div>
+                                    </div>
+                                    <div class="lesson-activity">
+                                        <div class="lesson-imgs">
+                                            <img src="{{ URL::to('assets/img/icons/lesson-icon-06.svg') }}"
+                                                alt="">
+                                        </div>
+                                        <div class="views-lesson">
+                                            <h5>Asignment</h5>
+                                            <h4>10</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="skip-group">
+                                <a href="{{ route('student.dashboard.course', $course->uuid) }}" class="btn btn-info continue-btn">View</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endforeach
+    </div>
+</div>
+</div>
+
