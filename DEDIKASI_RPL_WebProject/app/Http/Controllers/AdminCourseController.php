@@ -62,6 +62,10 @@ class AdminCourseController extends Controller
 
         return redirect(route('admin.manageCourse.index'));
     }
-   
+    public function delete(Request $request) {
+        $course = Course::where('uuid', $request->uuid)->firstOrFail();
+        $course->delete();
+        return redirect(route('admin.manageCourse.index'));
+    }
 }
 

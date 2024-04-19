@@ -7,6 +7,9 @@ use App\Http\Controllers\ProfileAdminController;
 use App\Http\Controllers\ProfileMentorController;
 use App\Http\Controllers\ProfilePesertaController;
 use App\Http\Controllers\PelatihanController;
+use App\Http\Controllers\AdminCourseController;
+use App\Http\Controllers\StudentDashboardController;
+
 
 Route::get('/', function () {
     return view('register');
@@ -60,11 +63,11 @@ Route::post('/profile-photo-admin-submit', [ProfileAdminController::class, 'subm
 
 Route::controller(AdminCourseController::class)->name('admin.')->prefix('admin')->group(function () {
     Route::get('/manage-course', 'index')->name('manageCourse.index');
-    Route::get('/manage-course/add', 'addCourse')->name('manageCourse.add');
+    Route::get('admin/manage-course/add', 'addCourse')->name('manageCourse.add');
     Route::post('/manage-course/store', 'store')->name('manageCourse.store');
-    Route::get('/manage-course/edit/{id}', 'editCourse')->name('manageCourse.edit');
-    Route::post('/manage-course/update', 'update')->name('manageCourse.update');
-   
+    Route::get('admin/manage-course/edit/{id}', 'editCourse')->name('manageCourse.edit');
+    Route::post('admin/manage-course/update', 'update')->name('manageCourse.update');
+    Route::post('/manage-course/delete', 'delete')->name('manageCourse.delete');
 });
 Route::controller(StudentDashboardController::class)->name('student.')->group(function () {
     Route::get('/dashboard-peserta', 'index')->name('dashboard.index');

@@ -1,7 +1,7 @@
 @extends('layout.master')
 
     {{-- message --}}
-    
+
     <div class="page-wrapper">
         <div class="content container-fluid">
             <div class="page-header">
@@ -9,7 +9,7 @@
                     <div class="col-sm-12">
                         <div class="page-sub-header">
                             <h3 class="page-title">Selamat Datang!</h3>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -46,71 +46,68 @@
                         </div>
                     </div>
                 </div>
-           
+
             </div>
-                <div class="col-12 col-lg-12 col-xl-4 d-flex">
+            <div class="col-12 col-lg-12 col-xl-4 d-flex">
+                <div class="card flex-fill comman-shadow">
+                    <div class="card-body">
+                        <div id="calendar-doctor" class="calendar-container"></div>
+                        <div class="calendar-info calendar-info1">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row ">
+                @foreach ($courses as $course)
+                <div class="col-12 col-md-4">
                     <div class="card flex-fill comman-shadow">
-                        <div class="card-body">
-                            <div id="calendar-doctor" class="calendar-container"></div>
-                            <div class="calendar-info calendar-info1">
-                                
+                        <div class="card-header">
+                            <div class="row align-items-center">
+                                <div class="col-6">
+                                    <h5 class="card-title">{{ $course->title }}</h5>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row ">
-        @foreach ($courses as $course)
-        <div class="col-12 col-md-4">
-            <div class="card flex-fill comman-shadow">
-                <div class="card-header">
-                    <div class="row align-items-center">
-                        <div class="col-6">
-                            <h5 class="card-title">{{ $course->title }}</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="col-lg-3 col-md-3">
-                                <div class="dash-details">
-                                    <div class="lesson-activity">
-                                        <div class="lesson-imgs">
-                                            <img src="{{ URL::to('assets/img/icons/lesson-icon-04.svg') }}"
-                                                alt="">
-                                        </div>
-                                        <div class="views-lesson">
-                                            <h5>QUIZ</h5>
-                                            <h4>10</h4>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="col-lg-3 col-md-3">
+                                        <div class="dash-details">
+                                            <div class="lesson-activity">
+                                                <div class="lesson-imgs">
+                                                    <img src="{{ URL::to('assets/img/icons/lesson-icon-04.svg') }}"
+                                                        alt="">
+                                                </div>
+                                                <div class="views-lesson">
+                                                    <h5>QUIZ</h5>
+                                                    <h4>10</h4>
+                                                </div>
+                                            </div>
+                                            <div class="lesson-activity">
+                                                <div class="lesson-imgs">
+                                                    <img src="{{ URL::to('assets/img/icons/lesson-icon-06.svg') }}"
+                                                        alt="">
+                                                </div>
+                                                <div class="views-lesson">
+                                                    <h5>Asignment</h5>
+                                                    <h4>10</h4>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="lesson-activity">
-                                        <div class="lesson-imgs">
-                                            <img src="{{ URL::to('assets/img/icons/lesson-icon-06.svg') }}"
-                                                alt="">
-                                        </div>
-                                        <div class="views-lesson">
-                                            <h5>Asignment</h5>
-                                            <h4>10</h4>
-                                        </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="skip-group">
+                                        <a href="{{ route('student.dashboard.course', $course->uuid) }}" class="btn btn-info continue-btn">View</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12">
-                            <div class="skip-group">
-                                <a href="{{ route('student.dashboard.course', $course->uuid) }}" class="btn btn-info continue-btn">View</a>
-                            </div>
-                        </div>
                     </div>
                 </div>
+                @endforeach
             </div>
         </div>
-        @endforeach
     </div>
-</div>
-</div>
-
