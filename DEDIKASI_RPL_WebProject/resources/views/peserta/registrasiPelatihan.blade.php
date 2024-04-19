@@ -10,12 +10,6 @@
                     <form method="post" action="" class="w-75 m-auto">
                         @csrf
                     <div class="form-group row mb-4">
-                        <label class="col-sm-12 col-md-4 col-form-label">NIM</label>
-                        <div class="col-sm-12 col-md-8">
-                        <input type="text" class="form-control" style="width: 450px; height: 30px;" @error('nim') is-invalid @enderror" name="nim" required>
-                        </div>
-                    </div>
-                    <div class="form-group row mb-4">
                         <label class="col-sm-12 col-md-4 col-form-label">NIK</label>
                         <div class="col-sm-12 col-md-8">
                         <input type="text" class="form-control" style="width: 450px; height: 30px;" @error('nik') is-invalid @enderror" name="nik" required>

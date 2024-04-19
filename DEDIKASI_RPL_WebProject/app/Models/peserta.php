@@ -67,6 +67,7 @@ class Peserta extends Authenticatable
     {
         return $this->belongsToMany(Pelatihan::class, 'peserta_pelatihan_pivot')
                     ->withPivot('nik','ktm', 'ktp', 'status', 'enroll_at');
-    }
+    
+       }
 }
 
