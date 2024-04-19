@@ -12,20 +12,19 @@
         <div class="container">
             <div class="row">
                 @foreach($pelatihanAcc as $enroll)
-                <div class="col-md-4">
-                    <div class="card bg-danger text-white shadow mb-4">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $enroll->pelatihan->nama }}</h5>
-                            <p class="card-text">{{ $enroll->pelatihan->desc }}</p>
-                            <a href="#" class="btn btn-outline-dark"><i class="fas fa-video"></i> Video </a>
-                            <a href="#" class="btn btn-outline-dark"><i class="fas fa-file"></i> Material </a>
-                            <a href="#" class="btn btn-outline-dark"><i class="fas fa-file-alt"></i> Assignment </a>
+                <div class="row row-cols-md-2">
+                    <div class="col mb-4">
+                        <div class="card bg-primary text-white shadow mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $enroll->pelatihan->nama }}</h5>
+                                <p class="card-text">{{ $enroll->pelatihan->desc }}</p>
+                                <a href="#" class="btn btn-outline-dark"><i class="fas fa-video"></i> Video </a>
+                                <a href="#" class="btn btn-outline-dark"><i class="fas fa-file"></i> Material </a>
+                                <a href="#" class="btn btn-outline-dark"><i class="fas fa-file-alt"></i> Assignment </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                @if (($loop->index + 1) % 3 == 0)
-                    </div><div class="row">
-                @endif
                 @endforeach
             </div>
         </div>
