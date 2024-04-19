@@ -9,8 +9,8 @@ use App\Http\Controllers\ProfilePesertaController;
 use App\Http\Controllers\PelatihanController;
 
 Route::get('/', function () {
-    return view('register')->name('viewRegister');
-});
+    return view('register');
+})->name('viewRegister');
 
 Route::controller(PelatihanController::class)->group(function () {
     Route::get('pelatihan/list/page', 'pelatihanList')->middleware('auth')->name('pelatihan/list/page'); // pelatihan/list/page
