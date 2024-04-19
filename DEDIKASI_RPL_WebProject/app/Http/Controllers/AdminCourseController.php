@@ -35,6 +35,11 @@ class AdminCourseController extends Controller
         return view('admin.addCourse');
     }
 
+    public function editCourse($id) {
+        $course = Course::where('uuid', $id)->firstOrFail();
+        return view('admin.editCourse', compact('course'));
+    }
+
     public function store(Request $request) {
         $course = new Course();
         $course->title = $request->title;
@@ -48,5 +53,19 @@ class AdminCourseController extends Controller
 
         return redirect(route('admin.manageCourse.index'));
     }
+    public function update(Request $request) {
+        $course = Course::where('uuid', $request->uuid)->firstOrFail();
+        $course->title = $request->title;
+        $course->description = $request->description;
+        $course->class = $request->class;
+        $course->update();
 
+        return redirect(route('admin.manageCourse.index'));
+    }
+    public function delete(Request $request) {
+        $course = Course::where('uuid', $request->uuid)->firstOrFail();
+        $course->delete();
+        return redirect(route('admin.manageCourse.index'));
+    }
 }
+
