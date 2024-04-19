@@ -23,15 +23,15 @@ class LoginController extends Controller
         ];
         if (Auth::guard('peserta')->attempt($credentials)){
             $request->session()->regenerate();
-            return redirect()->intended('profil-peserta');
+            return redirect()->route('profile_peserta');
         };
         if (Auth::guard('admin')->attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('profil-admin');
+            return redirect()->route('profile_admin');
         };
         if (Auth::guard('mentor')->attempt($credentials)){
             $request->session()->regenerate();
-            return redirect()->intended('profil-mentor');
+            return redirect()->route('profile_mentor');
         };
         return redirect()->back()->with('sukses', 'Proses login berhasil.');
     }
