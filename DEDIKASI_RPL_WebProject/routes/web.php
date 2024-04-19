@@ -58,3 +58,12 @@ Route::get('/profile-admin-edit', [ProfileAdminController::class, 'edit_profile'
 Route::post('/profile-admin-submit', [ProfileAdminController::class, 'submit_profile'])->name('profile_submit_admin');
 Route::post('/profile-photo-admin-submit', [ProfileAdminController::class, 'submit_photo'])->name('profil_photo_submit_admin');
 
+Route::controller(AdminCourseController::class)->name('admin.')->prefix('admin')->group(function () {
+    Route::get('/manage-course', 'index')->name('manageCourse.index');
+    Route::get('/manage-course/add', 'addCourse')->name('manageCourse.add');
+    Route::post('/manage-course/store', 'store')->name('manageCourse.store');
+});
+Route::controller(StudentDashboardController::class)->name('student.')->group(function () {
+    Route::get('/dashboard-peserta', 'index')->name('dashboard.index');
+    Route::get('/course/{id}', 'showCourse')->name('dashboard.course');
+});
