@@ -8,11 +8,17 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
 
+trait AuthenticatableTrait {
+    // Metode dari Authenticatable
+}
 
+trait ModelTrait {
+    // Metode dari Model
+}
 
 class Peserta extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, AuthenticatableTrait, ModelTrait;
 
     protected $table = 'peserta';
     
@@ -56,26 +62,11 @@ class Peserta extends Authenticatable
             'password' => 'hashed',
         ];
     }
-}
 
-class Peserta extends Model
-{
-    protected $fillable = [
-        'first_name',
-        'last_name',
-        'tanggal_lahir',
-        'nim',
-        'jurusan',
-        'angkatan',
-        'no_hp',
-        'email',
-        'password',
-        'foto_peserta'
-    ];
-
-    public function pelatihan()
+    public function Pelatihan()
     {
         return $this->belongsToMany(Pelatihan::class, 'peserta_pelatihan_pivot')
-                    ->withPivot('nik','ktm', 'ktp', 'status');
+                    ->withPivot('nik','ktm', 'ktp', 'status', 'enroll_at');
     }
 }
+

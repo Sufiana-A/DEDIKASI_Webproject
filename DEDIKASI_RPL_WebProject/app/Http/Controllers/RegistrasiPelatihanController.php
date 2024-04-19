@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\peserta;
 use App\Models\Pelatihan;
-
+use Illuminate\Support\Facades\DB;
 
 class RegistrasiPelatihanController extends Controller
 {
@@ -13,10 +13,19 @@ class RegistrasiPelatihanController extends Controller
     public function store(Request $request, $id_peserta, $id_pelatihan)
     {
         $request->validate([
-            'ktm' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'ktp' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'ktm' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'ktp' => 'required|image|mimes:jpeg,png,jpg|max:2048',
         ]);
     
+        
+        $request->validate([
+            'nik' => 'required|size:16',
+        ], [
+            'nik.required' => 'NIK harus diisi.',
+            'nik.size' => 'NIK harus tepat 16 digit.',
+        ]);
+    
+
         // Menyimpan file foto KTM dan KTP
         $ktm = $request->file('ktm');
         $ktmName = time() . '_' . $ktm->getClientOriginalName();
@@ -57,7 +66,15 @@ class RegistrasiPelatihanController extends Controller
     }
 
 
+    public function updateEnroll()
+    {
+    // Mengupdate enroll_at di tabel pivot peserta_pelatihan
+        $peserta->pelatihan()->updateExistingPivot($pelatihan->id, [
+        'enroll_at' => now(), // pake ini buat dapet tanggal dan waktu saat ini
+        'enroll_at' => Date::today(), //kalo ini buat tanggalnya aja
+        'status' => $request->status_enroll 
+    ]);
+    }
 
-    
 
 }
