@@ -48,6 +48,9 @@ Route::get('/profile-peserta-edit', [ProfilePesertaController::class, 'edit_prof
 Route::post('/profile-peserta-submit', [ProfilePesertaController::class, 'submit_profile'])->name('profile_submit_peserta');
 Route::post('/profile-photo-peserta-submit', [ProfilePesertaController::class, 'submit_photo'])->name('profil_photo_submit_peserta');
 
+//peserta pelaihan
+Route::get('/peserta-pelatihan', [PesertaPelatihanController::class, 'index'])->name('list_peserta_pelatihan');
+
 //mentor
 Route::get('/profile-mentor', [ProfileMentorController::class, 'show_profile'])->name('profile_mentor');
 Route::get('/profile-mentor-edit', [ProfileMentorController::class, 'edit_profile'])->name('profile_edit_mentor');
