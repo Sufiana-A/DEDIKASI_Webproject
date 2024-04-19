@@ -28,6 +28,14 @@ class ProfileAdminController extends Controller
             'no_hp' => 'required|numeric',
         ]);
 
+        $no_hp = $request->no_hp;
+
+        // Cek apakah nomor telepon sudah memiliki angka 0 di depannya
+        if (substr($no_hp, 0, 1) !== '0') {
+            // Jika tidak, tambahkan angka 0 di depannya
+            $no_hp = '0' . $no_hp;
+        }
+
         if ($request->password != '') {
             $request->validate([
                 'password' => 'required|min:8',
@@ -39,7 +47,7 @@ class ProfileAdminController extends Controller
         }
 
         $data_profile_admin->email = $request->email;
-        $data_profile_admin->no_hp = $request->no_hp;
+        $data_profile_admin->no_hp = $no_hp;
         $data_profile_admin->update();
 
         return redirect()->route('profile_admin')->with('success', 'Profil data has been updated successsfully !');

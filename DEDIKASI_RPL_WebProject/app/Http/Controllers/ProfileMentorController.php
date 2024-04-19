@@ -28,6 +28,14 @@ class ProfileMentorController extends Controller
             'no_hp' => 'required|numeric',
         ]);
 
+        $no_hp = $request->no_hp;
+
+        // Cek apakah nomor telepon sudah memiliki angka 0 di depannya
+        if (substr($no_hp, 0, 1) !== '0') {
+            // Jika tidak, tambahkan angka 0 di depannya
+            $no_hp = '0' . $no_hp;
+        }
+
         if ($request->password != '') {
 
             $request->validate([
@@ -40,7 +48,7 @@ class ProfileMentorController extends Controller
         }
 
         $data_profile_mentor->email = $request->email;
-        $data_profile_mentor->no_hp = $request->no_hp;
+        $data_profile_mentor->no_hp = $no_hp;
         $data_profile_mentor->update();
 
         return redirect()->route('profile_mentor')->with('success', 'Profil data has been updated successsfully !');
