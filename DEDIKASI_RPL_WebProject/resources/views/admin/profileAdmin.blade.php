@@ -15,11 +15,11 @@
                     <div class="row align-items-center">
                         <div class="col-auto profile-image">
                             <a href="#">
-                                <img class="rounded-circle" alt="" src="{{ asset('assets/img/profiles/default.png') }}">
+                                <img class="rounded-circle" alt="" src="{{ asset('assets/img/profiles/'.Auth::guard('admin')->user()->foto_admin) }}">
                             </a>
                         </div>
                         <div class="col ms-md-n2 profile-user-info">
-                            <h4 class="user-name mb-0">Sufiana Arumdita</h4>
+                            <h4 class="user-name mb-0">Hi, {{ Auth::guard('admin')->user()->first_name }} {{ Auth::guard('admin')->user()->last_name }}</h4>
                         </div>
                     </div>
                 </div>
@@ -32,35 +32,33 @@
                                     <div class="card-body">
                                         <h5 class="card-title d-flex justify-content-between">
                                             <span style="color:#3d5ee1;">Detail Profil Admin</span>
-                                            <a class="edit-link" href="{{ route('profile_edit_mentor') }}"><i
+                                            <a class="edit-link" href="{{ route('profile_edit_admin') }}"><i
                                                     class="far fa-edit me-1"></i>Edit</a>
                                         </h5>
                                         <div class="row">
                                             <p class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3">Nama Depan</p>
-                                            <p class="col-sm-9"></p>
+                                            <p class="col-sm-9">{{ Auth::guard('admin')->user()->first_name }}</p>
                                         </div>
                                         <div class="row">
                                             <p class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3">Nama Belakang</p>
-                                            <p class="col-sm-9"></p>
+                                            <p class="col-sm-9">{{ Auth::guard('admin')->user()->last_name }}</p>
                                         </div>
                                         <div class="row">
-                                            <p class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3">Date of Birth</p>
-                                            <p class="col-sm-9">24 Jul 1983</p>
+                                            <p class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3">Tanggal Lahir</p>
+                                            <p class="col-sm-9">{{ Auth::guard('admin')->user()->tanggal_lahir }}</p>
                                         </div>
                                         <div class="row">
                                             <p class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3">Email</p>
-                                            <p class="col-sm-9"><a href="/cdn-cgi/l/email-protection"
-                                                    class="__cf_email__"
-                                                    data-cfemail="a1cbcec9cfc5cec4e1c4d9c0ccd1cdc48fc2cecc"></a>
+                                            <p class="col-sm-9"><a href="mailto:{{ Auth::guard('admin')->user()->email }}">{{ Auth::guard('admin')->user()->email }}</a>
                                             </p>
                                         </div>
                                         <div class="row">
                                             <p class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3">Nomor Telepon</p>
-                                            <p class="col-sm-9"></p>
+                                            <p class="col-sm-9">{{ Auth::guard('admin')->user()->no_hp }}</p>
                                         </div>
                                         <div class="row">
                                             <p class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3">NIP</p>
-                                            <p class="col-sm-9"></p>
+                                            <p class="col-sm-9">{{ Auth::guard('admin')->user()->nip }}</p>
                                         </div>
                                     </div>
                                 </div>
