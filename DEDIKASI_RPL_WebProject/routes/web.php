@@ -7,6 +7,7 @@ use App\Http\Controllers\ProfileAdminController;
 use App\Http\Controllers\ProfileMentorController;
 use App\Http\Controllers\ProfilePesertaController;
 use App\Http\Controllers\PelatihanController;
+use App\Http\Controllers\PesertaPelatihanController;
 use App\Http\Controllers\AdminCourseController;
 use App\Http\Controllers\StudentDashboardController;
 
