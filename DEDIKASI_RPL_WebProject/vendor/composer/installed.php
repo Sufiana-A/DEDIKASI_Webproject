@@ -1,15 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'laravel/laravel',
-<<<<<<< HEAD
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '5fa6d15a5d52c18f174d4a1df2bf7c8e10929ea2',
-=======
-        'pretty_version' => 'v11.0.3',
-        'version' => '11.0.3.0',
-        'reference' => NULL,
->>>>>>> e82954125c040bfe1f0d15a216fdf811eb50c9e0
+        'reference' => 'cfe405085730e9353b22de4070212b98c4e0340f',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -386,15 +380,9 @@
             'dev_requirement' => false,
         ),
         'laravel/laravel' => array(
-<<<<<<< HEAD
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '5fa6d15a5d52c18f174d4a1df2bf7c8e10929ea2',
-=======
-            'pretty_version' => 'v11.0.3',
-            'version' => '11.0.3.0',
-            'reference' => NULL,
->>>>>>> e82954125c040bfe1f0d15a216fdf811eb50c9e0
+            'reference' => 'cfe405085730e9353b22de4070212b98c4e0340f',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -445,6 +433,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'laravel/ui' => array(
+            'pretty_version' => 'v4.5.1',
+            'version' => '4.5.1.0',
+            'reference' => 'a3562953123946996a503159199d6742d5534e61',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../laravel/ui',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'league/commonmark' => array(
             'pretty_version' => '2.4.2',
             'version' => '2.4.2.0',
@@ -487,6 +484,15 @@
             'reference' => 'ce0f4d1e8a6f4eb0ddff33f57c69c50fd09f4301',
             'type' => 'library',
             'install_path' => __DIR__ . '/../league/mime-type-detection',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'livewire/livewire' => array(
+            'pretty_version' => 'v3.4.10',
+            'version' => '3.4.10.0',
+            'reference' => '6f90e2d7f8e80a97a7406c22a0fbc61ca1256ed9',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../livewire/livewire',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
@@ -650,15 +656,9 @@
             'dev_requirement' => true,
         ),
         'phpunit/phpunit' => array(
-<<<<<<< HEAD
             'pretty_version' => '10.5.15',
             'version' => '10.5.15.0',
             'reference' => '86376e05e8745ed81d88232ff92fee868247b07b',
-=======
-            'pretty_version' => '10.5.14',
-            'version' => '10.5.14.0',
-            'reference' => '4cf8824bab39c2dd57b57b9f6332f7135e2a3a49',
->>>>>>> e82954125c040bfe1f0d15a216fdf811eb50c9e0
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpunit/phpunit',
             'aliases' => array(),
@@ -766,8 +766,8 @@
         'psr/log-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '1.0|2.0|3.0',
-                1 => '3.0.0',
+                0 => '3.0.0',
+                1 => '1.0|2.0|3.0',
             ),
         ),
         'psr/simple-cache' => array(

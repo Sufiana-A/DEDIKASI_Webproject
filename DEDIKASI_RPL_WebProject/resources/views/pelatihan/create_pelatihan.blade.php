@@ -20,7 +20,7 @@
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-body">
-                            <form action="{{ route('subject/save') }}" method="POST">
+                            <form action="{{ route('pelatihan/save') }}" method="POST">
                                 @csrf
                                 <div class="row">
                                     <div class="col-12">
@@ -39,7 +39,7 @@
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <div class="student-submit">
+                                        <div class="peserta-submit">
                                             <button type="submit" class="btn btn-primary">Tambah</button>
                                         </div>
                                     </div>
