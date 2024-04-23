@@ -10,7 +10,7 @@
                         <h2>Update Assignment</h2>
                         <form action="{{ route('assignments.update', $assignment->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            @method('PUT') <!-- Specify the method as PUT for updates -->
+                            @method('POST') 
                             <div class="form-group">
                                 <label for="judul">Nama Penugasan</label>
                                 <input type="text" class="form-control @error('judul') is-invalid @enderror" id="judul" name="judul" value="{{ old('judul', $assignment->judul) }}" required>

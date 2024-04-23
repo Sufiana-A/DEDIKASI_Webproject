@@ -61,6 +61,12 @@ Route::post('/profile-photo-admin-submit', [ProfileAdminController::class, 'subm
 //assignment admin
 Route::get('/list-assignment', [LoginController::class, 'index'])->name('assignment_mentor');
 Route::get('/create-assignment', [LoginController::class, 'create'])->name('assignment_create');
-Route::get('/store-assignment', [LoginController::class, 'store'])->name('assignment_store');
-Route::get('/update-assignment', [LoginController::class, 'update'])->name('assignment_update');
+Route::post('/store-assignment', [LoginController::class, 'store'])->name('assignment_store');
+Route::post('/update-assignment', [LoginController::class, 'update'])->name('assignment_update');
 Route::get('/delete-assignment', [LoginController::class, 'destroy'])->name('assignment_delete');
+
+
+//assignment peserta
+Route::get('/peserta-list-assignment', [LoginController::class, 'indexPeserta'])->name('add_assignment');
+Route::get('/peserta-create-assignment', [LoginController::class, 'createPeserta'])->name('create_assignment');
+Route::post('/peserta-create-assignment', [LoginController::class, 'storePeserta'])->name('store_assignment');

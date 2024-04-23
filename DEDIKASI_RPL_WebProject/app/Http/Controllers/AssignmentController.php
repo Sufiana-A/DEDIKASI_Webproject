@@ -61,4 +61,42 @@ class AssignmentController extends Controller
         $assignment->delete();
     }
 
+
+
+    ///PESERTA
+    public function indexPeserta(){
+        return view('assignment/peserta-list-assignment');
+    } 
+
+    public function submit(Request $request)
+    {
+        $request->validate([
+            'text_submission' => 'nullable|string',
+            'file_submission' => 'nullable|file'
+        ]);
+    
+        // Assign default assignment_id based on business logic
+        $assignment_id = $this->getDefaultAssignmentId(); // Implement this method according to your business logic
+    
+        $submission = new Submission;
+        $submission->assignment_id = $assignment_id;
+        $submission->text_submission = $request->text_submission;
+    
+        if ($request->hasFile('file_submission')) {
+            $filename = $request->file('file_submission')->store('submissions', 'public');
+            $submission->file_submission = $filename;
+        }
+    
+        $submission->save();
+    
+        return redirect()->back()->with('success', 'Tugas berhasil dikumpulkan!');
+    }
+    
+    private function getDefaultAssignmentId()
+    {
+        $user = auth()->user();
+            $assignment = $user->currentAssignment; 
+    
+        return $assignment ? $assignment->id : null;
+    }
 }
