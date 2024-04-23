@@ -99,4 +99,39 @@ class AssignmentController extends Controller
     
         return $assignment ? $assignment->id : null;
     }
+
+    public function updatePeserta(Request $request)
+{
+    $request->validate([
+        'text_submission' => 'nullable|string',
+        'file_submission' => 'nullable|file'
+    ]);
+
+    $assignment_id = $this->getDefaultAssignmentId();
+
+    $submission = Submission::updateOrCreate(
+        [
+            'assignment_id' => $assignment_id,
+            'user_id' => auth()->id() 
+        ],
+        [
+            'text_submission' => $request->text_submission,
+        ]
+    );
+
+    if ($request->hasFile('file_submission')) {
+        // Hapus file lama jika ada
+        if ($submission->file_submission) {
+            Storage::delete($submission->file_submission);
+        }
+        // Simpan file baru
+        $filename = $request->file('file_submission')->store('submissions', 'public');
+        $submission->file_submission = $filename;
+    }
+
+    $submission->save();
+
+    return redirect()->back()->with('success', 'Tugas berhasil diperbarui!');
+}
+
 }

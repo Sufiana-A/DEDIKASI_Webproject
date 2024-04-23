@@ -69,4 +69,5 @@ Route::get('/delete-assignment', [LoginController::class, 'destroy'])->name('ass
 //assignment peserta
 Route::get('/peserta-list-assignment', [LoginController::class, 'indexPeserta'])->name('add_assignment');
 Route::get('/peserta-create-assignment', [LoginController::class, 'createPeserta'])->name('create_assignment');
-Route::post('/peserta-create-assignment', [LoginController::class, 'storePeserta'])->name('store_assignment');
+Route::post('/peserta-submit-assignment', [LoginController::class, 'submit'])->name('submit_assignment');
+Route::post('/peserta-update-assignment', [LoginController::class, 'updatePeserta'])->name('update_assignment');
