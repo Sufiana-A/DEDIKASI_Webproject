@@ -39,7 +39,7 @@ class AssignmentController extends Controller
         return redirect()->route('pelatihan_assignments')->with('success', 'Assignment berhasil ditambahkan');
     }
     
-        public function update(Request $request, $id)
+    public function update(Request $request, $id)
     {
         $request->validate([
             'id_tugas' => 'nullable|string',
@@ -56,9 +56,9 @@ class AssignmentController extends Controller
         return redirect()->route('assignments.index')->with('success', 'Assignment berhasil diperbarui');
     }
 
-
-
-      
-
+    public function destroy($id){
+        $assignment = Assignment::findOrFail($id);
+        $assignment->delete();
+    }
 
 }

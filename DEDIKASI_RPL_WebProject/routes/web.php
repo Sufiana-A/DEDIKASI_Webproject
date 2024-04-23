@@ -63,4 +63,4 @@ Route::get('/list-assignment', [LoginController::class, 'index'])->name('assignm
 Route::get('/create-assignment', [LoginController::class, 'create'])->name('assignment_create');
 Route::get('/store-assignment', [LoginController::class, 'store'])->name('assignment_store');
 Route::get('/update-assignment', [LoginController::class, 'update'])->name('assignment_update');
-
+Route::get('/delete-assignment', [LoginController::class, 'destroy'])->name('assignment_delete');
