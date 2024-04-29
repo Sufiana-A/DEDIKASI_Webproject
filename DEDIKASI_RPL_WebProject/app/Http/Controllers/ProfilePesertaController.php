@@ -30,18 +30,21 @@ class ProfilePesertaController extends Controller
                 'photo' => 'image|mimes:jpg,png,jpeg',
             ]);
 
+            if ($data_profil_peserta->foto_peserta != 'default_image.jpg') {
+                
+                unlink(public_path('assets/img/profiles/'.$data_profil_peserta->foto_peserta));
+            }
+
             $time = time();
-            unlink(public_path('assets/img/profiles/'.$data_profil_peserta->foto_peserta));
             $ext = $request->file('photo')->extension();
-            $photo_name = $data_profil_peserta->email.$time.$ext;
+            $photo_name = $data_profil_peserta->email.$time.'.'.$ext;
             $request->file('photo')->move(public_path('assets/img/profiles/'), $photo_name);
             $data_profil_peserta->foto_peserta = $photo_name;
 
         }  
         
         $data_profil_peserta->update();
-
-        return redirect()->route('profile_peserta')->with('success', 'Profil data has been updated successsfully !');
+        return redirect()->route('profile_peserta')->with('success','Profil data has been updated successsfully !');
     }
     
     public function submit_profile(Request $request){

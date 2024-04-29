@@ -38,8 +38,8 @@ class ProfileAdminController extends Controller
 
         if ($request->password != '') {
             $request->validate([
-                'password' => 'required|min:8',
-                'password_confirm' => 'required|min:8|same:password' ,
+                'password' => 'required',
+                'password_confirm' => 'required|same:password' ,
             ]);
             
             $data_profile_admin->password = Hash::make($request->password_confirm);
@@ -63,10 +63,14 @@ class ProfileAdminController extends Controller
                 'photo' => 'image|mimes:jpg,png,jpeg',
             ]);
 
+            if ($data_profil_admin->foto_admin != 'default_image.jpg') {
+                
+                unlink(public_path('assets/img/profiles/'.$data_profil_admin->foto_admin));
+            }
+
             $time = time();
-            unlink(public_path('assets/img/profiles/'.$data_profil_admin->foto_admin));
             $ext = $request->file('photo')->extension();
-            $photo_name = $data_profil_admin->email.$time.$ext;
+            $photo_name = $data_profil_admin->email.$time.'.'.$ext;
             $request->file('photo')->move(public_path('assets/img/profiles/'), $photo_name);
             $data_profil_admin->foto_admin = $photo_name;
         }  
