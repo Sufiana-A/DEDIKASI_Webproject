@@ -66,7 +66,7 @@ Route::post('/profile-admin-submit', [ProfileAdminController::class, 'submit_pro
 Route::post('/profile-photo-admin-submit', [ProfileAdminController::class, 'submit_photo'])->name('profil_photo_submit_admin');
 
 Route::controller(AdminCourseController::class)->name('admin.')->prefix('admin')->group(function () {
-    Route::get('/manage-course', 'index')->name('manageCourse.index');
+    Route::get('manage-course', 'index')->name('manageCourse.index');
     Route::get('admin/manage-course/add', 'addCourse')->name('manageCourse.add');
     Route::post('/manage-course/store', 'store')->name('manageCourse.store');
     Route::get('admin/manage-course/edit/{id}', 'editCourse')->name('manageCourse.edit');
