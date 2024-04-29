@@ -1,7 +1,7 @@
 @extends('layout.adminmaster')
 @section('content')
 {{-- message --}}
-
+ 
     <div class="page-wrapper">
         <div class="content container-fluid">
 
@@ -34,14 +34,28 @@
                             <div class="form-group">
                                 <input type="text" class="form-control" placeholder="Search by Class" name="class" value="{{ request()->class ?? null }}">
                             </div>
-                        </div>
-                        <div class="col-lg-2">
-                            <div class="search-student-btn">
-                                <button type="submit" class="btn btn-primary">Search</button>
-                            </div>
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search by ID ...">
                         </div>
                     </div>
-                </form>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search by Name ...">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search by Class ...">
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="search-student-btn">
+                            <button type="btn" class="btn btn-primary">Search</button>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="row">
@@ -54,8 +68,10 @@
                                         <h3 class="page-title">Subjects</h3>
                                     </div>
                                     <div class="col-auto text-end float-end ms-auto download-grp">
-                                        
-                                        <a href="{{ route('admin.manageCourse.add') }}" class="btn btn-primary">
+                                        <a href="#" class="btn btn-outline-primary me-2">
+                                            <i class="fas fa-download"></i> Download
+                                        </a>
+                                        <a href="('subject/add/page') }}" class="btn btn-primary">
                                             <i class="fas fa-plus"></i>
                                         </a>
                                     </div>
@@ -66,11 +82,11 @@
                                     class="table border-0 star-student table-hover table-center mb-0 datatable table-striped">
                                     <thead class="student-thread">
                                         <tr>
-                                            {{-- <th>
+                                            <th>
                                                 <div class="form-check check-tables">
                                                     <input class="form-check-input" type="checkbox" value="something">
                                                 </div>
-                                            </th> --}}
+                                            </th>
                                             <th>ID</th>
                                             <th>Name</th>
                                             <th>Class</th>
@@ -78,33 +94,33 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($courses as $course)
+                                        {{-- @foreach($subjectList as $key => $value)
                                         <tr>
-                                            {{-- <td>
+                                            <td>
                                                 <div class="form-check check-tables">
                                                     <input class="form-check-input" type="checkbox"
                                                         value="something">
                                                 </div>
-                                            </td> --}}
-                                            <td class="subject_id">{{ $course->uuid }}</td>
+                                            </td>
+                                            <td class="subject_id">{{ $value->subject_id }}</td>
                                             <td>
                                                 <h2>
-                                                    <a>{{ $course->title }}</a>
+                                                    <a>{{ $value->subject_name }}</a>
                                                 </h2>
                                             </td>
-                                            <td>{{ $course->class }}</td>
+                                            <td>{{ $value->class }}</td>
                                             <td class="text-end">
                                                 <div class="actions">
-                                                    <a href="{{ route('admin.manageCourse.edit', $course->uuid) }}" class="btn btn-sm bg-danger-light">
+                                                    <a href="{{ url('subject/edit/'.$value->subject_id) }}" class="btn btn-sm bg-danger-light">
                                                         <i class="far fa-edit me-2"></i>
                                                     </a>
-                                                    <a class="btn btn-sm bg-danger-light delete" data-bs-toggle="modal" data-bs-target="#delete" data-uuid="{{ $course->uuid }}">
+                                                    <a class="btn btn-sm bg-danger-light delete" data-bs-toggle="modal" data-bs-target="#delete">
                                                         <i class="fe fe-trash-2"></i>
                                                     </a>
                                                 </div>
                                             </td>
                                         </tr>
-                                        @endforeach
+                                        @endforeach --}}
                                     </tbody>
                                 </table>
                             </div>
@@ -126,12 +142,12 @@
                     </div>
                     <div class="modal-btn delete-action">
                         <div class="row">
-                            <form action="{{ route('admin.manageCourse.delete') }}" method="POST">
+                            <form action="('subject/delete') }}" method="POST">
                                 @csrf
-                                <input type="hidden" name="uuid" value="">
+                                <input type="hidden" name="subject_id" class="e_subject_id" value="">
                                 <div class="row">
                                     <div class="col-6">
-                                        <button type="submit" id="delete-btn" class="btn btn-primary paid-continue-btn" style="width: 100%;">Delete</button>
+                                        <button type="submit" class="btn btn-primary paid-continue-btn" style="width: 100%;">Delete</button>
                                     </div>
                                     <div class="col-6">
                                         <a data-bs-dismiss="modal"
@@ -152,7 +168,8 @@
         <script>
             $(document).on('click','.delete',function()
             {
-                $('input[name="uuid"]').val($(this).data('uuid'));
+                var _this = $(this).parents('tr');
+                $('.e_subject_id').val(_this.find('.subject_id').text());
             });
         </script>
     @endsection

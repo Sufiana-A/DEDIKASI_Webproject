@@ -12,7 +12,7 @@
                     <ul>
                         {{-- <li><a href="('home') }}" class="(['home'])">Admin Dashboard</a></li> --}}
                         <li><a href="('teacher/dashboard') " class="(['teacher/dashboard'])}}">Teacher Dashboard</a></li>
-                        <a href="{{route('admin.manageCourse.index')}}"><i class="fas fa-clipboard-list"></i> <span>Manage Course</span></a>
+                        <a href=""><i class="fas fa-clipboard-list"></i> <span>Manage Course</span></a>
                     </ul>
                 </li>
                 @if (Session::get('role_name') === 'Admin' || Session::get('role_name') === 'Super Admin')

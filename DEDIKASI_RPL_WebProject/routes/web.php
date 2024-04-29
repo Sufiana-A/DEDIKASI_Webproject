@@ -7,13 +7,14 @@ use App\Http\Controllers\ProfileAdminController;
 use App\Http\Controllers\ProfileMentorController;
 use App\Http\Controllers\ProfilePesertaController;
 use App\Http\Controllers\PelatihanController;
+use App\Http\Controllers\PesertaPelatihanController;
 use App\Http\Controllers\AdminCourseController;
 use App\Http\Controllers\StudentDashboardController;
 
 
 Route::get('/', function () {
-    return view('register');
-})->name('viewRegister');
+    return view('assignment/mentor/assignment-list');
+})->name('assignment_create');
 
 Route::controller(PelatihanController::class)->group(function () {
     Route::get('pelatihan/list/page', 'pelatihanList')->middleware('auth')->name('pelatihan/list/page'); // pelatihan/list/page
@@ -48,6 +49,9 @@ Route::get('/profile-peserta-edit', [ProfilePesertaController::class, 'edit_prof
 Route::post('/profile-peserta-submit', [ProfilePesertaController::class, 'submit_profile'])->name('profile_submit_peserta');
 Route::post('/profile-photo-peserta-submit', [ProfilePesertaController::class, 'submit_photo'])->name('profil_photo_submit_peserta');
 
+//peserta pelaihan
+Route::get('/peserta-pelatihan', [PesertaPelatihanController::class, 'index'])->name('list_peserta_pelatihan');
+
 //mentor
 Route::get('/profile-mentor', [ProfileMentorController::class, 'show_profile'])->name('profile_mentor');
 Route::get('/profile-mentor-edit', [ProfileMentorController::class, 'edit_profile'])->name('profile_edit_mentor');
@@ -73,3 +77,18 @@ Route::controller(StudentDashboardController::class)->name('student.')->group(fu
     Route::get('/dashboard-peserta', 'index')->name('dashboard.index');
     Route::get('/course/{id}', 'showCourse')->name('dashboard.course');
 });
+
+//assignment admin
+Route::get('/list-assignment', [LoginController::class, 'index'])->name('assignment_mentor');
+Route::get('/create-assignment', [LoginController::class, 'create'])->name('assignment_create');
+Route::post('/store-assignment', [LoginController::class, 'store'])->name('assignment_store');
+Route::post('/update-assignment', [LoginController::class, 'update'])->name('assignment_update');
+Route::get('/delete-assignment', [LoginController::class, 'destroy'])->name('assignment_delete');
+
+
+//assignment peserta
+Route::get('/peserta-list-assignment', [LoginController::class, 'indexPeserta'])->name('add_assignment');
+Route::get('/peserta-create-assignment', [LoginController::class, 'createPeserta'])->name('create_assignment');
+Route::post('/peserta-submit-assignment', [LoginController::class, 'submit'])->name('submit_assignment');
+Route::post('/peserta-update-assignment', [LoginController::class, 'updatePeserta'])->name('update_assignment');
+
