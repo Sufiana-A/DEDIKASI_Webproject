@@ -22,17 +22,17 @@
                     <div class="row">
                         <div class="col-lg-3 col-md-6">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Search by ID ..." name="uuid" value="{{ request()->uuid ?? null }}">
+                                <input type="text" class="form-control" placeholder="Search by ID" name="uuid" value="{{ request()->uuid ?? null }}">
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Search by Name ..." name="title" value="{{ request()->title ?? null }}">
+                                <input type="text" class="form-control" placeholder="Search by Name" name="title" value="{{ request()->title ?? null }}">
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Search by Class ..." name="class" value="{{ request()->class ?? null }}">
+                                <input type="text" class="form-control" placeholder="Search by Class" name="class" value="{{ request()->class ?? null }}">
                             </div>
                         </div>
                         <div class="col-lg-2">
