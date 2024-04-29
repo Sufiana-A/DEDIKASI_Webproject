@@ -24,6 +24,10 @@
                                 <h4 class="user-name mb-3">Change Photo</h4>
                                 <input type="file" class="form-control mt_10" name="photo">
                             </div>
+                            <div class="pt-2">
+                                <label class="form-label"></label>
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-sync" aria-hidden="true"></i> Update</button>
+                            </div>
                         </form>
                     </div>
                 </div>
