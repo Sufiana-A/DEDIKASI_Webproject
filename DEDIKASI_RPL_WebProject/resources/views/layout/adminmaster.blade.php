@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-    <title>Dashboard Peserta</title>
+    <title>@yield('title')</title>
     <link rel="shortcut icon" href="{{ URL::to('assets/img/favicon.png') }}">
     <link rel="stylesheet" href="{{ URL::to('assets/plugins/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ URL::to('assets/plugins/feather/feather.css') }}">
@@ -21,6 +21,8 @@
 	<link rel="stylesheet" href="{{ URL::to('assets/css/toastr.min.css') }}">
 	<script src="{{ URL::to('assets/js/toastr_jquery.min.js') }}"></script>
 	<script src="{{ URL::to('assets/js/toastr.min.js') }}"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+
 </head>
 <body>
     <div class="main-wrapper">
@@ -94,24 +96,24 @@
                 <li class="nav-item dropdown has-arrow new-user-menus">
                     <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
                         <span class="user-img">
-                            <img class="rounded-circle" src="/images/{{ Session::get('avatar') }}" width="31"alt="{{ Session::get('name') }}">
+                            <img class="rounded-circle" src="{{ Asset('assets/img/profiles/'.Auth::guard('admin')->user()->foto_admin) }}" width="31"alt="">
                             <div class="user-text">
-                                <h6>{{ Session::get('name') }}</h6>
-                                <p class="text-muted mb-0">{{ Session::get('role_name') }}</p>
+                                <h6></h6>
+                                <p class="text-muted mb-0"></p>
                             </div>
                         </span>
                     </a>
                     <div class="dropdown-menu">
                         <div class="user-header">
                             <div class="avatar avatar-sm">
-                                <img src="/images/{{ Session::get('avatar') }}" alt="{{ Session::get('name') }}" class="avatar-img rounded-circle">
+                                <img src="{{ Asset('assets/img/profiles/'.Auth::guard('admin')->user()->foto_admin) }}" alt="" class="avatar-img rounded-circle">
                             </div>
                             <div class="user-text">
-                                <h6>{{ Session::get('name') }}</h6>
-                                <p class="text-muted mb-0">{{ Session::get('role_name') }}</p>
+                                <h6></h6>
+                                <p class="text-muted mb-0"></p>
                             </div>
                         </div>
-                        <a class="dropdown-item" href="">My Profile</a>
+                        <a class="dropdown-item" href="{{ route('profile_admin') }}">My Profile</a>
                         <a class="dropdown-item" href="inbox.html">Inbox</a>
                         <a class="dropdown-item" href="">Logout</a>
                     </div>
@@ -142,6 +144,7 @@
     <script src="{{ URL::to('assets/plugins/datatables/datatables.min.js') }}"></script>
     <script src="{{ URL::to('assets/plugins/select2/js/select2.min.js') }}"></script>
     <script src="{{ URL::to('assets/js/script.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
     @yield('script')
     <script>
         $(document).ready(function() {
