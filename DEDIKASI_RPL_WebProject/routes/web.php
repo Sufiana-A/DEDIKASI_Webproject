@@ -10,11 +10,16 @@ use App\Http\Controllers\PelatihanController;
 use App\Http\Controllers\PesertaPelatihanController;
 use App\Http\Controllers\AdminCourseController;
 use App\Http\Controllers\StudentDashboardController;
+
+use App\Http\Controllers\AssignmentController;
+use App\Http\Controllers\VideoController;
+
+
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 Route::get('/', function () {
-    return view('assignment/mentor/assignment-list');
-})->name('assignment_create');
+    return view('video/mentor/video-list');
+})->name('listvideo_view');
 
 Route::controller(PelatihanController::class)->group(function () {
     Route::get('pelatihan/list/page', 'pelatihanList')->middleware('auth')->name('pelatihan/list/page'); // pelatihan/list/page
@@ -88,16 +93,21 @@ Route::controller(StudentDashboardController::class)->name('student.')->group(fu
 });
 
 //assignment admin
-Route::get('/list-assignment', [LoginController::class, 'index'])->name('assignment_mentor');
-Route::get('/create-assignment', [LoginController::class, 'create'])->name('assignment_create');
-Route::post('/store-assignment', [LoginController::class, 'store'])->name('assignment_store');
-Route::post('/update-assignment', [LoginController::class, 'update'])->name('assignment_update');
-Route::get('/delete-assignment', [LoginController::class, 'destroy'])->name('assignment_delete');
+Route::get('/list-assignment', [AssignmentController::class, 'index'])->name('assignment_mentor');
+Route::get('/create-assignment', [AssignmentController::class, 'create'])->name('assignment_create');
+Route::post('/store-assignment', [AssignmentController::class, 'store'])->name('assignment_store');
+Route::post('/update-assignment', [AssignmentController::class, 'update'])->name('assignment_update');
+Route::get('/delete-assignment', [AssignmentController::class, 'destroy'])->name('assignment_delete');
 
 
 //assignment peserta
-Route::get('/peserta-list-assignment', [LoginController::class, 'indexPeserta'])->name('add_assignment');
-Route::get('/peserta-create-assignment', [LoginController::class, 'createPeserta'])->name('create_assignment');
-Route::post('/peserta-submit-assignment', [LoginController::class, 'submit'])->name('submit_assignment');
-Route::post('/peserta-update-assignment', [LoginController::class, 'updatePeserta'])->name('update_assignment');
+Route::get('/peserta-list-assignment', [AssignmentController::class, 'indexPeserta'])->name('add_assignment');
+Route::get('/peserta-create-assignment', [AssignmentController::class, 'createPeserta'])->name('create_assignment');
+Route::post('/peserta-submit-assignment', [AssignmentController::class, 'submit'])->name('submit_assignment');
+Route::post('/peserta-update-assignment', [AssignmentController::class, 'updatePeserta'])->name('update_assignment');
+
+//video admin
+Route::get('/list-video', [VideoController::class, 'index'])->name('video_mentor');
+Route::get('/create-video', [VideoController::class, 'create'])->name('video_create');
+Route::post('/store-video', [VideoController::class, 'store'])->name('video_store');
 
