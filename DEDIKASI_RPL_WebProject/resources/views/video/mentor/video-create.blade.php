@@ -7,18 +7,18 @@
         <div class="col-md-12">
          <div class="card">
     <div class="container">
-        <h2>Tambah Assignment Baru</h2>
-        <form action="{{ route('video_store') }}" method="POST" enctype="multipart/form-data">
+        <h2>Tambah Video Baru</h2>
+        <form action="#" method="POST" enctype="multipart/form-data">
             @csrf
 	    <div class="form-group">
-                <label for="judul">Nama Penugasan</label>
+                <label for="judul">Judul Video</label>
                 <input class="form-control @error('judul') is-invalid @enderror" id="judul" name="judul" required>
 		@error('judul')
                   <div class="alert text-danger">{{ $message }}</div>
                 @enderror
             </div>
             <div class="form-group">
-                <label for="deskripsi">Deskripsi Tugas</label>
+                <label for="deskripsi">Deskripsi Video</label>
                 <textarea class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" name="deskripsi" rows="3"></textarea>
                 @error('deskripsi')
                   <div class="alert text-danger">{{ $message }}</div>
@@ -31,7 +31,7 @@
                   <div class="alert text-danger">{{ $message }}</div>
                 @enderror
             </div>
-            <button type="submit" class="btn btn-primary">Simpan</button>
+            <button type="submit" class="btn btn-primary">Tambah</button>
         </form>
     </div>
 </div>
