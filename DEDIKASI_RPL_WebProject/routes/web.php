@@ -14,6 +14,8 @@ use App\Http\Controllers\StudentDashboardController;
 use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\VideoController;
 
+use App\Http\Controllers\CertificateController;
+
 
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -32,7 +34,7 @@ Route::controller(PelatihanController::class)->group(function () {
 
     
 
-//Route::get('/register', [RegisterController::class, 'register']);
+Route::get('/register', [RegisterController::class, 'register'])->name('viewRegister');
 Route::post('/register', [RegisterController::class, 'register'])->name('register');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
@@ -110,4 +112,8 @@ Route::post('/peserta-update-assignment', [AssignmentController::class, 'updateP
 Route::get('/list-video', [VideoController::class, 'index'])->name('video_mentor');
 Route::get('/create-video', [VideoController::class, 'create'])->name('video_create');
 Route::post('/store-video', [VideoController::class, 'store'])->name('video_store');
+
+
+// sertifikat
+Route::resource('/sertifikat', CertificateController::class);
 
