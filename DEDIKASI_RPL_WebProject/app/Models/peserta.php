@@ -55,4 +55,5 @@ class Peserta extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
 }

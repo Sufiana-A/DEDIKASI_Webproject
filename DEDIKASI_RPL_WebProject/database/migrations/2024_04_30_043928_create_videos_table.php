@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('judul_video')->nullable();
             $table->string('deskripsi_video')->nullable();
             $table->string('link_terkait')->nullable();
-            $table->timestamps();
         });
     }
 
