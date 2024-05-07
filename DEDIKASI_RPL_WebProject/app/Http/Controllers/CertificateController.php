@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\Certificate;
 use App\Http\Requests\StoreCertificateRequest;
 use App\Http\Requests\UpdateCertificateRequest;
@@ -28,10 +29,28 @@ class CertificateController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(StoreCertificateRequest $request)
-    {
-        return __METHOD__;
+    {        
+        // Validasi data input
+        $request->validate([
+            'nama' => 'required',
+            'file' => 'required|file',
+        ]);
+
+        // Simpan file
+        $file = $request->file('file');
+        $namaFile = $file->getClientOriginalName();
+        $file->move('sertifikat', $namaFile);
+
+        // Simpan data sertifikat ke database
+        Sertifikat::create([
+            'nama' => $request->nama,
+            'file' => $namaFile,
+        ]);
+
+        return redirect()->back()->with('success', 'Sertifikat berhasil diunggah.');
     }
 
+    
     /**
      * Display the specified resource.
      */
