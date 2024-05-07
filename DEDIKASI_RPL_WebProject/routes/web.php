@@ -146,3 +146,9 @@ Route::post('/store-materi', [MateriController::class, 'store'])->name('materi_s
 Route::post('/update-materi', [MateriController::class, 'update'])->name('materi_update');
 Route::get('/delete-materi', [MateriController::class, 'destroy'])->name('materi_delete');
 
+//timeline
+Route::get('/calendar/mycalendar', [EventController::class, 'myCalendar'])->name('view_kalendar');
+Route::post('/calendar/mycalendar/addevent', [EventController::class, 'addEvent'])->name('add_event');
+Route::post('/calendar/mycalendar/editevent', [EventController::class, 'updateEvent'])->name('edit_event');
+Route::post('/calendar/mycalendar/deleteevent', [EventController::class, 'deleteEvent'])->name('delete_event');
+Route::get('/getevents', [EventController::class, 'getEvents'])->name('get_events');
