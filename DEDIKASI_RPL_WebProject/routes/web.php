@@ -107,7 +107,7 @@ Route::get('/list-assignment', [AssignmentController::class, 'index'])->name('as
 Route::get('/create-assignment', [AssignmentController::class, 'create'])->name('assignment_create');
 Route::post('/store-assignment', [AssignmentController::class, 'store'])->name('assignment_store');
 Route::post('/update-assignment', [AssignmentController::class, 'update'])->name('assignment_update');
-Route::get('/delete-assignment', [AssignmentController::class, 'destroy'])->name('assignment_delete');
+Route::get('/delete-assignment', [AssignmentController::class, 'delete'])->name('assignment_delete');
 
 
 //assignment peserta

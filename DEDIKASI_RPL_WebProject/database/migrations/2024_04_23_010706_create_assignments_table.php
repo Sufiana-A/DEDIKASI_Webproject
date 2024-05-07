@@ -14,11 +14,9 @@ return new class extends Migration
         Schema::create('assignments', function (Blueprint $table) {
             $table->id();
             $table->string('id_tugas')->nullable();
-            $table->string('judul_tugas')->nullable();
-            $table->string('deskripsi_tugas')->nullable();
-            $table->string('link_terkait')->nullable();
-            $table->date('tugas_dibuka')->nullable();
-            $table->date('batas_pengumpulan')->nullable();
+            $table->string('title')->nullable();
+            $table->longText('description')->nullable();
+            $table->string('addition')->nullable();
             $table->timestamps();
         });
     }

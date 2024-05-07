@@ -1,64 +1,69 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Models\Assignment;
 
 class AssignmentController extends Controller
 {
     public function index(){
-        return view('assignment/mentor/assignment-list');
+        $assignments = Assignment::get();
+
+        return view('assignment.mentor.assignment-list', compact('assignments'));
     } 
 
     public function create(){
-        return view('assignment-create');
+        return view('assignment/mentor/assignment-create');
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'judul'     => 'required',
-            'deskripsi' => 'required',
-            'file' => 'required|mimes:pdf|max:2048', // Validasi file PDF
-            'urutan' => 'required|integer', // Validasi urutan
+            'id_tugas'     => 'required',
+            'title'     => 'required',
+            'description' => 'required',
+            'addition' => 'mimes:pdf,doc,jpg,jpeg,png|max:2048', 
         ]);
 
-        $assignment = new Assignment;
-        $assignment->deskripsi = $request->deskripsi;
-        $assignment->urutan = $request->urutan; // Simpan urutan
+        $assignments = new Assignment();
+        $assignments->id_tugas = $request->id_tugas;
+        $assignments->title = $request->title;
+        $assignments->description = $request->description;
+        
 
-        if ($request->hasFile('file')) {
-            $file = $request->file('file');
-            $filename = time() . '.' . $file->getClientOriginalExtension();
-            $path = $file->storeAs('uploads', $filename);
-            $assignment->file = $path;
+        if ($request->hasFile('addition')) {
+            $tugas = $request->file('addition');
+            $tugasname = time() . '.' . $tugas->getClientOriginalExtension();
+            $tugas->storeAs('/storage/app/public/assignment', $tugasname);
+            $assignments->addition = $tugasname;
         }
+        
+        $assignments->save();
 
-        $assignment->save();
-
-        return redirect()->route('pelatihan_assignments')->with('success', 'Assignment berhasil ditambahkan');
+        return redirect()->route('assignment_mentor')->with('success', 'Assignment berhasil ditambahkan');            
     }
     
     public function update(Request $request, $id)
     {
         $request->validate([
             'id_tugas' => 'nullable|string',
-            'judul_tugas' => 'nullable|string',
-            'deskripsi_tugas' => 'nullable|string',
-            'link_terkait' => 'nullable|string',
-            'tugas_dibuka' => 'nullable|date',
-            'batas_pengumpulan' => 'nullable|date',
+            'title' => 'nullable|string',
+            'description' => 'nullable|string',
+            'addition' => 'nullable|mimes:pdf,doc,jpg,jpeg,png|max:2048', 
         ]);
 
         $assignment = Assignment::findOrFail($id);
         $assignment->update($request->all());
 
-        return redirect()->route('assignments.index')->with('success', 'Assignment berhasil diperbarui');
+        return redirect()->route('assignment.index')->with('success', 'Assignment berhasil diperbarui');
     }
 
-    public function destroy($id){
-        $assignment = Assignment::findOrFail($id);
+    public function delete(Request $request) {
+        $assignment = Assignment::where('id_tugas', $request->id_tugas)->firstOrFail();
         $assignment->delete();
+        return redirect(route('assignment_mentor'));
     }
 
 
