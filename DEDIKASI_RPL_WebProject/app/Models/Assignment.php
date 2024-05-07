@@ -18,10 +18,8 @@ class Assignment extends Model
      */
     protected $fillable = [
         'id_tugas',
-        'judul_tugas',
-        'deskripsi_tugas',
-        'link_terkait',
-        'tugas_dibuka',
-        'batas_pengumpulan'
+        'title',
+        'description',
+        'additional',
     ];
 }
