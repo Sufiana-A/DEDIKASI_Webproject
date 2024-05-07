@@ -20,8 +20,8 @@ use App\Http\Controllers\CertificateController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 Route::get('/', function () {
-    return view('video/mentor/video-list');
-})->name('listvideo_view');
+    return view('register');
+})->name('viewRegister');
 
 Route::controller(PelatihanController::class)->group(function () {
     Route::get('pelatihan/list/page', 'pelatihanList')->middleware('auth')->name('pelatihan/list/page'); // pelatihan/list/page
@@ -119,3 +119,22 @@ Route::resource('/sertifikat', CertificateController::class);
 
 //dashboard admin
 Route::get('/dashboard-admin', [AdminDashboardController::class, 'index'])->name('dashboard_admin');
+
+//Seleksi admin
+Route::get('/seleksi-peserta', [RegistrasiPelatihanController::class, 'showDaftarEnroll'])->name('seleksi_peserta');
+Route::get('/seleksi-peserta-search', [RegistrasiPelatihanController::class, 'search'])->name('seleksi_peserta.search');
+Route::get('/detail-seleksi/{id_peserta}/{course_id}', [RegistrasiPelatihanController::class, 'detailPesertaPelatihan'])->name('detail_seleksi_peserta');
+Route::post('/submit-update', [RegistrasiPelatihanController::class, 'updateEnroll'])->name('submit_update_seleksi');
+
+//Enroll Peserta
+Route::get('/enroll-pelatihan/{id_peserta}/{id_course}', [RegistrasiPelatihanController::class, 'enrollPelatihan'])->name('enroll_pelatihan');
+Route::post('/submit-enroll/{id_peserta}/{id_course}', [RegistrasiPelatihanController::class, 'store'])->name('submit_enroll_pelatihan');
+
+//Materi Admin
+Route::get('/list-materi', [MateriController::class, 'index'])->name('materi_mentor');
+Route::get('/list-materi-search', [MateriController::class, 'search'])->name('materi_search');
+Route::get('/create-materi', [MateriController::class, 'create'])->name('materi_create');
+Route::post('/store-materi', [MateriController::class, 'store'])->name('materi_store');
+Route::post('/update-materi', [MateriController::class, 'update'])->name('materi_update');
+Route::get('/delete-materi', [MateriController::class, 'destroy'])->name('materi_delete');
+
