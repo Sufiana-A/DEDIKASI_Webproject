@@ -9,25 +9,12 @@ use App\Http\Requests\UpdateCertificateRequest;
 
 class CertificateController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        return __METHOD__;
+        $sertifikat = Sertifikat::all();
+        return view('sertifikat.index', compact('sertifikat'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        return __METHOD__;
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreCertificateRequest $request)
     {        
         // Validasi data input
