@@ -55,5 +55,10 @@ class Peserta extends Authenticatable
             'password' => 'hashed',
         ];
     }
-
+    
+    public function Course()
+    {
+        return $this->belongsToMany(Course::class, 'peserta_course',  'peserta_id', 'course_id')
+                    ->withPivot('nik','ktm', 'ktp', 'status', 'enroll_at');
+    }
 }
