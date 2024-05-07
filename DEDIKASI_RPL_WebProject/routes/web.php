@@ -13,6 +13,7 @@ use App\Http\Controllers\StudentDashboardController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\VideoController;
+use App\Http\Controllers\NilaiController;
 
 use App\Http\Controllers\CertificateController;
 
@@ -64,9 +65,16 @@ Route::get('/peserta-pelatihan', [PesertaPelatihanController::class, 'index'])->
 //Mentor Dashboard
 Route::get("/mentor" , function(){
     return view("dashboard/mentor_dashboard");})->name('dash-mentor');
-Route::get("/mentor/nilai" , function(){
-        return view("mentor/manageNilai");})->name('manage-nilai');
 
+    Route::controller(NilaiController::class)->name('mentor.')->prefix('mentor')->group(function () {
+        Route::get('manage-nilai', 'index')->name('manageNilai.index');
+        Route::get('mentor/manage-nilai/add', 'addNilai')->name('manageNilai.add');
+        Route::post('/manage-nilai/store', 'store')->name('manageNilai.store');
+        Route::get('mentor/manage-nilai/edit/{id}', 'editNilai')->name('manageNilai.edit');
+        Route::post('mentor/manage-nilai/update', 'update')->name('manageNilai.update');
+        Route::post('/manage-nilai/delete', 'delete')->name('manageNilai.delete');
+    
+    });
 Route::get('/profile-mentor', [ProfileMentorController::class, 'show_profile'])->name('profile_mentor');
 Route::get('/profile-mentor-edit', [ProfileMentorController::class, 'edit_profile'])->name('profile_edit_mentor');
 Route::post('/profile-mentor-submit', [ProfileMentorController::class, 'submit_profile'])->name('profile_submit_mentor');

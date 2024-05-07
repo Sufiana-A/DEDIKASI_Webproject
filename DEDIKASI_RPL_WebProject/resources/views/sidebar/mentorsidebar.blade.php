@@ -9,7 +9,7 @@
                         <span> Dashboard</span> 
                         <span class="menu-arrow"></span>
                     </a>
-                    <a href="{{route('manage-nilai')}}"><i class="fas fa-clipboard-list"></i> <span>Grades</span></a>
+                    {{-- <a href="{{route('manage-nilai')}}"><i class="fas fa-clipboard-list"></i> <span>Grades</span></a> --}}
                    
                 @if (Session::get('role_name') === 'Admin' || Session::get('role_name') === 'Super Admin')
                 <li class="submenu (['list/users'])}} (request()->is('view/user/edit/*')) ? 'active' : '' ">
@@ -79,7 +79,7 @@
                 </li>
 
                 <li>
-                    <a href="exam.html"><i class="fas fa-clipboard-list"></i> <span>Exam list</span></a>
+                    <a href="{{route('mentor.manageNilai.index')}}"><i class="fas fa-clipboard-list"></i> <span>Grades</span></a>
                 </li>
                  
                 <li>
