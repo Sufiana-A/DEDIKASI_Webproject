@@ -1,23 +1,25 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\NilaiController;
+use App\Http\Controllers\VideoController;
+use App\Http\Controllers\MateriController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\PelatihanController;
+use App\Http\Controllers\AssignmentController;
+use App\Http\Controllers\AdminCourseController;
+use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\ProfileAdminController;
 use App\Http\Controllers\ProfileMentorController;
-use App\Http\Controllers\ProfilePesertaController;
-use App\Http\Controllers\PelatihanController;
-use App\Http\Controllers\PesertaPelatihanController;
-use App\Http\Controllers\AdminCourseController;
-use App\Http\Controllers\StudentDashboardController;
 use App\Http\Controllers\AdminDashboardController;
-use App\Http\Controllers\AssignmentController;
-use App\Http\Controllers\VideoController;
-use App\Http\Controllers\NilaiController;
 
-use App\Http\Controllers\CertificateController;
+use App\Http\Controllers\ProfilePesertaController;
 
-
+use App\Http\Controllers\PesertaPelatihanController;
+use App\Http\Controllers\StudentDashboardController;
+use App\Http\Controllers\RegistrasiPelatihanController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 Route::get('/', function () {

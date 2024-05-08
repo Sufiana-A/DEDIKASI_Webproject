@@ -8,17 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Certificate extends Model
 {
     use HasFactory;
-    
-    protected $fillable = [
-        'nama', 'file',
-    ];
 
-    // protected $fillable = [
-    //     'peserta_id',
-    //     'pelatihan_id',
-    //     'judul_sertifikat',
-    //     'nama_file'
-    // ];
+    protected $fillable = [
+        'peserta_id',
+        'pelatihan_id',
+        'judul_sertifikat',
+        'nama_file'
+    ];
 
     // relation many to one / belongsto
     public function peserta() {

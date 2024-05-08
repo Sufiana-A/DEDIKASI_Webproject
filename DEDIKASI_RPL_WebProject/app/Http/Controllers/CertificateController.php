@@ -11,31 +11,37 @@ class CertificateController extends Controller
 {
     public function index()
     {
-        $sertifikat = Sertifikat::all();
-        return view('sertifikat.index', compact('sertifikat'));
+        $sertifikat = Certificate::all();
+        return true;
+    }
+
+    public function create()
+    {
+        return view('certificate.addCertificate');
     }
 
     public function store(StoreCertificateRequest $request)
     {        
-        // Validasi data input
+        // Validasi data inputan
         $request->validate([
-            'nama' => 'required',
-            'file' => 'required|file',
+            'id_peserta' => 'required|exists:peserta,id',
+            'id_pelatihan' => 'required|exists:pelatihans,id',
+            'file' => 'required|file|mimes:pdf',
         ]);
 
         // Simpan file
-        $file = $request->file('file');
-        $namaFile = $file->getClientOriginalName();
-        $file->move('sertifikat', $namaFile);
+        $certificate = $request->file('file');
+        $certificate -> storeAs('public/certificates', $certificate->hashName());
 
         // Simpan data sertifikat ke database
-        Sertifikat::create([
-            'nama' => $request->nama,
-            'file' => $namaFile,
+        Certificate::create([
+            'peserta_id' => $request->id_peserta,
+            'pelatihan_id' => $request->id_pelatihan,
+            'nama_file' =>  $certificate->hashName(),
         ]);
 
         return redirect()->back()->with('success', 'Sertifikat berhasil diunggah.');
-    }
+    }   
 
     
     /**
