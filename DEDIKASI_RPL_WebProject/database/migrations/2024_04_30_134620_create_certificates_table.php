@@ -11,7 +11,7 @@ return new class extends Migration
         Schema::create('certificates', function (Blueprint $table) {
             $table->id();
             $table->foreignId('peserta_id')->constrained(table: 'peserta', indexName: 'id');
-            $table->foreignId('pelatihan_id')->constrained(table: 'pelatihans', indexName: 'id_pelatihan');
+            $table->foreignId('course_id')->constrained(table: 'courses', indexName: 'fk_course_id');
             $table->string('nama_file');
             $table->timestamps();
         });
