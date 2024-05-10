@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-    <title>Dashboard Peserta</title>
+    <title>@yield('title')</title>
     <link rel="shortcut icon" href="{{ URL::to('assets/img/favicon.png') }}">
     <link rel="stylesheet" href="{{ URL::to('assets/plugins/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ URL::to('assets/plugins/feather/feather.css') }}">
@@ -94,7 +94,7 @@
                 <li class="nav-item dropdown has-arrow new-user-menus">
                     <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
                         <span class="user-img">
-                            <img class="{{ asset('assets/img/profiles/'.Auth::guard('mentor')->user()->foto_peserta) }}" width="31"alt="">
+                            <img class="{{ asset('assets/img/profiles/'.Auth::guard('peserta')->user()->foto_peserta) }}" width="31"alt="">
                             <div class="user-text">
                                 <h6>{{ Auth::guard('peserta')->user()->first_name  }}</h6>
                                 <p class="text-muted mb-0">{{ Session::get('role_name') }}</p>
@@ -104,7 +104,7 @@
                     <div class="dropdown-menu">
                         <div class="user-header">
                             <div class="avatar avatar-sm">
-                                <img src="{{ asset('assets/img/profiles/'.Auth::guard('mentor')->user()->foto_peserta) }}" class="avatar-img rounded-circle">
+                                <img src="{{ asset('assets/img/profiles/'.Auth::guard('peserta')->user()->foto_peserta) }}" class="avatar-img rounded-circle">
                             </div>
                             <div class="user-text">
                                 <h6>{{ Auth::guard('peserta')->user()->first_name }}</h6>
