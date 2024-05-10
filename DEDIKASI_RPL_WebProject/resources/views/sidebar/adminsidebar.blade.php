@@ -81,7 +81,9 @@
                 <li class="menu-title">
                     <span>Management</span>
                 </li>
-
+                <li>
+                    <a href="{{ route('admin.manageCourse.index') }}"><i class="fas fa-home"></i> <span>Admin Dashboard</span></a>
+                </li>
                 <li>
                     <a href="exam.html"><i class="fas fa-clipboard-list"></i> <span>Exam list</span></a>
                 </li>
