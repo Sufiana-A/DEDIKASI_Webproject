@@ -27,7 +27,7 @@ class PesertaFactory extends Factory
             'no_hp' => '081234567891',
             'email' => fake()->unique()->safeEmail(),
             'password' => Hash::make('password'),
-            'foto_peserta' => ''
+            'foto_peserta' => '.'
         ];
     }
 }

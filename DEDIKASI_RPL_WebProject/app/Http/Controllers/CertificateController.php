@@ -17,7 +17,8 @@ class CertificateController extends Controller
 
     public function create()
     {
-        return view('certificate.addCertificate');
+        $sertifikat = Certificate::all();
+        return view('certificate.addCertificate', ['sertifikat' => $sertifikat]);
     }
 
     public function store(StoreCertificateRequest $request)
@@ -25,7 +26,7 @@ class CertificateController extends Controller
         // Validasi data inputan
         $request->validate([
             'id_peserta' => 'required|exists:peserta,id',
-            'id_pelatihan' => 'required|exists:pelatihans,id',
+            'id_pelatihan' => 'required|exists:courses,id',
             'file' => 'required|file|mimes:pdf',
         ]);
 
@@ -36,7 +37,7 @@ class CertificateController extends Controller
         // Simpan data sertifikat ke database
         Certificate::create([
             'peserta_id' => $request->id_peserta,
-            'pelatihan_id' => $request->id_pelatihan,
+            'course_id' => $request->id_pelatihan,
             'nama_file' =>  $certificate->hashName(),
         ]);
 
@@ -73,6 +74,11 @@ class CertificateController extends Controller
      */
     public function destroy(Certificate $certificate)
     {
-        return __METHOD__;
+        return $certificate;
+        // return Certificate::findOrFail($certificate);
+
+        // $certificate = Certificate::where('id', $certificate->id)->firstOrFail();
+        // $certificate->delete();
+        // return redirect(route('sertifikat.create'));
     }
 }

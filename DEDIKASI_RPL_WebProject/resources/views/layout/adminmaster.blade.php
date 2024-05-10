@@ -96,7 +96,7 @@
                 <li class="nav-item dropdown has-arrow new-user-menus">
                     <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
                         <span class="user-img">
-                            <img class="rounded-circle" src="{{ Asset('assets/img/profiles/'.Auth::guard('admin')->user()->foto_admin) }}" width="31"alt="">
+                            <img class="rounded-circle" src="" width="31"alt="">
                             <div class="user-text">
                                 <h6></h6>
                                 <p class="text-muted mb-0"></p>
@@ -106,7 +106,7 @@
                     <div class="dropdown-menu">
                         <div class="user-header">
                             <div class="avatar avatar-sm">
-                                <img src="{{ Asset('assets/img/profiles/'.Auth::guard('admin')->user()->foto_admin) }}" alt="" class="avatar-img rounded-circle">
+                                <img src="" alt="" class="avatar-img rounded-circle">
                             </div>
                             <div class="user-text">
                                 <h6></h6>

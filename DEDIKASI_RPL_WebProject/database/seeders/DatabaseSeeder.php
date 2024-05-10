@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\admin;
+use App\Models\Course;
 use App\Models\peserta;
 use App\Models\Pelatihan;
 use Illuminate\Database\Seeder;
@@ -25,15 +26,17 @@ class DatabaseSeeder extends Seeder
             'no_hp'         => '087877668899',
             'email'         => 'hihihi@gmail.com',
             'password'      => Hash::make('password'),
-            'foto_admin'    => ''
+            'foto_admin'    => 'fotoadmin.jpg'
         ]);
 
         peserta::factory(15)->create();
         
-        Pelatihan::factory()->create([
-            'id'                    => 1,
-            'nama_pelatihan'        => 'Belajar Laravel',
-            'kategori_pelatihan'    => 'Web Development',
+        Course::factory()->create([
+            'title' => 'Basic Laravel',
+            'uuid' => 'CN005',  
+            'class' => 'ID005',
+            'description' => '<p>Ini adalah kelas laravel</p>',
+            'image' => ''
         ]);
     }
 }

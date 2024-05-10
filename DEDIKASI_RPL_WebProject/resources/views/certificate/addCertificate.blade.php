@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layout.adminmaster')
 
 @section('content')
     <div class="container mt-5">
@@ -46,5 +46,31 @@
             </div>
         </div>
     </div>
-@endsection
 
+    <!-- Bagian ini untuk menampilkan sertifikat dan tombol delete -->
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8 mt-5">
+                <div class="card">
+                    <div class="card-header">{{ __('Daftar Sertifikat') }}</div>
+
+                    <div class="card-body">
+                        <ul>
+                            @foreach ($sertifikat as $sert)
+                                <li>
+                                    {{ $sert->id }} 
+                                    {{ $sert->nama_file }} 
+                                    <form action="{{ route('sertifikat.destroy', 1) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm ml-2">Hapus</button>
+                                    </form>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
