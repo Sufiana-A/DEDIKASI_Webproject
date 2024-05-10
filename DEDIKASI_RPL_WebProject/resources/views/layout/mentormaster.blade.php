@@ -94,9 +94,9 @@
                 <li class="nav-item dropdown has-arrow new-user-menus">
                     <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
                         <span class="user-img">
-                            <img class="rounded-circle" src="/images/{{ Session::get('avatar') }}" width="31"alt="{{ Session::get('name') }}">
+                            <img class="rounded-circle" src="{{ asset('assets/img/profiles/'.Auth::guard('mentor')->user()->foto_mentor) }}" width="31"alt="">
                             <div class="user-text">
-                                <h6>{{ Session::get('name') }}</h6>
+                                <h6>{{ Auth::guard('mentor')->user()->first_name }}</h6>
                                 <p class="text-muted mb-0">{{ Session::get('role_name') }}</p>
                             </div>
                         </span>
@@ -104,14 +104,14 @@
                     <div class="dropdown-menu">
                         <div class="user-header">
                             <div class="avatar avatar-sm">
-                                <img src="/images/{{ Session::get('avatar') }}" alt="{{ Session::get('name') }}" class="avatar-img rounded-circle">
+                                <img src="{{ asset('assets/img/profiles/'.Auth::guard('mentor')->user()->foto_mentor) }}" alt="" class="avatar-img rounded-circle">
                             </div>
                             <div class="user-text">
-                                <h6>{{ Session::get('name') }}</h6>
+                                <h6>{{ Auth::guard('mentor')->user()->first_name }}</h6>
                                 <p class="text-muted mb-0">{{ Session::get('role_name') }}</p>
                             </div>
                         </div>
-                        <a class="dropdown-item" href="">My Profile</a>
+                        <a class="dropdown-item" href="{{ route('profile_mentor') }}">My Profile</a>
                         <a class="dropdown-item" href="inbox.html">Inbox</a>
                         <a class="dropdown-item" href="">Logout</a>
                     </div>
