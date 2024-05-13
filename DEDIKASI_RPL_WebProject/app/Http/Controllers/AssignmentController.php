@@ -11,7 +11,7 @@ class AssignmentController extends Controller
     public function index(){
         $assignments = Assignment::get();
 
-        return view('assignment.mentor.assignment-list', compact('assignments'));
+        return view('assignment.assignment-list', compact('assignments'));
     } 
 
     public function create(){
