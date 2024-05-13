@@ -128,6 +128,7 @@ Route::post('/store-video', [VideoController::class, 'store'])->name('video_stor
 // sertifikat
 Route::resource('/sertifikat', CertificateController::class);
 
+
 //dashboard admin
 Route::get('/dashboard-admin', [AdminDashboardController::class, 'index'])->name('dashboard_admin');
 

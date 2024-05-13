@@ -1,4 +1,5 @@
 @extends('layout.master')
+
     {{-- message --}}
 
     <div class="page-wrapper">
@@ -99,8 +100,14 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="skip-group">
-                                        <a href="{{ route('student.dashboard.course', $course->uuid) }}" class="btn btn-info continue-btn">View</a>
-                                    </div>
+                                    @php
+                                        $enrolled = $course->peserta->contains(Auth::guard('peserta')->user()->id);
+                                    @endphp
+                                    @if ($enrolled)
+                                        <button class="btn btn-info continue-btn" disabled>Enrolled</button>
+                                    @else
+                                        <a href="{{ route('enroll_pelatihan', ['id_peserta' => Auth::guard('peserta')->user()->id, 'id_course' => $course->id]) }}" class="btn btn-info continue-btn">Enroll</a>
+                                    @endif                                    </div>
                                 </div>
                             </div>
                         </div>
