@@ -1,5 +1,4 @@
 @extends('layout.master')
-@extends('title', 'Dashboard Mentor')
     {{-- message --}}
 
     <div class="page-wrapper">
