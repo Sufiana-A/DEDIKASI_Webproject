@@ -11,11 +11,11 @@ class AssignmentController extends Controller
     public function index(){
         $assignments = Assignment::get();
 
-        return view('assignment.assignment-list', compact('assignments'));
+        return view('assignment.mentor.assignment-list', compact('assignments'));
     } 
 
     public function create(){
-        return view('assignment/mentor/assignment-create');
+        return view('assignment.mentor.assignment-create');
     }
 
     public function store(Request $request)
@@ -70,25 +70,31 @@ class AssignmentController extends Controller
 
     ///PESERTA
     public function indexPeserta(){
-        return view('assignment/peserta-list-assignment');
+        $assignments = Assignment::get();
+
+        return view('assignment.peserta-list-assignment', compact('assignments'));
     } 
+
+    public function createPeserta(){
+        return view('assignment.peserta-add-assignment');
+    }
 
     public function submit(Request $request)
     {
         $request->validate([
             'text_submission' => 'nullable|string',
-            'file_submission' => 'nullable|file'
+            'file_submission' => 'nullable|mimes:pdf,doc,jpg,jpeg,png'
         ]);
     
         // Assign default assignment_id based on business logic
-        $assignment_id = $this->getDefaultAssignmentId(); // Implement this method according to your business logic
+        $assignment_id = $this->getDefaultAssignmentId(); 
     
         $submission = new Submission;
         $submission->assignment_id = $assignment_id;
         $submission->text_submission = $request->text_submission;
     
         if ($request->hasFile('file_submission')) {
-            $filename = $request->file('file_submission')->store('submissions', 'public');
+            $filename = $request->file('file_submission')->store('submission', 'public');
             $submission->file_submission = $filename;
         }
     
