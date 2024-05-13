@@ -23,7 +23,7 @@ class LoginController extends Controller
         ];
         if (Auth::guard('peserta')->attempt($credentials)){
             $request->session()->regenerate();
-            return redirect()->route('dashboard.index');
+            return redirect()->route('student.dashboard.index');
         };
         if (Auth::guard('admin')->attempt($credentials)) {
             $request->session()->regenerate();
