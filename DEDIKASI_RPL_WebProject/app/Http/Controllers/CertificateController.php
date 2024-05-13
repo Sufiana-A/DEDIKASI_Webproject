@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Certificate;
 use App\Http\Requests\StoreCertificateRequest;
 use App\Http\Requests\UpdateCertificateRequest;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+
 
 class CertificateController extends Controller
 {
@@ -72,13 +74,30 @@ class CertificateController extends Controller
     /**
      * Remove the specified resource from storage.
      */
+    // public function destroy(Certificate $certificate)
+    // {
+    //     // return __METHOD__;
+    //     Certificate::findOrFail($certificate);
+        
+    //     $certificate = Certificate::where('id', $certificate->id)->firstOrFail();
+    //     $certificate->delete();
+    //     return redirect(route('sertifikat.create'));
+    // }
+
     public function destroy(Certificate $certificate)
     {
-        return $certificate;
-        // return Certificate::findOrFail($certificate);
-
-        // $certificate = Certificate::where('id', $certificate->id)->firstOrFail();
-        // $certificate->delete();
-        // return redirect(route('sertifikat.create'));
+        try {
+            Certificate::findOrFail($certificate->id);
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            return redirect()->back()->with('error', 'Certificate not found.');
+        }
+        
+        // Jika Certificate ditemukan, lanjutkan dengan menghapusnya
+        $certificate->delete();
+        
+        // Redirect ke halaman tertentu setelah penghapusan
+        return redirect(route('sertifikat.create'))->with('success', 'Certificate deleted successfully.');
     }
+    
+
 }

@@ -60,7 +60,7 @@
                                 <li>
                                     {{ $sert->id }} 
                                     {{ $sert->nama_file }} 
-                                    <form action="{{ route('sertifikat.destroy', 1) }}" method="POST">
+                                    <form action="{{ route('sertifikat.destroy', 1) }}" method="DELETE">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm ml-2">Hapus</button>

@@ -101,6 +101,7 @@
                                 <div class="col-12">
                                     <div class="skip-group">
                                         <a href="{{ route('student.dashboard.course', $course->uuid) }}" class="btn btn-info continue-btn">View</a>
+                                        <a href="{{ route('enroll_pelatihan', ['id_peserta' => Auth::guard('peserta')->user()->id, 'id_course' => $course->id]) }}" class="btn btn-info continue-btn">Enroll</a>
                                     </div>
                                 </div>
                             </div>
