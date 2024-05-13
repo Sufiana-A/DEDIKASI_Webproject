@@ -1,5 +1,6 @@
 @extends('layout.master')
 @section('content')
+
 <div class="page-wrapper">
     <div class="content container-fluid">
         <div class="page-header">
@@ -12,24 +13,84 @@
         <div class="container">
             <div class="row">
                 @foreach($pelatihanAcc as $enroll)
-                <div class="row row-cols-md-2">
-                    <div class="col mb-4">
+                    <div class="col md-6 mb-4">
                         <div class="card bg-primary text-black shadow mb-4">
                             <div class="card-body">
-                                <h5 class="card-title">{{ $enroll->course->title }}</h5>
-                                <p class="card-text">{{ $enroll->course->class }}</p>
-                                <img src="{{ asset('assets/img/peserta_pelatihan/'.Auth::guard('course')->user()->image) }}" class="card-img-top" style="width:400px" alt="figma">
-                                <p class="card-text">{{ $enroll->course->description }}</p>
-                                <a href="{{ $enroll->video->id_video }}" class="btn btn-primary"><i class="fas fa-video"></i> Video </a>
-                                <a href="{{ $enroll->materi->id_materi }}" class="btn btn-primary"><i class="fas fa-file"></i> Material </a>
-                                <a href="{{ $enroll->assignment->id_tugas }}" class="btn btn-primary"><i class="fas fa-file-alt"></i> Assignment </a>
+                                <div class="d-flex justify-content-center mb-3 text-center">
+                                    <h5 class="card-title"><strong>{{ $enroll->title }}</strong></h5>
+                                </div>
+                                <hr>
+                                <div class="d-flex justify-content-center mb-3">
+                                    <img src="{{ asset('assets/img/peserta_pelatihan/'.$enroll->image) }}" class="card-img-top img-fluid" style="width:350px" alt="gambar">
+                                </div>
+                                <hr>
+                                <div class="d-flex justify-content-center mb-3 text-center">
+                                    <p class="card-text">{{ $enroll->description }}</p>
+                                </div>
+                                <hr>
+                                <div class="d-flex justify-content-center mb-3">
+                                    <a href="{{route('video_peserta')}}" class="btn btn-primary mx-2"><i class="fas fa-video"></i> Video </a>
+                                    <a href="{{route('view_materi')}}" class="btn btn-primary mx-2"><i class="fas fa-file"></i> Material </a>
+                                    <a href="{{route('add_assignment')}}" class="btn btn-primary mx-2"><i class="fas fa-file-alt"></i> Assignment </a>
+                                </div>
+                                <hr>
+                                <div class="d-flex justify-content-center mb-3">
+                                    <div class="actions">
+                                        <button type="submit" class="btn btn-danger unenroll" data-bs-toggle="modal" data-bs-target="#unenroll" data-id="{{ $enroll->id }}">
+                                            <i class="fas fa-times"> Unenroll </i>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                    @if ($loop->iteration % 2 == 0)
+                    @endif
                 @endforeach
             </div>
         </div>
     </div>
 </div>
+
+    <!-- Unenroll Modal -->
+    {{-- model elete --}}
+    <div class="modal custom-modal fade" id="unenroll" role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="form-header">
+                        <h3>Unenroll Pelatihan</h3>
+                        <p>Apakah anda yakin mau unenroll?</p>
+                    </div>
+                    <div class="modal-btn delete-action">
+                        <div class="row">
+                            <form action="{{ route('list_peserta_pelatihan_unenroll') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="id" value="">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <button type="submit" id="unenroll-btn" class="btn btn-primary paid-continue-btn" style="width: 100%;">Unenroll</button>
+                                    </div>
+                                    <div class="col-6">
+                                        <a data-bs-dismiss="modal" class="btn btn-primary paid-cancel-btn">Batal</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @section('script')
+        {{-- delete js --}}
+        <script>
+            $(document).on('click','.unenroll',function()
+            {
+                $('input[name="id"]').val($(this).data('id'));
+            });
+        </script>
+    @endsection
+
 @endsection

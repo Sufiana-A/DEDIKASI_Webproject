@@ -50,7 +50,7 @@
                                         </th> --}}
                                         <th>ID</th>
                                         <th>Nama Pelatihan</th>
-                                        <th>Total Peserta (Status Acc)</th>
+                                        <th>Total Peserta (Status Diterima)</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -69,7 +69,7 @@
                                                 </h2>
                                             </td>
                                             <td>
-                                                {{ $course->peserta->where('pivot.status', 'Acc')->count() }}
+                                                {{ $course->peserta->where('pivot.status', 'diterima')->count() }}
                                             </td>
                                         </tr>
                                     @endforeach

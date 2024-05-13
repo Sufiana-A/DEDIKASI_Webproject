@@ -1,3 +1,4 @@
+@dd(Auth::guard('peserta'))
 @extends('layout.master')
 
 @section('content')
@@ -16,12 +17,10 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($sertifikat as $sert)
                                     <tr>
-                                        <td>{{ $sert->nama }}</td>
-                                        <td><a href="{{ asset('sertifikat/'.$sert->file) }}" target="_blank">{{ $sert->file }}</a></td>
+                                        <td>{{ $sertifikat->peserta->first_name . $sertifikat->peserta->last_name }}</td>
+                                        <td><a href="{{ asset('sertifikat/'.$sertifikat->nama_file) }}" target="_blank">{{ $sertifikat->nama_file }}</a></td>
                                     </tr>
-                                @endforeach
                             </tbody>
                         </table>
                     </div>

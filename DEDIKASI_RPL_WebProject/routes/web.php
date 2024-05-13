@@ -61,6 +61,7 @@ Route::post('/profile-photo-peserta-submit', [ProfilePesertaController::class, '
 
 //peserta pelaihan
 Route::get('/peserta-pelatihan', [PesertaPelatihanController::class, 'index'])->name('list_peserta_pelatihan');
+Route::post('/peserta-pelatihan/unenroll', [PesertaPelatihanController::class, 'unenroll'])->name('list_peserta_pelatihan_unenroll');
 
 //mentor
 
