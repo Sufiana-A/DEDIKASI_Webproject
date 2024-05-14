@@ -11,15 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('grades', function (Blueprint $table) {
+        Schema::create('peserta_assignment', function (Blueprint $table) {
             $table->id();
-            $table->string('uuid')->nullable();
-            $table->string('title')->nullable();
-            $table->string('class')->nullable();
-            $table->longText('description')->nullable();
-            $table->string('image')->nullable();
+            $table->unsignedBigInteger('peserta_id');
+            $table->unsignedBigInteger('assignment_id'); 
+            $table->string('file_assignments')->nullable();                                                                    
+            $table->string('nilai')->default('Belum Lulus');
+	        $table->string('deskripsi')->nullable();   
+            $table->foreign('peserta_id')->references('id')->on('peserta')->onDelete('cascade');
+            $table->foreign('assignment_id')->references('id')->on('assignments')->onDelete('cascade');
             $table->timestamps();
         });
+
     }
 
     /**
@@ -27,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('grades');
+        Schema::dropIfExists('peserta_assignment');
     }
 };

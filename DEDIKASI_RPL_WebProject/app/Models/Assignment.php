@@ -22,4 +22,10 @@ class Assignment extends Model
         'description',
         'additional',
     ];
+    public function peserta()
+    {
+        return $this->belongsToMany(peserta::class, 'peserta_assignment',  'peserta_id', 'assignment_id')
+                    ->withPivot('file_assignments','nilai','deskripsi');
+    }
+
 }

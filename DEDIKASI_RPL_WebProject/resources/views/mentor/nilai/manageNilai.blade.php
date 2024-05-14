@@ -2,8 +2,8 @@
 @section('content')
 {{-- message --}}
 
-@extends('layout.adminmaster')
-@section('content')
+{{-- @extends('layout.adminmaster')
+@section('content') --}}
 {{-- message --}}
 
     <div class="page-wrapper">
@@ -12,10 +12,10 @@
             <div class="page-header">
                 <div class="row align-items-center">
                     <div class="col">
-                        <h3 class="page-title"$grade LIST</h3>
+                        <h3 class="page-title" >Assigment Grades</h3>
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                            <li class="breadcrumb-item active"Nilai</li>
+                            <li class="breadcrumb-item active">Nilai</li>
                         </ul>
                     </div>
                 </div>
@@ -34,11 +34,7 @@
                                 <input type="text" class="form-control" placeholder="Search by Name" name="title" value="{{ request()->title ?? null }}">
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Search by Class" name="class" value="{{ request()->class ?? null }}">
-                            </div>
-                        </div>
+                        
                         <div class="col-lg-2">
                             <div class="search-student-btn">
                                 <button type="submit" class="btn btn-primary">Search</button>
@@ -55,7 +51,7 @@
                             <div class="page-header">
                                 <div class="row align-items-center">
                                     <div class="col">
-                                        <h3 class="page-title">Subjects</h3>
+                                        <h3 class="page-title">Assignment</h3>
                                     </div>
                                     <div class="col-auto text-end float-end ms-auto download-grp">
                                         
@@ -70,39 +66,28 @@
                                     class="table border-0 star-student table-hover table-center mb-0 datatable table-striped">
                                     <thead class="student-thread">
                                         <tr>
-                                            {{-- <th>
-                                                <div class="form-check check-tables">
-                                                    <input class="form-check-input" type="checkbox" value="something">
-                                                </div>
-                                            </th> --}}
                                             <th>ID</th>
-                                            <th>Name</th>
-                                            <th>Class</th>
+                                            <th>Assignment Files</th>
+                                            <th>Nilai</th>
                                             <th class="text-end">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($grades as $grade)
+                                        @foreach ($assignments as $assignment)
                                         <tr>
-                                            {{-- <td>
-                                                <div class="form-check check-tables">
-                                                    <input class="form-check-input" type="checkbox"
-                                                        value="something">
-                                                </div>
-                                            </td> --}}
-                                            <td class="subject_id">{{ $grade->uuid }}</td>
+                                            <td class="subject_id">{{ $assignment->uuid }}</td>
                                             <td>
                                                 <h2>
-                                                    <a>{{ $grade->title }}</a>
+                                                    <a>{{ $assignment->title }}</a>
                                                 </h2>
                                             </td>
-                                            <td>{{ $grade->class }}</td>
+                                            <td>{{ $assignment->Nilai }}</td>
                                             <td class="text-end">
                                                 <div class="actions">
-                                                    <a href="{{ route('mentor.manageNilai.edit', $grade->uuid) }}" class="btn btn-sm bg-danger-light">
+                                                    <a href="{{ route('mentor.manageNilai.edit', $assignment->uuid) }}" class="btn btn-sm bg-danger-light">
                                                         <i class="far fa-edit me-2"></i>
                                                     </a>
-                                                    <a class="btn btn-sm bg-danger-light delete" data-bs-toggle="modal" data-bs-target="#delete" data-uuid="{{ $grade->uuid }}">
+                                                    <a class="btn btn-sm bg-danger-light delete" data-bs-toggle="modal" data-bs-target="#delete" data-uuid="{{ $assignment->uuid }}">
                                                         <i class="fe fe-trash-2"></i>
                                                     </a>
                                                 </div>
