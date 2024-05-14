@@ -1,13 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Models\Video;
+
 
 class VideoController extends Controller
 {
     public function index(){
-        return view('video/mentor/video-list');
+        $video = Video::get();
+        return view('video.mentor.video-list', compact('video'));
     } 
 
     public function create(){
@@ -17,26 +21,21 @@ class VideoController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'judul'     => 'required',
-            'deskripsi' => 'required',
-            'file' => 'required|mimes:pdf|max:2048', // Validasi file PDF
-            'urutan' => 'required|integer', // Validasi urutan
+            'id_video' => 'required',
+            'judul_video'     => 'required',
+            'deskripsi_video' => 'required',
+            'link_terkait' => 'required',
         ]);
-
-        $video = new Video;
-        $video->deskripsi = $request->deskripsi;
-        $video->urutan = $request->urutan; // Simpan urutan
-
-        if ($request->hasFile('file')) {
-            $file = $request->file('file');
-            $filename = time() . '.' . $file->getClientOriginalExtension();
-            $path = $file->storeAs('uploads', $filename);
-            $assignment->file = $path;
-        }
+        
+        $video = new Video();
+        $video->id_video = $request->id_video;
+        $video->judul_video = $request->judul_video;
+        $video->deskripsi_video = $request->deskripsi_video;
+        $video->link_terkait = $request->link_terkait;
 
         $video->save();
 
-        return redirect()->route('video/mentor/video-list')->with('success', 'Video berhasil ditambahkan');
+        return redirect()->route('video_mentor')->with('success', 'Video berhasil ditambahkan');
     }
 
 
