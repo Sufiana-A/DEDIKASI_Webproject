@@ -132,6 +132,9 @@ Route::get('/edit-video/{id}', [VideoController::class, 'edit'])->name('video_ed
 Route::post('/update-video/{id}', [VideoController::class, 'update'])->name('video_update');
 Route::get('/delete-video', [VideoController::class, 'delete'])->name('video_delete');
 
+//video peserta
+Route::get('/peserta-list-video', [VideoController::class, 'indexPeserta'])->name('video_peserta');
+
 // sertifikat
 Route::resource('/sertifikat', CertificateController::class);
 

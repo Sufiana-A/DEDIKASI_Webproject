@@ -64,4 +64,12 @@ class VideoController extends Controller
         return redirect(route('video_mentor'));
     }
 
+
+    #PESERTA
+    public function indexPeserta(){
+        $video = Video::get();
+
+        return view('video.peserta-video-view', compact('video'));
+    } 
+
 }

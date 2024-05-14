@@ -32,7 +32,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="deskripsi_video" class="form-label">Deskripsi</label>
-                                    <textarea class="form-control summernote" id="deskripsi_video" rows="3" name="deskripsi_video" required></textarea>
+                                    <textarea class="form-control" id="deskripsi_video" rows="3" name="deskripsi_video" required></textarea>
                                 </div>
                                 <div class="mb-3">
                                     <label for="link_terkait" class="form-label">Link Terkait</label>
@@ -50,25 +50,3 @@
     </div>
 
 @endsection
-
-@section('script')
-<script>
-    $('.summernote').summernote({
-      placeholder: 'Type here',
-      tabsize: 2,
-      height: 120,
-      toolbar: [
-        ['style', ['style']],
-        ['font', ['bold', 'underline', 'strikethrough', 'clear']],
-        ['color', ['color']],
-        ['para', ['paragraph']],
-        ['insert', ['link', 'picture']],
-        ['table', ['table']],
-        ['insert', ['picture']],
-        ['view', ['codeview', 'help']],
-        ['height', ['height']]
-      ]
-    });
-</script>
-@endsection
-
