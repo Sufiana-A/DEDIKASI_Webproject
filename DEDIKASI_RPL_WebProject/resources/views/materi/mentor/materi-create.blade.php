@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layout.adminmaster')
 
 @section('content')
 <div class="page-wrapper">
@@ -8,26 +8,33 @@
          <div class="card">
     <div class="container">
         <h2 style="margin-top: 20px;">Tambah Materi Baru</h2>
-        <form action="#" method="POST" enctype="multipart/form-data">
+        <form action="{{route('materi_store')}}" method="POST" enctype="multipart/form-data">
             @csrf
-	    <div class="form-group">
-                <label for="judul">Judul Materi</label>
-                <input class="form-control @error('judul') is-invalid @enderror" id="judul" name="judul" required>
-		@error('judul')
+            <div class="form-group">
+                <label for="id_materi">ID Materi</label>
+                <input class="form-control @error('id_materi') is-invalid @enderror" placeholder="ex: M-01"  id="id_materi" name="id_materi" required>
+		@error('id_materi')
                   <div class="alert text-danger">{{ $message }}</div>
                 @enderror
             </div>
             <div class="form-group">
-                <label for="deskripsi">Deskripsi Materi</label>
-                <textarea class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" name="deskripsi" rows="3"></textarea>
-                @error('deskripsi')
+                <label for="judul_materi">Judul Materi</label>
+                <input class="form-control @error('judul_materi') is-invalid @enderror" placeholder="ex: Materi 01 - (Nama Materi)"id="judul_materi" name="judul_materi" required>
+		@error('judul_materi')
                   <div class="alert text-danger">{{ $message }}</div>
                 @enderror
             </div>
             <div class="form-group">
-                <label for="file">Link / File Terkait</label>
-                <input type="file" class="form-control-file @error('file') is-invalid @enderror" id="file" name="file" required>
-                @error('file')
+                <label for="deskripsi_materi">Deskripsi Materi</label>
+                <textarea class="form-control @error('deskripsi_materi') is-invalid @enderror" id="deskripsi_materi" name="deskripsi_materi" rows="3"></textarea>
+                @error('deskripsi_materi')
+                  <div class="alert text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="form-group">
+                <label for="link_terkait">File Materi</label>
+                <input type="file" class="form-control-file @error('link_terkait') is-invalid @enderror" id="link_terkait" name="link_terkait" required>
+                @error('link_terkait')
                   <div class="alert text-danger">{{ $message }}</div>
                 @enderror
             </div>

@@ -137,19 +137,20 @@ Route::get('/dashboard-admin', [AdminDashboardController::class, 'index'])->name
 Route::get('/seleksi-peserta', [RegistrasiPelatihanController::class, 'showDaftarEnroll'])->name('seleksi_peserta');
 Route::get('/seleksi-peserta-search', [RegistrasiPelatihanController::class, 'search'])->name('seleksi_peserta.search');
 Route::get('/detail-seleksi/{id_peserta}/{course_id}', [RegistrasiPelatihanController::class, 'detailPesertaPelatihan'])->name('detail_seleksi_peserta');
-Route::post('/submit-update', [RegistrasiPelatihanController::class, 'updateEnroll'])->name('submit_update_seleksi');
+Route::post('/submit-update/{id_peserta}/{course_id}', [RegistrasiPelatihanController::class, 'updateEnroll'])->name('submit_update_seleksi');
 
 //Enroll Peserta
 Route::get('/enroll-pelatihan/{id_peserta}/{id_course}', [RegistrasiPelatihanController::class, 'enrollPelatihan'])->name('enroll_pelatihan');
 Route::post('/submit-enroll/{id_peserta}/{id_course}', [RegistrasiPelatihanController::class, 'store'])->name('submit_enroll_pelatihan');
 
-//Materi Admin
+//Materi Mentor
 Route::get('/list-materi', [MateriController::class, 'index'])->name('materi_mentor');
 Route::get('/list-materi-search', [MateriController::class, 'search'])->name('materi_search');
 Route::get('/create-materi', [MateriController::class, 'create'])->name('materi_create');
 Route::post('/store-materi', [MateriController::class, 'store'])->name('materi_store');
-Route::post('/update-materi', [MateriController::class, 'update'])->name('materi_update');
-Route::get('/delete-materi', [MateriController::class, 'destroy'])->name('materi_delete');
+Route::get('/detail-materi/{id}', [MateriController::class, 'detailMateri'])->name('materi_detail');
+Route::post('/update-materi/{id}', [MateriController::class, 'update'])->name('materi_update');
+Route::get('/delete-materi', [MateriController::class, 'delete'])->name('materi_delete');
 
 //timeline
 Route::get('/calendar/mycalendar', [EventController::class, 'myCalendar'])->name('view_kalendar');
@@ -157,3 +158,6 @@ Route::post('/calendar/mycalendar/addevent', [EventController::class, 'addEvent'
 Route::post('/calendar/mycalendar/editevent', [EventController::class, 'updateEvent'])->name('edit_event');
 Route::post('/calendar/mycalendar/deleteevent', [EventController::class, 'deleteEvent'])->name('delete_event');
 Route::get('/getevents', [EventController::class, 'getEvents'])->name('get_events');
+
+//assignment peserta
+Route::get('/peserta-view-materi', [MateriController::class, 'indexPeserta'])->name('view_materi');
