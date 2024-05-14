@@ -124,10 +124,12 @@ Route::get('/peserta-create-assignment', [AssignmentController::class, 'createPe
 Route::post('/peserta-submit-assignment', [AssignmentController::class, 'submit'])->name('submit_assignment');
 Route::post('/peserta-update-assignment', [AssignmentController::class, 'updatePeserta'])->name('update_assignment');
 
-//video admin
+//video mentor
 Route::get('/list-video', [VideoController::class, 'index'])->name('video_mentor');
 Route::get('/create-video', [VideoController::class, 'create'])->name('video_create');
 Route::post('/store-video', [VideoController::class, 'store'])->name('video_store');
+Route::get('/edit-video/{id}', [VideoController::class, 'edit'])->name('video_edit');
+Route::post('/update-video/{id}', [VideoController::class, 'update'])->name('video_update');
 
 
 // sertifikat

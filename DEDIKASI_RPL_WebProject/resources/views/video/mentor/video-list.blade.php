@@ -79,7 +79,7 @@
                                             <td>{{ $video->link_terkait }}</td>
                                             <td class="text-end">
                                                 <div class="actions">
-                                                    {{-- <a href="{{ route('video_edit', $video->id) }}" class="btn btn-sm bg-danger-light"> --}}
+                                                    <a href="{{ route('video_edit', $video->id) }}" class="btn btn-sm bg-danger-light">
                                                         <i class="far fa-edit me-2"></i>
                                                     </a>
                                                     <a class="btn btn-sm bg-danger-light delete" data-bs-toggle="modal" data-bs-target="#delete" data-id="{{ $video->id }}">

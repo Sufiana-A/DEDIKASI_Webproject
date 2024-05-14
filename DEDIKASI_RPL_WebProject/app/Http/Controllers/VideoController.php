@@ -38,5 +38,24 @@ class VideoController extends Controller
         return redirect()->route('video_mentor')->with('success', 'Video berhasil ditambahkan');
     }
 
+    public function edit(Request $request, $id){
+        $video = Video::where('id', $request->id)->firstOrFail();
+        return view('video.mentor.video-update', compact('video'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'id_video' => 'nullable|string',
+            'judul_video' => 'nullable|string',
+            'deskripsi_video' => 'nullable|string',
+            'link_terkait' => 'nullable|string', 
+        ]);
+
+        $video = Video::findOrFail($id);
+        $video->update($request->all());
+
+        return redirect()->route('video_mentor', [$video->id])->with('success', 'Assignment berhasil diperbarui');
+    }
 
 }
