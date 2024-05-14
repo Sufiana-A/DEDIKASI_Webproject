@@ -25,21 +25,19 @@
                                 <hr>
                                 <p class="card-text">{{ $assignment->description }}</p>
                                 {{-- <a href="{{ $assignment->addition }}" class="card-link" target="_blank">Tugas</a> --}}
-                    </div>
+                            </div>
                         </div>
                         <div class="col-12">
                             <div class="skip-group">
-                                <a href="{{ $assignment->addition }}" target="_blank" class="btn btn-info continue-btn" style="margin-top: 10px; padding: 5px 10px;"><i class="fas fa-download"></i> File Tugas</a>
+                                <a href="{{ $assignment->addition }}" target="_blank" class="btn btn-info continue-btn" style="margin-top: 10px; padding: 5px 10px;" download><i class="fas fa-download"></i> File Tugas</a>
+                                <a href="{{ route('create_assignment') }}" target="_blank" class="btn btn-info continue-btn" style="margin-top: 10px; padding: 5px 10px;"><i class="fas fa-book"></i> Kumpulkan Tugas</a>
                             </div>
                         </div>
-                    </div>
-                            
-                        </div>
-                    </div>
+                    </div>                        
                 </div>
             </div>
             @endforeach
         </div>
+        </div>   
     </div>
-</div>
 @endsection

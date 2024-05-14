@@ -109,7 +109,8 @@ Route::controller(StudentDashboardController::class)->name('student.')->group(fu
 Route::get('/list-assignment', [AssignmentController::class, 'index'])->name('assignment_mentor');
 Route::get('/create-assignment', [AssignmentController::class, 'create'])->name('assignment_create');
 Route::post('/store-assignment', [AssignmentController::class, 'store'])->name('assignment_store');
-Route::post('/update-assignment', [AssignmentController::class, 'update'])->name('assignment_update');
+Route::get('/edit-assignment/{id}', [AssignmentController::class, 'edit'])->name('assignment_edit');
+Route::post('/update-assignment/{id}', [AssignmentController::class, 'update'])->name('assignment_update');
 Route::get('/delete-assignment', [AssignmentController::class, 'delete'])->name('assignment_delete');
 
 

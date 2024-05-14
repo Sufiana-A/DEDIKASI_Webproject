@@ -20,7 +20,7 @@
                 <div class="col-sm-12">
                     <div class="card card-table">
                         <div class="card-body">
-                            <form action="{{ route('assignment_store') }}" method="post">
+                            <form action="{{ route('assignment_store') }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="mb-3">
                                     <label for="id_tugas" class="form-label">ID Tugas</label>
@@ -71,5 +71,4 @@
     });
 </script>
 @endsection
-
 
