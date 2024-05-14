@@ -14,7 +14,7 @@ use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\ProfileAdminController;
 use App\Http\Controllers\ProfileMentorController;
 use App\Http\Controllers\AdminDashboardController;
-
+use App\Http\Controllers\NilaiPesertaController;
 use App\Http\Controllers\ProfilePesertaController;
 
 use App\Http\Controllers\PesertaPelatihanController;
@@ -78,6 +78,10 @@ Route::get("/mentor" , function(){
         Route::post('/manage-nilai/delete', 'delete')->name('manageNilai.delete');
     
     });
+// nilai peserta 
+Route::get('/nilai-peserta', [NilaiPesertaController::class, 'index'])->name('nilai-peserta');
+
+
 Route::get('/profile-mentor', [ProfileMentorController::class, 'show_profile'])->name('profile_mentor');
 Route::get('/profile-mentor-edit', [ProfileMentorController::class, 'edit_profile'])->name('profile_edit_mentor');
 Route::post('/profile-mentor-submit', [ProfileMentorController::class, 'submit_profile'])->name('profile_submit_mentor');
