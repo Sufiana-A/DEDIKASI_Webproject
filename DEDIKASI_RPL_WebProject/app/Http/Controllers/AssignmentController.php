@@ -35,8 +35,8 @@ class AssignmentController extends Controller
 
         if ($request->hasFile('addition')) {
             $tugas = $request->file('addition');
-            $tugasname = time() . '.' . $tugas->getClientOriginalExtension();
-            $tugas->storeAs('/storage/app/public/assignment', $tugasname);
+            $tugasname = time() . '-' . $tugas->getClientOriginalName();
+            $tugas->storeAs('public/assignment', $tugasname);
             $assignments->addition = $tugasname;
         }
         
@@ -45,6 +45,11 @@ class AssignmentController extends Controller
         return redirect()->route('assignment_mentor')->with('success', 'Assignment berhasil ditambahkan');            
     }
     
+    public function edit(Request $request, $id){
+        $assignments = Assignment::where('id', $request->id)->firstOrFail();
+        return view('assignment.mentor.assignment-update', compact('assignments'));
+    }
+
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -54,10 +59,24 @@ class AssignmentController extends Controller
             'addition' => 'nullable|mimes:pdf,doc,jpg,jpeg,png|max:2048', 
         ]);
 
-        $assignment = Assignment::findOrFail($id);
-        $assignment->update($request->all());
+        $assignments = Assignment::findOrFail($id);
 
-        return redirect()->route('assignment.index')->with('success', 'Assignment berhasil diperbarui');
+        if ($request->hasFile('addition')) {
+            
+            $tugaslama = public_path('storage/assignment/'.$assignments->addition);
+            if (file_exists($tugaslama) && is_file($tugaslama)) {
+                unlink($tugaslama);
+            }
+            
+            $tugas = $request->file('addition');
+            $tugasname = time() . '-' . $tugas->getClientOriginalName();
+            $tugas->storeAs('public/assignment', $tugasname);
+            $assignments->addition = $tugasname;
+        }
+
+        $assignments->update($request->all());
+
+        return redirect()->route('assignment_mentor', [$assignments->id])->with('success', 'Assignment berhasil diperbarui');
     }
 
     public function delete(Request $request) {
@@ -86,13 +105,12 @@ class AssignmentController extends Controller
             'file_submission' => 'nullable|mimes:pdf,doc,jpg,jpeg,png'
         ]);
     
-        // Assign default assignment_id based on business logic
         $assignment_id = $this->getDefaultAssignmentId(); 
     
         $submission = new Submission;
         $submission->assignment_id = $assignment_id;
         $submission->text_submission = $request->text_submission;
-    
+        
         if ($request->hasFile('file_submission')) {
             $filename = $request->file('file_submission')->store('submission', 'public');
             $submission->file_submission = $filename;
@@ -102,20 +120,12 @@ class AssignmentController extends Controller
     
         return redirect()->back()->with('success', 'Tugas berhasil dikumpulkan!');
     }
-    
-    private function getDefaultAssignmentId()
-    {
-        $user = auth()->user();
-            $assignment = $user->currentAssignment; 
-    
-        return $assignment ? $assignment->id : null;
-    }
 
     public function updatePeserta(Request $request)
 {
     $request->validate([
         'text_submission' => 'nullable|string',
-        'file_submission' => 'nullable|file'
+        'file_submission' => 'nullable|mimes:pdf,doc,jpg,jpeg,png'
     ]);
 
     $assignment_id = $this->getDefaultAssignmentId();
