@@ -58,4 +58,10 @@ class VideoController extends Controller
         return redirect()->route('video_mentor', [$video->id])->with('success', 'Assignment berhasil diperbarui');
     }
 
+    public function delete(Request $request) {
+        $video = Video::where('id_video', $request->id_video)->firstOrFail();
+        $video->delete();
+        return redirect(route('video_mentor'));
+    }
+
 }

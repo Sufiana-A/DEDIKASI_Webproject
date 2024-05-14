@@ -109,7 +109,7 @@ Route::controller(StudentDashboardController::class)->name('student.')->group(fu
     Route::get('/course/{id}', 'showCourse')->name('dashboard.course');
 });
 
-//assignment admin
+//assignment mentor
 Route::get('/list-assignment', [AssignmentController::class, 'index'])->name('assignment_mentor');
 Route::get('/create-assignment', [AssignmentController::class, 'create'])->name('assignment_create');
 Route::post('/store-assignment', [AssignmentController::class, 'store'])->name('assignment_store');
@@ -130,7 +130,7 @@ Route::get('/create-video', [VideoController::class, 'create'])->name('video_cre
 Route::post('/store-video', [VideoController::class, 'store'])->name('video_store');
 Route::get('/edit-video/{id}', [VideoController::class, 'edit'])->name('video_edit');
 Route::post('/update-video/{id}', [VideoController::class, 'update'])->name('video_update');
-
+Route::get('/delete-video', [VideoController::class, 'delete'])->name('video_delete');
 
 // sertifikat
 Route::resource('/sertifikat', CertificateController::class);

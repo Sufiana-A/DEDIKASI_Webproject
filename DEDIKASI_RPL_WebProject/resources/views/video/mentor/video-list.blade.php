@@ -82,7 +82,7 @@
                                                     <a href="{{ route('video_edit', $video->id) }}" class="btn btn-sm bg-danger-light">
                                                         <i class="far fa-edit me-2"></i>
                                                     </a>
-                                                    <a class="btn btn-sm bg-danger-light delete" data-bs-toggle="modal" data-bs-target="#delete" data-id="{{ $video->id }}">
+                                                    <a class="btn btn-sm bg-danger-light delete" data-bs-toggle="modal" data-bs-target="#delete" data-id_video="{{ $video->id_video }}">
                                                         <i class="fe fe-trash-2"></i>
                                                     </a>
                                                 </div>
@@ -108,7 +108,7 @@
                     </div>
                     <div class="modal-btn delete-action">
                         <div class="row">
-                            {{-- <form action="{{ route('video_delete') }}" method="GET"> --}}
+                            <form action="{{ route('video_delete') }}" method="GET">
                                 @csrf
                                 <input type="hidden" name="id_video" value="">
                                 <div class="row">
