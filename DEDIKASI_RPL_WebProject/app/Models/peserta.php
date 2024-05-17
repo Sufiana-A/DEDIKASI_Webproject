@@ -67,4 +67,9 @@ public function Assignment()
         return $this->belongsToMany(Assignment::class, 'peserta_assignment',  'peserta_id', 'assignment_id')
                     ->withPivot('file_assignments','nilai','deskripsi');
     }
+
+    public function feedback(){
+
+        return $this->hasMany(Feedback::class);
+    }
 }
