@@ -174,3 +174,4 @@ Route::get('/peserta-view-materi', [MateriController::class, 'indexPeserta'])->n
 //feedback
 Route::get('/feedback-peserta', [FeedbackController::class, 'create_feedback'])->name('feedback_peserta');
 Route::post('/feedback-peserta-submit/{id}', [FeedbackController::class, 'submit_feedback'])->name('feedback_peserta_submit');
+Route::get('/feedback-sistem', [FeedbackController::class, 'show_feedback_sistem'])->name('feedback_sistem');
