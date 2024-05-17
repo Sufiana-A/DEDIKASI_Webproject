@@ -41,4 +41,18 @@ class FeedbackController extends Controller
 
     }
 
+    public function show_feedback_sistem(){
+
+        try {
+
+            $feedback_sistem = Feedback::where('tipe_feedback', 'Sistem')->get();
+            return view('admin.feedbackAdmin', compact('feedback_sistem'));
+        }
+        catch (Exception $e) {
+            
+            return view('error', ['message' => 'An error occurred while retrieving feedback.']);
+        }
+
+    }
+
 }
