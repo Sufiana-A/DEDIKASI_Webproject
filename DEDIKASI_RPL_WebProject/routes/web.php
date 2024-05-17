@@ -16,7 +16,7 @@ use App\Http\Controllers\ProfileMentorController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\NilaiPesertaController;
 use App\Http\Controllers\ProfilePesertaController;
-
+use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\PesertaPelatihanController;
 use App\Http\Controllers\StudentDashboardController;
 use App\Http\Controllers\RegistrasiPelatihanController;
@@ -170,3 +170,7 @@ Route::get('/getevents', [EventController::class, 'getEvents'])->name('get_event
 
 //assignment peserta
 Route::get('/peserta-view-materi', [MateriController::class, 'indexPeserta'])->name('view_materi');
+
+//feedback
+Route::get('/feedback-peserta', [FeedbackController::class, 'create_feedback'])->name('feedback_peserta');
+Route::post('/feedback-peserta-submit/{id}', [FeedbackController::class, 'submit_feedback'])->name('feedback_peserta_submit');
