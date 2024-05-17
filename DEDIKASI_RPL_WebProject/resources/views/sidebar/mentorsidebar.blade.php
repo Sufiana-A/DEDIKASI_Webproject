@@ -81,7 +81,9 @@
                 <li>
                     <a href="{{route('mentor.manageNilai.index')}}"><i class="fas fa-clipboard-list"></i> <span>Grades</span></a>
                 </li>
-                 
+                <li>
+                    <a href="{{route('feedback_mentor')}}"><i class="fas fa-clipboard-list"></i> <span>Feedback Mentor</span></a>
+                </li>
                 <li>
                     <a href="event.html"><i class="fas fa-calendar-day"></i> <span>Events</span></a>
                 </li>
