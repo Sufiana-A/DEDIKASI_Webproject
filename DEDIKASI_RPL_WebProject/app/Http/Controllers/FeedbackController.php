@@ -27,4 +27,18 @@ class FeedbackController extends Controller
 
     }
 
+    public function show_feedback_mentor(){
+
+        try {
+
+            $feedback_mentor = Feedback::where('tipe_feedback', 'Mentor')->get();
+            return view('mentor.feedbackMentor', compact('feedback_mentor'));
+        }
+        catch (Exception $e) {
+            
+            return view('error', ['message' => 'An error occurred while retrieving feedback.']);
+        }
+
+    }
+
 }
