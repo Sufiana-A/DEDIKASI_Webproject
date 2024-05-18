@@ -6,11 +6,11 @@
             <div class="page-header">
                 <div class="row align-items-center">
                     <div class="col">
-                        <h3 class="page-title">Tambahkan Assignment</h3>
+                        <h3 class="page-title">Tambahkan Video</h3>
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('assignment_mentor') }}">Assignment</a></li>
-                            <li class="breadcrumb-item active">Tambah</li>
+                            <li class="breadcrumb-item"><a href="{{ route('video_mentor') }}">Video</a></li>
+                            <li class="breadcrumb-item active">Edit</li>
                         </ul>
                     </div>
                 </div>
@@ -20,23 +20,23 @@
                 <div class="col-sm-12">
                     <div class="card card-table">
                         <div class="card-body">
-                            <form action="{{ route('assignment_store') }}" method="post" enctype="multipart/form-data">
+                            <form action="{{ route('video_update', [$video->id]) }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="mb-3">
-                                    <label for="id_tugas" class="form-label">ID Tugas</label>
-                                    <input type="text" class="form-control" id="id_tugas" name="id_tugas" required>
+                                    <label for="id_video" class="form-label">ID Video</label>
+                                    <input type="text" class="form-control" id="id_video" name="id_video" value={{ $video->id_video }}>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="title" class="form-label">Judul</label>
-                                    <input type="text" class="form-control" id="title" name="title" required>
+                                    <label for="judul_video" class="form-label">Judul</label>
+                                    <input type="text" class="form-control" id="judul_video" name="judul_video" value={{ $video->judul_video }}>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="description" class="form-label">Deskripsi</label>
-                                    <textarea class="form-control summernote" id="description" rows="3" name="description" required></textarea>
+                                    <label for="deskripsi_video" class="form-label">Deskripsi</label>
+                                    <textarea class="form-control summernote" id="deskripsi_video" rows="3" name="deskripsi_video" >{{ $video->deskripsi_video }}</textarea>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="addition" class="form-label">File Terkait</label>
-                                    <input type="file" class="form-control" id="addition" name="addition" required>
+                                    <label for="link_terkait" class="form-label">Link Terkait</label>
+                                    <input type="text" class="form-control" id="link_terkait" name="link_terkait" value={{ $video->link_terkait }}>
                                 </div>
                                 <div class="mb-3">
                                     <button type="submit" class="btn btn-primary">Simpan</button>

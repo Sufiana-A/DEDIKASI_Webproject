@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Event;
+use App\Models\Peserta;
+use App\Models\Course;
 use Carbon\Carbon;
 
 class EventController extends Controller
@@ -11,7 +14,14 @@ class EventController extends Controller
     //
     public function myCalendar(Request $request)
     {
-        return view('peserta_kalendar.viewKalendar');
+        // Ambil ID user yang sedang login dengan menggunakan guard 'peserta'
+        $pesertaId = Auth::guard('peserta')->user()->id;
+
+        // Ambil data pelatihan yang dienroll dengan status "acc" untuk user yang sedang login
+        $peserta = Peserta::find($pesertaId);
+        $pelatihanAcc = $peserta->course()->wherePivot('status', 'Diterima')->get();
+
+        return view('peserta_kalendar.viewKalendar', compact('pelatihanAcc'));
     }
 
     public function addEvent(Request $request)
@@ -62,8 +72,8 @@ class EventController extends Controller
     }
 
     public function getEvents(Request $request){
-        $events = Event::whereDate('start', '>=', $request->start)
-            ->whereDate('end', '<=', $request->end)
+        $events = Event::whereDate('start_date', '>=', $request->start)
+            ->whereDate('end_date', '<=', $request->end)
             ->get();
         return response()->json($events);
     }

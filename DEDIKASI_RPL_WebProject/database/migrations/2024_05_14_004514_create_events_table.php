@@ -11,8 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('peserta_assignments', function (Blueprint $table) {
+        Schema::create('events', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->dateTime('start');
+            $table->dateTime('end');
             $table->timestamps();
         });
     }
@@ -22,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('peserta_assignments');
+        Schema::dropIfExists('events');
     }
 };

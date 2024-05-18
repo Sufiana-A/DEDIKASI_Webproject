@@ -73,9 +73,10 @@ class RegistrasiPelatihanController extends Controller
             'ktm' => $ktmName,
             'ktp' => $ktpName,
             'status' => 'Pending', 
+            'created_at' => now()->setTimezone('Asia/Jakarta')
         ]);
     
-        return redirect()->route('submit_enroll_pelatihan')->with('success', 'Data tersimpan');
+        return redirect()->route('student.dashboard.index')->with('success', 'Data tersimpan');
     }
    
     //controller untuk menampilkan form enroll
@@ -92,38 +93,35 @@ class RegistrasiPelatihanController extends Controller
     public function showDaftarEnroll()
     {
         $pesertaPelatihan = Peserta::with('course')->get();
-        // $pesertaPelatihan = Peserta::with('course')->orderBy('created_at', 'desc')->get();
+        $pesertaPelatihan = Peserta::with('course')->orderBy('created_at', 'desc')->get();
         return view('admin.seleksiPesertaPelatihan', compact('pesertaPelatihan'));
     }
     
-
 
     //controller untuk menampilkan halaman blade buat nampilin detail dari enrollment
     public function detailPesertaPelatihan(Request $request, $id_peserta, $id_course)
 {
     $peserta = Peserta::with('course')->findOrFail($id_peserta);
     $course = $peserta->course->find($id_course);
-    
-    $data_peserta = peserta::all();
-    $courses = Course::with('peserta')->get();
-    return view('admin.updateStatusSeleksi', compact('data_peserta','courses'));
-
-
-    //return view('admin.updateStatusSeleksi', compact('peserta', 'course', 'ktpName', 'ktmName')); 
+    return view('admin.updateStatusSeleksi', compact('peserta', 'course'));
 }
 
-   
-
-    // public function updateEnroll(Request $request, $id_course)
-    // {
-    // // Mengupdate enroll_at di tabel pivot peserta_pelatihan
-    //     $peserta->pelatihan()->updateExistingPivot($course->id, [
-    //     'enroll_at' => now(), // umtuk tanggal dan waktu saat ini
-    //     'enroll_at' => Date::today(), //untuk tanggal
-    //     'status' => $request->status_enroll 
-    // ]);
-    // }
-
+public function updateEnroll(Request $request, $id_peserta, $id_course)
+{
+    $request->validate([
+        'status' => 'required',
+    ]);
+    
+    $peserta = Peserta::find($id_peserta);
+    $course = Course::find($id_course);
+    
+    // Update the pivot table entry
+    $peserta->course()->updateExistingPivot($course->id, [
+        'status' => $request->status,
+    ]);
+    
+    return redirect()->route('seleksi_peserta', [$peserta->id, $course->id])->with('success', 'Status berhasil diperbarui');
+}   
 
 
 

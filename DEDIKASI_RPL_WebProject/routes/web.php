@@ -15,9 +15,9 @@ use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\ProfileAdminController;
 use App\Http\Controllers\ProfileMentorController;
 use App\Http\Controllers\AdminDashboardController;
-
+use App\Http\Controllers\NilaiPesertaController;
 use App\Http\Controllers\ProfilePesertaController;
-
+use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\PesertaPelatihanController;
 use App\Http\Controllers\StudentDashboardController;
 use App\Http\Controllers\RegistrasiPelatihanController;
@@ -84,6 +84,10 @@ Route::get("/mentor" , function(){
         Route::post('/manage-nilai/delete', 'delete')->name('manageNilai.delete');
     
     });
+// nilai peserta 
+Route::get('/nilai-peserta', [NilaiPesertaController::class, 'index'])->name('nilai-peserta');
+
+
 Route::get('/profile-mentor', [ProfileMentorController::class, 'show_profile'])->name('profile_mentor');
 Route::get('/profile-mentor-edit', [ProfileMentorController::class, 'edit_profile'])->name('profile_edit_mentor');
 Route::post('/profile-mentor-submit', [ProfileMentorController::class, 'submit_profile'])->name('profile_submit_mentor');
@@ -111,11 +115,12 @@ Route::controller(StudentDashboardController::class)->name('student.')->group(fu
     Route::get('/course/{id}', 'showCourse')->name('dashboard.course');
 });
 
-//assignment admin
+//assignment mentor
 Route::get('/list-assignment', [AssignmentController::class, 'index'])->name('assignment_mentor');
 Route::get('/create-assignment', [AssignmentController::class, 'create'])->name('assignment_create');
 Route::post('/store-assignment', [AssignmentController::class, 'store'])->name('assignment_store');
-Route::post('/update-assignment', [AssignmentController::class, 'update'])->name('assignment_update');
+Route::get('/edit-assignment/{id}', [AssignmentController::class, 'edit'])->name('assignment_edit');
+Route::post('/update-assignment/{id}', [AssignmentController::class, 'update'])->name('assignment_update');
 Route::get('/delete-assignment', [AssignmentController::class, 'delete'])->name('assignment_delete');
 
 
@@ -125,11 +130,24 @@ Route::get('/peserta-create-assignment', [AssignmentController::class, 'createPe
 Route::post('/peserta-submit-assignment', [AssignmentController::class, 'submit'])->name('submit_assignment');
 Route::post('/peserta-update-assignment', [AssignmentController::class, 'updatePeserta'])->name('update_assignment');
 
-//video admin
+//video mentor
 Route::get('/list-video', [VideoController::class, 'index'])->name('video_mentor');
 Route::get('/create-video', [VideoController::class, 'create'])->name('video_create');
 Route::post('/store-video', [VideoController::class, 'store'])->name('video_store');
+Route::get('/edit-video/{id}', [VideoController::class, 'edit'])->name('video_edit');
+Route::post('/update-video/{id}', [VideoController::class, 'update'])->name('video_update');
+Route::get('/delete-video', [VideoController::class, 'delete'])->name('video_delete');
 
+<<<<<<< HEAD
+=======
+//video peserta
+Route::get('/peserta-list-video', [VideoController::class, 'indexPeserta'])->name('video_peserta');
+
+// sertifikat
+Route::resource('/sertifikat', CertificateController::class);
+
+
+>>>>>>> 879da640400483aa0177d3145e5c969fd4c4cd51
 //dashboard admin
 Route::get('/dashboard-admin', [AdminDashboardController::class, 'index'])->name('dashboard_admin');
 
@@ -137,19 +155,20 @@ Route::get('/dashboard-admin', [AdminDashboardController::class, 'index'])->name
 Route::get('/seleksi-peserta', [RegistrasiPelatihanController::class, 'showDaftarEnroll'])->name('seleksi_peserta');
 Route::get('/seleksi-peserta-search', [RegistrasiPelatihanController::class, 'search'])->name('seleksi_peserta.search');
 Route::get('/detail-seleksi/{id_peserta}/{course_id}', [RegistrasiPelatihanController::class, 'detailPesertaPelatihan'])->name('detail_seleksi_peserta');
-Route::post('/submit-update', [RegistrasiPelatihanController::class, 'updateEnroll'])->name('submit_update_seleksi');
+Route::post('/submit-update/{id_peserta}/{course_id}', [RegistrasiPelatihanController::class, 'updateEnroll'])->name('submit_update_seleksi');
 
 //Enroll Peserta
 Route::get('/enroll-pelatihan/{id_peserta}/{id_course}', [RegistrasiPelatihanController::class, 'enrollPelatihan'])->name('enroll_pelatihan');
 Route::post('/submit-enroll/{id_peserta}/{id_course}', [RegistrasiPelatihanController::class, 'store'])->name('submit_enroll_pelatihan');
 
-//Materi Admin
+//Materi Mentor
 Route::get('/list-materi', [MateriController::class, 'index'])->name('materi_mentor');
 Route::get('/list-materi-search', [MateriController::class, 'search'])->name('materi_search');
 Route::get('/create-materi', [MateriController::class, 'create'])->name('materi_create');
 Route::post('/store-materi', [MateriController::class, 'store'])->name('materi_store');
-Route::post('/update-materi', [MateriController::class, 'update'])->name('materi_update');
-Route::get('/delete-materi', [MateriController::class, 'destroy'])->name('materi_delete');
+Route::get('/detail-materi/{id}', [MateriController::class, 'detailMateri'])->name('materi_detail');
+Route::post('/update-materi/{id}', [MateriController::class, 'update'])->name('materi_update');
+Route::get('/delete-materi', [MateriController::class, 'delete'])->name('materi_delete');
 
 //timeline
 Route::get('/calendar/mycalendar', [EventController::class, 'myCalendar'])->name('view_kalendar');
@@ -157,3 +176,12 @@ Route::post('/calendar/mycalendar/addevent', [EventController::class, 'addEvent'
 Route::post('/calendar/mycalendar/editevent', [EventController::class, 'updateEvent'])->name('edit_event');
 Route::post('/calendar/mycalendar/deleteevent', [EventController::class, 'deleteEvent'])->name('delete_event');
 Route::get('/getevents', [EventController::class, 'getEvents'])->name('get_events');
+
+//assignment peserta
+Route::get('/peserta-view-materi', [MateriController::class, 'indexPeserta'])->name('view_materi');
+
+//feedback
+Route::get('/feedback-peserta', [FeedbackController::class, 'create_feedback'])->name('feedback_peserta');
+Route::post('/feedback-peserta-submit/{id}', [FeedbackController::class, 'submit_feedback'])->name('feedback_peserta_submit');
+Route::get('/feedback-sistem', [FeedbackController::class, 'show_feedback_sistem'])->name('feedback_sistem');
+Route::get('/feedback-mentor', [FeedbackController::class, 'show_feedback_mentor'])->name('feedback_mentor');

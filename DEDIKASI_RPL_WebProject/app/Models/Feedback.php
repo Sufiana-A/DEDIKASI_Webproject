@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Event extends Model
+class Feedback extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'title', 
-        'start_date', 
-        'end_date'
-    ];
+
+    public function peserta(){
+
+        return $this->belongsTo(Peserta::class);
+    }
 }

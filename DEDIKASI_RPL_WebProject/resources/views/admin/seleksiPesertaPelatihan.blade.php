@@ -73,6 +73,7 @@
                                         @foreach ($peserta->course as $course)
                                         <tr>
                                             <td>{{ $course->pivot->created_at }}</td>
+                                            {{-- <td>{{ $course->pivot->created_at->format('Y-m-d H:i:s') }}</td>  </tr> --}}
                                             <td>{{ $peserta->first_name }} {{ $peserta->last_name }}</td>
                                             <td>{{ $course->title }}</td>
                                             <td>{{ $course->pivot->status }}</td>

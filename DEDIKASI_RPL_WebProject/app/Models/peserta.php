@@ -59,6 +59,17 @@ class Peserta extends Authenticatable
     public function Course()
     {
         return $this->belongsToMany(Course::class, 'peserta_course',  'peserta_id', 'course_id')
-                    ->withPivot('nik','ktm', 'ktp', 'status');
+                    ->withPivot('nik','ktm', 'ktp', 'status', 'created_at');
+    }
+
+public function Assignment()
+    {
+        return $this->belongsToMany(Assignment::class, 'peserta_assignment',  'peserta_id', 'assignment_id')
+                    ->withPivot('file_assignments','nilai','deskripsi');
+    }
+
+    public function feedback(){
+
+        return $this->hasMany(Feedback::class);
     }
 }

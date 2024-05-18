@@ -31,36 +31,35 @@
                             <label class="col-sm-12 col-md-4 col-form-label">NIK</label>
                             <div class="col-sm-12 col-md-8">
                                 <span class="form-control" style="width: 450px; height: 25px; border: 1px solid #ced4da; padding: 1px 5px; background-color: #f0f0f0; pointer-events: none; color: #6c757d; font-size: 14px;">{{$course->pivot->nik}}</span>
+
                             </div>
                         </div>                        
                         <div class="form-group row mb-4">
                             <label for="ktm" class="col-sm-12 col-md-4 col-form-label">Scan KTM</label>
                             <div class="col-sm-12 col-md-8">
-                                <img src="{{asset('/storage/app/public/seleksi/ktm/'.$ktmName)}}" alt=" " style="max-height: 200px;">
-                                {{-- /storage/seleksi/ktm/1714663105_Screenshot (705).png --}}
+                                <img src="{{ asset('storage/seleksi/ktm/'. $course->pivot->ktm) }}" alt=" " style="max-height: 200px;">
                             </div>
                         </div>
                         <div class="form-group row mb-4">
                             <label for="ktp" class="col-sm-12 col-md-4 col-form-label">Scan KTP</label>
                             <div class="col-sm-12 col-md-8">
-                                <img src="{{asset('/storage/app/public/seleksi/ktp/'.$ktpName)}}" alt=" " style="max-height: 200px;">
+                                <img src="{{asset('/storage/seleksi/ktp/'. $course->pivot->ktp)}}" alt=" " style="max-height: 200px;">
                             </div>
                         </div>
                         <div class="form-group row mb-4">
                             <label for="status" class="col-sm-12 col-md-4 col-form-label" name="status">Status</label>
                             <div class="col-sm-12 col-md-8">           
                                 <select class="form-select form-select-sm" name="status">
-                                        <option value="diterima">Pending</option>
-                                        <option value="diterima">Diterima</option>
-                                        <option value="diterima">Ditolak - Data Tidak Sesuai</option>                                                                            
-                                        <option value="diterima">Ditolak - File Tidak Terbaca</option>                                                                           
-                                </select>
+                                        <<option value="Pending" {{ $course->pivot->status == 'Pending'? 'selected' : '' }}>Pending</option>
+                                        <option value="Diterima" {{ $course->pivot->status == 'Diterima'? 'selected' : '' }}>Diterima</option>
+                                        <option value="Ditolak - Data Tidak Sesuai" {{ $course->pivot->status == 'Ditolak - Data Tidak Sesuai'? 'selected' : '' }}>Ditolak - Data Tidak Sesuai</option>                                                                            
+                                        <option value="Ditolak - File Tidak Terbaca" {{ $course->pivot->status == 'Ditolak - File Tidak Terbaca'? 'selected' : '' }}>Ditolak - File Tidak Terbaca</option>
+                                    </select>
                             </div>
                         </div>                                     
                         <div class="form-group row justify-content-end mb-1">
                             <div class="col-sm-12 d-flex justify-content-end">
                                 <button class="btn btn-primary" type="submit" style="margin-right: 10px;">Simpan</button>
-                                <button class="btn btn-secondary" type="button">Batal</button>
                             </div>
                         </div>
 
