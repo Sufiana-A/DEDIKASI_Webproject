@@ -1,4 +1,4 @@
-@dd(Auth::guard('peserta'))
+
 @extends('layout.master')
 
 @section('content')
@@ -18,7 +18,7 @@
                             </thead>
                             <tbody>
                                     <tr>
-                                        <td>{{ $sertifikat->peserta->first_name . $sertifikat->peserta->last_name }}</td>
+                                        <td>{{ $sertifikat->peserta->first_name . ' ' .$sertifikat->peserta->last_name }}</td>
                                         <td><a href="{{ asset('sertifikat/'.$sertifikat->nama_file) }}" target="_blank">{{ $sertifikat->nama_file }}</a></td>
                                     </tr>
                             </tbody>
