@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FAQController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\LoginController;
@@ -35,7 +36,12 @@ Route::controller(PelatihanController::class)->group(function () {
     Route::get('pelatihan/edit/{id_pelatihan}', 'pelatihanEdit'); // pelatihan/edit/page
 });
 
-    
+// sertifikat
+Route::resource('/sertifikat', CertificateController::class);
+// Route::get('/download/{fileName}', [CertificateController::class, 'download'])->name('download');
+
+// FAQ
+Route::resource('/faqs', FAQController::class);
 
 Route::get('/register', [RegisterController::class, 'register'])->name('viewRegister');
 Route::post('/register', [RegisterController::class, 'register'])->name('register');
@@ -132,6 +138,8 @@ Route::get('/edit-video/{id}', [VideoController::class, 'edit'])->name('video_ed
 Route::post('/update-video/{id}', [VideoController::class, 'update'])->name('video_update');
 Route::get('/delete-video', [VideoController::class, 'delete'])->name('video_delete');
 
+<<<<<<< HEAD
+=======
 //video peserta
 Route::get('/peserta-list-video', [VideoController::class, 'indexPeserta'])->name('video_peserta');
 
@@ -139,6 +147,7 @@ Route::get('/peserta-list-video', [VideoController::class, 'indexPeserta'])->nam
 Route::resource('/sertifikat', CertificateController::class);
 
 
+>>>>>>> 879da640400483aa0177d3145e5c969fd4c4cd51
 //dashboard admin
 Route::get('/dashboard-admin', [AdminDashboardController::class, 'index'])->name('dashboard_admin');
 
