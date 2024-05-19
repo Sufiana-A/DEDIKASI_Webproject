@@ -23,5 +23,8 @@ class Certificate extends Model
     public function peserta() {
         return $this->belongsTo(Peserta::class);
     }
-    
+    public function Course() {
+        
+        return $this->belongsTo(Course::class);
+    }
 }

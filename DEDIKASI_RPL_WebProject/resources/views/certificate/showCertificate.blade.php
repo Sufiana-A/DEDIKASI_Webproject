@@ -1,4 +1,3 @@
-
 @extends('layout.master')
 
 @section('content')
@@ -19,7 +18,7 @@
                             <tbody>
                                     <tr>
                                         <td>{{ $sertifikat->peserta->first_name . ' ' .$sertifikat->peserta->last_name }}</td>
-                                        <td><a href="{{ asset('sertifikat/'.$sertifikat->nama_file) }}" target="_blank">{{ $sertifikat->nama_file }}</a></td>
+                                        <td><a href="{{ route('sertifikat.download', $sertifikat->nama_file) }}" target="_blank">download disini</a></td>
                                     </tr>
                             </tbody>
                         </table>

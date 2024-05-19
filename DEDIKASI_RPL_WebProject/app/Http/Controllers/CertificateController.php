@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Certificate;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreCertificateRequest;
 use App\Http\Requests\UpdateCertificateRequest;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -19,7 +21,7 @@ class CertificateController extends Controller
 
     public function create()
     {
-        $sertifikat = Certificate::all();
+        $sertifikat = Certificate::with(['peserta', 'Course'])->get();
         return view('certificate.addCertificate', ['sertifikat' => $sertifikat]);
     }
 
@@ -55,6 +57,14 @@ class CertificateController extends Controller
         return view('certificate.showCertificate', ['sertifikat' => $sertifikat]);
     }
 
+    public function download($fileName)
+    {
+        // dd(Auth::user());
+        return Storage::download('public/certificates/'.$fileName, 'Sertifikat-' . Auth::guard('peserta')->user()->first_name . '.pdf');
+        
+    }
+
+
     /**
      * Show the form for editing the specified resource.
      */
@@ -76,10 +86,7 @@ class CertificateController extends Controller
      */
     public function destroy(Certificate $sertifikat)
     {
-        // return __METHOD__;
-        Certificate::findOrFail($sertifikat);
-        
-        $sertifikat = Certificate::where('id', $sertifikat->id)->firstOrFail();
+        Storage::disk('local')->delete('public/certificates/'.$sertifikat->nama_file);
         $sertifikat->delete();
         return redirect(route('sertifikat.create'));
     }
@@ -99,5 +106,4 @@ class CertificateController extends Controller
     //     return redirect(route('sertifikat.create'))->with('success', 'Certificate deleted successfully.');
     // }
     
-
 }
