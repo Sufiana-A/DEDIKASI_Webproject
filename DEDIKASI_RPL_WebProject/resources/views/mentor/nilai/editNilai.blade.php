@@ -22,24 +22,29 @@
                 <div class="col-sm-12">
                     <div class="card card-table">
                         <div class="card-body">
-                            <form action="{{ route('mentor.manageNilai.update') }}" method="post">
+                            <form action="{{ route('mentor.manageNilai.update', $pivotData->id) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
-                                <input type="hidden" name="uuid" value="{{ $assignment->uuid }}">
-                                <div class="mb-3">
-                                    <label for="title" class="form-label">assignment Files</label>
-                                    <input type="text" class="form-control" id="title" name="title" value="{{ $assignment->title }}" required>
+                                @method('POST')
+                                <div class="form-group">
+                                    <label for="nama">Nama Assignment</label>
+                                    <input type="text" class="form-control" id="nama" value="{{ $assignment->title }}" readonly>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="class" class="form-label">Nilai</label>
-                                    <input type="text" class="form-control" id="class" name="class" value="{{ $assignment->class }}" required>
+                                <div class="form-group">
+                                    <label for="file_assignment">File Assignment</label><br>
+                                    <a href="{{ asset('storage/file_assignment/' . $pivotData->file_assignments) }}">{{ $pivotData->file_assignments }}</a>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="description" class="form-label">Description</label>
-                                    <textarea class="form-control summernote" id="description" rows="3" name="description" required>{!! $assignment->description !!}</textarea>
+                                <div class="form-group">
+                                    <label for="nilai">Nilai</label>
+                                    <select class="form-control" id="nilai" name="nilai">
+                                        <option value="Belum Lulus" {{ $pivotData->nilai == 'Belum Lulus' ? 'selected' : ''}}>Belum Lulus</option>
+                                        <option value="Lulus" {{ $pivotData->nilai == 'Lulus' ? 'selected' : ''}}>Lulus</option>
+                                    </select>
                                 </div>
-                                <div class="mb-3">
-                                    <button type="submit" class="btn btn-primary">Update</button>
+                                <div class="form-group">
+                                    <label for="deskripsi">Deskripsi</label>
+                                    <textarea class="form-control" id="deskripsi" rows="3" name="deskripsi">{{ $pivotData->deskripsi }}</textarea>
                                 </div>
+                                <button type="submit" class="btn btn-primary">Update</button>
                             </form>
                         </div>
                     </div>

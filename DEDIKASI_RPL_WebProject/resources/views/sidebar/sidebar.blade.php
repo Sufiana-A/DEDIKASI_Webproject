@@ -91,7 +91,7 @@
                     <a href="{{route('feedback_peserta')}}"><i class="fas fa-clipboard-list"></i> <span>Feedback</span></a>
                 </li>
                 <li>
-                    <a href="exam.html"><i class="fas fa-clipboard-list"></i> <span>Exam list</span></a>
+                    <a href="{{route('nilai-peserta')}}"><i class="fas fa-clipboard-list"></i> <span>Nilai Peserta</span></a>
                 </li>
                 <li>
                     <a href="event.html"><i class="fas fa-calendar-day"></i> <span>Events</span></a>
