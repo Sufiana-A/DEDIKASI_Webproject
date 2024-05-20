@@ -77,12 +77,11 @@ Route::get("/mentor" , function(){
 
     Route::controller(NilaiController::class)->name('mentor.')->prefix('mentor')->group(function () {
         Route::get('manage-nilai', 'index')->name('manageNilai.index');
-        Route::get('mentor/manage-nilai/add', 'addNilai')->name('manageNilai.add');
-        Route::post('/manage-nilai/store', 'store')->name('manageNilai.store');
-        Route::get('mentor/manage-nilai/edit/{id}', 'editNilai')->name('manageNilai.edit');
-        Route::post('mentor/manage-nilai/update', 'update')->name('manageNilai.update');
-        Route::post('/manage-nilai/delete', 'delete')->name('manageNilai.delete');
-    
+        Route::get('manage-nilai/add', 'addNilai')->name('manageNilai.add');
+        Route::post('manage-nilai/store', 'store')->name('manageNilai.store');
+        Route::get('manage-nilai/edit/{id}', 'edit')->name('manageNilai.edit');
+        Route::post('manage-nilai/update/{id}', 'update')->name('manageNilai.update');
+        Route::post('manage-nilai/delete', 'delete')->name('manageNilai.delete');
     });
 // nilai peserta 
 Route::get('/nilai-peserta', [NilaiPesertaController::class, 'index'])->name('nilai-peserta');

@@ -26,12 +26,14 @@
                     <div class="row">
                         <div class="col-lg-3 col-md-6">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Search by ID" name="uuid" value="{{ request()->uuid ?? null }}">
+                                <input type="text" class="form-control" placeholder="Search by ID" name="uuid"
+                                    value="{{ request()->uuid ?? null }}">
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Search by Name" name="title" value="{{ request()->title ?? null }}">
+                                <input type="text" class="form-control" placeholder="Search by Name" name="title"
+                                    value="{{ request()->title ?? null }}">
                             </div>
                         </div>
                         
@@ -55,9 +57,7 @@
                                     </div>
                                     <div class="col-auto text-end float-end ms-auto download-grp">
                                         
-                                        <a href="{{ route('mentor.manageNilai.add') }}" class="btn btn-primary">
-                                            <i class="fas fa-plus"></i>
-                                        </a>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -75,20 +75,13 @@
                                     <tbody>
                                         @foreach ($assignments as $assignment)
                                         <tr>
-                                            <td class="subject_id">{{ $assignment->uuid }}</td>
+                                            <td>{{ $assignment->id }}</td>
+                                            <td>{{ $assignment->file_assignments }}</td>
+                                            <td>{{ $assignment->nilai }}</td>
                                             <td>
-                                                <h2>
-                                                    <a>{{ $assignment->title }}</a>
-                                                </h2>
-                                            </td>
-                                            <td>{{ $assignment->Nilai }}</td>
-                                            <td class="text-end">
                                                 <div class="actions">
-                                                    <a href="{{ route('mentor.manageNilai.edit', $assignment->uuid) }}" class="btn btn-sm bg-danger-light">
+                                                    <a href="{{ route('mentor.manageNilai.edit', $assignment->id) }}" class="btn btn-sm bg-danger-light">
                                                         <i class="far fa-edit me-2"></i>
-                                                    </a>
-                                                    <a class="btn btn-sm bg-danger-light delete" data-bs-toggle="modal" data-bs-target="#delete" data-uuid="{{ $assignment->uuid }}">
-                                                        <i class="fe fe-trash-2"></i>
                                                     </a>
                                                 </div>
                                             </td>
