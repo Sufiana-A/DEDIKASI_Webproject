@@ -66,6 +66,8 @@ class RegistrasiPelatihanController extends Controller
         // Membuat instance Peserta dan Pelatihan
         $peserta = Peserta::find($id_peserta);
         $course = Course::find($id_course);
+        
+       
     
         // Menyimpan data ke tabel pivot
         $peserta->course()->attach($course->id, [
@@ -75,7 +77,17 @@ class RegistrasiPelatihanController extends Controller
             'status' => 'Pending', 
             'created_at' => now()->setTimezone('Asia/Jakarta')
         ]);
-    
+        
+        $enrollment = $peserta->course()->where('course_id', $id_course)->first();
+
+        if ($enrollment) {
+            // Update the existing enrollment status to 'Pending'
+            $peserta->course()->updateExistingPivot($id_course, ['status' => 'Pending']);
+        } else {
+            // Create a new enrollment with status 'Pending'
+            $peserta->course()->attach($id_course, ['status' => 'Pending']);
+        }
+
         return redirect()->route('student.dashboard.index')->with('success', 'Data tersimpan');
     }
    
