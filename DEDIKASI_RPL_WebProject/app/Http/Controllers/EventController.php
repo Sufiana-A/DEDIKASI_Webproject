@@ -26,22 +26,32 @@ class EventController extends Controller
 
     public function addEvent(Request $request)
     {
-        $title = $request->input("title");
+        $validated = $request->validate([
+            'title' => 'required|max:255',
+            'enrolledCourses' => 'required|exists:courses,id',
+            'rangepick' => 'required',
+        ]);
+    
         $range = $request->input("rangepick");
         $dates = explode(' - ', $range);
         $start_datetime = Carbon::parse($dates[0]);
         $end_datetime = Carbon::parse($dates[1]);
 
+        $peserta_id = Auth::guard('peserta')->user()->id;
+    
         $event = new Event();
-        $event->title = $title;
+        $event->title = $request->input("title");
+        $event->peserta_id = $peserta_id;
+        $event->course_id = $request->input("enrolledCourses");
         $event->start = $start_datetime;
         $event->end = $end_datetime;
-        $event->save();
-        return response()->json([
-            'success' => true,
-            'data' => $event
-        ]);
-    }
+    
+        if ($event->save()) {
+            return redirect()->back()->with('success', 'Event added successfully');
+        } else {
+            return redirect()->back()->with('error', 'There was an error adding the event');
+        }
+    }    
 
     public function updateEvent(Request $request)
     {
@@ -72,9 +82,20 @@ class EventController extends Controller
     }
 
     public function getEvents(Request $request){
-        $events = Event::whereDate('start_date', '>=', $request->start)
-            ->whereDate('end_date', '<=', $request->end)
-            ->get();
-        return response()->json($events);
+        $events = Event::with('course')->get();
+        $eventsArray = [];
+    
+        foreach ($events as $event) {
+            $eventsArray[] = [
+                'id' => $event->id,
+                'title' => $event->title,
+                'course' => $event->course->title,
+                'course_id' => $event->course_id,
+                'start' => $event->start,
+                'end' => $event->end
+            ];
+        }
+    
+        return response()->json($eventsArray);
     }
 }
