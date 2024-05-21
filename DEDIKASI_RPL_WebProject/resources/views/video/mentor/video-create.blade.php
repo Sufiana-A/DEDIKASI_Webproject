@@ -28,7 +28,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="judul_video" class="form-label">Judul</label>
-                                    <input type="text" class="form-control" id="judul_video" name="judul_video" placeholder="contoh: 'Materi Pertemuan 1: Introduction'" required>
+                                    <input type="text" class="form-control" id="judul_video" name="judul_video" placeholder="contoh: 'Video Materi Pertemuan 1: Introduction'" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="deskripsi_video" class="form-label">Deskripsi</label>

@@ -24,11 +24,11 @@
                                 @csrf
                                 <div class="mb-3">
                                     <label for="id_tugas" class="form-label">ID Tugas</label>
-                                    <input type="text" class="form-control" id="id_tugas" name="id_tugas" required>
+                                    <input type="text" class="form-control" id="id_tugas" name="id_tugas" placeholder="contoh: 'A01C010'" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="title" class="form-label">Judul</label>
-                                    <input type="text" class="form-control" id="title" name="title" required>
+                                    <input type="text" class="form-control" id="title" name="title" placeholder="contoh: 'Tugas Pertemuan 1: Resume Diskusi Kelompok' required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="description" class="form-label">Deskripsi</label>

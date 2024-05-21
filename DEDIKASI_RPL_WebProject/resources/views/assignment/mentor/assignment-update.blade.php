@@ -32,10 +32,15 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="description" class="form-label">Deskripsi</label>
-                                    <textarea class="form-control summernote" id="description" rows="3" name="description" >{{ $assignments->description }}</textarea>
+                                    <textarea class="form-control summernote" id="description" rows="3" name="description" >{{ strip_tags($assignments->description) }}</textarea>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="addition" class="form-label">File Terkait</label>
+                                <div class="mb-4">
+                                    <label for="addition" class="form-label">File Terkait</label>                <div class="col-12">
+                                        <div class="skip-group">
+                                            <a href="{{ asset('storage/assignment/'. $assignments->addition) }}"  download><i class="fas fa-download"></i> {{$assignments->addition}}
+                                        </div>
+                                        <br>
+                                    </div>                    
                                     <input type="file" class="form-control" id="addition" name="addition" value={{ $assignments->addition }}>
                                 </div>
                                 <div class="mb-3">
