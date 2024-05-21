@@ -22,7 +22,12 @@ class Course extends Model
 
     public function Peserta()
     {
-        return $this->belongsToMany(peserta::class, 'peserta_course',  'peserta_id', 'course_id')
-                    ->withPivot('nik','ktm', 'ktp', 'status');
+        return $this->belongsToMany(Peserta::class, 'peserta_course', 'peserta_id', 'course_id')
+                    ->withPivot('nik', 'ktm', 'ktp', 'status');
+    }
+
+    public function Event()
+    {
+        return $this->hasMany(Event::class);
     }
 }

@@ -8,9 +8,22 @@ use Illuminate\Database\Eloquent\Model;
 class Event extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'title', 
-        'start_date', 
-        'end_date'
+        'start', 
+        'end',
+        'peserta_id',
+        'course_id'
     ];
+
+    public function Course()
+    {
+        return $this->belongsToMany(Course::class);
+    }
+
+    public function Peserta()
+    {
+        return $this->belongsToMany(Peserta::class);
+    }
 }
