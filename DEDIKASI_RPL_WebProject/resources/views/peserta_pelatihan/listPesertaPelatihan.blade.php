@@ -11,10 +11,22 @@
             </div>
         </div>
         <div class="container">
+            <!-- Display session messages -->
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+
+            @if (session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
             <div class="row">
                 @foreach($pelatihanAcc as $enroll)
                     <div class="col md-6 mb-4">
-                        <div class="card bg-primary text-black shadow mb-4">
+                        <div class="card flex-fill comman-shadow mb-4">
                             <div class="card-body">
                                 <div class="d-flex justify-content-center mb-3 text-center">
                                     <h5 class="card-title"><strong>{{ $enroll->title }}</strong></h5>
@@ -69,10 +81,10 @@
                                 <input type="hidden" name="id" value="">
                                 <div class="row">
                                     <div class="col-6">
-                                        <button type="submit" id="unenroll-btn" class="btn btn-primary paid-continue-btn" style="width: 100%;">Unenroll</button>
+                                        <button type="submit" id="unenroll-btn" class="btn btn-primary paid-continue-btn" style="width: 100%;">Yakin</button>
                                     </div>
                                     <div class="col-6">
-                                        <a data-bs-dismiss="modal" class="btn btn-primary paid-cancel-btn">Batal</a>
+                                        <a data-bs-dismiss="modal" class="btn btn-primary paid-cancel-btn">Tidak</a>
                                     </div>
                                 </div>
                             </form>

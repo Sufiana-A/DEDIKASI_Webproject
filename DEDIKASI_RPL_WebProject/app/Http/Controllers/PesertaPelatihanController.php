@@ -34,9 +34,10 @@ class PesertaPelatihanController extends Controller
         if ($course) {
             // Ubah status course menjadi 'unenrolled'
             $peserta->Course()->updateExistingPivot($course->id, ['status' => 'Unenroll']);
-            return redirect()->back()->withSuccess('Pelatihan berhasil di-unenroll.');
+            return redirect()->back()->with('success', 'Pelatihan berhasil di-unenroll.');
         } else {
-            return redirect()->back();
+            return redirect()->back()->with('error', 'Pelatihan gagal di-unenroll.');
         }
+        
     }
 }

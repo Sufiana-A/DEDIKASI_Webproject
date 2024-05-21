@@ -13,9 +13,13 @@ return new class extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('peserta_id');                                                   
             $table->string('title');
+            $table->unsignedBigInteger('course_id');      
             $table->dateTime('start');
             $table->dateTime('end');
+            $table->foreign('peserta_id')->references('id')->on('peserta')->onDelete('cascade');
+            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
             $table->timestamps();
         });
     }
