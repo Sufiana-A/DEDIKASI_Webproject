@@ -18,6 +18,7 @@ use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\NilaiPesertaController;
 use App\Http\Controllers\ProfilePesertaController;
 use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\PesertaPelatihanController;
 use App\Http\Controllers\StudentDashboardController;
 use App\Http\Controllers\RegistrasiPelatihanController;
@@ -137,6 +138,8 @@ Route::get('/edit-video/{id}', [VideoController::class, 'edit'])->name('video_ed
 Route::post('/update-video/{id}', [VideoController::class, 'update'])->name('video_update');
 Route::get('/delete-video', [VideoController::class, 'delete'])->name('video_delete');
 
+Route::get('/peserta-list-video', [VideoController::class, 'indexPeserta'])->name('vide_peserta');
+
 
 //dashboard admin
 Route::get('/dashboard-admin', [AdminDashboardController::class, 'index'])->name('dashboard_admin');
@@ -169,6 +172,12 @@ Route::get('/getevents', [EventController::class, 'getEvents'])->name('get_event
 
 //assignment peserta
 Route::get('/peserta-view-materi', [MateriController::class, 'indexPeserta'])->name('view_materi');
+
+//artikelAdmin
+Route::get('/list-artikel', [ArtikelController::class, 'index'])->name('list_artikel');
+Route::get('/add-artikel', [ArtikelController::class, 'create'])->name('add_artikel');
+Route::get('/store-artikel', [ArtikelController::class, 'store'])->name('store_artikel');
+
 
 //feedback
 Route::get('/feedback-peserta', [FeedbackController::class, 'create_feedback'])->name('feedback_peserta');
