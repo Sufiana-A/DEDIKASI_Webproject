@@ -44,8 +44,8 @@ class FeedbackController extends Controller
     public function show_feedback_sistem(){
 
         try {
-
-            $feedback_sistem = Feedback::where('tipe_feedback', 'Sistem')->get();
+            $fiveMonthlate = now()->subMonths(5)->startOfMonth();
+            $feedback_sistem = Feedback::where('tipe_feedback', 'Sistem')->whereBetween('created_at', [$fiveMonthlate, now()])->get();
             return view('admin.feedbackAdmin', compact('feedback_sistem'));
         }
         catch (Exception $e) {
@@ -54,5 +54,6 @@ class FeedbackController extends Controller
         }
 
     }
+
 
 }
