@@ -30,8 +30,8 @@ class FeedbackController extends Controller
     public function show_feedback_mentor(){
 
         try {
-
-            $feedback_mentor = Feedback::where('tipe_feedback', 'Mentor')->get();
+            $fiveMonthlate = now()->subMonths(5)->startOfMonth();
+            $feedback_mentor = Feedback::where('tipe_feedback', 'Mentor')->whereBetween('created_at', [$fiveMonthlate, now()])->get();
             return view('mentor.feedbackMentor', compact('feedback_mentor'));
         }
         catch (Exception $e) {
