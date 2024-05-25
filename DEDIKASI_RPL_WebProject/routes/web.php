@@ -184,3 +184,5 @@ Route::get('/feedback-peserta', [FeedbackController::class, 'create_feedback'])-
 Route::post('/feedback-peserta-submit/{id}', [FeedbackController::class, 'submit_feedback'])->name('feedback_peserta_submit');
 Route::get('/feedback-sistem', [FeedbackController::class, 'show_feedback_sistem'])->name('feedback_sistem');
 Route::get('/feedback-mentor', [FeedbackController::class, 'show_feedback_mentor'])->name('feedback_mentor');
+Route::post('/filter-feedback-mentor', [FeedbackController::class, 'filter_feedback_mentor'])->name('filter_feedback_mentor');
+Route::post('/filter-feedback-sistem', [FeedbackController::class, 'filter_feedback_sistem'])->name('filter_feedback_sistem');
