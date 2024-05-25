@@ -21,6 +21,23 @@
                             <div class="row align-items-center">
                                 <div class="col">
                                     <h3 class="page-title">Daftar Feedback Untuk Sistem</h3>
+                                    <div class="card-body">
+                                        <form action="{{ route('filter_feedback_sistem') }}" method="post">
+                                            @csrf
+                                            <div class="mb-3">
+                                                <div class="d-flex justify-content-between">
+                                                    <div class="col-sm-12 col-md-8 d-flex align-items-center">           
+                                                        <select class="form-select form-select-sm me-2" name="timestamp_filter" required>
+                                                            <option value="1_bulan">1 Bulan Terakhir</option>
+                                                            <option value="2_bulan">2 Bulan Terakhir</option>
+                                                            <option value="3_bulan">3 Bulan Terakhir</option>
+                                                        </select>
+                                                        <button type="submit" class="btn btn-primary">Filter</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div> 
                                 </div>
                                 <div class="col-auto text-end float-end ms-auto download-grp">
                                 </div>
