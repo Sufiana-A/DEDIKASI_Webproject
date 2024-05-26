@@ -16,10 +16,10 @@ class UnenrollListPelatihanTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/peserta-pelatihan')
-                    ->assertSee('Pengembangan Aplikasi Website')
-                    ->clickLink('Unenroll')
-                    ->press('Yakin')
-                    ->assertPathIs('/peserta-pelatihan/unenroll');
+                    ->assertSee('Integrasi Aplikasi Enterprise')
+                    ->press('Unenroll')
+                    ->assertSee('Apakah anda yakin mau unenroll?')
+                    ->press('Yakin');
         });
     }
 }

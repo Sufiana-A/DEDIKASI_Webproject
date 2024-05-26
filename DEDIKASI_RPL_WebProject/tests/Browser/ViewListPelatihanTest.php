@@ -15,7 +15,7 @@ class ViewListPelatihanTest extends DuskTestCase
     public function testExample(): void
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('//dashboard-peserta')
+            $browser->visit('/dashboard-peserta')
                     ->assertSee('Management')
                     ->clickLink('List Pelatihan')
                     ->assertPathIs('/peserta-pelatihan');
