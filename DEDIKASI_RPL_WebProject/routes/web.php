@@ -164,11 +164,12 @@ Route::post('/update-materi/{id}', [MateriController::class, 'update'])->name('m
 Route::get('/delete-materi', [MateriController::class, 'delete'])->name('materi_delete');
 
 //timeline
-Route::get('/calendar/mycalendar', [EventController::class, 'myCalendar'])->name('view_kalendar');
-Route::post('/calendar/mycalendar/addevent', [EventController::class, 'addEvent'])->name('add_event');
-Route::post('/calendar/mycalendar/editevent', [EventController::class, 'updateEvent'])->name('edit_event');
-Route::post('/calendar/mycalendar/deleteevent', [EventController::class, 'deleteEvent'])->name('delete_event');
-Route::get('/getevents', [EventController::class, 'getEvents'])->name('get_events');
+Route::get('/timeline', [TimelineController::class, 'index'])->name('timeline_index');
+Route::get('/timeline/add', [TimelineController::class, 'add'])->name('timeline_add');
+Route::get('/timeline/edit/{id}', [TimelineController::class, 'edit'])->name('timeline_edit');
+Route::post('/timeline/store', [TimelineController::class, 'store'])->name('timeline_store');
+Route::put('/timeline/{id}', [TimelineController::class, 'update'])->name('timeline_update');
+Route::delete('/timeline/{id}', [TimelineController::class, 'delete'])->name('timeline_delete');
 
 //assignment peserta
 Route::get('/peserta-view-materi', [MateriController::class, 'indexPeserta'])->name('view_materi');

@@ -73,8 +73,8 @@ class Peserta extends Authenticatable
         return $this->hasMany(Feedback::class);
     }
 
-    public function Event()
+    public function Timeline()
     {
-        return $this->hasMany(Event::class);
+        return $this->hasMany(Timeline::class);
     }
 }

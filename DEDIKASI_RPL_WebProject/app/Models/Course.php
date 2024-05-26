@@ -26,8 +26,8 @@ class Course extends Model
                     ->withPivot('nik', 'ktm', 'ktp', 'status');
     }
 
-    public function Event()
+    public function Timeline()
     {
-        return $this->hasMany(Event::class);
+        return $this->hasMany(Timeline::class);
     }
 }

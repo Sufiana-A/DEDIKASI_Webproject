@@ -11,13 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('events', function (Blueprint $table) {
+        Schema::create('timelines', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('peserta_id');                                                   
+            $table->unsignedBigInteger('course_id');  
             $table->string('title');
-            $table->unsignedBigInteger('course_id');      
-            $table->dateTime('start');
-            $table->dateTime('end');
+            $table->string('class');
+            $table->longText('description');
+            $table->string('tugas');
+            $table->dateTime('deadline');
+            $table->string('status');
             $table->foreign('peserta_id')->references('id')->on('peserta')->onDelete('cascade');
             $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
             $table->timestamps();
@@ -29,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('events');
+        Schema::dropIfExists('timelines');
     }
 };
