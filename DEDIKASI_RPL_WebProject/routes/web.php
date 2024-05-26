@@ -18,9 +18,11 @@ use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\NilaiPesertaController;
 use App\Http\Controllers\ProfilePesertaController;
 use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\PesertaPelatihanController;
 use App\Http\Controllers\StudentDashboardController;
 use App\Http\Controllers\RegistrasiPelatihanController;
+use App\Http\Controllers\TimelineController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 Route::get('/', function () {
@@ -77,12 +79,11 @@ Route::get("/mentor" , function(){
 
     Route::controller(NilaiController::class)->name('mentor.')->prefix('mentor')->group(function () {
         Route::get('manage-nilai', 'index')->name('manageNilai.index');
-        Route::get('mentor/manage-nilai/add', 'addNilai')->name('manageNilai.add');
-        Route::post('/manage-nilai/store', 'store')->name('manageNilai.store');
-        Route::get('mentor/manage-nilai/edit/{id}', 'editNilai')->name('manageNilai.edit');
-        Route::post('mentor/manage-nilai/update', 'update')->name('manageNilai.update');
-        Route::post('/manage-nilai/delete', 'delete')->name('manageNilai.delete');
-    
+        Route::get('manage-nilai/add', 'addNilai')->name('manageNilai.add');
+        Route::post('manage-nilai/store', 'store')->name('manageNilai.store');
+        Route::get('manage-nilai/edit/{id}', 'edit')->name('manageNilai.edit');
+        Route::post('manage-nilai/update/{id}', 'update')->name('manageNilai.update');
+        Route::post('manage-nilai/delete', 'delete')->name('manageNilai.delete');
     });
 // nilai peserta 
 Route::get('/nilai-peserta', [NilaiPesertaController::class, 'index'])->name('nilai-peserta');
@@ -138,6 +139,8 @@ Route::get('/edit-video/{id}', [VideoController::class, 'edit'])->name('video_ed
 Route::post('/update-video/{id}', [VideoController::class, 'update'])->name('video_update');
 Route::get('/delete-video', [VideoController::class, 'delete'])->name('video_delete');
 
+Route::get('/peserta-list-video', [VideoController::class, 'indexPeserta'])->name('video_peserta');
+
 
 //dashboard admin
 Route::get('/dashboard-admin', [AdminDashboardController::class, 'index'])->name('dashboard_admin');
@@ -162,17 +165,26 @@ Route::post('/update-materi/{id}', [MateriController::class, 'update'])->name('m
 Route::get('/delete-materi', [MateriController::class, 'delete'])->name('materi_delete');
 
 //timeline
-Route::get('/calendar/mycalendar', [EventController::class, 'myCalendar'])->name('view_kalendar');
-Route::post('/calendar/mycalendar/addevent', [EventController::class, 'addEvent'])->name('add_event');
-Route::post('/calendar/mycalendar/editevent', [EventController::class, 'updateEvent'])->name('edit_event');
-Route::post('/calendar/mycalendar/deleteevent', [EventController::class, 'deleteEvent'])->name('delete_event');
-Route::get('/getevents', [EventController::class, 'getEvents'])->name('get_events');
+Route::get('/timeline', [TimelineController::class, 'index'])->name('timeline_index');
+Route::get('/timeline/add', [TimelineController::class, 'add'])->name('timeline_add');
+Route::get('/timeline/edit/{id}', [TimelineController::class, 'edit'])->name('timeline_edit');
+Route::post('/timeline/store', [TimelineController::class, 'store'])->name('timeline_store');
+Route::put('/timeline/{id}', [TimelineController::class, 'update'])->name('timeline_update');
+Route::delete('/timeline/{id}', [TimelineController::class, 'delete'])->name('timeline_delete');
 
 //assignment peserta
 Route::get('/peserta-view-materi', [MateriController::class, 'indexPeserta'])->name('view_materi');
+
+//artikelAdmin
+Route::get('/list-artikel', [ArtikelController::class, 'index'])->name('list_artikel');
+Route::get('/add-artikel', [ArtikelController::class, 'create'])->name('add_artikel');
+Route::get('/store-artikel', [ArtikelController::class, 'store'])->name('store_artikel');
+
 
 //feedback
 Route::get('/feedback-peserta', [FeedbackController::class, 'create_feedback'])->name('feedback_peserta');
 Route::post('/feedback-peserta-submit/{id}', [FeedbackController::class, 'submit_feedback'])->name('feedback_peserta_submit');
 Route::get('/feedback-sistem', [FeedbackController::class, 'show_feedback_sistem'])->name('feedback_sistem');
 Route::get('/feedback-mentor', [FeedbackController::class, 'show_feedback_mentor'])->name('feedback_mentor');
+Route::post('/filter-feedback-mentor', [FeedbackController::class, 'filter_feedback_mentor'])->name('filter_feedback_mentor');
+Route::post('/filter-feedback-sistem', [FeedbackController::class, 'filter_feedback_sistem'])->name('filter_feedback_sistem');

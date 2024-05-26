@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\peserta;
 use Illuminate\Http\Request;
 use App\Models\Assignment;
+use Illuminate\Support\Facades\Auth;
 class NilaiPesertaController extends Controller
 {
     /**
@@ -11,8 +12,12 @@ class NilaiPesertaController extends Controller
      */
     public function index()
     {
-        $assignments = Assignment::with('peserta')->get();
-        return view('peserta.assignments.index', compact('assignments'));
+        $peserta_id = Auth::guard('peserta')->user()->id; 
+        $peserta = peserta::find($peserta_id); 
+
+        $assignments = $peserta->Assignment; // 
+        // dd($assignments);
+        return view('peserta.nilai.gradePeserta', compact('assignments')); 
     }
 
     /**

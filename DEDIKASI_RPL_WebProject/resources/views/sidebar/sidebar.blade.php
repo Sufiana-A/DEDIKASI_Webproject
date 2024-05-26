@@ -88,15 +88,17 @@
                     <a href="{{route('progress')}}"><i class="fas fa-clipboard-list"></i> <span>Progress Peserta</span></a>
                 </li>
                 <li>
+                    <a href="{{route('list_peserta_pelatihan')}}"><i class="fas fa-clipboard-list"></i> <span>List Pelatihan</span></a>
+                </li>
+                <li>
                     <a href="{{route('feedback_peserta')}}"><i class="fas fa-clipboard-list"></i> <span>Feedback</span></a>
                 </li>
                 <li>
-                    <a href="exam.html"><i class="fas fa-clipboard-list"></i> <span>Exam list</span></a>
+                    <a href="{{route('nilai-peserta')}}"><i class="fas fa-clipboard-list"></i> <span>Nilai Peserta</span></a>
                 </li>
                 <li>
-                    <a href="event.html"><i class="fas fa-calendar-day"></i> <span>Events</span></a>
+                    <a href="{{route('timeline_index')}}"><i class="fas fa-calendar-day"></i> <span>Timeline</span></a>
                 </li>
-
             </ul>
         </div>
     </div>

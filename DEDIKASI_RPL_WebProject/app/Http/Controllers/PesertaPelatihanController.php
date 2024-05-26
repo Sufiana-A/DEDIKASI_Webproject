@@ -18,7 +18,7 @@ class PesertaPelatihanController extends Controller
         $peserta = Peserta::find($pesertaId);
         $pelatihanAcc = $peserta->course()->wherePivot('status', 'Diterima')->get();
 
-        return view('peserta_pelatihan.listPesertaPelatihan', compact('pelatihanAcc'));
+        return view('peserta.pelatihan.listPesertaPelatihan', compact('pelatihanAcc'));
     }
     
     public function unenroll(Request $request)
@@ -34,9 +34,10 @@ class PesertaPelatihanController extends Controller
         if ($course) {
             // Ubah status course menjadi 'unenrolled'
             $peserta->Course()->updateExistingPivot($course->id, ['status' => 'Unenroll']);
-            return redirect()->back()->withSuccess('Pelatihan berhasil di-unenroll.');
+            return redirect()->back()->with('success', 'Pelatihan berhasil di-unenroll.');
         } else {
-            return redirect()->back();
+            return redirect()->back()->with('error', 'Pelatihan gagal di-unenroll.');
         }
+        
     }
 }

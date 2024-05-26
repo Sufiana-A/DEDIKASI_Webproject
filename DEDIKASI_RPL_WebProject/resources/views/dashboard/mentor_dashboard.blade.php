@@ -1,2 +1,2 @@
 @extends('layout.mentormaster')
-@extends('title', 'Dashboard Mentor')
+{{-- @extends('title', 'Dashboard Mentor') --}}

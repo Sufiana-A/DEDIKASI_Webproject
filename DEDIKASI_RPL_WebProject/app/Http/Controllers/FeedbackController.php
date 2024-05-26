@@ -30,8 +30,8 @@ class FeedbackController extends Controller
     public function show_feedback_mentor(){
 
         try {
-
-            $feedback_mentor = Feedback::where('tipe_feedback', 'Mentor')->get();
+            $fiveMonthlate = now()->subMonths(5)->startOfMonth();
+            $feedback_mentor = Feedback::where('tipe_feedback', 'Mentor')->whereBetween('created_at', [$fiveMonthlate, now()])->get();
             return view('mentor.feedbackMentor', compact('feedback_mentor'));
         }
         catch (Exception $e) {
@@ -44,8 +44,8 @@ class FeedbackController extends Controller
     public function show_feedback_sistem(){
 
         try {
-
-            $feedback_sistem = Feedback::where('tipe_feedback', 'Sistem')->get();
+            $fiveMonthlate = now()->subMonths(5)->startOfMonth();
+            $feedback_sistem = Feedback::where('tipe_feedback', 'Sistem')->whereBetween('created_at', [$fiveMonthlate, now()])->get();
             return view('admin.feedbackAdmin', compact('feedback_sistem'));
         }
         catch (Exception $e) {
@@ -53,6 +53,53 @@ class FeedbackController extends Controller
             return view('error', ['message' => 'An error occurred while retrieving feedback.']);
         }
 
+    }
+
+    public function filter_feedback_sistem(Request $request){
+
+        $oneMonthlate = now()->subMonths(1)->startOfMonth();
+        $twoMonthlate = now()->subMonths(2)->startOfMonth();
+        $threeMonthlate = now()->subMonths(3)->startOfMonth();
+        $fiveMonthlate = now()->subMonths(5)->startOfMonth();
+
+        $feedback = Feedback::where('tipe_feedback', 'Sistem');
+
+        if ($request->has('timestamp_filter')) {
+            if ($request->timestamp_filter == '1_bulan') {
+                $feedback_sistem = $feedback->whereBetween('created_at', [$oneMonthlate, now()])->get();
+            } elseif ($request->timestamp_filter == '2_bulan') {
+                $feedback_sistem = $feedback->whereBetween('created_at', [$twoMonthlate, now()])->get();
+            }elseif ($request->timestamp_filter == '3_bulan') {
+                $feedback_sistem = $feedback->whereBetween('created_at', [$threeMonthlate, now()])->get();
+            }else {
+                $feedback_sistem = $feedback->whereBetween('created_at', [$fiveMonthlate, now()])->get();
+            }
+        }
+        return view('admin.feedbackAdmin', compact('feedback_sistem'));
+
+    }
+
+    public function filter_feedback_mentor(Request $request){
+
+        $oneMonthlate = now()->subMonths(1)->startOfMonth();
+        $twoMonthlate = now()->subMonths(2)->startOfMonth();
+        $threeMonthlate = now()->subMonths(3)->startOfMonth();
+        $fiveMonthlate = now()->subMonths(5)->startOfMonth();
+
+        $feedback = Feedback::where('tipe_feedback', 'Mentor');
+
+        if ($request->has('timestamp_filter')) {
+            if ($request->timestamp_filter == '1_bulan') {
+                $feedback_mentor = $feedback->whereBetween('created_at', [$oneMonthlate, now()])->get();
+            } elseif ($request->timestamp_filter == '2_bulan') {
+                $feedback_mentor = $feedback->whereBetween('created_at', [$twoMonthlate, now()])->get();
+            }elseif ($request->timestamp_filter == '3_bulan') {
+                $feedback_mentor = $feedback->whereBetween('created_at', [$threeMonthlate, now()])->get();
+            }else {
+                $feedback_mentor = $feedback->whereBetween('created_at', [$fiveMonthlate, now()])->get();
+            }
+        }
+        return view('mentor.feedbackMentor', compact('feedback_mentor'));
     }
 
 }

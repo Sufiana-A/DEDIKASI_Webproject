@@ -62,7 +62,7 @@ class Peserta extends Authenticatable
                     ->withPivot('nik','ktm', 'ktp', 'status', 'created_at');
     }
 
-public function Assignment()
+    public function Assignment()
     {
         return $this->belongsToMany(Assignment::class, 'peserta_assignment',  'peserta_id', 'assignment_id')
                     ->withPivot('file_assignments','nilai','deskripsi');
@@ -71,5 +71,10 @@ public function Assignment()
     public function feedback(){
 
         return $this->hasMany(Feedback::class);
+    }
+
+    public function Timeline()
+    {
+        return $this->hasMany(Timeline::class);
     }
 }
