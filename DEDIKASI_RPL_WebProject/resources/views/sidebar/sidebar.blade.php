@@ -97,7 +97,7 @@
                     <a href="{{route('nilai-peserta')}}"><i class="fas fa-clipboard-list"></i> <span>Nilai Peserta</span></a>
                 </li>
                 <li>
-                    <a href="{{route('view_kalendar')}}"><i class="fas fa-calendar-day"></i> <span>Kalendar</span></a>
+                    <a href="{{route('timeline_index')}}"><i class="fas fa-calendar-day"></i> <span>Timeline</span></a>
                 </li>
             </ul>
         </div>

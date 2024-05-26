@@ -18,7 +18,7 @@ class PesertaPelatihanController extends Controller
         $peserta = Peserta::find($pesertaId);
         $pelatihanAcc = $peserta->course()->wherePivot('status', 'Diterima')->get();
 
-        return view('peserta_pelatihan.listPesertaPelatihan', compact('pelatihanAcc'));
+        return view('peserta.pelatihan.listPesertaPelatihan', compact('pelatihanAcc'));
     }
     
     public function unenroll(Request $request)

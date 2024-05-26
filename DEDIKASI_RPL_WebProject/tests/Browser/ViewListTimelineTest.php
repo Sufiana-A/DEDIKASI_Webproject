@@ -6,7 +6,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
-class ViewListPelatihanTest extends DuskTestCase
+class ViewListTimelineTest extends DuskTestCase
 {
     /**
      * A Dusk test example.
@@ -17,8 +17,8 @@ class ViewListPelatihanTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->visit('/dashboard-peserta')
                     ->assertSee('Management')
-                    ->clickLink('List Pelatihan')
-                    ->assertPathIs('/peserta-pelatihan');
+                    ->clickLink('Timeline')
+                    ->assertPathIs('/timeline');
         });
     }
 }

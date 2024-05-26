@@ -5,14 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Event extends Model
+class Timeline extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'title', 
-        'start', 
-        'end',
+        'class',
+        'description',
+        'tugas',  
+        'deadline', 
+        'status', 
         'peserta_id',
         'course_id'
     ];

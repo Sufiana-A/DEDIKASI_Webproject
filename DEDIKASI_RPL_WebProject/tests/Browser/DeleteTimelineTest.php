@@ -6,19 +6,19 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
-class UnenrollListPelatihanTest extends DuskTestCase
+class DeleteTimelineTest extends DuskTestCase
 {
     /**
      * A Dusk test example.
-     * @group unenrollListPelatihan
+     * @group deleteTimeline
      */
     public function testExample(): void
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/peserta-pelatihan')
-                    ->assertSee('Integrasi Aplikasi Enterprise')
-                    ->press('Unenroll')
-                    ->assertSee('Apakah anda yakin mau unenroll?')
+            $browser->visit('/timeline')
+                    ->assertSee('Rekayasa Perangkat Lunak')
+                    ->press('@delete-timeline')
+                    ->assertSee('Apakah anda yakin mau hapus?')
                     ->press('Yakin');
         });
     }
