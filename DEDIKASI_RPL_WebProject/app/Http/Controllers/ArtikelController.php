@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Controllers\Controller;
 use App\Models\Artikel;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class ArtikelController extends Controller
@@ -24,7 +26,7 @@ class ArtikelController extends Controller
             'waktu' => 'required',
             'konten' => 'required',
         ]);
-
+    try{
         $artikel = new Artikel();
         $artikel->id_artikel = $request->id_artikel;
         $artikel->judul = $request->judul;
@@ -35,5 +37,31 @@ class ArtikelController extends Controller
         $artikel->save();
 
         return redirect()->route('list_artikel')->with('success', 'Artikel berhasil diunggah');
+        } catch (\Exception $e) {
+        return redirect()->back()->with('error', 'Error: ' . $e->getMessage());
+        }
+
+        // return redirect()->route('list_artikel')->with('success', 'Artikel berhasil diunggah');
     }
+
+    public function edit(Request $request, $id){
+        $artikel = Artikel::where('id', $request->id)->firstOrFail();
+        return view('admin.editArtikel', compact('artikel'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'id_artikel' => 'nullable|string',
+            'judul' => 'nullable|string',
+            'penulis' => 'nullable|string',
+            'waktu' => 'nullable|date',
+            'konten' => 'nullable|string',
+        ]);
+
+        $artikel = Artikel::findOrFail($id);
+        $artikel->update($request->all());
+        return redirect()->route('list_artikel', [$artikel->id])->with('success', 'Artikel berhasil diperbarui');
+    }
+
 }
