@@ -64,4 +64,9 @@ class ArtikelController extends Controller
         return redirect()->route('list_artikel', [$artikel->id])->with('success', 'Artikel berhasil diperbarui');
     }
 
+    public function delete(Request $request) {
+        $artikel = Artikel::where('id_artikel', $request->id_artikel)->firstOrFail();
+        $artikel->delete();
+        return redirect(route('list_artikel'));
+    }
 }
