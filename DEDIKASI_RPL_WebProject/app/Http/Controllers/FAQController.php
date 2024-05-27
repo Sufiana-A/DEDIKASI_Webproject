@@ -12,13 +12,13 @@ class FAQController extends Controller
     public function index()
     {
         $faqs = FAQ::all();
-        return view('faqs.index', compact('faqs'));
+        return view('FAQ.indexFAQ', compact('faqs'));
     }
 
     // Menampilkan form untuk membuat FAQ baru
     public function create()
     {
-        return view('faqs.create');
+        return view('FAQ.addFAQ');
     }
 
     // Menyimpan FAQ baru
