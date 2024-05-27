@@ -106,7 +106,7 @@
                                                     <a href="{{ route('timeline_edit', $timeline->id) }}" dusk="edit-timeline" class="btn btn-sm bg-danger-light">
                                                         <i class="far fa-edit me-2"></i>
                                                     </a>
-                                                    <a class="btn btn-sm bg-danger-light delete" dusk="delete-timeline" data-bs-toggle="modal" data-bs-target="#delete" data-uuid="{{ $timeline->id }}">
+                                                    <a class="btn btn-sm bg-danger-light delete" dusk="delete-timeline" data-bs-toggle="modal" data-bs-target="#delete" data-id="{{ $timeline->id }}">
                                                         <i class="fe fe-trash-2"></i>
                                                     </a>
                                                 </div>

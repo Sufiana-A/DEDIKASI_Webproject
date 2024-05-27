@@ -10,7 +10,7 @@ class ViewListTimelineTest extends DuskTestCase
 {
     /**
      * A Dusk test example.
-     * @group viewListPelatihan
+     * @group viewListTimeline
      */
     public function testExample(): void
     {
