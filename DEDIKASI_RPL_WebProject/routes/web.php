@@ -179,6 +179,9 @@ Route::get('/peserta-view-materi', [MateriController::class, 'indexPeserta'])->n
 Route::get('/list-artikel', [ArtikelController::class, 'index'])->name('list_artikel');
 Route::get('/add-artikel', [ArtikelController::class, 'create'])->name('add_artikel');
 Route::get('/store-artikel', [ArtikelController::class, 'store'])->name('store_artikel');
+Route::get('/edit-artikel/{id}', [ArtikelController::class, 'edit'])->name('edit_artikel');
+Route::post('/update-artikel/{id}', [ArtikelController::class, 'update'])->name('update_artikel');
+Route::get('/delete-artikel', [ArtikelController::class, 'delete'])->name('delete_artikel');
 
 
 //feedback
