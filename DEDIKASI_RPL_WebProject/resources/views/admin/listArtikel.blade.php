@@ -39,11 +39,11 @@
                             <div class="page-header">
                                 <div class="row align-items-center">
                                     <div class="col">
-                                        <h3 class="page-title">Artikel</h3>
+                                        <h3 class="page-title">List Artikel</h3>
                                     </div>
                                     <div class="col-auto text-end float-end ms-auto download-grp">
                                         
-                                        <a href="{{ route('artikel_create') }}" class="btn btn-primary">
+                                        <a href="{{ route('add_artikel') }}" class="btn btn-primary">
                                             <i class="fas fa-plus"></i>
                                         </a>
                                     </div>
@@ -56,6 +56,8 @@
                                         <tr>
                                             <th>ID Artikel</th>
                                             <th>Judul</th>
+                                            <th>Penulis</th>
+                                            <th>Tanggal Diunggah</th>
                                             <th class="text-end">Action</th>
                                         </tr>
                                     </thead>
@@ -68,9 +70,11 @@
                                                     <a>{{ $artikel->judul }}</a>
                                                 </h2>
                                             </td>
+                                            <td class="penulis">{{ $artikel->penulis }}</td>
+                                            <td class="waktu">{{ $artikel->waktu }}</td>
                                             <td class="text-end">
                                                 <div class="actions">
-                                                    <a href="{{ route('artikel_edit', $artikel->id) }}" class="btn btn-sm bg-danger-light">
+                                                    <a href="{{ route('edit_artikel', $artikel->id) }}" class="btn btn-sm bg-danger-light">
                                                         <i class="far fa-edit me-2"></i>
                                                     </a>
                                                     <a class="btn btn-sm bg-danger-light delete" data-bs-toggle="modal" data-bs-target="#delete" data-id_artikel="{{ $artikel->id_artikel }}">
@@ -99,7 +103,7 @@
                     </div>
                     <div class="modal-btn delete-action">
                         <div class="row">
-                            <form action="{{ route('artikel_delete') }}" method="GET">
+                            <form action="{{ route('delete_artikel') }}" method="GET">
                                 @csrf
                                 <input type="hidden" name="id_artikel" value="">
                                 <div class="row">

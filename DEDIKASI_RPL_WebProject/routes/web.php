@@ -169,11 +169,14 @@ Route::get('/peserta-view-materi', [MateriController::class, 'indexPeserta'])->n
 //artikelAdmin
 Route::get('/list-artikel', [ArtikelController::class, 'index'])->name('list_artikel');
 Route::get('/add-artikel', [ArtikelController::class, 'create'])->name('add_artikel');
-Route::get('/store-artikel', [ArtikelController::class, 'store'])->name('store_artikel');
+Route::post('/store-artikel', [ArtikelController::class, 'store'])->name('store_artikel');
 Route::get('/edit-artikel/{id}', [ArtikelController::class, 'edit'])->name('edit_artikel');
 Route::post('/update-artikel/{id}', [ArtikelController::class, 'update'])->name('update_artikel');
 Route::get('/delete-artikel', [ArtikelController::class, 'delete'])->name('delete_artikel');
 
+//peserta, mentor | artikel
+Route::get('/peserta-artikel', [ArtikelController::class, 'indexView'])->name('peserta_artikel');
+Route::get('/detail-artikel/{id}', [ArtikelController::class, 'detailView'])->name('detail_artikel');
 
 //feedback
 Route::get('/feedback-peserta', [FeedbackController::class, 'create_feedback'])->name('feedback_peserta');
