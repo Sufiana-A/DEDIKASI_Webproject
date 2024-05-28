@@ -23,6 +23,8 @@ use App\Http\Controllers\PesertaPelatihanController;
 use App\Http\Controllers\StudentDashboardController;
 use App\Http\Controllers\RegistrasiPelatihanController;
 use App\Http\Controllers\TimelineController;
+use App\Http\Controllers\AnnouncementController;
+use App\Http\Controllers\ShowAnnouncementController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 Route::get('/', function () {
@@ -185,3 +187,24 @@ Route::get('/feedback-sistem', [FeedbackController::class, 'show_feedback_sistem
 Route::get('/feedback-mentor', [FeedbackController::class, 'show_feedback_mentor'])->name('feedback_mentor');
 Route::post('/filter-feedback-mentor', [FeedbackController::class, 'filter_feedback_mentor'])->name('filter_feedback_mentor');
 Route::post('/filter-feedback-sistem', [FeedbackController::class, 'filter_feedback_sistem'])->name('filter_feedback_sistem');
+
+
+// Announcement
+
+Route::controller(AnnouncementController::class)->name('admin.')->prefix('admin')->group(function () {
+    Route::get('manage-announcement', 'index')->name('manage.index');
+    Route::get('manage-announcement/add', 'addAnnouncement')->name('manage.add');
+    Route::post('manage-announcement/store', 'store')->name('manage.store');
+    Route::get('manage-announcement/edit/{id}', 'editAnnouncement')->name('manage.edit');
+    Route::post('manage-announcement/update', 'update')->name('manage.update');
+    Route::post('manage-announcement/delete', 'delete')->name('manage.delete');
+});
+//peserta announcement
+
+Route::get('announcements', [AnnouncementController::class, 'showAnnouncements'])->name('announcements.index');
+Route::get('announcements/{id}', 'AnnouncementController@view')->name('announcements.view');
+Route::delete('announcements/{id}', 'AnnouncementController@destroy')->name('announcements.destroy');
+Route::get('/announcements', 'ShowAnnouncementController@index')->name('announcements.index');
+Route::get('/announcements', 'AnnouncementController@showAnnouncements')->name('announcements.index');
+Route::get('announcements', [AnnouncementController::class, 'showAnnouncements'])->name('announcements.index');
+Route::get('announcements/{id}', [AnnouncementController::class, 'showAnnouncementDetail'])->name('announcements.view');

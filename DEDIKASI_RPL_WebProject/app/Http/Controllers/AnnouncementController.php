@@ -1,13 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
-use App\Models\Course;
 
-class AdminCourseController extends Controller
+use Illuminate\Http\Request;
+use App\Models\Announcement;
+
+class AnnouncementController extends Controller
 {
     public function index(Request $request) {
-        $query = Course::query();
+        $query = Announcement::query();
 
         // Check if uuid input is provided
         if ($request->has('uuid')) {
@@ -25,47 +26,73 @@ class AdminCourseController extends Controller
         }
 
         // Get the results
-        $courses = $query->get();
+        $announcements = $query->get();
 
-
-        return view('admin.managePelatihan', compact('courses'));
+        return view('admin.Announcement.manage', compact('announcements'));
     }
 
-    public function addCourse() {
-        return view('admin.addCourse');
+    public function addAnnouncement() {
+        return view('admin.Announcement.add');
     }
 
-    public function editCourse($id) {
-        $course = Course::where('uuid', $id)->firstOrFail();
-        return view('admin.editCourse', compact('course'));
+    public function editAnnouncement($id) {
+        $announcement = Announcement::where('uuid', $id)->firstOrFail();
+        return view('admin.Announcement.edit', compact('announcement'));
     }
 
     public function store(Request $request) {
-        $course = new Course();
-        $course->title = $request->title;
-        $course->description = $request->description;
-        $course->class = $request->class;
-        $course->save();
+        $announcement = new Announcement();
+        $announcement->title = $request->title;
+        $announcement->description = $request->description;
+        $announcement->save();
 
-        $formattedId = sprintf("%03d", $course->id);
-        $course->uuid = "CN$formattedId";
-        $course->update();
+        $formattedId = sprintf("%03d", $announcement->id);
+        $announcement->uuid = "ANN$formattedId";
+        $announcement->update();
 
-        return redirect(route('admin.manageCourse.index'));
+        return redirect()->route('admin.manage.index');
     }
+
     public function update(Request $request) {
-        $course = Course::where('uuid', $request->uuid)->firstOrFail();
-        $course->title = $request->title;
-        $course->description = $request->description;
-        $course->class = $request->class;
-        $course->update();
+        $announcement = Announcement::where('uuid', $request->uuid)->firstOrFail();
+        $announcement->title = $request->title;
+        $announcement->description = $request->description;
+        $announcement->update();
 
-        return redirect(route('admin.manageCourse.index'));
+        return redirect()->route('admin.manage.index');
     }
+
     public function delete(Request $request) {
-        $course = Course::where('uuid', $request->uuid)->firstOrFail();
-        $course->delete();
-        return redirect(route('admin.manageCourse.index'));
+        $announcement = Announcement::where('uuid', $request->uuid)->firstOrFail();
+        $announcement->delete();
+        return redirect()->route('admin.manage.index');
     }
+
+    public function showAnnouncements()
+    {
+        // Ambil data pengumuman dari database
+        $announcements = Announcement::all();
+
+        // Tampilkan view 'announcements.index' dan kirimkan data pengumuman
+        return view('peserta.pengumuman.index', compact('announcements'));
+    }
+    public function showAnnouncementDetail($id)
+{
+    // Ambil data pengumuman berdasarkan ID
+    $announcement = Announcement::findOrFail($id);
+
+    // Tampilkan view 'announcements.detail' dan kirimkan data pengumuman
+    return view('peserta.pengumuman.detail', compact('announcement'));
 }
 
+public function destroy($id) {
+    $announcement = Announcement::findOrFail($id);
+    $announcement->delete();
+    return redirect()->back()->with('success', 'Announcement deleted successfully.');
+}
+
+}
+
+
+
+  
