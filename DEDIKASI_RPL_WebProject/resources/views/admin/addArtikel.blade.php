@@ -23,12 +23,20 @@
                             <form action="{{ route('store_artikel') }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="mb-3">
-                                    <label for="id_artikel" class="form-label">ID Tugas</label>
+                                    <label for="id_artikel" class="form-label">ID Artikel</label>
                                     <input type="text" class="form-control" id="id_artikel" name="id_artikel" placeholder="contoh: 'AR001'" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="judul" class="form-label">Judul</label>
                                     <input type="text" class="form-control" id="judul" name="judul" placeholder="contoh: 'Capaian Gemilang Mahasiswa Sistem informasi Telkom University'" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="penulis" class="form-label">Nama Penulis</label>
+                                    <input type="text" class="form-control" id="penulis" name="penulis" placeholder="contoh: 'Nafila Alfirahma'" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="waktu" class="form-label">Tanggal Unggahan</label>
+                                    <input type="date" class="form-control" id="waktu" name="waktu" default=today required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="konten" class="form-label">Konten</label>

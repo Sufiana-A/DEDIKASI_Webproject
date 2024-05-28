@@ -26,7 +26,7 @@ class ArtikelController extends Controller
             'waktu' => 'required',
             'konten' => 'required',
         ]);
-    try{
+    
         $artikel = new Artikel();
         $artikel->id_artikel = $request->id_artikel;
         $artikel->judul = $request->judul;
@@ -37,11 +37,6 @@ class ArtikelController extends Controller
         $artikel->save();
 
         return redirect()->route('list_artikel')->with('success', 'Artikel berhasil diunggah');
-        } catch (\Exception $e) {
-        return redirect()->back()->with('error', 'Error: ' . $e->getMessage());
-        }
-
-        // return redirect()->route('list_artikel')->with('success', 'Artikel berhasil diunggah');
     }
 
     public function edit(Request $request, $id){
@@ -68,5 +63,16 @@ class ArtikelController extends Controller
         $artikel = Artikel::where('id_artikel', $request->id_artikel)->firstOrFail();
         $artikel->delete();
         return redirect(route('list_artikel'));
+    }
+
+    public function indexView(){
+        $artikel = Artikel::get();
+
+        return view('peserta.artikel', compact('artikel'));
+    }
+    
+    public function detailView(Request $request, $id){
+        $artikel = Artikel::where('id', $request->id)->firstOrFail();
+        return view('peserta.detailArtikel', compact('artikel'));
     }
 }
