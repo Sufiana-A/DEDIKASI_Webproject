@@ -5,31 +5,38 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Materi;
+use App\Models\Course;
 
 class MateriController extends Controller
 {
     
 
-        public function index(){
-            $materi = Materi::get();
-            return view('materi/mentor/materi-list', ['materi' => $materi]);
-        } 
+    public function index(){
+        $materi = Materi::with('course')->get();
+        return view('materi/mentor/materi-list', ['materi' => $materi]);
+    }
+    
         
 
-        public function create(){
-            return view('materi/mentor/materi-create');
+        public function create() {
+            $courses = Course::all();
+            return view('materi/mentor/materi-create', compact('courses'));
         }
     
         public function store(Request $request)
         {
             $request->validate([
-                'id_materi'     => 'required',
-                'judul_materi'     => 'required',
+                'pelatihan' => 'required|exists:courses,uuid', // Ensure the selected course exists
+                'id_materi' => 'required',
+                'judul_materi' => 'required',
                 'deskripsi_materi' => 'required',
-                'link_terkait' => 'required|mimes:pdf,doc,jpg,jpeg,png|max:4096', 
+                'link_terkait' => 'required|mimes:pdf,doc,jpg,jpeg,png|max:4096',
+                
             ]);
+        
     
             $materi = new Materi;
+            $materi->pelatihan = $request->pelatihan;
             $materi->id_materi = $request->id_materi;
             $materi->judul_materi = $request->judul_materi;
             $materi->deskripsi_materi = $request->deskripsi_materi;
@@ -49,23 +56,25 @@ class MateriController extends Controller
     public function detailMateri(Request $request, $id)
         {
         $materi = Materi::where('id', $request->id)->firstOrFail();
-        return view('materi.mentor.materi-update', compact('materi'));
+        $courses = Course::all();
+        return view('materi.mentor.materi-update', compact('materi', 'courses'));
         }
 
 
     public function update(Request $request, $id)
     {
-    $request->validate([
-        'id_materi'     => 'required',
-        'judul_materi'     => 'required',
-        'deskripsi_materi' => 'required',
-        'link_terkait' => 'sometimes|mimes:pdf,doc,jpg,jpeg,png|max:4096',
-    ]);
+        $request->validate([
+            'pelatihan' => 'required|exists:courses,uuid', // Ensure the selected course exists
+            'id_materi' => 'required',
+            'judul_materi' => 'required',
+            'deskripsi_materi' => 'required',
+            'link_terkait' => 'sometimes|mimes:pdf,doc,jpg,jpeg,png|max:4096',
+        ]);
 
     $materi = Materi::findOrFail($id);
-
     $materi->id_materi = $request->id_materi;
     $materi->judul_materi = $request->judul_materi;
+    $materi->pelatihan = $request->pelatihan;
     $materi->deskripsi_materi = $request->deskripsi_materi;
 
     // Simpan file baru

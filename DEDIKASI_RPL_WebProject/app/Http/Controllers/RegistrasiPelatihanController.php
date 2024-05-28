@@ -20,19 +20,6 @@ class RegistrasiPelatihanController extends Controller
                   ->orWhere('last_name', 'like', '%'. $request->nama. '%');
         }
 
-        // if ($request->has('title')) {
-        //     $query->whereHas('course', function ($q) use ($request) {
-        //         $q->where('title', 'like', '%'. $request->title. '%');
-        //     });
-        // }
-
-    
-        // if ($request->has('status')) {
-        //     $query->whereHas('Course', function ($q) use ($request) {
-        //         $q->wherePivot('status', $request->status);
-        //     });
-        // }
-        
         
         
         $pesertaPelatihan = $query->get();
