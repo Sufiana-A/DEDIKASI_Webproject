@@ -16,12 +16,12 @@
                 </div>
             </div>
 
-            <div class="student-group-form">
+            {{-- <div class="student-group-form">
                 <form action="{{ route('materi_mentor') }}" method="get">
                     <div class="row">
                         <div class="col-lg-3 col-md-6">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Search by ID" name="id" value="{{ request()->id ?? null }}">
+                                <input type="text" class="form-control" placeholder="Search by Pelatihan" name="pelatihan" value="{{ request()->pelatihan ?? null }}">
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6">
@@ -36,7 +36,7 @@
                         </div>
                     </div>
                 </form>
-            </div>
+            </div> --}}
 
             <div class="row">
                 <div class="col-sm-12">
@@ -60,6 +60,7 @@
                                     class="table border-0 star-student table-hover table-center mb-0 datatable table-striped">
                                     <thead class="student-thread">
                                         <tr>
+                                            <th>Pelatihan</th>
                                             <th>ID Materi</th>
                                             <th>Judul</th>
                                             <th>Deskripsi</th>
@@ -69,6 +70,13 @@
                                     <tbody>
                                         @foreach ($materi as $materi)
                                         <tr>
+                                            <td>
+                                                @if($materi->course)
+                                                    {{ $materi->course->uuid }}: {{ $materi->course->title }}
+                                                @else
+                                                    No Course Assigned
+                                                @endif
+                                            </td>
                                             <td class="id_materi">{{ $materi->id_materi }}</td>
                                             <td>
                                                 <h2>

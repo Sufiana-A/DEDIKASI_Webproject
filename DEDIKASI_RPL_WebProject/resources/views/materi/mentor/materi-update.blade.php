@@ -11,6 +11,18 @@
         <form action="{{ route('materi_update', [$materi->id]) }}" method="POST" enctype="multipart/form-data">            
             @csrf
             <div class="form-group">
+                <label for="pelatihan">Pelatihan</label>
+                <select class="form-control @error('pelatihan') is-invalid @enderror" id="pelatihan" name="pelatihan" required>
+                    <option value="">Pilih Pelatihan</option>
+                    @foreach($courses as $course)
+                         <option value="{{ $course->uuid }}" {{ $materi->pelatihan == $course->uuid ? 'selected' : '' }}>{{ $course->uuid }}: {{ $course->title }}</option>
+                    @endforeach
+                </select>
+                @error('pelatihan')
+                  <div class="alert text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="form-group">
                 <label for="id_materi">ID Materi</label>
                 <input class="form-control @error('id_materi') is-invalid @enderror"  id="id_materi" name="id_materi" value="{{ $materi->id_materi }}" required>
 		@error('id_materi')
