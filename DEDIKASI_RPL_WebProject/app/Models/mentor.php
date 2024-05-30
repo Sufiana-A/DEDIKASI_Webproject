@@ -27,7 +27,6 @@ class mentor extends Authenticatable
         'email',
         'password',
         'foto_mentor',
-        'course_id'
     ];
 
     protected $hidden = [

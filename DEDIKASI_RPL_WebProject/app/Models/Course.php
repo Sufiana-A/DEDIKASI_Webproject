@@ -18,6 +18,7 @@ class Course extends Model
         'class',
         'description',
         'image',
+        'mentor_id'
     ];
 
     public function Peserta()
