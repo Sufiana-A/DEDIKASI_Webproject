@@ -34,6 +34,56 @@
             </div>
         </div>
 
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card card-table">
+                    <div class="card-body">
+                        <div class="page-header">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <h3 class="page-title">Daftar Course yang diajar</h3>
+                                </div>
+                                <div class="col-auto text-end float-end ms-auto download-grp">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table
+                                class="table border-0 star-student table-hover table-center mb-0 datatable table-striped">
+                                <thead class="student-thread">
+                                    <tr>
+                                        {{-- <th>
+                                            <div class="form-check check-tables">
+                                                <input class="form-check-input" type="checkbox" value="something">
+                                            </div>
+                                        </th> --}}
+                                        <th style="text-align: center;">Nama Pelatihan</th>
+                                        <th style="text-align: center;">Kelas</th>
+                                        <th style="text-align: center;">Deskripsi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($courses as $course)
+                                        <tr>
+                                            {{-- <td>
+                                                <div class="form-check check-tables">
+                                                    <input class="form-check-input" type="checkbox"
+                                                        value="something">
+                                                </div>
+                                            </td> --}}
+                                            <td style="text-align: center;">{{ $course->title }}</td>
+                                            <td style="text-align: center;">{{ $course->class }}</td>
+                                            <td style="text-align: center;">{{ $course->description }}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 @endsection

@@ -12,7 +12,8 @@ class MentorDashboardController extends Controller
 {
     public function index()
     {
-
+        $mentorId = Auth::guard('mentor')->user()->id;
+        $courses = Course::where('mentor_id', $mentorId)->get();
 
         $pesertaId = [];
         foreach ($courses as $course) {

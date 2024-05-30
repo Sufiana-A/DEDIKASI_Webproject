@@ -26,7 +26,8 @@ class mentor extends Authenticatable
         'no_hp',
         'email',
         'password',
-        'foto_mentor'
+        'foto_mentor',
+        'course_id'
     ];
 
     protected $hidden = [
@@ -40,5 +41,10 @@ class mentor extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function Courses()
+    {
+        return $this->hasMany(Course::class);
     }
 }
