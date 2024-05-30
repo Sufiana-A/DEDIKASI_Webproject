@@ -15,6 +15,7 @@ use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\ProfileAdminController;
 use App\Http\Controllers\ProfileMentorController;
 use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\MentorDashboardController;
 use App\Http\Controllers\NilaiPesertaController;
 use App\Http\Controllers\ProfilePesertaController;
 use App\Http\Controllers\FeedbackController;
@@ -67,8 +68,7 @@ Route::post('/peserta-pelatihan/unenroll', [PesertaPelatihanController::class, '
 //mentor
 
 //Mentor Dashboard
-Route::get("/mentor" , function(){
-    return view("dashboard/mentor_dashboard");})->name('dash-mentor');
+Route::get('/dashboard-mentor', [MentorDashboardController::class, 'index'])->name('dashboard_mentor');
 
     Route::controller(NilaiController::class)->name('mentor.')->prefix('mentor')->group(function () {
         Route::get('manage-nilai', 'index')->name('manageNilai.index');

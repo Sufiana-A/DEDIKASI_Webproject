@@ -31,7 +31,7 @@ class LoginController extends Controller
         };
         if (Auth::guard('mentor')->attempt($credentials)){
             $request->session()->regenerate();
-            return redirect()->route('dash-mentor');
+            return redirect()->route('dashboard_mentor');
         };
         return redirect()->back()->with('sukses', 'Proses login berhasil.');
     }
