@@ -46,9 +46,12 @@
                                     <label for="tugas" class="form-label">Tugas</label>
                                     <textarea class="form-control summernote" id="tugas" rows="3" name="tugas" required></textarea>
                                 </div>
+                                @php
+                                    $now = date('Y-m-d\TH:i', time());
+                                @endphp
                                 <div class="mb-3">
                                     <label for="deadline" class="control-label">Deadline</label>
-                                    <input type="datetime-local" class="form-control" id="deadline" name="deadline" required>
+                                    <input type="datetime-local" class="form-control" id="deadline" name="deadline" min="{{ $now }}" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="status" class="form-label">Status</label>
