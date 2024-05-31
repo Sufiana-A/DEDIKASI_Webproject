@@ -1,4 +1,5 @@
 @extends('layout.master')
+@section('title', 'List Pelatihan')
 @section('content')
 
 <div class="page-wrapper">

@@ -37,6 +37,15 @@
                                     <textarea class="form-control summernote" id="description" rows="3" name="description" required></textarea>
                                 </div>
                                 <div class="mb-3">
+                                    <label for="id_mentor" class="form-label">Mentor</label>
+                                    <select id="id_mentor" name="id_mentor" class="form-select" required>
+                                        <option value=""></option>
+                                        @foreach($idMentor as $mentor_id)
+                                        <option value="{{ $mentor_id->id }}">{{ $mentor_id->id }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="mb-3">
                                     <button type="submit" class="btn btn-primary">Save</button>
                                 </div>
                             </form>

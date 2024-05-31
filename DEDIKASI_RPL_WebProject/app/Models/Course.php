@@ -36,4 +36,9 @@ class Course extends Model
     {
         return $this->belongsTo(Mentor::class);
     }
+
+    public function materi()
+    {
+        return $this->hasMany(Materi::class);
+    }
 }

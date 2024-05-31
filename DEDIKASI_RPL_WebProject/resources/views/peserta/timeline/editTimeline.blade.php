@@ -1,4 +1,5 @@
 @extends('layout.master')
+@section('title', 'Edit Timeline')
 @section('content')
 {{-- message --}}
 

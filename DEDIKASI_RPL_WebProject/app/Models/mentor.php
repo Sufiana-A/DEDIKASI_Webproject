@@ -18,6 +18,7 @@ class mentor extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'id',
         'first_name',
         'last_name',
         'tanggal_lahir',

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Course;
+use App\Models\Mentor;
 
 class AdminCourseController extends Controller
 {
@@ -32,12 +34,18 @@ class AdminCourseController extends Controller
     }
 
     public function addCourse() {
-        return view('admin.addCourse');
+        $mentorId = Auth::guard('mentor')->user()->id;
+        $mentor = mentor::find($mentorId);
+        $idMentor = $mentor->get();
+        return view('admin.addCourse', compact('idMentor'));
     }
 
     public function editCourse($id) {
         $course = Course::where('uuid', $id)->firstOrFail();
-        return view('admin.editCourse', compact('course'));
+        $mentorId = Auth::guard('mentor')->user()->id;
+        $mentor = mentor::find($mentorId);
+        $idMentor = $mentor->get();
+        return view('admin.editCourse', compact('course', 'idMentor'));
     }
 
     public function store(Request $request) {
@@ -45,6 +53,7 @@ class AdminCourseController extends Controller
         $course->title = $request->title;
         $course->description = $request->description;
         $course->class = $request->class;
+        $course->mentor_id = Auth::guard('mentor')->user()->id;
         $course->save();
 
         $formattedId = sprintf("%03d", $course->id);
@@ -58,6 +67,7 @@ class AdminCourseController extends Controller
         $course->title = $request->title;
         $course->description = $request->description;
         $course->class = $request->class;
+        $course->mentor_id = $request->id_mentor;
         $course->update();
 
         return redirect(route('admin.manageCourse.index'));

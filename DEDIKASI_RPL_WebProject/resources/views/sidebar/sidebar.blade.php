@@ -100,7 +100,7 @@
                     <a href="{{route('timeline_index')}}"><i class="fas fa-calendar-day"></i> <span>Timeline</span></a>
                 </li>
                 <li>
-                    <a href="{{route('pengumuman')}}"><i class="fas fa-clipboard-list"></i> <span>Pengumumuman</span></a>
+                    <a href="{{route('announcements.index')}}"><i class="fas fa-clipboard-list"></i> <span>Pengumumuman</span></a>
                 </li>
             </ul>
         </div>
