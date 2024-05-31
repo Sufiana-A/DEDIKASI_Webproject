@@ -34,9 +34,6 @@
                 <li>
                     <a href="{{route('feedback_mentor')}}"><i class="fas fa-clipboard-list"></i> <span>Feedback Mentor</span></a>
                 </li>
-                <li>
-                    <a href="event.html"><i class="fas fa-calendar-day"></i> <span>Events</span></a>
-                </li>
               
             </ul>
         </div>
