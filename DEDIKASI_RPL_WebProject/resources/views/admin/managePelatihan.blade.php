@@ -74,6 +74,7 @@
                                             <th>ID</th>
                                             <th>Name</th>
                                             <th>Class</th>
+                                            <th>Mentor</th>
                                             <th class="text-end">Action</th>
                                         </tr>
                                     </thead>
@@ -93,6 +94,7 @@
                                                 </h2>
                                             </td>
                                             <td>{{ $course->class }}</td>
+                                            <td>{{ $course->mentor_id }}</td>
                                             <td class="text-end">
                                                 <div class="actions">
                                                     <a href="{{ route('admin.manageCourse.edit', $course->uuid) }}" class="btn btn-sm bg-danger-light">
