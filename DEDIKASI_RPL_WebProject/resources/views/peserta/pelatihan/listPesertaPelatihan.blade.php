@@ -43,7 +43,7 @@
                                 <hr>
                                 <div class="d-flex justify-content-center mb-3">
                                     <a href="{{route('video_peserta')}}" class="btn btn-primary mx-2"><i class="fas fa-video"></i> Video </a>
-                                    <a href="{{route('view_materi')}}" class="btn btn-primary mx-2"><i class="fas fa-file"></i> Material </a>
+                                    <a href="{{route('view_materi', $enroll->uuid)}}" class="btn btn-primary mx-2"><i class="fas fa-file"></i> Material </a>
                                     <a href="{{route('add_assignment')}}" class="btn btn-primary mx-2"><i class="fas fa-file-alt"></i> Assignment </a>
                                 </div>
                                 <hr>
