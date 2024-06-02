@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layout.adminmaster')
 
 @section('content')
-<div class="container">
+<div class="container ms-5 ps-5 mt-5 pt-5">
     <h1>Edit FAQ</h1>
     @if ($errors->any())
         <div class="alert alert-danger">

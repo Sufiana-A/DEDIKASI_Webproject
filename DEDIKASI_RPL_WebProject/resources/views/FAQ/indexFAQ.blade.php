@@ -1,7 +1,7 @@
 @extends('layout.adminmaster')
 
 @section('content')
-<div class="container">
+<div class="container mt-5 ps-5 ms-5 pt-5">
     <h1>FAQs</h1>
     <a href="{{ route('faqs.create') }}" class="btn btn-primary mb-3">Add FAQ</a>
     @if ($message = Session::get('success'))
