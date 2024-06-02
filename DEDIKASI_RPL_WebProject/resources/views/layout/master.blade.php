@@ -96,7 +96,7 @@
                 <li class="nav-item dropdown has-arrow new-user-menus">
                     <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
                         <span class="user-img">
-                            <img class="{{ asset('assets/img/profiles/'.Auth::guard('peserta')->user()->foto_peserta) }}" width="31"alt="">
+                            <img class="rounded-circle" src="{{ asset('assets/img/profiles/'.Auth::guard('peserta')->user()->foto_peserta) }}" width="31"alt="">
                             <div class="user-text">
                                 <h6>{{ Auth::guard('peserta')->user()->first_name  }}</h6>
                                 <p class="text-muted mb-0">{{ Session::get('role_name') }}</p>
