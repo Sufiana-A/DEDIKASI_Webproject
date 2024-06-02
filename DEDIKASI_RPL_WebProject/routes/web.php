@@ -37,6 +37,7 @@ Route::resource('/sertifikat', CertificateController::class);
 Route::get('/download/{fileName}', [CertificateController::class, 'download'])->name('sertifikat.download');
 
 // FAQ
+Route::get('/faqs/all', [FAQController::class, 'showAll'])->name('faqs.all');
 Route::resource('/faqs', FAQController::class);
 
 Route::get('/register', [RegisterController::class, 'register'])->name('viewRegister');

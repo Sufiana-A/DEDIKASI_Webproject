@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\FAQ;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreFAQRequest;
 use App\Http\Requests\UpdateFAQRequest;
 
@@ -15,6 +16,17 @@ class FAQController extends Controller
         return view('FAQ.indexFAQ', compact('faqs'));
     }
 
+    public function showAll()
+    {
+        $faqs = FAQ::all();
+        return view('FAQ.showAllFAQ', compact('faqs'));
+    }
+
+    public function show(FAQ $faq)
+    {
+        return true;
+    }
+
     // Menampilkan form untuk membuat FAQ baru
     public function create()
     {
@@ -24,12 +36,13 @@ class FAQController extends Controller
     // Menyimpan FAQ baru
     public function store(Request $request)
     {
-        $request->validate([
+        // return request;
+        $validated = $request->validate([
             'question' => 'required',
             'answer' => 'required',
         ]);
 
-        FAQ::create($request->all());
+        FAQ::create($validated);
 
         return redirect()->route('faqs.index')
             ->with('success', 'FAQ created successfully.');
@@ -38,7 +51,7 @@ class FAQController extends Controller
     // Menampilkan form untuk mengedit FAQ
     public function edit(FAQ $faq)
     {
-        return view('faqs.edit', compact('faq'));
+        return view('FAQ.editFAQ', compact('faq'));
     }
 
     // Memperbarui FAQ
