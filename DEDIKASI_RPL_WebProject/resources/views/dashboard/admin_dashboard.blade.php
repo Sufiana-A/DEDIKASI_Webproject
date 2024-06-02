@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="page-sub-header">
-                        <h3 class="page-title">Welcome {{ Auth::guard('admin')->user()->first_name }} {{ Auth::guard('admin')->user()->last_name }}!</h3>
+                        <h3 class="page-title">Welcome Admin {{ Auth::guard('admin')->user()->first_name }} {{ Auth::guard('admin')->user()->last_name }}!</h3>
                     </div>
                 </div>
             </div>
