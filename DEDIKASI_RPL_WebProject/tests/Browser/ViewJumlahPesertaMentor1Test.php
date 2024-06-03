@@ -6,11 +6,11 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
-class ViewJumlahPesertaMentorTest extends DuskTestCase
+class ViewJumlahPesertaMentor1Test extends DuskTestCase
 {
     /**
      * A Dusk test example.
-     * @group viewJumlahPesertaMentor
+     * @group viewJumlahPesertaMentor1
      */
     public function testExample(): void
     {
