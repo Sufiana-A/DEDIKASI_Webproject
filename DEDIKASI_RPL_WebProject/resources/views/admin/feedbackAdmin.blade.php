@@ -73,7 +73,7 @@
                                                 {{ $feedback->feedback }}
                                             </td>
                                             <td>
-                                                {{ $feedback->create_at }}
+                                                {{ $feedback->created_at }}
                                             </td>
                                         </tr>
                                     @endforeach
