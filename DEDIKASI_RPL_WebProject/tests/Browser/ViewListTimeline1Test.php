@@ -6,11 +6,11 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
-class ViewCourseMentorTest extends DuskTestCase
+class ViewListTimeline1Test extends DuskTestCase
 {
     /**
      * A Dusk test example.
-     * @group viewCourseMentor
+     * @group viewListTimeline1
      */
     public function testExample(): void
     {
@@ -20,8 +20,10 @@ class ViewCourseMentorTest extends DuskTestCase
                     ->type('email', 'dyom@gmail.com')
                     ->type('password', 'dyomentor123')
                     ->press('Login')
-                    ->assertPathIs('/dashboard-mentor')
-                    ->assertSee('Daftar Course yang diajar');
+                    ->assertPathIs('/dashboard-peserta')
+                    ->assertSee('Management')
+                    ->clickLink('Timeline')
+                    ->assertPathIs('/timeline');
         });
     }
 }

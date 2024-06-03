@@ -6,22 +6,22 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
-class EditTimelineTest extends DuskTestCase
+class EditTimeline2Test extends DuskTestCase
 {
     /**
      * A Dusk test example.
-     * @group editTimeline
+     * @group editTimeline2
      */
     public function testExample(): void
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/timeline')
-                    ->assertSee('Pengembangan Aplikasi Website')
+                    ->assertSee('Pemodelan Proses Bisnis')
                     ->press('@edit-timeline')
                     ->assertSee('Edit Timeline')
-                    ->select('Pelatihan', 'Rekayasa Perangkat Lunak')
-                    ->type('Tugas', 'Tugas Besar')
-                    ->type('Deadline', '2024-06-04T11:59')
+                    ->select('Pelatihan', 'Rekayasa Proses Bisnis')
+                    ->type('Tugas', 'Tugas')
+                    ->type('Deadline', '')
                     ->select('Status', 'IN PROGRESS')
                     ->press('Update');
         });

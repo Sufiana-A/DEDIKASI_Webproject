@@ -6,19 +6,17 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
-class ViewListTimelineTest extends DuskTestCase
+class ViewListTimeline2Test extends DuskTestCase
 {
     /**
      * A Dusk test example.
-     * @group viewListTimeline
+     * @group viewListTimeline2
      */
     public function testExample(): void
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/dashboard-peserta')
-                    ->assertSee('Management')
-                    ->clickLink('Timeline')
-                    ->assertPathIs('/timeline');
+            $browser->visit('/timeline')
+                    ->assertSee('Timeline Saya');
         });
     }
 }

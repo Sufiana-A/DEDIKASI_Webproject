@@ -6,20 +6,17 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
-class UnenrollListPelatihanTest extends DuskTestCase
+class ViewListPelatihan2Test extends DuskTestCase
 {
     /**
      * A Dusk test example.
-     * @group unenrollListPelatihan
+     * @group viewListPelatihan2
      */
     public function testExample(): void
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/peserta-pelatihan')
-                    ->assertSee('Integrasi Aplikasi Enterprise')
-                    ->press('Unenroll')
-                    ->assertSee('Apakah anda yakin mau unenroll?')
-                    ->press('Yakin');
+                    ->assertSee('Pelatihan Saya');
         });
     }
 }
