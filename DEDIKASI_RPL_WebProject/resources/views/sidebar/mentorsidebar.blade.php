@@ -24,6 +24,16 @@
                 </li>
                 @endif
 
+                <li class="submenu (['student/list','student/grid','student/add/page'])  (request()->is('student/edit/*')) ? 'active' : ''   (request()->is('student/profile/*')) ? 'active' : '' ">
+                    <a href="#"><i class="fas fa-graduation-cap"></i>
+                        <span> Mentor view </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul>
+                        <li><a href=""  class=" (request()->is('student/profile/*')) ? 'active' : '' ">Mentor View</a></li>
+                    </ul>
+                </li>
+
                 <li class="menu-title">
                     <span>Management</span>
                 </li>
