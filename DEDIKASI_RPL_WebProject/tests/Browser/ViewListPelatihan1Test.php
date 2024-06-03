@@ -17,8 +17,8 @@ class ViewListPelatihan1Test extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->visit('/login')
                     ->assertSee('Welcome to Dashboard')
-                    ->type('email', 'dyom@gmail.com')
-                    ->type('password', 'dyomentor123')
+                    ->type('email', 'dpmarthin@gmail.com')
+                    ->type('password', 'abogoboga')
                     ->press('Login')
                     ->assertPathIs('/dashboard-peserta')
                     ->assertSee('Management')

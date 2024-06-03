@@ -73,7 +73,7 @@
                                             </td> --}}
                                             <td style="text-align: center;">{{ $course->title }}</td>
                                             <td style="text-align: center;">{{ $course->class }}</td>
-                                            <td style="text-align: center;">{{ $course->description }}</td>
+                                            <td style="text-align: center;">{{ strip_tags($course->description) }}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>

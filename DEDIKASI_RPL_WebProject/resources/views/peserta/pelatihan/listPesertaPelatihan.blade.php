@@ -38,7 +38,7 @@
                                 </div>
                                 <hr>
                                 <div class="d-flex justify-content-center mb-3 text-center">
-                                    <p class="card-text">{{ $enroll->description }}</p>
+                                    <p class="card-text">{{ strip_tags($enroll->description) }}</p>
                                 </div>
                                 <hr>
                                 <div class="d-flex justify-content-center mb-3">
