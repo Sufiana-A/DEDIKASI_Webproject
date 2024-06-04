@@ -111,13 +111,13 @@
                                             <div class="alert alert-danger" role="alert">
                                                 {{ $enrollment->pivot->status }}
                                             </div>
-                                            <a href="{{ route('enroll_pelatihan', ['id_peserta' => $peserta->id, 'id_course' => $course->id]) }}" class="btn btn-info continue-btn">Enroll</a>
+                                            <a href="{{ route('enroll_pelatihan', ['id_peserta' => $peserta->id, 'id_course' => $course->id]) }}" class="btn btn-info continue-btn" dusk="enroll-button-{{ $course->id }}">Enroll</a>
                                         @else
-                                            <a href="{{ route('enroll_pelatihan', ['id_peserta' => $peserta->id, 'id_course' => $course->id]) }}" class="btn btn-info continue-btn">Enroll</a>
+                                            <a href="{{ route('enroll_pelatihan', ['id_peserta' => $peserta->id, 'id_course' => $course->id]) }}" class="btn btn-info continue-btn" dusk="enroll-button-{{ $course->id }}">Enroll</a>
                                         @endif
                                     @else
-                                        <a href="{{ route('enroll_pelatihan', ['id_peserta' => $peserta->id, 'id_course' => $course->id]) }}" class="btn btn-info continue-btn">Enroll</a>
-                                    @endif                                    
+                                        <a href="{{ route('enroll_pelatihan', ['id_peserta' => $peserta->id, 'id_course' => $course->id]) }}" class="btn btn-info continue-btn" dusk="enroll-button-{{ $course->id }}">Enroll</a>
+                                    @endif          
                                 </div>
                             </div>
                         </div>
