@@ -31,10 +31,24 @@ class LoginController extends Controller
         };
         if (Auth::guard('mentor')->attempt($credentials)){
             $request->session()->regenerate();
-            return redirect()->route('dashboard_mentor');
+            return redirect()->route('dash-mentor');
         };
         return redirect()->back()->with('sukses', 'Proses login berhasil.');
     }
 
+    public function logout(Request $request)
+    {
+        Auth::guard('peserta')->logout();
+        Auth::guard('admin')->logout();
+        Auth::guard('mentor')->logout();
+
+        // Invalidate the session
+        $request->session()->invalidate();
+
+        // Regenerate the CSRF token
+        $request->session()->regenerateToken();
+
+        return redirect('/login');
+    }
 
 }
