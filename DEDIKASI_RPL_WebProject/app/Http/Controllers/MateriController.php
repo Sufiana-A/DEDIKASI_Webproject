@@ -26,7 +26,7 @@ class MateriController extends Controller
         public function store(Request $request)
         {
             $request->validate([
-                'pelatihan' => 'required|exists:courses,uuid', // Ensure the selected course exists
+                'pelatihan' => 'required|exists:courses,uuid', 
                 'id_materi' => 'required',
                 'judul_materi' => 'required',
                 'deskripsi_materi' => 'required',
@@ -64,7 +64,7 @@ class MateriController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'pelatihan' => 'required|exists:courses,uuid', // Ensure the selected course exists
+            'pelatihan' => 'required|exists:courses,uuid', 
             'id_materi' => 'required',
             'judul_materi' => 'required',
             'deskripsi_materi' => 'required',
@@ -77,7 +77,7 @@ class MateriController extends Controller
     $materi->pelatihan = $request->pelatihan;
     $materi->deskripsi_materi = $request->deskripsi_materi;
 
-    // Simpan file baru
+    // save file baru
     if ($request->hasFile('link_terkait')) {
         $file = $request->file('link_terkait');
         $filename = time(). '_'. $file->getClientOriginalName();
@@ -97,12 +97,18 @@ class MateriController extends Controller
             $materi->delete();
             return redirect(route('materi_mentor'));
         }
-        public function indexPeserta(){
-            // $materi = Materi::all()->sortByDesc('created_at');
-            $materi = Materi::orderBy('judul_materi')->get();
-            return view('materi/peserta-materi-view', compact('materi')) ;
-        } 
-
+       
+        public function indexPeserta(Request $request, $uuid)
+        {
+            // Cari course by UUID 
+            $course = Course::where('uuid', $uuid)->firstOrFail();
+        
+            // Ambil materi terkait course
+            $materi = Materi::where('pelatihan', $course->uuid)->get();
+        
+            return view('materi.peserta-materi-view', compact('materi'));
+        }
+        
 
     }
     

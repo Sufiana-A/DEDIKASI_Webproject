@@ -1,5 +1,4 @@
-
-@extends('layout.adminmaster')
+@extends('layout.mentormaster')
 @section('content')
     <div class="page-wrapper">
         <div class="content container-fluid">
@@ -15,28 +14,6 @@
                     </div>
                 </div>
             </div>
-
-            {{-- <div class="student-group-form">
-                <form action="{{ route('materi_mentor') }}" method="get">
-                    <div class="row">
-                        <div class="col-lg-3 col-md-6">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Search by Pelatihan" name="pelatihan" value="{{ request()->pelatihan ?? null }}">
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Search by Name" name="title" value="{{ request()->title ?? null }}">
-                            </div>
-                        </div>
-                        <div class="col-lg-2">
-                            <div class="search-student-btn">
-                                <button type="submit" class="btn btn-primary">Search</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div> --}}
 
             <div class="row">
                 <div class="col-sm-12">
@@ -86,10 +63,10 @@
                                             <td>{{ $materi->deskripsi_materi }}</td>
                                             <td class="text-end">
                                                 <div class="actions">
-                                                    <a href="{{ route('materi_detail', $materi->id) }}" class="btn btn-sm bg-danger-light">
+                                                    <a href="{{ route('materi_detail', $materi->id) }}" class="btn btn-sm bg-danger-light" dusk="update-materi-button-{{ $materi->id_materi }}">
                                                         <i class="far fa-edit me-2"></i>
                                                     </a>
-                                                    <a class="btn btn-sm bg-danger-light delete" data-bs-toggle="modal" data-bs-target="#delete" data-id="{{ $materi->id }}">
+                                                    <a class="btn btn-sm bg-danger-light delete" dusk="delete-materi-button-{{ $materi->id_materi }}" data-bs-toggle="modal" data-bs-target="#delete" data-id="{{ $materi->id }}">
                                                         <i class="fe fe-trash-2"></i>
                                                     </a>
                                                 </div>

@@ -1,6 +1,5 @@
 @extends('layout.adminmaster')
 @section('content')
-{{-- message --}}
 
     <div class="page-wrapper">
         <div class="content container-fluid">
@@ -25,16 +24,7 @@
                                 <input type="text" class="form-control" placeholder="Cari Berdasarkan Nama" name="nama" value="{{ request()->nama ?? null }}">
                             </div>
                         </div>
-                        {{-- <div class="col-lg-3 col-md-6">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Cari Berdasarkan Pelatihan" name="title" value="{{ request()->title ?? null }}">
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Cari Berdasarkan Status" name="status" value="{{ request()->status ?? null }}">
-                            </div>
-                        </div> --}}
+                        
                         <div class="col-lg-2">
                             <div class="search-student-btn">
                                 <button type="submit" class="btn btn-primary">Search</button>
@@ -73,11 +63,10 @@
                                         @foreach ($peserta->course as $course)
                                         <tr>
                                             <td>{{ $course->pivot->created_at }}</td>
-                                            {{-- <td>{{ $course->pivot->created_at->format('Y-m-d H:i:s') }}</td>  </tr> --}}
                                             <td>{{ $peserta->first_name }} {{ $peserta->last_name }}</td>
                                             <td>{{ $course->title }}</td>
                                             <td>{{ $course->pivot->status }}</td>
-                                            <td><a href="{{ route('detail_seleksi_peserta', [$peserta->id, $course->id]) }}" class="btn btn-primary btn-sm text-white"><i class="fas fa-edit"></i> Update Status</a>
+                                            <td><a href="{{ route('detail_seleksi_peserta', [$peserta->id, $course->id]) }}" class="btn btn-primary btn-sm text-white" dusk="update-button-{{ $peserta->id }}-{{ $course->id }}"><i class="fas fa-edit"></i> Update Status</a>
                                         </tr>
                                         @endforeach
                                         @endforeach

@@ -44,6 +44,12 @@
                     <a href="{{ route('admin.manageCourse.index') }}"><i class="fas fa-home"></i> <span>Admin Dashboard</span></a>
                 </li>
                 <li>
+                    <a href="{{ route('seleksi_peserta') }}"><i class="fas fa-check-circle"></i> <span>Seleksi Peserta</span></a>
+                </li>
+                <li>
+                    <a href="{{ route('loker_admin') }}"><i class="fas fa-briefcase"></i> <span>Kelola Lowongan Kerja</span></a>
+                </li>
+                <li>
                     <a href="{{ route('feedback_sistem') }}"><i class="fas fa-clipboard-list"></i> <span>Feedback Sistem</span></a>
                 </li>
                 <li>

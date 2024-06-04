@@ -10,7 +10,7 @@ class RegisterController extends Controller
 {
     public function register(Request $request)
     {
-        // Validasi data yang diterima dari form pendaftaran
+        // Validasi data dari form pendaftaran
         $request->validate([
             'first_name'    => 'required|string',
             'last_name'     => 'required|string',
@@ -38,8 +38,6 @@ class RegisterController extends Controller
         $peserta->foto_peserta = 'default_image.jpg';
         $peserta->save();
 
-    
-        // Redirect ke halaman login setelah pendaftaran berhasil
         return redirect()->route('login');
     }
 }

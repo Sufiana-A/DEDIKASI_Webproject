@@ -1,5 +1,5 @@
 @extends('layout.master')
-
+@section('content')
 <div class="page-wrapper">
     <div class="content container-fluid">
         <div class="page-header">
@@ -11,39 +11,7 @@
                 </div>
             </div>
         </div>
-          {{-- <div class="student-group-form">
-                <form action="{{ route('view_loker') }}" method="get">
-                    <div class="row">
-                        <form action="{{ route('view_loker.search') }}" method="GET">
-                            <div class="col-lg-3 col-md-6">
-                                <div class="form-group">
-                                    <label for="tipe_pekerjaan">Tipe Pekerjaan</label>
-                                    <input type="text" class="form-control" placeholder="Cari berdasarkan Tipe Pekerjaan" name="tipe_pekerjaan" value="{{ request()->tipe_pekerjaan ?? null }}">
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6">
-                                <div class="form-group">
-                                    <label for="lokasi">Lokasi</label>
-                                    <input type="text" class="form-control" placeholder="Cari berdasarkan Lokasi" name="lokasi" value="{{ request()->lokasi ?? null }}">
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6">
-                                <div class="form-group">
-                                    <label for="kategori_pekerjaan">Kategori Pekerjaan</label>
-                                    <input type="text" class="form-control" placeholder="Cari berdasarkan Kategori Pekerjaan" name="kategori_pekerjaan" value="{{ request()->kategori_pekerjaan ?? null }}">
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-3 align-self-end">
-                                <div class="form-group">
-                                    <label for="">&nbsp;</label>
-                                    <button type="submit" class="btn btn-primary btn-block">Search</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    
-                </form>
-            </div> --}}
+        
 
         <div class="row">
             @foreach ($loker as $item)
@@ -58,7 +26,7 @@
                                     <p class="mb-2" style="font-size: 0.9em;"><i class="fas fa-map-pin"></i> Lokasi: {{ $item->kota }}</p>
                                     <p class="mb-2" style="font-size: 0.9em;"><i class="fas fa-layer-group"></i> Kategori Pekerjaan: {{ $item->kategori_pekerjaan }}</p>
                                     <p class="mb-3" style="font-size: 0.9em;"><i class="fas fa-info-circle"></i> Persyaratan: {{ $item->deskripsi_loker }}</p>
-                                    <a href="{{ $item->link_loker }}" class="btn btn-primary mb-1" target="_blank"><i class="fas fa-link"></i> Kunjungi Lowongan</a>
+                                    <a href="{{ $item->link_loker }}" class="btn btn-primary mb-1" target="_blank"><i class="fas fa-link" dusk="loker-view-button-{{ $item->id }}"></i> Kunjungi Lowongan</a>
                                 </div>
                             </div>
                         </div>
@@ -68,3 +36,4 @@
         </div>
     </div>
 </div>
+@endsection
