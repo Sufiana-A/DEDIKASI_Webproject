@@ -48,6 +48,7 @@ Route::post('/register', [RegisterController::class, 'register'])->name('registe
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/loginsubmit', [LoginController::class, 'loginvalid'])->name('loginsubmit');
 Route::post('/login', [LoginController::class, 'index'])->name('login');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get("/Progress-Peserta" , function(){
     return view("peserta/progress");})->name('progress');
