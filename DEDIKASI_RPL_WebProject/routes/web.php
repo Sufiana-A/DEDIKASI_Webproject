@@ -25,6 +25,7 @@ use App\Http\Controllers\StudentDashboardController;
 use App\Http\Controllers\RegistrasiPelatihanController;
 use App\Http\Controllers\TimelineController;
 use App\Http\Controllers\AnnouncementController;
+use App\Http\Controllers\RekomendasiController;
 use App\Http\Controllers\ShowAnnouncementController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 use App\Http\Controllers\LokerController;
@@ -50,8 +51,8 @@ Route::post('/loginsubmit', [LoginController::class, 'loginvalid'])->name('login
 Route::post('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get("/Progress-Peserta" , function(){
-    return view("peserta/progress");})->name('progress');
+Route::get("/rekomendasi" , function(){
+    return view("peserta/rekomendasi");})->name('progress');
 Route::get("/admin" , function(){
     return view("dashboard/admin_dashboard");})->name('dash-admin');
 Route::get("/admin/manage-course" , function(){
@@ -227,3 +228,11 @@ Route::get('/delete-loker', [LokerController::class, 'delete'])->name('loker_del
 //loker peserta
 Route::get('/peserta-view-loker', [LokerController::class, 'indexPeserta'])->name('view_loker');
 Route::get('/peserta-view-loker-search', [LokerController::class, 'search'])->name('view_loker.search');
+
+// REKOMENDASI
+Route::get('/rekomendasi', [RekomendasiController::class, 'index'])->name('rekomendasi');
+Route::middleware('auth:peserta')->group(function () {
+    Route::get('/favorite', [RekomendasiController::class, 'showFavorite'])->name('favorite');
+});
+Route::post('/remove-favorite', [RekomendasiController::class, 'removeFavorite'])->name('remove-favorite');
+Route::post('/save-checkbox', [RekomendasiController::class, 'saveCheckbox'])->name('save-checkbox');
