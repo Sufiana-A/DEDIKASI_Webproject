@@ -15,11 +15,25 @@ class EnrollTest extends DuskTestCase
     public function testEnrollButton(): void
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/dashboard-peserta')
+            $browser->visit('/login')
+                    ->assertSee('Welcome to Dashboard')
+                    ->type('email', 'peserta12345@gmail.com')
+                    ->type('password', 'peserta12345')
+                    ->press('Login')
+                    ->assertPathIs('/dashboard-peserta')
                     ->assertSee('Selamat Datang!')
+                    ->waitFor('.card') 
+                    ->scrollTo('.card') 
                     ->with('.card', function ($card) {
-                        $card->click('@enroll-button-1') // Use the appropriate course id here
-                              ->assertPathIs('/enroll-pelatihan/1/1'); // Adjust the path based on your application's route
-                    });
+                        $card->assertPresent('@enroll-button-1') 
+                              ->scrollTo('@enroll-button-1') 
+                              ->pause(1000) 
+                              ->click('@enroll-button-1'); 
+                    })
+                    ->type('nik', '1234567890123456') 
+                    ->attach('ktm', __DIR__.'/files/ktm example.png')
+                    ->attach('ktp', __DIR__.'/files/ktp example.png') 
+                    ->press('Daftar Pelatihan') 
+                    ->assertPathIs('/dashboard-peserta'); 
         });
     }}
