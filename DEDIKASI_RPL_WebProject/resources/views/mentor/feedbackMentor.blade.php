@@ -70,7 +70,7 @@
                                                 </h2>
                                             </td>
                                             <td>
-                                                {{ $feedback->feedback }}
+                                                {{ strip_tags($feedback->feedback) }}
                                             </td>
                                             <td>
                                                 {{ $feedback->created_at }}
