@@ -77,6 +77,9 @@
                                                     <a href="{{ route('edit_artikel', $artikel->id) }}" class="btn btn-sm bg-danger-light">
                                                         <i class="far fa-edit me-2"></i>
                                                     </a>
+                                                    <a href="{{ route('detail_artikel', $artikel->id) }}" class="btn btn-sm bg-danger-light">
+                                                        <i class="far fa-eye me-2"></i>
+                                                    </a>
                                                     <a class="btn btn-sm bg-danger-light delete" data-bs-toggle="modal" data-bs-target="#delete" data-id_artikel="{{ $artikel->id_artikel }}">
                                                         <i class="fe fe-trash-2"></i>
                                                     </a>
