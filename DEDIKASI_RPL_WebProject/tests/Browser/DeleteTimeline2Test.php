@@ -15,9 +15,18 @@ class DeleteTimeline2Test extends DuskTestCase
     public function testExample(): void
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/timeline')
+            $browser->visit('/login')
+                    ->assertSee('Welcome to Dashboard')
+                    ->type('email', 'dpmarthin@gmail.com')
+                    ->type('password', 'abogoboga')
+                    ->press('Login')
+                    ->assertPathIs('/dashboard-peserta')
+                    ->assertSee('Management')
+                    ->clickLink('Timeline')
+                    ->assertPathIs('/timeline')
                     ->assertSee('Rekayasa Proses Bisnis')
                     ->press('@delete-timeline')
+                    ->waitFor('#delete', 10) 
                     ->assertSee('Apakah anda yakin mau hapus?')
                     ->press('Yakin');
         });

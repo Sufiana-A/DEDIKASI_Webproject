@@ -11,10 +11,9 @@ class PesertaPelatihanController extends Controller
 {
     public function index()
     {
-        // Ambil ID user yang sedang login dengan menggunakan guard 'peserta'
         $pesertaId = Auth::guard('peserta')->user()->id;
 
-        // Ambil data pelatihan yang dienroll dengan status "acc" untuk user yang sedang login
+        // PKD-22
         $peserta = Peserta::find($pesertaId);
         $pelatihanAcc = $peserta->course()->wherePivot('status', 'Diterima')->get();
 
@@ -23,16 +22,13 @@ class PesertaPelatihanController extends Controller
     
     public function unenroll(Request $request)
     {
-        // Ambil ID user yang sedang login dengan menggunakan guard 'peserta'
         $pesertaId = Auth::guard('peserta')->user()->id;
 
-        // Cari peserta dan course berdasarkan ID mereka
+        // PKD-32
         $peserta = Peserta::find($pesertaId);
         $course = Course::find($request->id);
 
-        // Buatlah perkondisian
         if ($course) {
-            // Ubah status course menjadi 'unenrolled'
             $peserta->Course()->updateExistingPivot($course->id, ['status' => 'Unenroll']);
             return redirect()->back()->with('success', 'Pelatihan berhasil di-unenroll.');
         } else {

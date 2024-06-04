@@ -66,13 +66,11 @@ Route::get('/profile-peserta-edit', [ProfilePesertaController::class, 'edit_prof
 Route::post('/profile-peserta-submit', [ProfilePesertaController::class, 'submit_profile'])->name('profile_submit_peserta');
 Route::post('/profile-photo-peserta-submit', [ProfilePesertaController::class, 'submit_photo'])->name('profil_photo_submit_peserta');
 
-//peserta pelaihan
+//peserta pelaihan (PKD-22 & PKD-32)
 Route::get('/peserta-pelatihan', [PesertaPelatihanController::class, 'index'])->name('list_peserta_pelatihan');
 Route::post('/peserta-pelatihan/unenroll', [PesertaPelatihanController::class, 'unenroll'])->name('list_peserta_pelatihan_unenroll');
 
-//mentor
-
-//Mentor Dashboard
+//Mentor Dashboard (PKD-51 & PKD-52)
 Route::get('/dashboard-mentor', [MentorDashboardController::class, 'index'])->name('dashboard_mentor');
 
     Route::controller(NilaiController::class)->name('mentor.')->prefix('mentor')->group(function () {
@@ -163,7 +161,7 @@ Route::get('/detail-materi/{id}', [MateriController::class, 'detailMateri'])->na
 Route::post('/update-materi/{id}', [MateriController::class, 'update'])->name('materi_update');
 Route::get('/delete-materi', [MateriController::class, 'delete'])->name('materi_delete');
 
-//timeline
+//timeline (PKD-31)
 Route::get('/timeline', [TimelineController::class, 'index'])->name('timeline_index');
 Route::get('/timeline/add', [TimelineController::class, 'add'])->name('timeline_add');
 Route::get('/timeline/edit/{id}', [TimelineController::class, 'edit'])->name('timeline_edit');

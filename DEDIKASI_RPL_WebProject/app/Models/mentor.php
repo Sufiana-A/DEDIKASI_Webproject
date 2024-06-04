@@ -47,4 +47,9 @@ class mentor extends Authenticatable
     {
         return $this->hasMany(Course::class);
     }
+
+    public function Peserta()
+    {
+        return $this->hasMany(Peserta::class);
+    }
 }

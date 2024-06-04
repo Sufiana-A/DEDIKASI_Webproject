@@ -15,14 +15,24 @@ class AddTimeline2Test extends DuskTestCase
     public function testExample(): void
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/timeline')
+            $browser->visit('/login')
+                    ->assertSee('Welcome to Dashboard')
+                    ->type('email', 'dpmarthin@gmail.com')
+                    ->type('password', 'abogoboga')
+                    ->press('Login')
+                    ->assertPathIs('/dashboard-peserta')
+                    ->assertSee('Management')
+                    ->clickLink('Timeline')
+                    ->assertPathIs('/timeline')
                     ->assertSee('Timelines')
                     ->press('@add-timeline')
                     ->assertSee('Tambah Timeline')
-                    ->select('Pelatihan', 'Pemodelan Proses Bisnis')
-                    ->type('Tugas', 'UTS')
-                    ->type('Deadline', '')
-                    ->select('Status', 'IN PROGRESS')
+                    ->select('title', 'Pemodelan Proses Bisnis')
+                    ->waitFor('#class', 5)
+                    ->waitFor('#description', 5)
+                    ->type('tugas', 'UTS')
+                    ->type('deadline', '')
+                    ->select('status', 'IN PROGRESS')
                     ->press('Save');
         });
     }

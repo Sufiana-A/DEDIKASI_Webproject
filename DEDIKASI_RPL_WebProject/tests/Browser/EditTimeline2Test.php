@@ -15,14 +15,24 @@ class EditTimeline2Test extends DuskTestCase
     public function testExample(): void
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/timeline')
+            $browser->visit('/login')
+                    ->assertSee('Welcome to Dashboard')
+                    ->type('email', 'dpmarthin@gmail.com')
+                    ->type('password', 'abogoboga')
+                    ->press('Login')
+                    ->assertPathIs('/dashboard-peserta')
+                    ->assertSee('Management')
+                    ->clickLink('Timeline')
+                    ->assertPathIs('/timeline')
                     ->assertSee('Pemodelan Proses Bisnis')
                     ->press('@edit-timeline')
                     ->assertSee('Edit Timeline')
-                    ->select('Pelatihan', 'Rekayasa Proses Bisnis')
-                    ->type('Tugas', 'Tugas')
-                    ->type('Deadline', '')
-                    ->select('Status', 'IN PROGRESS')
+                    ->select('title', 'Rekayasa Proses Bisnis')
+                    ->waitFor('#class', 5)
+                    ->waitFor('#description', 5)
+                    ->type('tugas', 'Tugas')
+                    ->type('deadline', '')
+                    ->select('status', 'IN PROGRESS')
                     ->press('Update');
         });
     }
