@@ -61,6 +61,9 @@
                 <li>
                     <a href="{{route('announcements.index')}}"><i class="fas fa-clipboard-list"></i> <span>Pengumumuman</span></a>
                 </li>
+                <li>
+                    <a href="{{route('view_loker')}}"><i class="fas fa-briefcase"></i> <span>Informasi Lowongan Kerja</span></a>
+                </li>
             </ul>
         </div>
     </div>

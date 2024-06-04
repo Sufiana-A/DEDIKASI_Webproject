@@ -19,11 +19,7 @@ class RegistrasiPelatihanController extends Controller
             $query->where('first_name', 'like', '%'. $request->nama. '%')
                   ->orWhere('last_name', 'like', '%'. $request->nama. '%');
         }
-
-        
-        
         $pesertaPelatihan = $query->get();
-
         return view('admin.seleksiPesertaPelatihan', compact('pesertaPelatihan'));
     }
 
@@ -33,15 +29,12 @@ class RegistrasiPelatihanController extends Controller
             'ktm' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'ktp' => 'required|image|mimes:jpeg,png,jpg|max:2048',
         ]);
-        
         $request->validate([
             'nik' => 'required|size:16',
         ], [
             'nik.required' => 'NIK harus diisi.',
             'nik.size' => 'NIK harus tepat 16 digit.',
         ]);
-    
-        // Menyimpan file foto KTM dan KTP
         $ktm = $request->file('ktm');
         $ktmName = time() . '_' . $ktm->getClientOriginalName();
         $ktm->storeAs('public/seleksi/ktm', $ktmName);
@@ -49,14 +42,12 @@ class RegistrasiPelatihanController extends Controller
         $ktp = $request->file('ktp');
         $ktpName = time() . '_' . $ktp->getClientOriginalName();
         $ktp->storeAs('public/seleksi/ktp', $ktpName);
-    
-        // Membuat instance Peserta dan Pelatihan
+        
+        //buat instance    
         $peserta = Peserta::find($id_peserta);
         $course = Course::find($id_course);
-        
-       
-    
-        // Menyimpan data ke tabel pivot
+
+        // save data ke tabel pivot
         $peserta->course()->attach($course->id, [
             'nik' => $request->nik,
             'ktm' => $ktmName,
@@ -68,17 +59,17 @@ class RegistrasiPelatihanController extends Controller
         $enrollment = $peserta->course()->where('course_id', $id_course)->first();
 
         if ($enrollment) {
-            // Update the existing enrollment status to 'Pending'
+            // Update status enroll saat ini ke pending
             $peserta->course()->updateExistingPivot($id_course, ['status' => 'Pending']);
         } else {
-            // Create a new enrollment with status 'Pending'
+            // buat status default jadi pending
             $peserta->course()->attach($id_course, ['status' => 'Pending']);
         }
 
         return redirect()->route('student.dashboard.index')->with('success', 'Data tersimpan');
     }
    
-    //controller untuk menampilkan form enroll
+    //nampilkan form enroll
     public function enrollPelatihan($id_peserta, $id_course)
      
     {
@@ -88,7 +79,7 @@ class RegistrasiPelatihanController extends Controller
         
     }   
 
-    //controller untuk menampilkan tabel daftar 
+    //menampilkan tabel daftar 
     public function showDaftarEnroll()
     {
         $pesertaPelatihan = Peserta::with('course')->get();
@@ -96,8 +87,7 @@ class RegistrasiPelatihanController extends Controller
         return view('admin.seleksiPesertaPelatihan', compact('pesertaPelatihan'));
     }
     
-
-    //controller untuk menampilkan halaman blade buat nampilin detail dari enrollment
+    //menampilkan detail  enrollment peserta tertentu
     public function detailPesertaPelatihan(Request $request, $id_peserta, $id_course)
 {
     $peserta = Peserta::with('course')->findOrFail($id_peserta);
@@ -114,15 +104,11 @@ public function updateEnroll(Request $request, $id_peserta, $id_course)
     $peserta = Peserta::find($id_peserta);
     $course = Course::find($id_course);
     
-    // Update the pivot table entry
+    // Update tabel pivot
     $peserta->course()->updateExistingPivot($course->id, [
         'status' => $request->status,
     ]);
     
     return redirect()->route('seleksi_peserta', [$peserta->id, $course->id])->with('success', 'Status berhasil diperbarui');
 }   
-
-
-
-
 }
