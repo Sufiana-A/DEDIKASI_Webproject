@@ -115,7 +115,7 @@
                         </div>
                         <a class="dropdown-item" href="{{ route('profile_admin') }}">My Profile</a>
                         <a class="dropdown-item" href="inbox.html">Inbox</a>
-                        <a class="dropdown-item" href="">Logout</a>
+                        <a class="dropdown-item" href="#" id="logout-button" dusk="logout-link">Logout</a>
                     </div>
                 </li>
             </ul>
@@ -129,6 +129,10 @@
         </footer>
     
     </div>
+
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        @csrf
+    </form>
 
     <script src="{{ URL::to('assets/js/jquery-3.6.0.min.js') }}"></script>
     <script src="{{ URL::to('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -150,6 +154,11 @@
         $(document).ready(function() {
             $('.select2s-hidden-accessible').select2({
                 closeOnSelect: false
+            });
+
+            $('#logout-button').click(function(event) {
+                event.preventDefault();
+                $('#logout-form').submit();
             });
         });
     </script>

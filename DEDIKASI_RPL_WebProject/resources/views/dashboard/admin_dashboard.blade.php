@@ -69,7 +69,7 @@
                                                 </h2>
                                             </td>
                                             <td>
-                                                {{ $course->peserta->where('pivot.status', 'diterima')->count() }}
+                                                {{ $course->total_accepted }}
                                             </td>
                                         </tr>
                                     @endforeach

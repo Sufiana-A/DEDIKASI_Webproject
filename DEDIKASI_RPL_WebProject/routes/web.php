@@ -27,6 +27,8 @@ use App\Http\Controllers\TimelineController;
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\ShowAnnouncementController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
+use App\Http\Controllers\LokerController;
+
 
 Route::get('/', function () {
     return view('register');
@@ -46,6 +48,7 @@ Route::post('/register', [RegisterController::class, 'register'])->name('registe
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/loginsubmit', [LoginController::class, 'loginvalid'])->name('loginsubmit');
 Route::post('/login', [LoginController::class, 'index'])->name('login');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get("/Progress-Peserta" , function(){
     return view("peserta/progress");})->name('progress');
@@ -108,6 +111,7 @@ Route::controller(AdminCourseController::class)->name('admin.')->prefix('admin')
 Route::controller(StudentDashboardController::class)->name('student.')->group(function () {
     Route::get('/dashboard-peserta', 'index')->name('dashboard.index');
     Route::get('/course/{id}', 'showCourse')->name('dashboard.course');
+    // Route::get('/timeline/{id}', 'showTimeline')->name('dashboard.timeline');
 });
 
 //assignment mentor
@@ -166,8 +170,8 @@ Route::post('/timeline/store', [TimelineController::class, 'store'])->name('time
 Route::put('/timeline/{id}', [TimelineController::class, 'update'])->name('timeline_update');
 Route::delete('/timeline/{id}', [TimelineController::class, 'delete'])->name('timeline_delete');
 
-//assignment peserta
-Route::get('/peserta-view-materi', [MateriController::class, 'indexPeserta'])->name('view_materi');
+//materi peserta
+Route::get('/peserta-view-materi/{uuid}', [MateriController::class, 'indexPeserta'])->name('view_materi');
 
 //artikelAdmin
 Route::get('/list-artikel', [ArtikelController::class, 'index'])->name('list_artikel');
@@ -209,3 +213,15 @@ Route::get('/announcements', 'ShowAnnouncementController@index')->name('announce
 Route::get('/announcements', 'AnnouncementController@showAnnouncements')->name('announcements.index');
 Route::get('announcements', [AnnouncementController::class, 'showAnnouncements'])->name('announcements.index');
 Route::get('announcements/{id}', [AnnouncementController::class, 'showAnnouncementDetail'])->name('announcements.view');
+
+//loker admin
+Route::get('/list-loker', [LokerController::class, 'index'])->name('loker_admin');
+Route::get('/create-loker', [LokerController::class, 'create'])->name('loker_create');
+Route::post('/store-loker', [LokerController::class, 'store'])->name('loker_store');
+Route::get('/detail-loker/{id}', [LokerController::class, 'detailLoker'])->name('loker_detail');
+Route::post('/update-loker/{id}', [LokerController::class, 'update'])->name('loker_update');
+Route::get('/delete-loker', [LokerController::class, 'delete'])->name('loker_delete');
+
+//loker peserta
+Route::get('/peserta-view-loker', [LokerController::class, 'indexPeserta'])->name('view_loker');
+Route::get('/peserta-view-loker-search', [LokerController::class, 'search'])->name('view_loker.search');

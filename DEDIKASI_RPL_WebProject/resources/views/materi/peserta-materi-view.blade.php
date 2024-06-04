@@ -1,4 +1,6 @@
+
 @extends('layout.master')
+@section('content')
 
 <div class="page-wrapper">
     <div class="content container-fluid">
@@ -25,7 +27,7 @@
                             </div>
                             <div class="col-12">
                                 <div class="skip-group">
-                                    <a href="{{ asset('storage/materi/'. $item->link_terkait) }}" class="btn btn-info continue-btn" style="margin-top: 10px; padding: 5px 10px;" download><i class="fas fa-download"></i> File Materi</a>
+                                    <a href="{{ asset('storage/materi/'. $item->link_terkait) }}" class="btn btn-info continue-btn" dusk="download-materi-button-{{ $item->id_materi }}"" style="margin-top: 10px; padding: 5px 10px;" download><i class="fas fa-download"></i> File Materi</a>
                                 </div>
                             </div>
                         </div>
@@ -35,3 +37,5 @@
         </div>
     </div>
 </div>
+
+@endsection

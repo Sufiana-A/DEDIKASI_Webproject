@@ -53,7 +53,7 @@
                                 </div>
                                 
                                 <div class="form-group row justify-content-end mb-1">
-                                    <div class="col-sm-12 text-end"> <!-- Menggunakan text-end untuk tombol berada di pojok kanan bawah -->
+                                    <div class="col-sm-12 text-end"> 
                                         <button class="btn btn-primary" type="submit">Daftar Pelatihan</button>
                                     </div>
                                 </div>
