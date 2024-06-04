@@ -75,4 +75,14 @@ class ArtikelController extends Controller
         $artikel = Artikel::where('id', $request->id)->firstOrFail();
         return view('peserta.detailArtikel', compact('artikel'));
     }
+
+    public function indexMentor(){
+        $artikel = Artikel::get();
+        return view('mentor.artikel', compact('artikel'));
+    }
+    
+    public function detailMentor(Request $request, $id){
+        $artikel = Artikel::where('id', $request->id)->firstOrFail();
+        return view('mentor.detailArtikel', compact('artikel'));
+    }
 }

@@ -184,6 +184,8 @@ Route::get('/delete-artikel', [ArtikelController::class, 'delete'])->name('delet
 //peserta, mentor | artikel
 Route::get('/peserta-artikel', [ArtikelController::class, 'indexView'])->name('peserta_artikel');
 Route::get('/detail-artikel/{id}', [ArtikelController::class, 'detailView'])->name('detail_artikel');
+Route::get('/mentor-artikel', [ArtikelController::class, 'indexMentor'])->name('mentor_artikel');
+Route::get('/detail-mentor-artikel/{id}', [ArtikelController::class, 'detailMentor'])->name('detail_mentor');
 
 //feedback
 Route::get('/feedback-peserta', [FeedbackController::class, 'create_feedback'])->name('feedback_peserta');
