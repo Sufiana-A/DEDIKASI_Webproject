@@ -41,7 +41,10 @@
                     <span>Management</span>
                 </li>
                 <li>
-                    <a href="{{ route('admin.manageCourse.index') }}"><i class="fas fa-home"></i> <span>Admin Dashboard</span></a>
+                    <a href="{{ route('dashboard_admin') }}"><i class="fas fa-home"></i> <span>Admin Dashboard</span></a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.manageCourse.index') }}"><i class="fas fa-clipboard-list"></i> <span>Admin Manage Course</span></a>
                 </li>
                 <li>
                     <a href="{{ route('seleksi_peserta') }}"><i class="fas fa-check-circle"></i> <span>Seleksi Peserta</span></a>
