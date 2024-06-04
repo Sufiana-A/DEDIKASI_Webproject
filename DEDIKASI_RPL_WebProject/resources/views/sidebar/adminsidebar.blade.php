@@ -62,6 +62,9 @@
                     <a href="exam.html"><i class="fas fa-clipboard-list"></i> <span>Exam list</span></a>
                 </li>
                 <li>
+                    <a href="{{ route('admin.manage.index') }}"><i class="fas fa-clipboard-list"></i> <span>Announcement</span></a>
+                </li>
+                <li>
                     <a href="event.html"><i class="fas fa-calendar-day"></i> <span>Events</span></a>
                 </li>
               
