@@ -1,5 +1,5 @@
 @extends('layout.mentormaster')
-@section('title', 'Dashboard Mentor')
+@section('title', 'Feedback Mentor')
 @section('content')
 <div class="page-wrapper">
     <div class="content container-fluid">

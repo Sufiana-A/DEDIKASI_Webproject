@@ -39,6 +39,9 @@
                 </li>
 
                 <li>
+                    <a href="{{ route('dashboard_mentor') }}"><i class="fas fa-home"></i> <span>Mentor Dashboard</span></a>
+                </li>
+                <li>
                     <a href="{{route('mentor.manageNilai.index')}}"><i class="fas fa-clipboard-list"></i> <span>Grades</span></a>
                 </li>
                 <li>

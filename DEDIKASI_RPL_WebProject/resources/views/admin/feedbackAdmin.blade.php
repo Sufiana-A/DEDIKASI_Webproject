@@ -1,5 +1,5 @@
 @extends('layout.adminmaster')
-@section('title', 'Dashboard Admin')
+@section('title', 'Feedback Admin')
 @section('content')
 <div class="page-wrapper">
     <div class="content container-fluid">
