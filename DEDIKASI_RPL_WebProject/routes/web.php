@@ -127,6 +127,7 @@ Route::get('/peserta-list-assignment', [AssignmentController::class, 'indexPeser
 Route::get('/peserta-create-assignment', [AssignmentController::class, 'createPeserta'])->name('create_assignment');
 Route::post('/peserta-submit-assignment', [AssignmentController::class, 'submit'])->name('submit_assignment');
 Route::post('/peserta-update-assignment', [AssignmentController::class, 'updatePeserta'])->name('update_assignment');
+Route::get('/peserta-delete-assignment', [AssignmentController::class, 'deletePeserta'])->name('delete_assignment');
 
 //video mentor
 Route::get('/list-video', [VideoController::class, 'index'])->name('video_mentor');
