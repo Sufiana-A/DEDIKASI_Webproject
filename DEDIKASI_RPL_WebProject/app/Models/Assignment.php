@@ -19,13 +19,19 @@ class Assignment extends Model
     protected $fillable = [
         'id_tugas',
         'title',
+        'pelatihan',
         'description',
         'additional',
     ];
+
     public function peserta()
     {
-        return $this->belongsToMany(peserta::class, 'peserta_assignment',  'peserta_id', 'assignment_id')
+        return $this->belongsToMany(peserta::class, 'assignment_peserta',  'peserta_id', 'id_tugas')
                     ->withPivot('file_assignments','nilai','deskripsi');
+    }
+
+    public function course(){
+        return $this->belongsTo(Course::class, 'pelatihan', 'uuid');
     }
 
 }
