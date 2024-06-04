@@ -111,6 +111,7 @@ Route::controller(AdminCourseController::class)->name('admin.')->prefix('admin')
 Route::controller(StudentDashboardController::class)->name('student.')->group(function () {
     Route::get('/dashboard-peserta', 'index')->name('dashboard.index');
     Route::get('/course/{id}', 'showCourse')->name('dashboard.course');
+    // Route::get('/timeline/{id}', 'showTimeline')->name('dashboard.timeline');
 });
 
 //assignment mentor

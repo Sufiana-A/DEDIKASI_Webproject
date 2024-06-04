@@ -19,21 +19,6 @@
                     <div class="card-body">
                         <div class="db-widgets d-flex justify-content-between align-items-center">
                             <div class="db-info">
-                                <h6>Pelatihan yang Kamu Ikuti</h6>
-                                <h3>20</h3>
-                            </div>
-                            <div class="db-icon">
-                                <img src="{{ URL::to('assets/img/icons/teacher-icon-01.svg') }}" alt="Dashboard Icon">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-10 col-sm-6 col-12 d-flex">
-                <div class="card bg-comman w-100">
-                    <div class="card-body">
-                        <div class="db-widgets d-flex justify-content-between align-items-center">
-                            <div class="db-info">
                                 <h6>Total Pelatihan</h6>
                                 <h3>{{ $courses->count() }}</h3>
                             </div>
@@ -41,16 +26,6 @@
                                 <img src="{{URL::to('assets/img/icons/teacher-icon-02.svg')}}" alt="Dashboard Icon">
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="col-12 col-lg-12 col-xl-4 d-flex">
-            <div class="card flex-fill comman-shadow">
-                <div class="card-body">
-                    <div id="calendar-doctor" class="calendar-container"></div>
-                    <div class="calendar-info calendar-info1">
                     </div>
                 </div>
             </div>
@@ -111,14 +86,54 @@
                                             <div class="alert alert-danger" role="alert">
                                                 {{ $enrollment->pivot->status }}
                                             </div>
-                                            <a href="{{ route('enroll_pelatihan', ['id_peserta' => $peserta->id, 'id_course' => $course->id]) }}" class="btn btn-info continue-btn">Enroll</a>
+                                            <a href="{{ route('enroll_pelatihan', ['id_peserta' => $peserta->id, 'id_course' => $course->id]) }}" class="btn btn-info continue-btn" dusk="enroll-button-{{ $course->id }}">Enroll</a>
                                         @else
-                                            <a href="{{ route('enroll_pelatihan', ['id_peserta' => $peserta->id, 'id_course' => $course->id]) }}" class="btn btn-info continue-btn">Enroll</a>
+                                            <a href="{{ route('enroll_pelatihan', ['id_peserta' => $peserta->id, 'id_course' => $course->id]) }}" class="btn btn-info continue-btn" dusk="enroll-button-{{ $course->id }}">Enroll</a>
                                         @endif
                                     @else
-                                        <a href="{{ route('enroll_pelatihan', ['id_peserta' => $peserta->id, 'id_course' => $course->id]) }}" class="btn btn-info continue-btn">Enroll</a>
-                                    @endif                                    
+                                        <a href="{{ route('enroll_pelatihan', ['id_peserta' => $peserta->id, 'id_course' => $course->id]) }}" class="btn btn-info continue-btn" dusk="enroll-button-{{ $course->id }}">Enroll</a>
+                                    @endif          
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+
+        <div class="row">
+            @foreach ($timeline as $timelines)
+            <div class="col-12 col-md-4">
+                <div class="card flex-fill comman-shadow">
+                    <div class="card-header">
+                        <div class="row align-items-center">
+                            <div class="col-6">
+                                <h5 class="card-title">Timeline Event</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12">
+                                    <div class="dash-details">
+                                        <div class="lesson-activity">
+                                            <div class="lesson-imgs">
+                                                <img src="{{ URL::to('assets/img/icons/lesson-icon-04.svg') }}" alt="">
+                                            </div>
+                                            <div class="views-lesson">
+                                                <h5 style="width: 100%;">{{ strip_tags($timelines->tugas) }}</h5>
+                                            </div>
+                                        </div>
+                                        <div class="lesson-activity">
+                                            <div class="lesson-imgs">
+                                                <img src="{{ URL::to('assets/img/icons/lesson-icon-06.svg') }}" alt="">
+                                            </div>
+                                            <div class="views-lesson">
+                                                <h5>{{ $timelines->deadline }}</h5>
+                                            </div>
+                                        </div>
+                                    </div>
                             </div>
                         </div>
                     </div>
