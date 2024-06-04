@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('status')->default('Pending');
             $table->foreign('peserta_id')->references('id')->on('peserta')->onDelete('cascade');
             $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
+            $table->string('favorite')->nullable();
             $table->timestamps();
         });
     }
