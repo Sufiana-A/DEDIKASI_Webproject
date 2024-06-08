@@ -12,6 +12,27 @@
                 </div>
             </div>
         </div>
+        <h3 class="page-title">Course Favorite</h3>
+        <div class="card-container row row-cols-1 row-cols-md-2 row-cols-lg-4 justify-content-start">
+            @foreach($pelatihanAcc as $enroll)
+                <div class="col mb-4">
+                    <div class="card h-100 d-flex flex-column" style="display: flex; flex-direction: column;">
+                        <div class="card-body d-flex flex-column" style="display: flex; flex-direction: column;">
+                            <h5 class="card-title"><strong>{{ $enroll->title }}</strong></h5>
+                            <p class="card-text">{!! Str::limit(strip_tags($enroll->description), 100, '...') !!}</p>
+                            <div style="margin-top: auto;">
+                                <button id="submitBtn" type="button" class="btn btn-primary btn-submit">View</button>
+                            </div>
+                            @if($enroll->pivot->favorite === 'yes')
+                                <!-- Action or button for "favorite" -->
+                            @else
+                                <!-- If not favorite -->
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
 
         <div class="row">
             <div class="col-xl-10 col-sm-6 col-12 d-flex">
@@ -144,4 +165,14 @@
         </div>
     </div>
 </div>
+<script>
+    // Temukan tombol dengan ID 'submitBtn'
+    var submitBtn = document.getElementById('submitBtn');
+
+    // Tambahkan event listener untuk mengarahkan ke route lain saat tombol diklik
+    submitBtn.addEventListener('click', function() {
+        // Ganti URL di bawah dengan URL route yang diinginkan
+        window.location.href = "{{ route('list_peserta_pelatihan') }}";
+    });
+</script>
 @endsection

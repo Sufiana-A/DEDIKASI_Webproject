@@ -208,9 +208,10 @@ input[type="checkbox"]:checked:after {
                         <div class="d-flex justify-content-left mb-3 text-left">
                             <h5 class="card-title"><strong>{{ $enroll->title }}</strong></h5>
                         </div>
-                        <div class="d-flex justify-content-left mb-3 text-center description">
-                            <p class="card-text">{!! $enroll->description !!}</p>
+                        <div class="d-flex justify-content-left mb-3 text-left description">
+                            <p class="card-text">{!! Str::limit(strip_tags($enroll->description), 100, '.......') !!}</p>
                         </div>
+                        <br>
                         <div class="actions">
                             @if($enroll->pivot->favorite === 'yes')
                                 <form action="{{ route('remove-favorite') }}" method="POST">

@@ -39,7 +39,7 @@
                                     <img src="{{ asset('assets/img/course.jpg') }}" class="card-img-top img-fluid" style="width:350px" alt="gambar">
                                 </div>
                                 <hr>
-                                <div class="d-flex justify-content-center mb-3 text-center">
+                                <div class="d-flex justify-content mb-3 text-">
                                     <p class="card-text">{{ strip_tags($enroll->description) }}</p>
                                 </div>
                                 <hr>
