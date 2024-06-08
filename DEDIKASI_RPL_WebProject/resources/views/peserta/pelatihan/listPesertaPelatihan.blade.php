@@ -44,15 +44,14 @@
                                 </div>
                                 <hr>
                                 <div class="d-flex justify-content-center mb-3">
-                                    <a href="{{route('video_peserta, $enroll->uuid')}}" class="btn btn-primary mx-2" dusk="view-video-button-{{ $enroll->uuid }}"><i class="fas fa-video"></i> Video </a>
+                                    <a href="{{route('video_peserta', $enroll->uuid)}}" class="btn btn-primary mx-2" dusk="view-video-button-{{ $enroll->uuid }}"><i class="fas fa-video"></i> Video </a>
                                     <a href="{{route('view_materi', $enroll->uuid)}}" class="btn btn-primary mx-2" dusk="view-materi-button-{{ $enroll->uuid }}"><i class="fas fa-file"></i> Material </a>
-                                    <a href="{{route('add_assignment, $enroll->uuid')}}" class="btn btn-primary mx-2" dusk="view-assignment-button-{{ $enroll->uuid }}"><i class="fas fa-file-alt"></i> Assignment </a>
-                                </div>
+                                    <a href="{{route('add_assignment', $enroll->uuid)}}" class="btn btn-primary mx-2" dusk="view-assignment-button-{{ $enroll->uuid }}"><i class="fas fa-file-alt"></i> Assignment </a>
                                 </div>
                                 <hr>
                                 <div class="d-flex justify-content-center mb-3">
                                     <div class="actions">
-                                        <button type="submit" class="btn btn-danger unenroll" data-bs-toggle="modal" data-bs-target="#unenroll" data-id="{{ $enroll->id }}">
+                                        <button type="submit" class="btn btn-danger unenroll" dusk="unenroll-button-{{ $enroll->uuid }}" data-bs-toggle="modal" data-bs-target="#unenroll" data-id="{{ $enroll->id }}">
                                             <i class="fas fa-times"> Unenroll </i>
                                         </button>
                                     </div>
