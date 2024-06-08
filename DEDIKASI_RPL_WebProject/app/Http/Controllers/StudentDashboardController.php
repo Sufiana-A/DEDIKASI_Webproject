@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\Course;
 use App\Models\Timeline;
+use App\Models\Peserta;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class StudentDashboardController extends Controller
@@ -21,8 +23,12 @@ class StudentDashboardController extends Controller
         $upcomingEvents = Timeline::where('deadline', '>=', $now)
                                ->where('deadline', '<=', $oneWeekAhead)
                                ->get();
+        $pesertaId = Auth::guard('peserta')->user()->id;
+                               // Ambil data pelatihan yang dienroll dengan status "acc" untuk user yang sedang login
+        $peserta = Peserta::find($pesertaId);
+        $pelatihanAcc = $peserta->course()->wherePivot('favorite', 'yes')->get();
 
-        return view('dashboard.student_dashboard', compact('courses', 'upcomingEvents'));
+        return view('dashboard.student_dashboard', compact('courses', 'upcomingEvents','pelatihanAcc'));
     }
 
     public function showCourse($id) {
