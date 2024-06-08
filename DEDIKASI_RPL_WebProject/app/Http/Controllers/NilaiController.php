@@ -13,7 +13,7 @@ class NilaiController extends Controller
     public function index()
     {
         // fix: get all assignments using query
-        $assignments = DB::table('peserta_assignment')->get(); 
+        $assignments = DB::table('assignment_peserta')->get(); 
     // public function index(Request $request) {
     //     $query = Grades::query();
 
@@ -82,7 +82,7 @@ class NilaiController extends Controller
         // $assignment = Assignment::findOrFail($assignment_id);
         // $peserta = Peserta::findOrFail($peserta_id);
         // $pivotData = $peserta->assignments()->wherePivot('assignment_id', $assignment_id)->first()->pivot;
-        $pivotData = DB::table('peserta_assignment') 
+        $pivotData = DB::table('assignment_peserta') 
             ->where('id', $id)
             ->first();
         $assignment = Assignment::findOrFail($pivotData->assignment_id); // fix: get assignment by pivot data
@@ -101,7 +101,7 @@ class NilaiController extends Controller
     //    $peserta = Peserta::findOrFail($peserta_id);
    
        // Update nilai dan deskripsi pada tabel pivot
-       DB::table('peserta_assignment') // fix: update pivot data using query builder
+       DB::table('assignment_peserta') // fix: update pivot data using query builder
             ->where('id', $id)
             ->update([
                 'nilai' => $request->nilai,
