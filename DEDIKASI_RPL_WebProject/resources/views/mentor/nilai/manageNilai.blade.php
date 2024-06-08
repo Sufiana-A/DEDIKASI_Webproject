@@ -1,4 +1,5 @@
 @extends('layout.mentormaster')
+@section('title', 'Nilai Peserta')
 @section('content')
 {{-- message --}}
 

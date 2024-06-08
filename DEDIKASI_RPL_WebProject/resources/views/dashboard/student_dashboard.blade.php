@@ -1,5 +1,5 @@
 @extends('layout.master')
-
+@section('title', 'Dashboard Peserta')
 @section('content')
 <div class="page-wrapper">
     <div class="content container-fluid">
