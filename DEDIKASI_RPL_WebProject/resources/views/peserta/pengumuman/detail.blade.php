@@ -33,6 +33,9 @@
                 <div class="card">
                     <div class="card-body">
                         <h3 class="card-title">{{ $announcement->title }}</h3>
+                        <div class="image">
+                            {!! (($announcement->image)) !!}
+                        </div>
                         <div class="description">
                             {!! nl2br(strip_tags($announcement->description)) !!}
                         </div>
