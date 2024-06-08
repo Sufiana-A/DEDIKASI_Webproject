@@ -103,7 +103,6 @@
         </div>
 
         <div class="row">
-            @foreach ($timeline as $timelines)
             <div class="col-12 col-md-4">
                 <div class="card flex-fill comman-shadow">
                     <div class="card-header">
@@ -115,31 +114,33 @@
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-12">
-                                    <div class="dash-details">
-                                        <div class="lesson-activity">
-                                            <div class="lesson-imgs">
-                                                <img src="{{ URL::to('assets/img/icons/lesson-icon-04.svg') }}" alt="">
+                                <div class="col-12">
+                                    @foreach ($upcomingEvents as $upcomingEvent)
+                                        <div class="dash-details">
+                                            <div class="lesson-activity">
+                                                <div class="lesson-imgs">
+                                                    <img src="{{ URL::to('assets/img/icons/lesson-icon-04.svg') }}" alt="">
+                                                </div>
+                                                <div class="views-lesson">
+                                                    <h5 style="width: 100%;">{{ strip_tags($upcomingEvent->tugas) }}</h5>
+                                                </div>
                                             </div>
-                                            <div class="views-lesson">
-                                                <h5 style="width: 100%;">{{ strip_tags($timelines->tugas) }}</h5>
+                                            <div class="lesson-activity">
+                                                <div class="lesson-imgs">
+                                                    <img src="{{ URL::to('assets/img/icons/lesson-icon-06.svg') }}" alt="">
+                                                </div>
+                                                <div class="views-lesson">
+                                                    <h5>{{ $upcomingEvent->deadline }}</h5>
+                                                    <br>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="lesson-activity">
-                                            <div class="lesson-imgs">
-                                                <img src="{{ URL::to('assets/img/icons/lesson-icon-06.svg') }}" alt="">
-                                            </div>
-                                            <div class="views-lesson">
-                                                <h5>{{ $timelines->deadline }}</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                            </div>
+                                    @endforeach
+                                </div>    
                         </div>
                     </div>
                 </div>
             </div>
-            @endforeach
         </div>
     </div>
 </div>
