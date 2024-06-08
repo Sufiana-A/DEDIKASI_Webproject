@@ -137,7 +137,7 @@ Route::get('/edit-video/{id}', [VideoController::class, 'edit'])->name('video_ed
 Route::post('/update-video/{id}', [VideoController::class, 'update'])->name('video_update');
 Route::get('/delete-video', [VideoController::class, 'delete'])->name('video_delete');
 
-Route::get('/peserta-list-video', [VideoController::class, 'indexPeserta'])->name('video_peserta');
+Route::get('/peserta-list-video/{uuid}', [VideoController::class, 'indexPeserta'])->name('video_peserta');
 
 
 //dashboard admin

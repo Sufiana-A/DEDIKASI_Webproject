@@ -53,7 +53,7 @@
                     <a href="{{ route('loker_admin') }}"><i class="fas fa-briefcase"></i> <span>Kelola Lowongan Kerja</span></a>
                 </li>
                 <li>
-                    <a href="{{route('list_artikel')}}"><i class="fas fa-clipboard-list"></i> <span>Kelola Artikel</span></a>
+                    <a href="{{route('list_artikel')}}"><i class="far fa-newspaper"></i> <span>Kelola Artikel</span></a>
                 </li>
                 <li>
                     <a href="{{ route('feedback_sistem') }}"><i class="fas fa-clipboard-list"></i> <span>Feedback Sistem</span></a>

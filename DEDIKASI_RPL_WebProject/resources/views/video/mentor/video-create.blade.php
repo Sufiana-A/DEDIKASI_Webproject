@@ -22,6 +22,18 @@
                         <div class="card-body">
                             <form action="{{ route('video_store') }}" method="post" enctype="multipart/form-data">
                                 @csrf
+                                <div class="form-group">
+                                    <label for="pelatihan">Pelatihan</label>
+                                    <select class="form-control @error('pelatihan') is-invalid @enderror" id="pelatihan" name="pelatihan" required>
+                                        <option value="">Pilih Pelatihan</option>
+                                        @foreach($courses as $course)
+                                            <option value="{{ $course->uuid }}">{{ $course->uuid }}: {{ $course->title }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('pelatihan')
+                                      <div class="alert text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
                                 <div class="mb-3">
                                     <label for="id_video" class="form-label">ID Video</label>
                                     <input type="text" class="form-control" id="id_video" name="id_video" placeholder="contoh: 'V01C010'" required>
@@ -36,7 +48,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="link_terkait" class="form-label">Link Terkait</label>
-                                    <input type="text" class="form-control" id="link_terkait" name="link_terkait" placeholder="masukkan_link_video" required>
+                                    <input type="text" class="form-control" id="link_terkait" name="link_terkait" placeholder="saran: link youtube" required>
                                 </div>
                                 <div class="mb-3">
                                     <button type="submit" class="btn btn-primary">Simpan</button>
@@ -48,5 +60,4 @@
             </div>
         </div>
     </div>
-
 @endsection

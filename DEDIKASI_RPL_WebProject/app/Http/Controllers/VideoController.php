@@ -5,22 +5,25 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Video;
+use App\Models\Course;
 
 
 class VideoController extends Controller
 {
     public function index(){
-        $video = Video::get();
+        $video = Video::with('course')->get();
         return view('video.mentor.video-list', compact('video'));
     } 
 
     public function create(){
-        return view('video/mentor/video-create');
+        $courses = Course::all();
+        return view('video/mentor/video-create', compact('courses'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
+            'pelatihan' => 'required|exists:courses,uuid',
             'id_video' => 'required',
             'judul_video'     => 'required',
             'deskripsi_video' => 'required',
@@ -29,6 +32,7 @@ class VideoController extends Controller
         
         $video = new Video();
         $video->id_video = $request->id_video;
+        $video->pelatihan = $request->pelatihan;
         $video->judul_video = $request->judul_video;
         $video->deskripsi_video = $request->deskripsi_video;
         $video->link_terkait = $request->link_terkait;
@@ -48,13 +52,14 @@ class VideoController extends Controller
         $request->validate([
             'id_video' => 'nullable|string',
             'judul_video' => 'nullable|string',
+            'pelatihan' => 'required|exists:courses,uuid', 
             'deskripsi_video' => 'nullable|string',
             'link_terkait' => 'nullable|string', 
         ]);
 
         $video = Video::findOrFail($id);
         $video->update($request->all());
-
+        
         return redirect()->route('video_mentor', [$video->id])->with('success', 'Assignment berhasil diperbarui');
     }
 
@@ -66,10 +71,10 @@ class VideoController extends Controller
 
 
     #PESERTA
-    public function indexPeserta(){
-        $video = Video::get();
-
+    public function indexPeserta(Request $request, $uuid){
+        $course = Course::where('uuid', $uuid)->firstOrFail();
+        $video = Video::where('pelatihan', $course->uuid)->get();
         return view('video.peserta-video-view', compact('video'));
-    } 
+    }
 
 }

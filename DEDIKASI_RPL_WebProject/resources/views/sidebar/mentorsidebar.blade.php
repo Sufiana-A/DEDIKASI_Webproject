@@ -48,7 +48,13 @@
                     <a href="{{route('materi_mentor')}}"><i class="fas fa-book-open"></i> <span>Kelola Materi</span></a>
                 </li>
                 <li>
-                    <a href="{{route('mentor_artikel')}}"><i class="fas fa-clipboard-list"></i> <span>Lihat Artikel</span></a>
+                    <a href="{{route('assignment_mentor')}}"><i class="fa fa-edit"></i> <span>Kelola Assignment</span></a>
+                </li>
+                <li>
+                    <a href="{{route('video_mentor')}}"><i class="fa fa-file-video"></i> <span>Kelola Video</span></a>
+                </li>
+                <li>
+                    <a href="{{route('mentor_artikel')}}"><i class="far fa-newspaper"></i> <span>Lihat Artikel</span></a>
                 </li>
                 <li>
                     <a href="{{route('feedback_mentor')}}"><i class="fas fa-clipboard-list"></i> <span>Feedback Mentor</span></a>

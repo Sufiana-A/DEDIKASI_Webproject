@@ -57,14 +57,21 @@ class AssignmentController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
+            'pelatihan' => 'required|exists:courses,uuid',
             'id_tugas' => 'nullable|string',
             'title' => 'nullable|string',
-            'pelatihan' => 'required|exists:courses,uuid',
             'description' => 'nullable|string',
             'addition' => 'nullable|mimes:pdf,doc,jpg,jpeg,png|max:2048', 
         ]);
 
+        $courses = Course::all();
+        $courses->id_course = $request->id_course;
+
         $assignments = Assignment::findOrFail($id);
+        $assignments->id_tugas = $request->id_tugas;
+        $assignments->title = $request->title;
+        $assignments->pelatihan = $request->pelatihan;
+        $assignments->description = $request->description;
 
         if ($request->hasFile('addition')) {
             

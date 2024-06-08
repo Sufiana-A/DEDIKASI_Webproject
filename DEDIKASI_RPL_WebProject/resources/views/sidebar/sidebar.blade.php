@@ -59,7 +59,7 @@
                     <a href="{{route('timeline_index')}}"><i class="fas fa-calendar-day"></i> <span>Timeline</span></a>
                 </li>
                 <li>
-                    <a href="{{route('peserta_artikel')}}"><i class="fas fa-clipboard-list"></i> <span>Lihat Artikel</span></a>
+                    <a href="{{route('peserta_artikel')}}"><i class="far fa-newspaper"></i></i> <span>Lihat Artikel</span></a>
                 </li>
                 <li>
                     <a href="{{route('announcements.index')}}"><i class="fas fa-clipboard-list"></i> <span>Pengumumuman</span></a>

@@ -18,7 +18,12 @@ class Video extends Model
     protected $fillable = [
         'id_video',
         'judul_video',
+        'pelatihan',
         'deskripsi_video',
         'link_terkait',
     ];
+
+    public function course(){
+        return $this->belongsTo(Course::class, 'pelatihan', 'uuid');
+    }
 }
