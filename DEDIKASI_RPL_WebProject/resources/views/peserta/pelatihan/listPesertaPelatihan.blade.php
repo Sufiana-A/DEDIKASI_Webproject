@@ -11,6 +11,8 @@
                 </div>
             </div>
         </div>
+
+        <!-- PKD-22 -->
         <div class="container">
             <!-- Display session messages -->
             @if (session('success'))
@@ -42,9 +44,10 @@
                                 </div>
                                 <hr>
                                 <div class="d-flex justify-content-center mb-3">
-                                    <a href="{{route('video_peserta')}}" class="btn btn-primary mx-2"><i class="fas fa-video"></i> Video </a>
-                                    <a href="{{route('view_materi', $enroll->uuid)}}" class="btn btn-primary mx-2"><i class="fas fa-file"></i> Material </a>
-                                    <a href="{{route('add_assignment')}}" class="btn btn-primary mx-2"><i class="fas fa-file-alt"></i> Assignment </a>
+                                    <a href="{{route('video_peserta, $enroll->uuid')}}" class="btn btn-primary mx-2" dusk="view-video-button-{{ $enroll->uuid }}"><i class="fas fa-video"></i> Video </a>
+                                    <a href="{{route('view_materi', $enroll->uuid)}}" class="btn btn-primary mx-2" dusk="view-materi-button-{{ $enroll->uuid }}"><i class="fas fa-file"></i> Material </a>
+                                    <a href="{{route('add_assignment, $enroll->uuid')}}" class="btn btn-primary mx-2" dusk="view-assignment-button-{{ $enroll->uuid }}"><i class="fas fa-file-alt"></i> Assignment </a>
+                                </div>
                                 </div>
                                 <hr>
                                 <div class="d-flex justify-content-center mb-3">
@@ -65,7 +68,7 @@
     </div>
 </div>
 
-    <!-- Unenroll Modal -->
+    <!-- PKD-32 -->
     {{-- model elete --}}
     <div class="modal custom-modal fade" id="unenroll" role="dialog">
         <div class="modal-dialog modal-dialog-centered">

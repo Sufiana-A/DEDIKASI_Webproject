@@ -39,10 +39,16 @@
                 </li>
 
                 <li>
+                    <a href="{{ route('dashboard_mentor') }}"><i class="fas fa-home"></i> <span>Mentor Dashboard</span></a>
+                </li>
+                <li>
                     <a href="{{route('mentor.manageNilai.index')}}"><i class="fas fa-clipboard-list"></i> <span>Grades</span></a>
                 </li>
                 <li>
                     <a href="{{route('materi_mentor')}}"><i class="fas fa-book-open"></i> <span>Kelola Materi</span></a>
+                </li>
+                <li>
+                    <a href="{{route('mentor_artikel')}}"><i class="fas fa-clipboard-list"></i> <span>Lihat Artikel</span></a>
                 </li>
                 <li>
                     <a href="{{route('feedback_mentor')}}"><i class="fas fa-clipboard-list"></i> <span>Feedback Mentor</span></a>

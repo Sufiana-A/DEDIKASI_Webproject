@@ -44,7 +44,7 @@
                     <a href="{{ route('student.dashboard.index') }}"><i class="fas fa-home"></i> <span>Student Dashboard</span></a>
                 </li>
                 <li>
-                    <a href="{{route('progress')}}"><i class="fas fa-clipboard-list"></i> <span>Progress Peserta</span></a>
+                    <a href="{{route('rekomendasi')}}"><i class="fas fa-clipboard-list"></i> <span>Recomendation</span></a>
                 </li>
                 <li>
                     <a href="{{route('list_peserta_pelatihan')}}"><i class="fas fa-clipboard-list"></i> <span>List Pelatihan</span></a>
@@ -57,6 +57,9 @@
                 </li>
                 <li>
                     <a href="{{route('timeline_index')}}"><i class="fas fa-calendar-day"></i> <span>Timeline</span></a>
+                </li>
+                <li>
+                    <a href="{{route('peserta_artikel')}}"><i class="fas fa-clipboard-list"></i> <span>Lihat Artikel</span></a>
                 </li>
                 <li>
                     <a href="{{route('announcements.index')}}"><i class="fas fa-clipboard-list"></i> <span>Pengumumuman</span></a>

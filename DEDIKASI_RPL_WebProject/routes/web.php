@@ -25,6 +25,7 @@ use App\Http\Controllers\StudentDashboardController;
 use App\Http\Controllers\RegistrasiPelatihanController;
 use App\Http\Controllers\TimelineController;
 use App\Http\Controllers\AnnouncementController;
+use App\Http\Controllers\RekomendasiController;
 use App\Http\Controllers\ShowAnnouncementController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 use App\Http\Controllers\LokerController;
@@ -50,8 +51,8 @@ Route::post('/loginsubmit', [LoginController::class, 'loginvalid'])->name('login
 Route::post('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get("/Progress-Peserta" , function(){
-    return view("peserta/progress");})->name('progress');
+Route::get("/rekomendasi" , function(){
+    return view("peserta/rekomendasi");})->name('progress');
 Route::get("/admin" , function(){
     return view("dashboard/admin_dashboard");})->name('dash-admin');
 Route::get("/admin/manage-course" , function(){
@@ -65,13 +66,11 @@ Route::get('/profile-peserta-edit', [ProfilePesertaController::class, 'edit_prof
 Route::post('/profile-peserta-submit', [ProfilePesertaController::class, 'submit_profile'])->name('profile_submit_peserta');
 Route::post('/profile-photo-peserta-submit', [ProfilePesertaController::class, 'submit_photo'])->name('profil_photo_submit_peserta');
 
-//peserta pelaihan
+//peserta pelaihan (PKD-22 & PKD-32)
 Route::get('/peserta-pelatihan', [PesertaPelatihanController::class, 'index'])->name('list_peserta_pelatihan');
 Route::post('/peserta-pelatihan/unenroll', [PesertaPelatihanController::class, 'unenroll'])->name('list_peserta_pelatihan_unenroll');
 
-//mentor
-
-//Mentor Dashboard
+//Mentor Dashboard (PKD-51 & PKD-52)
 Route::get('/dashboard-mentor', [MentorDashboardController::class, 'index'])->name('dashboard_mentor');
 
     Route::controller(NilaiController::class)->name('mentor.')->prefix('mentor')->group(function () {
@@ -128,6 +127,7 @@ Route::get('/peserta-list-assignment', [AssignmentController::class, 'indexPeser
 Route::get('/peserta-create-assignment', [AssignmentController::class, 'createPeserta'])->name('create_assignment');
 Route::post('/peserta-submit-assignment', [AssignmentController::class, 'submit'])->name('submit_assignment');
 Route::post('/peserta-update-assignment', [AssignmentController::class, 'updatePeserta'])->name('update_assignment');
+Route::get('/peserta-delete-assignment', [AssignmentController::class, 'deletePeserta'])->name('delete_assignment');
 
 //video mentor
 Route::get('/list-video', [VideoController::class, 'index'])->name('video_mentor');
@@ -162,7 +162,7 @@ Route::get('/detail-materi/{id}', [MateriController::class, 'detailMateri'])->na
 Route::post('/update-materi/{id}', [MateriController::class, 'update'])->name('materi_update');
 Route::get('/delete-materi', [MateriController::class, 'delete'])->name('materi_delete');
 
-//timeline
+//timeline (PKD-31)
 Route::get('/timeline', [TimelineController::class, 'index'])->name('timeline_index');
 Route::get('/timeline/add', [TimelineController::class, 'add'])->name('timeline_add');
 Route::get('/timeline/edit/{id}', [TimelineController::class, 'edit'])->name('timeline_edit');
@@ -184,6 +184,8 @@ Route::get('/delete-artikel', [ArtikelController::class, 'delete'])->name('delet
 //peserta, mentor | artikel
 Route::get('/peserta-artikel', [ArtikelController::class, 'indexView'])->name('peserta_artikel');
 Route::get('/detail-artikel/{id}', [ArtikelController::class, 'detailView'])->name('detail_artikel');
+Route::get('/mentor-artikel', [ArtikelController::class, 'indexMentor'])->name('mentor_artikel');
+Route::get('/detail-mentor-artikel/{id}', [ArtikelController::class, 'detailMentor'])->name('detail_mentor');
 
 //feedback
 Route::get('/feedback-peserta', [FeedbackController::class, 'create_feedback'])->name('feedback_peserta');
@@ -225,3 +227,11 @@ Route::get('/delete-loker', [LokerController::class, 'delete'])->name('loker_del
 //loker peserta
 Route::get('/peserta-view-loker', [LokerController::class, 'indexPeserta'])->name('view_loker');
 Route::get('/peserta-view-loker-search', [LokerController::class, 'search'])->name('view_loker.search');
+
+// REKOMENDASI
+Route::get('/rekomendasi', [RekomendasiController::class, 'index'])->name('rekomendasi');
+Route::middleware('auth:peserta')->group(function () {
+    Route::get('/favorite', [RekomendasiController::class, 'showFavorite'])->name('favorite');
+});
+Route::post('/remove-favorite', [RekomendasiController::class, 'removeFavorite'])->name('remove-favorite');
+Route::post('/save-checkbox', [RekomendasiController::class, 'saveCheckbox'])->name('save-checkbox');

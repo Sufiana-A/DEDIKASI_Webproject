@@ -1,6 +1,6 @@
 @extends('layout.adminmaster')
-@section('content')
 
+@section('content')
 <div class="page-wrapper">
     <div class="content container-fluid">
         <div class="page-header">
@@ -40,9 +40,8 @@
         </div>
     </div>
 </div>
-
 @endsection
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 @section('script')
 <script>
     $(document).ready(function() {

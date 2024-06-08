@@ -14,26 +14,30 @@
             </div>
         </div>
 
+        <!-- PKD-51 -->
         <div class="container">
             <div class="row">
-                <div class="col-xl-10 col-sm-6 col-12 d-flex">
-                    <div class="card bg-comman w-100">
-                        <div class="card-body">
-                            <div class="db-widgets d-flex justify-content-between align-items-center">
-                                <div class="db-info">
-                                    <h6>Jumlah Peserta yang Diajar</h6>
-                                    <h3>{{ $jumlah_peserta }}</h3>
-                                </div>
-                                <div class="db-icon">
-                                    <img src="{{ URL::to('assets/img/icons/dash-icon-01.svg') }}" alt="Dashboard Icon">
+                @foreach ($jumlah_peserta as $count_peserta)
+                    <div class="col-xl-10 col-sm-6 col-12 d-flex">
+                        <div class="card bg-comman w-100">
+                            <div class="card-body">
+                                <div class="db-widgets d-flex justify-content-between align-items-center">
+                                    <div class="db-info">
+                                        <h6>Jumlah Peserta yang Diajar oleh Mentor</h6>
+                                        <h3>{{ $count_peserta->jumlah_diterima }}</h3>
+                                    </div>
+                                    <div class="db-icon">
+                                        <img src="{{ URL::to('assets/img/icons/dash-icon-01.svg') }}" alt="Dashboard Icon">
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
             </div>
         </div>
 
+        <!-- PKD-52 -->
         <div class="row">
             <div class="col-sm-12">
                 <div class="card card-table">

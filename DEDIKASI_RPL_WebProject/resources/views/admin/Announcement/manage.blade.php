@@ -135,6 +135,15 @@
         </div>
     </div>
 </div>
+@section('script')
+{{-- delete js --}}
+<script>
+    $(document).on('click','.delete',function()
+    {
+        $('input[name="uuid"]').val($(this).data('uuid'));
+    });
+</script>
+@endsection
 
 @section('script')
     {{-- delete js --}}

@@ -10,24 +10,20 @@ use App\Models\Course;
 
 class TimelineController extends Controller
 {
-    //
+    // PKD-31
     public function index(Request $request) {
         $query = Timeline::query();
-    
-        // Check if title input is provided
+
         if ($request->has('title')) {
             $query->where('title', 'like', '%' . $request->title . '%');
         }
-    
-        // Check if class input is provided
+
         if ($request->has('class')) {
             $query->where('class', 'like', '%' . $request->class . '%');
         }
-    
-        // Get the results
+
         $timelines = $query->get();
-    
-        // If there is only one timeline, pass it to the view
+
         $timeline = count($timelines) == 1 ? $timelines->first() : null;
     
         return view('peserta.timeline.listTimeline', compact('timelines', 'timeline'));
@@ -35,12 +31,10 @@ class TimelineController extends Controller
 
     public function add() {
         $pesertaId = Auth::guard('peserta')->user()->id;
-    
-        // Ambil data pelatihan yang dienroll dengan status "acc" untuk user yang sedang login
+
         $peserta = Peserta::find($pesertaId);
         $pelatihanAcc = $peserta->course()->wherePivot('status', 'Diterima')->get();
-    
-        // Mengubahnya menjadi array agar bisa diakses di JavaScript
+
         $pelatihanAccArray = $pelatihanAcc->mapWithKeys(function ($course) {
             return [$course->id => ['class' => $course->class, 'description' => $course->description]];
         })->toArray();

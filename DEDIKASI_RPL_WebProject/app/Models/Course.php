@@ -24,7 +24,7 @@ class Course extends Model
     public function Peserta()
     {
         return $this->belongsToMany(Peserta::class, 'peserta_course', 'peserta_id', 'course_id')
-                    ->withPivot('nik', 'ktm', 'ktp', 'status');
+                    ->withPivot('nik', 'ktm', 'ktp', 'status','favorite');
     }
 
     public function Timeline()
