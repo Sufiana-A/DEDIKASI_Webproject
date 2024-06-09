@@ -23,7 +23,7 @@ class FeedbackController extends Controller
 
         $feedbacks->save();
 
-        return redirect()->route('feedback_peserta')->with('success', 'Feedback submittes successfully !');
+        return redirect()->route('feedback_peserta')->with('success', 'Feedback submitted successfully !');
 
     }
 
