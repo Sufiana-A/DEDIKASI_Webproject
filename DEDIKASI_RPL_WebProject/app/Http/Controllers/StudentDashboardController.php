@@ -24,7 +24,8 @@ class StudentDashboardController extends Controller
                                ->where('deadline', '<=', $oneWeekAhead)
                                ->get();
         $pesertaId = Auth::guard('peserta')->user()->id;
-                               // Ambil data pelatihan yang dienroll dengan status "acc" untuk user yang sedang login
+        
+        // Ambil data pelatihan yang dienroll dengan status "acc" untuk user yang sedang login
         $peserta = Peserta::find($pesertaId);
         $pelatihanAcc = $peserta->course()->wherePivot('favorite', 'yes')->get();
 

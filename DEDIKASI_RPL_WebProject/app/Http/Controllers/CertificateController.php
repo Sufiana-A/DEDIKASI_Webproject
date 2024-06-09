@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
+use App\Models\Peserta;
 use App\Models\Certificate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreCertificateRequest;
@@ -21,27 +24,37 @@ class CertificateController extends Controller
 
     public function create()
     {
+        $pesertaAcc = DB::table('peserta')
+                    ->join('peserta_course', 'peserta.id', '=', 'peserta_course.peserta_id')
+                    ->join('courses', 'peserta_course.course_id', '=', 'courses.id')
+                    ->select('peserta.id', 'peserta.first_name', 'peserta.last_name')
+                    ->where('peserta_course.status', 'Diterima')
+                    ->groupBy('peserta.id', 'peserta.first_name', 'peserta.last_name')
+                    ->get();
+        
+
         $sertifikat = Certificate::with(['peserta', 'Course'])->get();
-        return view('certificate.addCertificate', ['sertifikat' => $sertifikat]);
+        $course = Course::all();
+        return view('certificate.addCertificate', ['sertifikat' => $sertifikat, 'course' => $course, 'pesertaAcc' => $pesertaAcc]);
     }
 
     public function store(StoreCertificateRequest $request)
     {        
         // Validasi data inputan
         $request->validate([
-            'id_peserta' => 'required|exists:peserta,id',
-            'id_pelatihan' => 'required|exists:courses,id',
-            'file' => 'required|file|mimes:pdf',
+            'pelatihan' => 'required|string|max:255',
+            'peserta' => 'required|string|max:255',
+            'nama_file' => 'required|file|mimes:pdf'
         ]);
 
         // Simpan file
-        $sertifikat = $request->file('file');
-        $sertifikat -> storeAs('public/certificates', $sertifikat->hashName());
+        $sertifikat = $request->file('nama_file');
+    $sertifikat -> storeAs('public/certificates', $sertifikat->hashName());
 
         // Simpan data sertifikat ke database
         Certificate::create([
-            'peserta_id' => $request->id_peserta,
-            'course_id' => $request->id_pelatihan,
+            'pelatihan' => $request->pelatihan,
+            'peserta' => $request->peserta,
             'nama_file' =>  $sertifikat->hashName(),
         ]);
 
@@ -59,9 +72,7 @@ class CertificateController extends Controller
 
     public function download($fileName)
     {
-        // dd(Auth::user());
-        return Storage::download('public/certificates/'.$fileName, 'Sertifikat-' . Auth::guard('peserta')->user()->first_name . '.pdf');
-        
+        return Storage::download('public/certificates/'.$fileName, 'Sertifikat-' . Auth::guard('peserta')->user()->first_name . '.pdf');        
     }
 
 
@@ -88,7 +99,7 @@ class CertificateController extends Controller
     {
         Storage::disk('local')->delete('public/certificates/'.$sertifikat->nama_file);
         $sertifikat->delete();
-        return redirect(route('sertifikat.create'));
+        return redirect(route('sertifikat.create'))->with('success', 'Sertifikat berhasil dihapus.');
     }
 
     // public function destroy(Certificate $sertifikat)
