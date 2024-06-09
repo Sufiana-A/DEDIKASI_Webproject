@@ -45,33 +45,33 @@
                                             @csrf
                                             <div class="mb-4 form-group">
                                                 <label for="first_name" class="text-muted text-sm-end mb-3 mb-sm-3">First Name</label>
-                                                <input type="text" class="form-control col-sm-9" name="first_name" value="{{ Auth::guard('peserta')->user()->first_name }}" readonly>
+                                                <input type="text" class="form-control col-sm-9" id="first_name" name="first_name" value="{{ Auth::guard('peserta')->user()->first_name }}" readonly>
                                             </div>
                                             <div class="mb-4 form-group">
                                                 <label for="last_name" class="text-muted text-sm-end mb-3 mb-sm-3">Last Name</label>
-                                                <input type="text" class="form-control col-sm-9" name="last_name" value="{{ Auth::guard('peserta')->user()->last_name }}" readonly>
+                                                <input type="text" class="form-control col-sm-9" id="last_name" value="{{ Auth::guard('peserta')->user()->last_name }}" readonly>
                                             </div>
                                             <div class="mb-4 form-group">
                                                 <label for="nim" class="text-muted text-sm-end mb-3 mb-sm-3">NIM</label>
-                                                <input type="text" class="form-control col-sm-9" name="nim" value="{{ Auth::guard('peserta')->user()->nim  }}" readonly>
+                                                <input type="text" class="form-control col-sm-9" id="nim" name="nim" value="{{ Auth::guard('peserta')->user()->nim  }}" readonly>
                                             </div>
                                             <div class="mb-4 form-group">
                                                 <label for="angkatan" class="text-muted text-sm-end mb-3 mb-sm-3">Angkatan</label>
-                                                <input type="text" class="form-control col-sm-9 @error('angkatan') is-invalid @enderror" name="angkatan" placeholder="contoh: 2021" value="{{ Auth::guard('peserta')->user()->angkatan }}">
+                                                <input type="text" class="form-control col-sm-9 @error('angkatan') is-invalid @enderror" id="angkatan" name="angkatan" placeholder="contoh: 2021" value="{{ Auth::guard('peserta')->user()->angkatan }}">
                                                 @error('angkatan')
                                                 <div class="text text-danger">{{ $message }}</div>
                                                 @enderror
                                             </div>
                                             <div class="mb-4 form-group">
                                                 <label for="jurusan" class="text-muted text-sm-end mb-3 mb-sm-3">Jurusan</label>
-                                                <input type="text" class="form-control col-sm-9 @error('jurusan') is-invalid @enderror" name="jurusan" placeholder="contoh: sistem informasi" value="{{ Auth::guard('peserta')->user()->jurusan }}">
+                                                <input type="text" class="form-control col-sm-9 @error('jurusan') is-invalid @enderror" id="jurusan" name="jurusan" placeholder="contoh: sistem informasi" value="{{ Auth::guard('peserta')->user()->jurusan }}">
                                                 @error('jurusan')
                                                 <div class="text text-danger">{{ $message }}</div>
                                                 @enderror
                                             </div>
                                             <div class="mb-4 form-group">
                                                 <label for="email" class="text-muted text-sm-end mb-3 mb-sm-3">Email</label>
-                                                <input type="text" class="form-control col-sm-9 @error('email') is-invalid @enderror" placeholder="example@gmail.com" name="email" value="{{ Auth::guard('peserta')->user()->email  }}">
+                                                <input type="email" class="form-control col-sm-9 @error('email') is-invalid @enderror" placeholder="example@gmail.com" id="email" name="email" value="{{ Auth::guard('peserta')->user()->email  }}">
                                                 @error('email')
                                                 <div class="text text-danger">{{ $message }}</div>
                                                 @enderror
@@ -83,7 +83,7 @@
                                                         <span class="input-group-text">
                                                             <img src="{{ asset('assets/img/icons/flag-idn.png') }}" alt="flag idn" width="25">+62</span>
                                                     </div>
-                                                    <input type="text" class="form-control @error('no_hp') is-invalid @enderror" placeholder="8510023841" name="no_hp" value="{{ ltrim(Auth::guard('peserta')->user()->no_hp, '0') }}">
+                                                    <input type="text" class="form-control @error('no_hp') is-invalid @enderror" placeholder="8510023841" id="no_hp" name="no_hp" value="{{ ltrim(Auth::guard('peserta')->user()->no_hp, '0') }}">
                                                     @error('no_hp')
                                                     <div class="text text-danger">{{ $message }}</div>
                                                     @enderror
@@ -91,14 +91,14 @@
                                             </div>
                                             <div class="mb-4 form-group">
                                                 <label for="change_pw" class="text-muted text-sm-end mb-3 mb-sm-3">Change Password</label>
-                                                <input type="text" class="form-control col-sm-9 @error('password') is-invalid @enderror" placeholder="Type your new password" name="password">
+                                                <input type="password" class="form-control col-sm-9 @error('password') is-invalid @enderror" placeholder="Type your new password" id="password" name="password">
                                                 @error('password')
                                                 <div class="text text-danger">{{ $message }}</div>
                                                 @enderror
                                             </div>
                                             <div class="mb-4 form-group">
                                                 <label for="pw_confirm" class="text-muted text-sm-end mb-3 mb-sm-3">Password Confirmation</label>
-                                                <input type="text" class="form-control col-sm-9 @error('password_confirm') is-invalid @enderror" placeholder="Retype your password here" name="password_confirm">
+                                                <input type="password" class="form-control col-sm-9 @error('password_confirm') is-invalid @enderror" placeholder="Retype your password here" id="password_confirm" name="password_confirm">
                                                 @error('password_confirm')
                                                 <div class="text text-danger">{{ $message }}</div>
                                                 @enderror
