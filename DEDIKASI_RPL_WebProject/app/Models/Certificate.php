@@ -13,9 +13,8 @@ class Certificate extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'peserta_id',
-        'course_id',
-        'judul_sertifikat',
+        'peserta',
+        'pelatihan',
         'nama_file'
     ];
 

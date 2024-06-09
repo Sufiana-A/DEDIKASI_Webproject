@@ -12,12 +12,16 @@
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/dashboard-admin">Dashboard</a></li>
                         <li class="breadcrumb-item"><a href="{{ route('faqs.index') }}">Sertifikat</a></li>
-                        <li class="breadcrumb-item active">Tambah Sertifikat</li>
+                        <li class="breadcrumb-item active">Tambah</li>
                     </ul>
                 </div>
             </div>
         </div>
-
+        @if ($message = Session::get('success'))
+            <div class="alert alert-success">
+                {{ $message }}
+            </div>
+        @endif
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-mt-2">
@@ -30,30 +34,45 @@
                                 @csrf
 
                                 <div class="form-group">
-                                    <label for="id_peserta">ID Peserta</label>
-                                    <input type="text" name="id_peserta" id="id_peserta" class="form-control" required>
+                                    <label for="pelatihan">Nama Pelatihan</label>
+                                    <select class="form-control @error('pelatihan') is-invalid @enderror" id="pelatihan"
+                                        name="pelatihan" required>
+                                        <option value="">Pilih Pelatihan</option>
+                                        @foreach($course as $courses)
+                                            <option value="{{ $courses->title }}"> {{ $courses->title }}
+                                            </option>
+                                        @endforeach
+                                    </select>
 
-                                    @error('id_peserta')
+                                    @error('pelatihan')
                                         <div>{{ $message }}</div>
                                     @enderror
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="id_pelatihan">ID Pelatihan</label>
-                                    <input type="text" name="id_pelatihan" id="id_pelatihan" class="form-control"
+                                    <label for="peserta">Nama Peserta</label>
+                                    <select class="form-control @error('peserta') is-invalid @enderror" id="peserta"
+                                        name="peserta" required>
+                                        <option value="">Pilih Peserta</option>
+                                        @foreach($pesertaAcc as $pesertaAccs)
+                                            <option value="{{ $pesertaAccs->first_name }} {{ $pesertaAccs->last_name }}">
+                                                {{ $pesertaAccs->first_name }} {{ $pesertaAccs->last_name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+
+                                    @error('peserta')
+                                        <div>{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="nama_file">File Sertifikat</label>
+                                    <br>
+                                    <input type="file" name="nama_file" id="nama_file" class="form-control-file"
                                         required>
 
-                                    @error('id_pelatihan')
-                                        <div>{{ $message }}</div>
-                                    @enderror
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="file">File Sertifikat</label>
-                                    <br>
-                                    <input type="file" name="file" id="file" class="form-control-file" required>
-
-                                    @error('file')
+                                    @error('nama_file')
                                         <div>{{ $message }}</div>
                                     @enderror
                                 </div>
@@ -89,8 +108,8 @@
                                         <tr>
                                             <td>{{ $sert->id }}</td>
                                             <td>{{ $sert->nama_file }}</td>
-                                            <td>{{ $sert->peserta->first_name . ' ' . $sert->peserta->last_name }}</td>
-                                            <td>{{ $sert->Course->title }}</td>
+                                            <td>{{ $sert->peserta}}</td>
+                                            <td>{{ $sert->pelatihan }}</td>
                                             <td>
                                                 <form action="{{ route('sertifikat.destroy', $sert->id) }}" method="POST">
                                                     @csrf
