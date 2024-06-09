@@ -99,7 +99,7 @@
                                             </td> --}}
                                             <td style="text-align: center;">{{ $timeline->title }}</td>
                                             <td style="text-align: center;">{{ $timeline->class }}</td>
-                                            <td style="text-align: center;">{{ $timeline->description }}</td>
+                                            <td style="text-align: justify;">{{ Str::limit(strip_tags($timeline->description), 100, '.......') }}</td>                                        
                                             <td style="text-align: center;">{{ strip_tags($timeline->tugas) }}</td>
                                             <td style="text-align: center;">{{ $timeline->deadline }}</td>
                                             <td style="text-align: center;">{{ $timeline->status }}</td>
