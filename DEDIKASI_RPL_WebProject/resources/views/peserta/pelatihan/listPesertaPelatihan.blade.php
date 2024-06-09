@@ -39,8 +39,8 @@
                                     <img src="{{ asset('assets/img/course.jpg') }}" class="card-img-top img-fluid" style="width:350px" alt="gambar">
                                 </div>
                                 <hr>
-                                <div class="d-flex justify-content mb-3 text-">
-                                    <p class="card-text">{{ strip_tags($enroll->description) }}</p>
+                                <div class="d-flex justify-content mb-3 description">
+                                    <p class="card-text">{!! Str::limit(strip_tags($enroll->description), 100, '.......') !!}</p>
                                 </div>
                                 <hr>
                                 <div class="d-flex justify-content-center mb-3">

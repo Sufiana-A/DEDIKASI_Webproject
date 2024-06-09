@@ -43,6 +43,7 @@ class AnnouncementController extends Controller
     public function store(Request $request) {
         $announcement = new Announcement();
         $announcement->title = $request->title;
+        $announcement->image = $request->image;
         $announcement->description = $request->description;
         $announcement->save();
 
@@ -56,6 +57,7 @@ class AnnouncementController extends Controller
     public function update(Request $request) {
         $announcement = Announcement::where('uuid', $request->uuid)->firstOrFail();
         $announcement->title = $request->title;
+        $announcement->image = $request->image;
         $announcement->description = $request->description;
         $announcement->update();
 

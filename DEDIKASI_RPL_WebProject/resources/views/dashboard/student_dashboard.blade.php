@@ -1,5 +1,5 @@
 @extends('layout.master')
-
+@section('title', 'Dashboard Peserta')
 @section('content')
 <div class="page-wrapper">
     <div class="content container-fluid">
@@ -165,14 +165,18 @@
         </div>
     </div>
 </div>
-<script>
-    // Temukan tombol dengan ID 'submitBtn'
-    var submitBtn = document.getElementById('submitBtn');
 
-    // Tambahkan event listener untuk mengarahkan ke route lain saat tombol diklik
-    submitBtn.addEventListener('click', function() {
-        // Ganti URL di bawah dengan URL route yang diinginkan
+@endsection
+@section('script')
+<script>
+  var submitBtns = document.querySelectorAll('.btn-submit');
+
+// Tambahkan event listener untuk setiap tombol "View"
+submitBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+        // Ganti URL di bawah dengan URL yang sesuai
         window.location.href = "{{ route('list_peserta_pelatihan') }}";
     });
+});
 </script>
 @endsection

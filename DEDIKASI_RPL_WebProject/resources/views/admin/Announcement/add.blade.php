@@ -1,5 +1,5 @@
 @extends('layout.adminmaster')
-
+@section('title', 'Add Announcement')
 @section('content')
 <div class="page-wrapper">
     <div class="content container-fluid">
@@ -27,6 +27,10 @@
                                 <input type="text" class="form-control" id="title" name="title" required>
                             </div>
                             <div class="mb-3">
+                                <label for="image" class="form-label">Image</label>
+                                <textarea class="form-control summernote" id="image" rows="3" name="image" style="resize: none;" required></textarea>
+                            </div>
+                            <div class="mb-3">
                                 <label for="description" class="form-label">Description</label>
                                 <textarea class="form-control summernote" id="description" rows="3" name="description" style="resize: none;" required></textarea>
                             </div>
@@ -41,10 +45,9 @@
     </div>
 </div>
 @endsection
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 @section('script')
+
 <script>
-    $(document).ready(function() {
         $('.summernote').summernote({
             placeholder: 'Type here',
             tabsize: 2,
@@ -65,6 +68,6 @@
             this.style.height = 'auto';
             this.style.height = (this.scrollHeight) + 'px';
         });
-    });
+    ;
 </script>
 @endsection

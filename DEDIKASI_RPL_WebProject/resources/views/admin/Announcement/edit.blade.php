@@ -1,4 +1,5 @@
 @extends('layout.adminmaster')
+@section('title', 'Edit Announcement')
 @section('content')
 
 <div class="page-wrapper">
@@ -28,6 +29,10 @@
                                 <input type="text" class="form-control" id="title" name="title" value="{{ $announcement->title }}" required>
                             </div>
                             <div class="mb-3">
+                                <label for="image" class="form-label">Image</label>
+                                <textarea class="form-control summernote" id="image" rows="3" name="image" required>{!! $announcement->image !!}</textarea>
+                            </div>
+                            <div class="mb-3">
                                 <label for="description" class="form-label">Description</label>
                                 <textarea class="form-control summernote" id="description" rows="3" name="description" required>{!! $announcement->description !!}</textarea>
                             </div>
@@ -46,7 +51,7 @@
 
 @section('script')
 <script>
-    $(document).ready(function() {
+  
         $('.summernote').summernote({
             placeholder: 'Type here',
             tabsize: 2,
@@ -67,6 +72,6 @@
             this.style.height = 'auto';
             this.style.height = (this.scrollHeight) + 'px';
         });
-    });
+    
 </script>
 @endsection
