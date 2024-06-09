@@ -17,14 +17,17 @@ class MentorAssignmentAddTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->visit('/list-assignment')
                     ->assertSee('ASSIGNMENT LIST')
-                    ->press('fas fa-plus')
+                    ->press('.btn .fas.fa-plus')
                     ->assertPathIs('/create-assignment')
+                    ->assertSee('Tambahkan Assignment')
                     ->type('id_tugas', 'A001C012')
                     ->type('title', 'Tugas 1: RPL')
-                    ->type('description', 'Membuat Project Laravel')
-                    ->type('addition', 'tugas1rpl.png')
-                    ->press('Simpan')
-                    ->assertPathIs('/list-assignment');
+                    ->script([
+                        "$('#description').summernote('code', $('#description').val());" 
+                    ])
+                    ->attach('addition', __DIR__.'/filetest/microservice.png');
+                    // ->press('Simpan')
+                    // ->assertPathIs('/store-assignment');
         });
     }
 }

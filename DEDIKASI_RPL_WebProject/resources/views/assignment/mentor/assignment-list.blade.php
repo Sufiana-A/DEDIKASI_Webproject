@@ -1,4 +1,4 @@
-@extends('layout.adminmaster')
+@extends('layout.mentormaster')
 @section('content')
     <div class="page-wrapper">
         <div class="content container-fluid">
@@ -59,6 +59,7 @@
                                     class="table border-0 star-student table-hover table-center mb-0 datatable table-striped">
                                     <thead class="student-thread">
                                         <tr>
+                                            <th>Pelatihan</th>
                                             <th>ID Tugas</th>
                                             <th>Judul</th>
                                             <th>Deskripsi</th>
@@ -69,6 +70,13 @@
                                     <tbody>
                                         @foreach ($assignments as $assignment)
                                         <tr>
+                                            <td>
+                                                @if($assignment->course)
+                                                    {{ $assignment->course->uuid }}: {{ $assignment->course->title }}
+                                                @else
+                                                    No Course Assigned
+                                                @endif
+                                            </td>
                                             <td class="id_tugas">{{ $assignment->id_tugas }}</td>
                                             <td>
                                                 <h2>
@@ -79,10 +87,10 @@
                                             <td>{{ $assignment->addition }}</td>
                                             <td class="text-end">
                                                 <div class="actions">
-                                                    <a href="{{ route('assignment_edit', $assignment->id) }}" class="btn btn-sm bg-danger-light">
+                                                    <a href="{{ route('assignment_edit', $assignment->id) }}" class="btn btn-sm bg-danger-light" dusk="edit-assignment-button-{{ $assignment->id_tugas }}">
                                                         <i class="far fa-edit me-2"></i>
                                                     </a>
-                                                    <a class="btn btn-sm bg-danger-light delete" data-bs-toggle="modal" data-bs-target="#delete" data-id_tugas="{{ $assignment->id_tugas }}">
+                                                    <a class="btn btn-sm bg-danger-light delete" data-bs-toggle="modal" data-bs-target="#delete" data-id_tugas="{{ $assignment->id_tugas }}" dusk="delete-assignment-button-{{ $assignment->id_tugas }}">
                                                         <i class="fe fe-trash-2"></i>
                                                     </a>
                                                 </div>
