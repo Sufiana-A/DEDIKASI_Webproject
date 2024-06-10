@@ -15,7 +15,7 @@
         <div class="row">
             @foreach ($artikel as $artikel)
             <hr>
-            <a href="/detail-artikel/{{ $artikel->id }}" style="width: 100%; text-decoration: none;">
+            <a href="/detail-mentor-artikel/{{ $artikel->id }}" style="width: 100%; text-decoration: none;">
                 <div class="col-xl-10 col-sm-6 col-12 d-flex">
                     <div class="card bg-comman w-100" style="transition: transform 0.3s ease; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); cursor: pointer;" 
                         onmouseover="this.style.transform='translateY(-5px)';" 
