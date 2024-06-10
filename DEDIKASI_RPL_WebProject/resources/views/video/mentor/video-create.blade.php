@@ -1,4 +1,4 @@
-@extends('layout.adminmaster')
+@extends('layout.mentormaster')
 @section('content')
     <div class="page-wrapper">
         <div class="content container-fluid">

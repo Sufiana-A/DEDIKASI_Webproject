@@ -59,6 +59,7 @@
                                     class="table border-0 star-student table-hover table-center mb-0 datatable table-striped">
                                     <thead class="student-thread">
                                         <tr>
+                                            <th>Pelatihan</th>
                                             <th>ID Video</th>
                                             <th>Judul</th>
                                             <th>Deskripsi</th>
@@ -69,6 +70,13 @@
                                     <tbody>
                                         @foreach ($video as $video)
                                         <tr>
+                                            <td>
+                                                @if($video->course)
+                                                    {{ $video->course->uuid }}: {{ $video->course->title }}
+                                                @else
+                                                    No Course Assigned
+                                                @endif
+                                            </td>
                                             <td class="id_video">{{ $video->id_video }}</td>
                                             <td>
                                                 <h2>

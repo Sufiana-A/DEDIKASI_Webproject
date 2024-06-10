@@ -27,7 +27,7 @@
                 </div>
             </div>
         </div>
-        <a href="{{ route('peserta_artikel') }}">Kembali ke List Artikel</a>
+        <a href="{{ route('mentor_artikel') }}">Kembali ke List Artikel</a>
     </div>
 </div>
 @endsection
