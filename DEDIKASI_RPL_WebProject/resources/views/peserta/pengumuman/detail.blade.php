@@ -1,5 +1,5 @@
 @extends('layout.master')
-
+@section('title', 'Detail Pengumuman')
 @section('content')
 <style>
     .description {

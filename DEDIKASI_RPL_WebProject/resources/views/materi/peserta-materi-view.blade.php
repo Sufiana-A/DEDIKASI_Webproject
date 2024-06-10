@@ -1,5 +1,5 @@
-
 @extends('layout.master')
+@section('title', 'List Materi')
 @section('content')
 
 <div class="page-wrapper">

@@ -1,4 +1,5 @@
 @extends('layout.master')
+@section('title', 'Add Announcement')
 @section('content')
 
 <div class="page-wrapper">

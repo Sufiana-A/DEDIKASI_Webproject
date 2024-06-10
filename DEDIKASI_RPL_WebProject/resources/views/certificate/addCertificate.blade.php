@@ -1,4 +1,5 @@
 @extends('layout.adminmaster')
+@section('title', 'Add Certificate')
 @section('content')
 {{-- message --}}
 

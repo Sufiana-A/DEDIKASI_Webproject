@@ -1,5 +1,5 @@
 @extends('layout.adminmaster')
-
+@section('title', 'Add Loker')
 @section('content')
 <div class="page-wrapper">
     <div class="content container-fluid">

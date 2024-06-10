@@ -1,5 +1,5 @@
 @extends('layout.master')
-
+@section('title', 'List Rekomendasi')
 @section('content')
 <style>
     .view-button {

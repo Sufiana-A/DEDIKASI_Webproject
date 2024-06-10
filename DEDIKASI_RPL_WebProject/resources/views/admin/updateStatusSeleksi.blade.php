@@ -1,4 +1,5 @@
 @extends('layout.adminmaster')
+@section('title', 'Update Seleksi Peserta Pelatihan')
 @section('content')
 <div class="page-wrapper">
     <div class="content container-fluid">
