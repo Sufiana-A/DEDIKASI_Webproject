@@ -1,4 +1,5 @@
 @extends('layout.master')
+@section('title', 'List Loker')
 @section('content')
 <div class="page-wrapper">
     <div class="content container-fluid">

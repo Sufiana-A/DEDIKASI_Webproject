@@ -1,4 +1,5 @@
 @extends('layout.adminmaster')
+@section('title', 'Edit Course')
 @section('content')
 {{-- message --}}
 

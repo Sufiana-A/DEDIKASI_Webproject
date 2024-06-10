@@ -1,4 +1,5 @@
 @extends('layout.mentormaster')
+@section('title', 'Edit Profile Mentor')
 @section('content')
 <div class="page-wrapper">
     <div class="content container-fluid">

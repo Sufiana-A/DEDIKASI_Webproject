@@ -1,5 +1,5 @@
 @extends('layout.mentormaster')
-
+@section('title', 'Add Materi')
 @section('content')
 <div class="page-wrapper">
     <div class="content container-fluid">

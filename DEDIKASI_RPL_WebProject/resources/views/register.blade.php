@@ -1,4 +1,3 @@
-
 @extends('layout.app')
 @section('content')
     <div class="login-right">

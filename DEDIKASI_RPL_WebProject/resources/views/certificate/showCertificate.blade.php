@@ -1,4 +1,5 @@
 @extends('layout.master')
+@section('title', 'Show Certificate')
 @section('content')
 
 <div class="page-wrapper">

@@ -1,4 +1,5 @@
 @extends('layout.adminmaster')
+@section('title', 'Edit FAQ')
 @section('content')
 
 <div class="page-wrapper">

@@ -1,4 +1,5 @@
 @extends('layout.adminmaster')
+@section('title', 'Profile Admin')
 @section('content')
 <div class="page-wrapper">
     <div class="content container-fluid">

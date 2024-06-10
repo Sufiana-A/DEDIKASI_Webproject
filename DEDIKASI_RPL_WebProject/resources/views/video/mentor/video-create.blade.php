@@ -1,4 +1,5 @@
 @extends('layout.mentormaster')
+@section('title', 'Add Video')
 @section('content')
     <div class="page-wrapper">
         <div class="content container-fluid">
