@@ -27,7 +27,7 @@ class Assignment extends Model
     public function peserta()
     {
         return $this->belongsToMany(peserta::class, 'assignment_peserta',  'peserta_id', 'id_tugas')
-                    ->withPivot('file_assignments','nilai','deskripsi');
+                    ->withPivot('file_assignments','text_assignments','nilai','deskripsi');
     }
 
     public function course(){

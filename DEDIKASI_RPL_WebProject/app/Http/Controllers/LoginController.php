@@ -12,28 +12,37 @@ class LoginController extends Controller
         return view('login');
     }
 
-    public function loginvalid(Request $request){
+    public function loginvalid(Request $request) {
+        // Validate the request
         $request->validate([
             'email' => ['required', 'email'],
-            'password' => ['required', '']
+            'password' => ['required']
         ]);
+    
+        // Prepare credentials
         $credentials = [
             'email' => $request->email,
             'password' => $request->password,
         ];
-        if (Auth::guard('peserta')->attempt($credentials)){
+    
+        // Attempt to login with different guards
+        if (Auth::guard('peserta')->attempt($credentials)) {
             $request->session()->regenerate();
             return redirect()->route('student.dashboard.index');
-        };
+        }
+    
         if (Auth::guard('admin')->attempt($credentials)) {
             $request->session()->regenerate();
             return redirect()->route('dashboard_admin');
-        };
-        if (Auth::guard('mentor')->attempt($credentials)){
+        }
+    
+        if (Auth::guard('mentor')->attempt($credentials)) {
             $request->session()->regenerate();
             return redirect()->route('dashboard_mentor');
-        };
-        return redirect()->back()->with('sukses', 'Proses login berhasil.');
+        }
+    
+        // If authentication fails, return back with error message
+        return redirect()->back()->withErrors(['email' => 'Invalid email or password.'])->withInput();
     }
 
     public function logout(Request $request)

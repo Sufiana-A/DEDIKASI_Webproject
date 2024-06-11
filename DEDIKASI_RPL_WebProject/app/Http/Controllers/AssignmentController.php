@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Assignment;
 use App\Models\Course;
 use App\Models\Peserta;
+// use App\Http\Controllers\Auth;
+use Illuminate\Support\Facades\Auth;
 
 class AssignmentController extends Controller
 {
@@ -51,7 +53,8 @@ class AssignmentController extends Controller
     
     public function edit(Request $request, $id){
         $assignments = Assignment::where('id', $request->id)->firstOrFail();
-        return view('assignment.mentor.assignment-update', compact('assignments'));
+        $courses = Course::all();
+        return view('assignment.mentor.assignment-update', compact('assignments', 'courses'));
     }
 
     public function update(Request $request, $id)
@@ -98,90 +101,51 @@ class AssignmentController extends Controller
     }
 
 
+    public function indexPeserta(Request $request, $uuid)
+{
+    $course = Course::where('uuid', $uuid)->firstOrFail();
+    $assignments = Assignment::where('pelatihan', $course->uuid)->get();
+    $pesertaId = Auth::guard('peserta')->user()->id;
 
-    ///PESERTA
-//     public function indexPeserta(Request $request, $uuid){
-//         $course = Course::where('uuid', $uuid)->firstOrFail();
-//         $assignments = Assignment::where('pelatihan', $course->uuid)->get();
-//         return view('assignment.peserta-list-assignment', compact('assignments'));
-//     }
+    foreach ($assignments as $assignment) {
+        $assignment->submitted = $assignment->peserta()->where('peserta_id', $pesertaId)->exists();
+    }
 
-//     public function createPeserta(){
-//         return view('assignment.peserta-add-assignment');
-//     }
+    return view('assignment.peserta-list-assignment', compact('assignments'));
+}
 
-//     public function submit(Request $request)
-//     {
-//         $request->validate([
-//             'text_submission' => 'nullable|string',
-//             'file_submission' => 'nullable|mimes:pdf,doc,jpg,jpeg,png'
-//         ]);
+
     
-//         $assignment_id = $this->getDefaultAssignmentId(); 
-    
-//         $submission = new Submission;
-//         $submission->assignment_id = $assignment_id;
-//         $submission->text_submission = $request->text_submission;
+
+        // public function indexPeserta(Request $request, $uuid)
+        // {
+        //     $course = Course::where('uuid', $uuid)->firstOrFail();
+        //     $assignment = Assignment::where('pelatihan', $course->uuid)->get();
         
-//         if ($request->hasFile('file_submission')) {
-//             $filename = $request->file('file_submission')->store('submission', 'public');
-//             $submission->file_submission = $filename;
-//         }
-    
-//         $submission->save();
-    
-//         return redirect()->back()->with('success', 'Tugas berhasil dikumpulkan!');
-//     }
+        //     return view('assignment.peserta-list-assignment', compact('assignment'));
+        // }
 
-//     public function updatePeserta(Request $request)
-// {
-//     $request->validate([
-//         'text_submission' => 'nullable|string',
-//         'file_submission' => 'nullable|mimes:pdf,doc,jpg,jpeg,png'
-//     ]);
+        // public function success(Request $request, $uuid)
+        // {
+        //     $course = Course::where('uuid', $uuid)->firstOrFail();
+        //     $assignment = Assignment::where('pelatihan', $course->uuid)->get();
+        
+        //     return view('assignment.submit-berhasil', compact('assignment'));
+        // }
 
-//     $assignment_id = $this->getDefaultAssignmentId();
-
-//     $submission = Submission::updateOrCreate(
-//         [
-//             'assignment_id' => $assignment_id,
-//             'user_id' => auth()->id() 
-//         ],
-//         [
-//             'text_submission' => $request->text_submission,
-//         ]
-//     );
-
-//     if ($request->hasFile('file_submission')) {
-//         // Hapus file lama jika ada
-//         if ($submission->file_submission) {
-//             Storage::delete($submission->file_submission);
-//         }
-//         // Simpan file baru
-//         $filename = $request->file('file_submission')->store('submissions', 'public');
-//         $submission->file_submission = $filename;
-//     }
-
-//     $submission->save();
-
-//     return redirect()->back()->with('success', 'Tugas berhasil diperbarui!');
-// }
-
-
-        public function indexPeserta(Request $request, $peserta_id)
+        public function createPeserta($peserta_id, $id_tugas, $assignment_id)
         {
-            $peserta = Peserta::with('assignments')->findOrFail($peserta_id);
-            return view('assignment.peserta-list-assignment', compact('peserta'));
+            $peserta = Peserta::where('id', $peserta_id)->first();
+            $assignment = Assignment::where('id', $assignment_id)->first();
+            var_dump($id_tugas);
+            var_dump($assignment_id);
+            return view('assignment.add-assignment', compact('peserta', 'assignment'));
         }
 
-        public function createPeserta($peserta_id, $assignment_id)
+        public function submit(Request $request, $peserta_id, $id_tugas, $assignment_id)
         {
-            $assignment = Assignment::findOrFail($assignment_id);
-            return view('assignment.peserta-add-assignment', compact('assignment', 'peserta_id'));
-        }
+            $assignment = Assignment::where('id', $assignment_id)->first();
 
-        public function submit(Request $request, $peserta_id, $assignment_id)
-        {
             $request->validate([
                 'text_submission' => 'nullable|string',
                 'file_submission' => 'nullable|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048'
@@ -193,14 +157,15 @@ class AssignmentController extends Controller
                 $filename = $request->file('file_submission')->store('submissions', 'public');
             }
 
-            $peserta->assignments()->attach($assignment_id, [
+            $peserta->assignment()->attach($assignment_id, [
+                'id_tugas' => $request->id_tugas,
                 'file_assignments' => $filename,
                 'deskripsi' => $request->text_submission,
-                'nilai' => 'Belum Lulus', // Default valuenya 'Belum Lulus'
+                'nilai' => 'Belum Lulus', 
                 'text_assignments' => $request->input('text_submission') 
             ]);
 
-            return redirect()->route('peserta.assignments.index', $peserta_id)->with('success', 'Assignment submitted successfully!');
+            return redirect()->back()->with('success', 'Assignment submitted successfully!');
         }
 
         // Update an existing assignment submission
@@ -245,5 +210,25 @@ class AssignmentController extends Controller
             return redirect()->route('peserta.assignments.index', $peserta_id)->with('error', 'Assignment not found!');
         }
 }
+        // public function editSubmit(){
+        //     $assignments = Assignment::with('peserta')->get();
+        //     return view('assignment.submit-edit', compact('assignments'));
+        // } 
+        public function editSubmit()
+    {
+        $assignments = Assignment::with('peserta')->get();
+        // Debugging to check data
+        // dd($assignments);  
+        return view('assignment.submit-edit', compact('assignments'));
+    }
+
+    // public function delete(Request $request)
+    // {
+    //     $id_tugas = $request->input('id_tugas');
+    //     // Assuming a pivot table named 'assignment_peserta'
+    //     \DB::table('assignment_peserta')->where('id_tugas', $id_tugas)->delete();
+
+    //     return redirect()->route('assignments.list')->with('success', 'Assignment deleted successfully');
+    // }
 
 }

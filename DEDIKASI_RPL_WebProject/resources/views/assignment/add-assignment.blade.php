@@ -1,5 +1,5 @@
 @extends('layout.master')
-@section('title', 'Update Assignment')
+@section('title', 'Add Assignment')
 @section('content')
 
 <div class="page-wrapper">
@@ -8,7 +8,8 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title" style="font-size: 20px; font-weight: bold;">Edit Tugas</h4>
+                        <h4 class="card-title" style="font-size: 20px; font-weight: bold;">Pengumpulan Tugas</h4>
+                        <h6>Silakan kumpulkan tugas Anda di sini!</h6>  
                     </div>
                     @if (session('success'))
                     <div class="alert alert-success">
@@ -53,7 +54,7 @@
                             <div class="form-group">
                                 <div class="mb-4">
                                     <label for="text_submission"> Pengumpulan Teks </label>
-                                    <textarea class="form-control summernote" id="text_submission" rows="3" name="text_submission" >{{ $assignment->text_assignments }}</textarea>
+                                    <textarea class="form-control summernote" id="text_submission" rows="3" name="text_submission"></textarea>
                                 </div>                                
                                 <div class="mb-4">
                                     <label for="file_submission" class="form-label">Pengumpulan File </label>
@@ -90,4 +91,4 @@
     });
 </script>
 @endsection
-@endsections
+@endsection
