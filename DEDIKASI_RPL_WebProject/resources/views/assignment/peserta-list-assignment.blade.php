@@ -13,7 +13,17 @@
                     </div>
                 </div>
             </div>
+            @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+            @endif
 
+            @if (session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+        @endif
         <div class="row ">
             @foreach ($assignments as $assignment)
             <div class="col-xl-10 col-sm-6 col-12 d-flex">
@@ -31,14 +41,21 @@
                         <div class="col-12">
                             <div class="skip-group">
                                 <a href="{{ asset('storage/assignment/'. $assignment->addition) }}" target="_blank" class="btn btn-info continue-btn" style="margin-top: 10px; padding: 7px 5px;" download><i class="fas fa-download"></i> File Tugas</a>
-                                <a href="{{ route('create_assignment') }}" target="_blank" class="btn btn-info continue-btn" style="margin-top: 10px; padding: 7px 15px;"><i class="fas fa-upload"></i>  Kumpulkan Tugas</a>
+                                <a href="{{ route('create_assignment', ['peserta_id' => Auth::guard('peserta')->user()->id, 'id_tugas' => $assignment->id_tugas, 'assignment_id' => $assignment->id]) }}" class="btn btn-info continue-btn" style="margin-top: 10px; padding: 7px 15px;"><i class="fas fa-upload"></i>  Kumpulkan Tugas</a>
                             </div>
+                            {{-- <p>{{ $pesertaId }}</p> --}}
                         </div>
+                        @if ($assignment->submitted) 
+                        <div class="col-12 mt-2">
+                            <a href="{{ route('submit_edit', ['peserta_id' => Auth::guard('peserta')->user()->id, 'id_tugas' => $assignment->id_tugas, 'assignment_id' => $assignment->id]) }}" class="btn btn-info continue-btn" style="margin-top: 10px; padding: 7px 15px;"><i class="fas fa-edit"></i> Edit Submission Assignment</a>
+                        </div>
+                        @endif
                     </div>                        
                 </div>
             </div>
             @endforeach
         </div>
+        <a href="{{ route('submit_edit', ['peserta_id' => Auth::guard('peserta')->user()->id, 'id_tugas' => $assignment->id_tugas, 'assignment_id' => $assignment->id]) }}" class="btn btn-info continue-btn" style="margin-top: 10px; padding: 7px 15px;"><i class="fas fa-edit"></i> Edit Submission Assignment</a>    
         </div>   
     </div>
 @endsection

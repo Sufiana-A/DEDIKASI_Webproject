@@ -123,10 +123,11 @@ Route::get('/delete-assignment', [AssignmentController::class, 'delete'])->name(
 
 
 //assignment peserta
-Route::get('/peserta-list-assignment', [AssignmentController::class, 'indexPeserta'])->name('add_assignment');
-Route::get('/peserta-create-assignment', [AssignmentController::class, 'createPeserta'])->name('create_assignment');
-Route::post('/peserta-submit-assignment', [AssignmentController::class, 'submit'])->name('submit_assignment');
-Route::post('/peserta-update-assignment', [AssignmentController::class, 'updatePeserta'])->name('update_assignment');
+Route::get('/peserta-list-assignment/{uuid}', [AssignmentController::class, 'indexPeserta'])->name('add_assignment');
+Route::get('/peserta-create-assignment/{peserta_id}/{id_tugas}/{assignment_id}', [AssignmentController::class, 'createPeserta'])->name('create_assignment');
+Route::get('/edit-submisi/{peserta_id}/{id_tugas}/{assignment_id}', [AssignmentController::class, 'editSubmit'])->name('submit_edit');
+Route::post('/peserta-submit-assignment/{peserta_id}/{id_tugas}/{assignment_id}', [AssignmentController::class, 'submit'])->name('submit_assignment');
+Route::post('/peserta-update-assignment/{peserta_id}/{id_tugas}/{assignment_id}', [AssignmentController::class, 'updatePeserta'])->name('update_assignment');
 Route::get('/peserta-delete-assignment', [AssignmentController::class, 'deletePeserta'])->name('delete_assignment');
 
 //video mentor

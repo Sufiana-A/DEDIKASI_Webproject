@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('judul')->nullable();
             $table->string('penulis')->nullable();
             $table->date('waktu')->nullable();
-            $table->string('konten')->nullable();
+            $table->longText('konten')->nullable();
             $table->timestamps();
         });
     }
